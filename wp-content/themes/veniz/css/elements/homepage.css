@@ -1,0 +1,307 @@
+.home-header > nav {
+    border: none;
+}
+.grey_linear {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #f5f5f5 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#f5f5f5 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%,#f5f5f5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f5f5f5',GradientType=0 ); /* IE6-9 */
+}
+.fix_wrapper {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+#blocBienvenue {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+#blocBienvenue .firstTitle::after {
+    content: '';
+    width: 196px;
+    height: 15px;
+    background: url(../../assets/images/trait_couleur.png) no-repeat center;
+    margin: 0 auto;
+    display: block;
+}
+
+.rassurants {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    padding-bottom: 50px;
+}
+
+.rassurants .item {
+    transition: ease-in-out all 300ms;
+    flex: 1;
+    max-width: 290px;
+    padding: 24px 10px;
+    text-align: center;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border: 3px solid transparent;
+}
+
+.rassurants .item:hover {
+    cursor: pointer;
+    border-color: #844a49;
+    background-color: #fcf7ef
+}
+
+.rassurants .item .title {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 20px 0;
+}
+
+/*Articles*/
+#article_content .artcl{
+    display: flex;
+    justify-content: space-between;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.artcl .text {
+    max-width: 750px;
+    text-align: justify;
+}
+
+.artcl .photo {
+    transition: ease-in-out all 300ms;
+}
+.artcl .photo:hover {
+    opacity: 0.8;
+}
+
+.artcl .title {
+    display: inline-block;
+}
+
+.artcl .title::after {
+    content: url(../../assets/images/trait_couleur.png);
+    display: inline-block;
+    margin: -18px 0 0px 14px;
+    vertical-align: middle;
+}
+
+.containerGrey {    
+    background-color: #f5f5f5;
+}
+
+.article1 {
+    flex-direction: row-reverse;
+}
+
+.article1 .text {    
+    margin-right: 90px;
+}
+
+.article2 .text {    
+    margin-left: 90px;
+}
+
+.with_polygonal svg {
+    display: block;
+}
+/* ACTIVITIES */
+.activitiesHome {
+    padding: 30px 0;
+}
+
+.activitiesHome .title {
+    text-align: center;
+}
+
+.activitiesHome .fix_wrapper > .title::after {
+    content: '';
+    width: 196px;
+    height: 15px;
+    background: url(../../assets/images/trait_couleur.png) no-repeat center;
+    margin: 0 auto;
+    display: block;
+}
+
+.rowList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.activityList .item {
+    flex: 1;
+    max-width: 24%;
+}
+
+.activityList .photo {
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    overflow: hidden;
+    display: block;
+}
+
+.activityList .photo > img {
+    transition: ease-in-out all 300ms;
+    -webkit-transition: ease-in-out all 300ms;
+    -moz-transition: ease-in-out all 300ms;
+    -ms-transition: ease-in-out all 300ms;
+    width: 100%;
+}
+
+.activityList .item:hover {
+    cursor: pointer;
+}
+
+.activityList .item:hover .photo > img {
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+}
+
+.activityList .item:hover .title {
+    background: #844a49;
+    color: white
+}
+
+.activityList .title {
+    transition: ease-in-out all 300ms;
+    -webkit-transition: ease-in-out all 300ms;
+    -moz-transition: ease-in-out all 300ms;
+    -ms-transition: ease-in-out all 300ms;
+    display: block;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+@media screen and (max-width: 1080px) {
+    #slider {
+        min-height: 500px;
+    }
+    .fix_wrapper,
+    .containerGrey,
+    .article2.artcl {
+        width: 100%;
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .containerGrey.activitiesHome {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .artcl .photo {
+        display: none;
+    }
+    .artcl .text {
+        max-width: 100%;
+        text-align: justify;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .main-navigation {
+        float: none;
+    }
+    .main-navigation .container {
+        width: 100%;
+        padding: 0 40px;
+    }
+    #slider {
+        display: block;
+    }
+    #slider-text {
+        padding: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        margin-top: -130px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #slider::before {
+        display: none;
+    }
+    #slider {
+        min-height: 360px;
+    }
+
+    .rassurants {
+        display: block;
+        text-align: center;
+    }
+    .rassurants .item {
+       display: inline-block;
+       width: 49%;
+    }
+    .artcl .title {
+        text-align: left;
+    }
+    .artcl .title::after {
+        display: none;
+    }
+    .activityList .title {
+        padding: 9px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .fix_wrapper,
+    .containerGrey,
+    .article2.artcl {
+        width: 100%;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+    #blocBienvenue {
+        padding-bottom: 0;
+    }
+    .rassurants .item .icon {
+        display: block;
+        max-width: 50px;
+        margin: 0 auto;
+    }
+
+    .rassurants .item p {
+        margin: 0;
+    }
+
+    .article2.artcl {
+        padding-top: 40px;
+    }
+    .rowList {
+        display: block;
+    }
+    .activityList .item {
+        max-width: 49%;
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .rassurants .item {
+        width: 100%;
+    }
+
+    .activityList .item {
+        width: 100%;
+        max-width: inherit;
+    }
+}

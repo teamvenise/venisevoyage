@@ -1,0 +1,180 @@
+.headTitle {
+    background: #f5f5f5;
+    padding: 14px 0;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    color: #e7bb0b;
+    border-top: 1px solid #d7d7d7;
+    border-bottom: 1px solid #d7d7d7;
+    letter-spacing: 3px;
+}
+
+.transfert-component .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #d7d7d7;
+}
+
+.transfert-component .item:last-child {
+    border-bottom: none;
+}
+
+.transfert-component .icones {
+    display: flex;
+    justify-content: space-between;
+    min-width: 210px;
+    align-items: center;
+    margin-right: 24px;
+}
+
+
+.transfert-component .icones .start,
+.transfert-component .icones .end {
+    border-radius: 50%;
+    width: 73px;
+    height: 73px;
+    display: block;
+}
+
+.transfert-component .icones .start > span > img,
+.transfert-component .icones .start > span > img {
+    width: 100%;
+    height: auto;
+}
+
+.transfert-component .icones .arrow > img {
+    display: block;
+}
+
+.transfert-component .icones .brown-icon{
+    border: 2px solid #824e4e;
+}
+
+.transfert-component .icones .yellow-icon{
+    border: 2px solid #e7bb0b;
+    background: #e7bb0b;
+}
+
+.transert-details {
+    flex: 2;
+    margin-right: 24px;
+}
+.transert-details .subtitle,
+.transert-details p {
+    margin: 0;
+}
+
+.transfert-component .reserve {
+    padding: 24px;
+    text-align: center;
+    border-right: dashed 2px #aaaaaa;
+    border-left: dashed 2px #aaaaaa;
+}
+
+.transfert-component .reserve .round-btn{
+    border-color: #e7bb0b;
+    color: #e7bb0b;
+    margin: 0;
+}
+
+
+.transfert-component .reserve .round-btn:hover {
+    background-color: #e7bb0b;
+    color: white;
+}
+
+/* DETAILS TRANSPORT */
+
+.full-width-img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 24px;
+}
+
+.encart {
+    position: relative;
+}
+
+.encart .round-btn.btn-second{
+    background-color: #e7bb0b;
+    color: white;
+    border-color: #e7bb0b;
+    position: absolute;
+    top: 50%;
+    right: 50px;
+    margin: -28px 0 0;
+}
+
+.encart .round-btn.btn-second:hover {
+    background-color: #c29c05;
+    border-color: #c29c05;
+}
+
+@media screen and (max-width: 767px) {
+    .transfert-component .icones .start, .transfert-component .icones .end {
+        width: 50px;
+        height: 50px;
+    }
+    .sidebar {
+        padding: 0 15px;
+    }
+    .transfert-component .icones {
+        min-width: 150px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .transport-vue .onRow .item {
+        min-width: 50%;
+    }
+    .transfert-component .item {
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .transert-details {
+        margin-right: 0;
+        min-width: 60%;
+    }
+    .transfert-component .reserve {
+        padding: 0 0 0 175px;
+        text-align: center;
+        border: none;
+        display: block;
+        margin: 13px 0 0;
+    }
+    .activityList .item {
+        flex: 1;
+        max-width: 44%;
+    }
+}
+@media screen and (max-width: 500px) {
+    .transfert-component .item {
+        flex-wrap: wrap;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+    .transfert-component .icones {
+        margin-bottom: 24px;
+    }
+    .transfert-component .reserve {
+        padding: 0;
+    }
+    .transert-details p {
+        text-align: center !important;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .transport-vue .onRow .item {
+        min-width: 100%;
+    }
+    .activityList .item {
+        flex: 1;
+        max-width: 90%;
+    }
+}
