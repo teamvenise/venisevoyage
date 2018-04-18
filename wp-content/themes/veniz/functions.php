@@ -7,6 +7,8 @@
  *
  * @package voyagevenise
  */
+
+ include('inc/shortcodes.php');
 if ( ! function_exists( 'voyagevenise_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -339,3 +341,4 @@ require get_template_directory() . '/inc/class-voyagevenise-related-posts.php';
  * Load the system checks ( used for notifications )
  */
 require get_template_directory() . '/inc/admin/welcome-screen/notify-system-checks.php';
+
