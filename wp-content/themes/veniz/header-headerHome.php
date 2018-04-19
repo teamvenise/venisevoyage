@@ -47,11 +47,12 @@
 
 		<div id="slider">
 			<div id="slider-text">
-				<h3 class="title">Venise</h3>
+                            <h1 class="title">  <?php echo single_post_title( '', false );  ?></h1>
 				<p>
-				Proin sed egestas ante. Curabitur tincidunt enim sed interdum tincidunt. 
-				Vivamus quis pellentesque lorem. Vestibulum eu pretium lectus. 
-				Suspendisse potenti. Fusce ex sem, mattis id egestas malesuada.</p>
+				<?php
+                                  while ( have_posts() ) : the_post();
+                                   the_content();
+                                  endwhile;?></p>
 			</div>
 			<span class="btn-scroll"></span>
 		</div>

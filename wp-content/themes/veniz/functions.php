@@ -8,7 +8,10 @@
  * @package voyagevenise
  */
 
- include('inc/shortcodes.php');
+// include('inc/shortcodes.php');
+ require_once( get_template_directory() . '/inc/shortcodes.php' );
+ require_once( get_template_directory() . '/inc/carte.class.php' );
+
 if ( ! function_exists( 'voyagevenise_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -296,6 +299,71 @@ function shapely_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'shapely_scripts' );
+
+add_action( 'init', 'venise_post_type', 0 );
+function venise_post_type() {
+     $labels = array(
+			'name'                => _x( 'Carte', 'Post Type General Name', 'text_domain' ),
+			'singular_name'       => _x( 'Nom', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'           => __( 'Carte', 'text_domain' ),
+			'all_items'           => __( 'Toutes les cartes', 'text_domain' ),
+			'view_item'           => __( 'Voir', 'text_domain' ),
+			'add_new_item'        => __( 'Ajouter nouveau', 'text_domain' ),
+			'add_new'             => __( 'Ajouter nouveau', 'text_domain' ),
+			'edit_item'           => __( 'Modifier', 'text_domain' ),
+			'update_item'         => __( 'Mettre a jour', 'text_domain' ),
+			'search_items'        => __( 'Rechercher', 'text_domain' ),
+			'not_found'           => __( 'Aucune carte', 'text_domain' ),
+			'not_found_in_trash'  => __( 'Aucune carte', 'text_domain' ),
+	);
+	$args = array(
+			'label'               => __( 'Carte', 'text_domain' ),
+			'description'         => __( 'Carte', 'text_domain' ),
+			'labels'              => $labels,
+			'supports'            =>   array( 'title', 'editor', 'custom-fields','thumbnail' ),
+			'taxonomies'          => array(''),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'menu_position'       => 4,
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'page',
+	);
+	register_post_type( 'carte', $args );
+
+         // Add new taxonomy, make it hierarchical (like categories)
+	$labels = array(
+		'name'              => _x( 'Genre', 'taxonomy general name', 'textdomain' ),
+		'singular_name'     => _x( 'Genre', 'taxonomy singular name', 'textdomain' ),
+		'search_items'      => __( 'Search Genres', 'textdomain' ),
+		'all_items'         => __( 'All Genres', 'textdomain' ),
+		'parent_item'       => __( 'Parent Genre', 'textdomain' ),
+		'parent_item_colon' => __( 'Parent Genre:', 'textdomain' ),
+		'edit_item'         => __( 'Edit Genre', 'textdomain' ),
+		'update_item'       => __( 'Update Genre', 'textdomain' ),
+		'add_new_item'      => __( 'Add New Genre', 'textdomain' ),
+		'new_item_name'     => __( 'New Genre Name', 'textdomain' ),
+		'menu_name'         => __( 'Genre', 'textdomain' ),
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => 'genre' ),
+	);
+
+	register_taxonomy( 'genre', array( 'carte' ), $args );
+}
+
 
 /**
  * Custom template tags for this theme.

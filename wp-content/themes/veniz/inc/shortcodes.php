@@ -46,7 +46,7 @@ function p_text_shortcode( $atts , $content = null ) {
 }
 add_shortcode( 'p', 'p_text_shortcode' );
 
-function transport_shortcode( $atts ,$content = null) {
+function carte_shortcode( $atts ,$content = null) {
     $atts = shortcode_atts(
 		array(
 			'img' => '',
@@ -65,7 +65,7 @@ function transport_shortcode( $atts ,$content = null) {
 
     return    $tranp_icone.$tranp_title.$tranp_content.$tranp_link;
 }
- add_shortcode( 'transp', 'transport_shortcode' );
+ add_shortcode( 'transp', 'carte_shortcode' );
 
  function transport_transfert_shortcode( $atts ,$content = null) {
     $atts = shortcode_atts(
@@ -78,7 +78,7 @@ function transport_shortcode( $atts ,$content = null) {
 		),
 		$atts,
 		'transp'
-	);
+            );
 
     $img_start_trajet =  get_template_directory_uri() . $atts['img_start_trajet'];
     $img_arrow =  get_template_directory_uri() . $atts['img_arrow'];
