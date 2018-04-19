@@ -11,7 +11,8 @@
 // include('inc/shortcodes.php');
  require_once( get_template_directory() . '/inc/shortcodes.php' );
  require_once( get_template_directory() . '/inc/carte.class.php' );
-
+ require_once( get_template_directory() . '/inc/paragraphe.class.php' );
+ 
 if ( ! function_exists( 'voyagevenise_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.

@@ -4,7 +4,12 @@ global $pageid;
 $pageid = get_the_id();
 $services = CCarte::getBy('service', 4, 'date', 'asc', null);
 $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
-//var_dump($services);die;
+
+$paraph1 = CParagraphe::getBy($pageid, 1);
+$paraph2 = CParagraphe::getBy($pageid, 2);
+$paraph3 = CParagraphe::getBy($pageid, 3);
+$paraph4 = CParagraphe::getBy($pageid, 4);
+
 ?>
 <main id="main-home">
     <div class="grey_linear">
@@ -12,12 +17,12 @@ $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
             <div id="blocBienvenue">
                 <h2 class="firstTitle">
                     <?php
-                    $titre_1 = get_field( 'titre_1', $pageid );
+                    $titre_1 = $paraph1->title;
                     echo $titre_1;
                     ?>
                 </h2>
                 <p><?php
-                    $content = get_field( 'contenu_1', $pageid );
+                    $content = $paraph1->content;
                     echo $content;
                     ?> </p>
             </div>
@@ -31,7 +36,7 @@ $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
                                 <span class="icon">
                                     <img src="<?php echo CCarte::getCarteImage($service->thumbnail); ?>" />
                                 </span>
-                                <h4 class="title"><?php echo $service->title; ?></h4>
+                                <h3 class="title"><?php echo $service->title; ?></h3>
                                 <span class="text">
                                     <p ><?php echo $service->content; ?></p>
                                 </span>
@@ -51,18 +56,19 @@ $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
                 <div class="article1 artcl">
                     <div class="photo">
                         <?php
-                        $image = get_field('image_2');
+                       
+                        $image = $paraph2->image;
                         $size = 'full'; //
                         ?>
                         <img src="<?php  if( $image ) echo $image ?>" alt="" srcset="">
                     </div>
                     <div class="text">
                         <h2 class="title"><?php
-                            $titre_2 = get_field( 'titre_2', $pageid );
+                            $titre_2 = $paraph2->title;
                             echo $titre_2;
                             ?></h2>
                         <p><?php
-                            $content = get_field( 'contenu_2', $pageid );
+                            $content = $paraph2->content;
                             echo $content;
                             ?> </p>
                     </div>
@@ -80,9 +86,9 @@ $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
                     <img src="<?php  if( $image ) echo $image ?>" alt="" srcset="">
                 </div>
                 <div class="text">
-                    <h2 class="title"><?php  $titre_3 = get_field( 'titre_3', $pageid );  echo $titre_3; ?></h2>
+                    <h2 class="title"><?php  $titre_3 = $paraph3->title; echo $titre_3; ?></h2>
                     <p><?php
-                        $content = get_field( 'contenu_3', $pageid );
+                        $content = $paraph3->content;
                         echo $content;
                         ?> </p>
                 </div>
@@ -94,7 +100,7 @@ $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
     <!-- Activity -->
     <div class="containerGrey activitiesHome">
         <div class="fix_wrapper">
-          <h2 class="title"><?php  $titre_4 = get_field( 'titre_4', $pageid );  echo $titre_4; ?></h2>
+          <h2 class="title"><?php  $titre_4 = $paraph4->title;  echo $titre_4; ?></h2>
             <div class="activityList">
                 <div class="rowList">
                     <?php if (count($activites) > 0) : ?>
