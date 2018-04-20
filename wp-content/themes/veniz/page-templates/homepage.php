@@ -8,23 +8,20 @@ $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
 $paraph1 = CParagraphe::getBy($pageid, 1);
 $paraph2 = CParagraphe::getBy($pageid, 2);
 $paraph3 = CParagraphe::getBy($pageid, 3);
-$paraph4 = CParagraphe::getBy($pageid, 4);
+$paraphFooter = CParagraphe::getFooterTitleBy($pageid);
 
 ?>
 <main id="main-home">
     <div class="grey_linear">
         <div class="fix_wrapper">
             <div id="blocBienvenue">
-                <h2 class="firstTitle">
-                    <?php
-                    $titre_1 = $paraph1->title;
-                    echo $titre_1;
-                    ?>
+                <h2 > <?php echo $paraph1->title;  ?>
                 </h2>
-                <p><?php
-                    $content = $paraph1->content;
-                    echo $content;
+                <p><?php  echo $paraph1->content;
                     ?> </p>
+                  <?php $image = $paraph1->image; $size = 'full'; if( $image ) : ?>
+                        <div class="photo"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
+                  <?php endif; ?>
             </div>
 
             <!-- Rassurants -->
@@ -36,7 +33,7 @@ $paraph4 = CParagraphe::getBy($pageid, 4);
                                 <span class="icon">
                                     <img src="<?php echo CCarte::getCarteImage($service->thumbnail); ?>" />
                                 </span>
-                                <h3 class="title"><?php echo $service->title; ?></h3>
+                                <h3><?php echo $service->title; ?></h3>
                                 <span class="text">
                                     <p ><?php echo $service->content; ?></p>
                                 </span>
@@ -55,11 +52,7 @@ $paraph4 = CParagraphe::getBy($pageid, 4);
             <div class="containerGrey">
                 <div class="article1 artcl">
                     <div class="photo">
-                        <?php
-                       
-                        $image = $paraph2->image;
-                        $size = 'full'; //
-                        ?>
+                        <?php $image = $paraph2->image; $size = 'full';  ?>
                         <img src="<?php  if( $image ) echo $image ?>" alt="" srcset="">
                     </div>
                     <div class="text">
@@ -100,7 +93,7 @@ $paraph4 = CParagraphe::getBy($pageid, 4);
     <!-- Activity -->
     <div class="containerGrey activitiesHome">
         <div class="fix_wrapper">
-          <h2 class="title"><?php  $titre_4 = $paraph4->title;  echo $titre_4; ?></h2>
+          <h2 class="title"><?php  $titre_4 = $paraphFooter->title_footer;  echo $titre_4; ?></h2>
             <div class="activityList">
                 <div class="rowList">
                     <?php if (count($activites) > 0) : ?>

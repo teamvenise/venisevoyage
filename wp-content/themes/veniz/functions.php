@@ -12,7 +12,8 @@
  require_once( get_template_directory() . '/inc/shortcodes.php' );
  require_once( get_template_directory() . '/inc/carte.class.php' );
  require_once( get_template_directory() . '/inc/paragraphe.class.php' );
- 
+  require_once( get_template_directory() . '/inc/transfert.class.php' );
+
 if ( ! function_exists( 'voyagevenise_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -363,6 +364,41 @@ function venise_post_type() {
 	);
 
 	register_taxonomy( 'genre', array( 'carte' ), $args );
+
+        $labels = array(
+			'name'                => _x( 'Transfert', 'Post Type General Name', 'text_domain' ),
+			'singular_name'       => _x( 'Nom', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'           => __( 'Transfert', 'text_domain' ),
+			'all_items'           => __( 'Tous les transferts', 'text_domain' ),
+			'view_item'           => __( 'Voir', 'text_domain' ),
+			'add_new_item'        => __( 'Ajouter nouveau', 'text_domain' ),
+			'add_new'             => __( 'Ajouter nouveau', 'text_domain' ),
+			'edit_item'           => __( 'Modifier', 'text_domain' ),
+			'update_item'         => __( 'Mettre a jour', 'text_domain' ),
+			'search_items'        => __( 'Rechercher', 'text_domain' ),
+			'not_found'           => __( 'Aucune carte', 'text_domain' ),
+			'not_found_in_trash'  => __( 'Aucune carte', 'text_domain' ),
+	);
+	$args = array(
+			'label'               => __( 'Transfert', 'text_domain' ),
+			'description'         => __( 'Transfert', 'text_domain' ),
+			'labels'              => $labels,
+			'supports'            =>   array( 'title', 'editor', 'custom-fields','thumbnail' ),
+			'taxonomies'          => array(''),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'menu_position'       => 4,
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'page',
+	);
+	register_post_type( 'transfert', $args );
 }
 
 

@@ -18,10 +18,19 @@
 	$return  = new stdClass();
 	$return->title = get_field( 'titre_' . $indice, $pageid );
 	$return->content = get_field( 'contenu_' . $indice , $pageid );
-	$return->image = get_field( 'image_' . $indice, $pageid );
-
+	$return->image = get_field( 'image_' . $indice, $pageid );       
+       
         return $return;
      }
+
+      public static function getFooterTitleBy($pageid) {
+
+	$return  = new stdClass();
+        $return->title_footer = get_field( 'titre_footer' , $pageid );
+        return $return;
+     }
+     
+      
 }
 
 ?>

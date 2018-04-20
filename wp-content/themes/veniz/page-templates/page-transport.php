@@ -12,6 +12,11 @@ $transports = CCarte::getBy('transport', 6, 'date', 'desc', null);
 $paraph1 = CParagraphe::getBy($pageid, 1);
 $paraph2 = CParagraphe::getBy($pageid, 2);
 $paraph3 = CParagraphe::getBy($pageid, 3);
+
+$paraphFooter = CParagraphe::getFooterTitleBy($pageid);
+
+$tranferts = CTransfert::getBy(3, 'date', 'asc', null);
+
 ?>
 	<div class="row">
             <div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
@@ -58,83 +63,53 @@ $paraph3 = CParagraphe::getBy($pageid, 3);
             </div>
                 
             <div class="transfert-component">
-                <div class="headTitle">Transfert</div>
+                <div class="headTitle"><?php  echo $paraphFooter->title_footer;   ?></div>
+
+                  <?php if (count($tranferts) > 0) : ?>
+                        <?php foreach ($tranferts as $tranfert): ?>
                 <div class="item">
                     <div class="icones">
-                        <span class="start brown-icon">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/transport_icones/trajet_planemarron.png" alt="" srcset="">
-                        </span>
+                        <?php $type = $tranfert-> type[value];  if( $type == 0 ) : ?>
+                                  <span class="start brown-icon">
+                                     <?php $image = $tranfert->icone_start;  if( $image ) : ?>
+                                           <img src="<?php  echo $image ?>" alt="" srcset="">
+                                      <?php endif; ?>
+                                </span>
+                              <?php else :?>
+                                  <span class="end yellow-icon">
+                                     <?php $image = $tranfert->icone_start;  if( $image ) : ?>
+                                           <img src="<?php  echo $image ?>" alt="" srcset="">
+                                      <?php endif; ?>
+                                   </span>
+                             <?php endif; ?>
+                       
                         <span class="arrow">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/right_arrow.png" alt="" srcset="">
+                            <?php $type = $tranfert-> type[value];  if( $type == 0 ) : ?>
+                                  <img src="<?php echo get_template_directory_uri()?>/assets/images/right_arrow.png" alt="" srcset="">
+                              <?php else :?>
+                                  <img src="<?php echo get_template_directory_uri()?>/assets/images/right_arrow.png" alt="" srcset="">
+                                  <img src="<?php echo get_template_directory_uri()?>/assets/images/left_arrow.png" alt="" srcset="">
+                             <?php endif; ?>
+                           
                         </span>
                         <span class="end yellow-icon">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/transport_icones/trajet_litblanc.png" alt="" srcset="">
+                           <?php $image = $tranfert->icone_end;  if( $image ) : ?>
+                                   <img src="<?php  echo $image ?>" alt="" srcset="">
+                           <?php endif; ?>
                         </span>
                     </div>
 
                     <div class="transert-details">
-                        <h4 class="subtitle">Aéroport - Hôtel</h4>
-                        <p>
-                            Nulla scelerisque auctor justo, at porta erat viverra ut. 
-                            Nam quis lorem id enim commodo sollicitudin a nec lectus. 
-                        </p>
+                        <h3 class="subtitle"><?php  echo $tranfert->title ?></h3>
+                        <p><?php  echo $tranfert->content ?></p>
                     </div>
-                    <div class="reserve">
-                        <button class="round-btn">Reservez</button>
+                   <div class="reserve">
+                         <a class="round-btn" href="<?php echo $transport->lien_reserver; ?>">Reservez<i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
-
-                <div class="item">
-                    <div class="icones">
-                        <span class="start brown-icon">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/transport_icones/trajet_litmarron.png" alt="" srcset="">
-                        </span>
-                        <span class="arrow">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/right_arrow.png" alt="" srcset="">
-                        </span>
-                        <span class="end yellow-icon">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/transport_icones/trajet_planeblanc.png" alt="" srcset="">
-                            </span>
-                        </span>
-                    </div>
-
-                    <div class="transert-details">
-                        <h4 class="subtitle">Hôtel - Aéroport</h4>
-                        <p>
-                            Nulla scelerisque auctor justo, at porta erat viverra ut. 
-                            Nam quis lorem id enim commodo sollicitudin a nec lectus. 
-                        </p>
-                    </div>
-                    <div class="reserve">
-                        <button class="round-btn">Reservez</button>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="icones">
-                        <span class="start yellow-icon">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/transport_icones/trajet_planeblanc.png" alt="" srcset="">
-                        </span>
-                        <span class="arrow">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/right_arrow.png" alt="" srcset="">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/left_arrow.png" alt="" srcset="">
-                        </span>
-                        <span class="end yellow-icon">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/transport_icones/trajet_litblanc.png" alt="" srcset="">
-                        </span>
-                    </div>
-
-                    <div class="transert-details">
-                        <h4 class="subtitle">Aéroport - Hôtel</h4>
-                        <p>
-                            Nulla scelerisque auctor justo, at porta erat viverra ut. 
-                            Nam quis lorem id enim commodo sollicitudin a nec lectus. 
-                        </p>
-                    </div>
-                    <div class="reserve">
-                        <button class="round-btn">Reservez</button>
-                    </div>
-                </div>
+                    <?php endforeach; ?>
+                 <?php endif;?>
+               
             </div>
 		</div>
 		

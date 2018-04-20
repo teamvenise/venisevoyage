@@ -18,7 +18,12 @@
     padding-bottom: 40px;
 }
 
-#blocBienvenue .firstTitle::after {
+#blocBienvenue h2 {
+    font-family: 'Amatic-Bold';
+    color: #844a49;
+    font-size: 40px;
+}
+#blocBienvenue h2::after {
     content: '';
     width: 196px;
     height: 15px;
@@ -53,11 +58,16 @@
     background-color: #fcf7ef
 }
 
-.rassurants .item .title {
+.rassurants .item a {
+    color: #313131;
+}
+
+.rassurants .item h3 {
     font-size: 30px;
     font-weight: bold;
     text-transform: uppercase;
     margin: 20px 0;
+    color: #844a49;
 }
 
 /*Articles*/
@@ -66,6 +76,8 @@
     justify-content: space-between;
     max-width: 1080px;
     margin: 0 auto;
+    align-items: center;
+    padding-bottom: 24px;
 }
 
 .artcl .text {

@@ -5,47 +5,40 @@ Template Post Type: page
 */
 
 get_header();
-$layout_class = shapely_get_layout_class(); ?>
+$layout_class = shapely_get_layout_class(); 
+$pageid = get_the_id();
+
+$paraph1 = CParagraphe::getBy($pageid, 1);
+$paraph2 = CParagraphe::getBy($pageid, 2);
+$paraph3 = CParagraphe::getBy($pageid, 3);
+$paraphFooter = CParagraphe::getFooterTitleBy($pageid);
+?>
 	<div class="row">
 		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
             <div class="main-contents">
                 
-                <h3 class="page-title title">Héberger à Venise</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    In consequat lacus turpis, sed dapibus nulla aliquam at. 
-                    Sed at fermentum ex. In ac nisl sem. 
-                    Cras magna risus, fringilla nec scelerisque nec, aliquam maximus nisi. 
-                    <a href="javascript:void(0)" class="a-link"> Vestibulum ut pellentesque nunc</a>. 
-                    Aliquam tincidunt, quam a luctus congue, mauris felis blandit eros, vitae rutrum lectus ligula ut elit. 
-                    Vivamus auctor et urna eget ullamcorper. 
-                    Vestibulum velit sem, tempor et congue non, vulputate ac risus.</p>
+               <h2 class="page-title title">
+                    <?php  echo  $paraph1->title; ?>
+                </h2>
+                 <p><?php  echo $paraph1->content; ?> </p>
+                  <?php $image = $paraph1->image; $size = 'full'; if( $image ) : ?>
+                        <div class="photo"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
+                  <?php endif; ?>
+                        
+                <h3 class="subtitle yellow-text"><?php  echo  $paraph2->title; ?></h3>
+                <p><?php  echo $paraph2->content; ?> </p>
 
-                <img src="<?php echo get_template_directory_uri()?>/assets/images/encart.jpg" class="full-width-img" alt="" srcset="">
+                 <?php $image = $paraph2->image; $size = 'full'; if( $image ) : ?>
+                        <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
+                 <?php endif; ?>
 
-                <h4 class="subtitle yellow-text">Hôtels à Venise</h4>
-                <p>
-                    Aenean elementum diam nec lorem luctus venenatis ac quis lectus. 
-                    In lorem purus, venenatis eget pellentesque sit amet, auctor non justo. 
-                    Nam interdum libero tortor, quis feugiat tellus vulputate id. 
-                    Integer at mi vel elit malesuada maximus a eget turpis. 
-                    Nunc ac felis et risus porttitor placerat nec at erat. 
-                    Sed mollis, tortor ac placerat vestibulum, sapien nisi pharetra quam, imperdiet cursus ipsum enim at mauris.
-                </p>
+                <h3 class="subtitle yellow-text"><?php  echo  $paraph3->title; ?></h3>
+                <p><?php  echo $paraph3->content; ?> </p>
+                 <?php $image = $paraph3->image; $size = 'full'; if( $image ) : ?>
+                        <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
+                 <?php endif; ?>
 
-                <h4 class="subtitle yellow-text">Auberges à Venise</h4>
-                <p>
-                    Aenean elementum diam nec lorem luctus venenatis ac quis lectus. 
-                    In lorem purus, venenatis eget pellentesque sit amet, auctor non justo. 
-                    Nam interdum libero tortor, quis feugiat tellus vulputate id. 
-                    Integer at mi vel elit malesuada maximus a eget turpis. 
-                    Nunc ac felis et risus porttitor placerat nec at erat. 
-                    Sed mollis, tortor ac placerat vestibulum, sapien nisi pharetra quam, imperdiet cursus ipsum enim at mauris. 
-                    Maecenas a justo quis lacus blandit pellentesque. 
-                    Curabitur sodales nisi nisl, eget interdum turpis fermentum in.
-                    Nam mollis nisl aliquet lectus efficitur sagittis. 
-                </p>
-
-                <h4 class="subtitle yellow-text">Offres sur les hôtels à Venise</h4>
+                <h2 class="subtitle yellow-text"><?php  echo $paraphFooter->title_footer;   ?></h2>
                 <div id="hotels-list">
                     <div class="onRow">
                         <a class="item" href="">
