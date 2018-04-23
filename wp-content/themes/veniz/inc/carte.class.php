@@ -87,6 +87,15 @@ class CCarte {
             );
         }
 
+        // tableau id genre
+        if (!is_null($name)) {
+            $args['tax_query'][] = array(
+                'taxonomy' => 'genre',
+                'field' => 'slug',
+                'terms' => $genre
+            );
+        }
+
         $elements = new WP_Query ( $args );
         
         $GLOBALS['wp_query'] = $elements;

@@ -5,25 +5,21 @@ Template Post Type: page
 */
 
 get_header();
-$layout_class = shapely_get_layout_class(); ?>
+$layout_class = shapely_get_layout_class();
+global $post;
+
+$carte = CCarte::getById($post->ID);
+//var_dump( CCarte::getById($post->ID));die;
+?>
 	<div class="row">
 		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
             <div class="main-contents">
-                <h3 class="page-title title">Gondole</h3>
-                <img src="<?php echo get_template_directory_uri()?>/assets/images/picture_full.jpg" class="full-width-img" alt="" srcset="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    In consequat lacus turpis, sed dapibus nulla aliquam at. 
-                    Sed at fermentum ex. In ac nisl sem. 
-                    Cras magna risus, fringilla nec scelerisque nec, aliquam maximus nisi. 
-                    <a href="javascript:void(0)" class="a-link"> Vestibulum ut pellentesque nunc</a>. 
-                    Aliquam tincidunt, quam a luctus congue, mauris felis blandit eros, vitae rutrum lectus ligula ut elit. 
-                    Vivamus auctor et urna eget ullamcorper. 
-                    Vestibulum velit sem, tempor et congue non, vulputate ac risus. 
-                    Donec semper blandit pretium. Sed et porta urna.</p>
-                <div class="encart">
-                    <img src="<?php echo get_template_directory_uri()?>/assets/images/encart.jpg" class="full-width-img" alt="" srcset="">
-                    <button class="round-btn btn-second">RESERVEZ DÈS MAINTENANT</button>
-                </div>
+                <h2 class="page-title title"><?php  echo $carte->title; ?> </h2>
+                <?php $image = $carte->thumbnail;  if( $image ) : ?>
+                        <img src="<?php  echo $image ?>" alt="" srcset=" " class="full-width-img">
+                  <?php endif; ?>               
+                <p><?php echo $carte->content; ?></p>
+                
                 <p>
                     Nam mollis nisl aliquet lectus efficitur sagittis. 
                     Quisque congue neque vitae vestibulum gravida. 

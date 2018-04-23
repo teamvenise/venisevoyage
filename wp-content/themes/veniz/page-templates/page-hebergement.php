@@ -11,7 +11,7 @@ $pageid = get_the_id();
 $paraph1 = CParagraphe::getBy($pageid, 1);
 $paraph2 = CParagraphe::getBy($pageid, 2);
 $paraph3 = CParagraphe::getBy($pageid, 3);
-$paraphFooter = CParagraphe::getFooterTitleBy($pageid);
+$paraphFooter = CParagraphe::getFooterBy($pageid);
 ?>
 	<div class="row">
 		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">

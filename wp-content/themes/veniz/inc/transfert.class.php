@@ -38,7 +38,7 @@ class CTransfert {
 	
     if($p->post_type == "transfert"){
    	    $element = new stdClass();
-
+            
    	   //traitement des donn�es
             $element->id = $pid;
             $element->title = $p->post_title;

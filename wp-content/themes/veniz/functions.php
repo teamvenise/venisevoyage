@@ -12,7 +12,9 @@
  require_once( get_template_directory() . '/inc/shortcodes.php' );
  require_once( get_template_directory() . '/inc/carte.class.php' );
  require_once( get_template_directory() . '/inc/paragraphe.class.php' );
-  require_once( get_template_directory() . '/inc/transfert.class.php' );
+ require_once( get_template_directory() . '/inc/transfert.class.php' );
+ require_once( get_template_directory() . '/inc/widgets/ActiviteWidget.php' );
+ require_once( get_template_directory() . '/inc/widgets/ImageWidget.php' );
 
 if ( ! function_exists( 'voyagevenise_setup' ) ) :
 	/**

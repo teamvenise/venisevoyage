@@ -8,7 +8,7 @@ $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
 $paraph1 = CParagraphe::getBy($pageid, 1);
 $paraph2 = CParagraphe::getBy($pageid, 2);
 $paraph3 = CParagraphe::getBy($pageid, 3);
-$paraphFooter = CParagraphe::getFooterTitleBy($pageid);
+$paraphFooter = CParagraphe::getFooterBy($pageid);
 
 ?>
 <main id="main-home">
@@ -17,8 +17,7 @@ $paraphFooter = CParagraphe::getFooterTitleBy($pageid);
             <div id="blocBienvenue">
                 <h2 > <?php echo $paraph1->title;  ?>
                 </h2>
-                <p><?php  echo $paraph1->content;
-                    ?> </p>
+                <p><?php  echo $paraph1->content; ?> </p>
                   <?php $image = $paraph1->image; $size = 'full'; if( $image ) : ?>
                         <div class="photo"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                   <?php endif; ?>
