@@ -72,10 +72,7 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
             </svg>
             <div class="article2 artcl">
                 <div class="photo">
-                    <?php
-                    $image = get_field('image_3');
-                    $size = 'full'; //
-                    ?>
+                    <?php  $image = get_field('image_3');  $size = 'full'; ?>
                     <img src="<?php  if( $image ) echo $image ?>" alt="" srcset="">
                 </div>
                 <div class="text">

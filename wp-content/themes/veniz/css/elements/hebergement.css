@@ -62,16 +62,32 @@
     margin-top: -100px;
 }
 .booking-component {
-    max-width: 500px;
+    max-width: 630px;
     background-color: white;
     border-radius: 10px;
     padding: 0px 24px 10px;
     position: relative;
-    box-shadow: 0 0 24px 0px rgba(0, 0, 0, 0.15);
+     box-shadow: 0 0 24px 0px rgba(0, 0, 0, 0.15) !important;
     margin-top: -120px;
     margin-bottom: 40px;
 }
+#b_searchboxInc{  
+     background:#ffff !important;
+}
 
+#flexi_searchbox #b_searchboxInc input[type="text"]{
+    background:rgba(182, 177, 177, 0.2) !important;
+}
+
+.b_submitButton_wrapper button {
+    width: 84px !important;
+    height: 84px !important;
+    border-radius: 10px !important;
+    background-color: #e7bb0b !important;
+    color: white !important;
+    border: none !important;
+    font-size: 30px !important;
+}
 .booking-title {
     text-transform: uppercase;
     position: relative;

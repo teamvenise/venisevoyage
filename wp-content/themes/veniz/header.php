@@ -69,8 +69,15 @@
                                ?>
 			</div>
 		<?php endif; ?>
-              
-
+            
 		<section class="content-area <?php echo ( get_theme_mod( 'top_callout', true ) ) ? '' : ' pt0 ' ?>">
-			<div id="main" class="<?php echo ( ! is_page_template( 'page-templates/template-home.php' ) ) ? 'container' : ''; ?>"
+			
+
+                    <div id="main" class="<?php echo ( ! is_page_template( 'page-templates/template-home.php' ) ) ? 'container' : ''; ?>"
 			     role="main">
+                        <?php if ( is_page_template( 'page-templates/page-hebergement.php' ) ||  is_page_template( 'page-templates/page-vols.php' )): ?>
+              <div class="booking-component">
+                <h2 class="booking-title title dino"><strong class="yellow-text">Pour</strong> venise</h2>
+                     <?php get_sidebar('top');?>
+                </div>
+            <?php endif; ?>
