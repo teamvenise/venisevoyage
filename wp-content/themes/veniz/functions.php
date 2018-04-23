@@ -317,7 +317,7 @@ add_action( 'init', 'venise_post_type', 0 );
 function venise_post_type() {
      $labels = array(
 			'name'                => _x( 'Carte', 'Post Type General Name', 'text_domain' ),
-			'singular_name'       => _x( 'Nom', 'Post Type Singular Name', 'text_domain' ),
+			'singular_name'       => _x( 'Carte', 'Post Type Singular Name', 'text_domain' ),
 			'menu_name'           => __( 'Carte', 'text_domain' ),
 			'all_items'           => __( 'Toutes les cartes', 'text_domain' ),
 			'view_item'           => __( 'Voir', 'text_domain' ),
@@ -378,7 +378,7 @@ function venise_post_type() {
 
         $labels = array(
 			'name'                => _x( 'Transfert', 'Post Type General Name', 'text_domain' ),
-			'singular_name'       => _x( 'Nom', 'Post Type Singular Name', 'text_domain' ),
+			'singular_name'       => _x( 'Transfert', 'Post Type Singular Name', 'text_domain' ),
 			'menu_name'           => __( 'Transfert', 'text_domain' ),
 			'all_items'           => __( 'Tous les transferts', 'text_domain' ),
 			'view_item'           => __( 'Voir', 'text_domain' ),

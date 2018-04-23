@@ -56,11 +56,18 @@
 				</div>
 			</nav><!-- #site-navigation -->
 		</div>
-		<div class="breadcrumb">
-			<div class="fix_wrapper">
-				<i class="fa fa-home"></i>  Accueil&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTransport
-			</div>
-		</div>			
+                <?php if ( ! is_home() && ! is_front_page() ) :  ?>
+                <div class="breadcrumb">
+                        <div class="fix_wrapper"><i class="fa fa-home"></i> Accueil >
+                            <?php if(function_exists('bcn_display'))
+                            {
+                                bcn_display();
+                            }?>
+                        </div>
+                    </div>
+
+                <?php endif; ?>
+			
 	</header><!-- #masthead -->
 	<div id="content" class="main-container">
 		<?php if ( ! is_page_template( 'page-templates/template-home.php' ) ): ?>
