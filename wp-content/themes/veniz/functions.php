@@ -207,6 +207,15 @@ function shapely_widgets_init() {
 		                  ) );
 	}
 
+        register_sidebar( array(
+		                  'id'            => 'sidebar-top',
+		                  'name'          => esc_html__( 'Sidebar Top', 'voyagevenise' ),
+		                  'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		                  'after_widget'  => '</div>',
+		                  'before_title'  => '<h2 class="widget-title">',
+		                  'after_title'   => '</h2>',
+	                  ) );
+
 }
 
 add_action( 'widgets_init', 'shapely_widgets_init' );

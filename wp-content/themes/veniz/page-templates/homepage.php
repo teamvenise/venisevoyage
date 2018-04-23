@@ -11,6 +11,7 @@ $paraph3 = CParagraphe::getBy($pageid, 3);
 $paraphFooter = CParagraphe::getFooterBy($pageid);
 
 ?>
+
 <main id="main-home">
     <div class="grey_linear">
         <div class="fix_wrapper">

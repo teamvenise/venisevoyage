@@ -19,7 +19,7 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
 
                 <?php get_template_part('bloc', 'booking-hebergement'); ?>
                 
-                <h2 class="page-title title">
+                <h2>
                     <?php  echo  $paraph1->title; ?>
                 </h2>
                  <p><?php  echo $paraph1->content; ?> </p>
@@ -27,20 +27,22 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                         <div class="photo"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                   <?php endif; ?>
                         
-                <h3 class="subtitle yellow-text"><?php  echo  $paraph2->title; ?></h3>
+                <h3><?php  echo  $paraph2->title; ?></h3>
                 <p><?php  echo $paraph2->content; ?> </p>
 
                  <?php $image = $paraph2->image; $size = 'full'; if( $image ) : ?>
                         <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                  <?php endif; ?>
 
-                <h3 class="subtitle yellow-text"><?php  echo  $paraph3->title; ?></h3>
+                <h3><?php  echo  $paraph3->title; ?></h3>
                 <p><?php  echo $paraph3->content; ?> </p>
                  <?php $image = $paraph3->image; $size = 'full'; if( $image ) : ?>
                         <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                  <?php endif; ?>
 
-                <h2 class="subtitle yellow-text"><?php  echo $paraphFooter->title_footer;   ?></h2>
+                <h3><?php  echo $paraphFooter->title_footer;   ?></h3>
+
+               
                 <div id="hotels-list">
                     <div class="onRow">
                         <a class="item" href="">
@@ -117,58 +119,11 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
             </div>
 		</div>
 		
-        <div class="sidebar">
-            <div class="activityList">
-                <div class="rowList">
-                    <h4 class="sidebar-title">Bon plan de la semaine</h4>
-                    <div class="item">
-                        <span class="photo">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/activity_photo.jpg" alt="" srcset="">
-                        </span>
-                        <span class="title">
-                            Excursion en bateau
-                        </span>
-                    </div>
-
-                    <div class="item">
-                        <span class="photo">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/activity_photo.jpg" alt="" srcset="">
-                        </span>
-                        <span class="title">
-                            Excursion en bateau
-                        </span>
-                    </div>
-
-                    <div class="item">
-                        <span class="photo">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/activity_photo.jpg" alt="" srcset="">
-                        </span>
-                        <span class="title">
-                            Excursion en bateau
-                        </span>
-                    </div>
-
-                    <div class="item">
-                        <span class="photo">
-                            <img src="<?php echo get_template_directory_uri()?>/assets/images/activity_photo.jpg" alt="" srcset="">
-                        </span>
-                        <span class="title">
-                            Excursion en bateau
-                        </span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="encart-sidebar">
-                <div class="content">
-                    <p>
-                        Passer un week-end à
-                        <span>Venise</span>
-                    </p>
-                    <button class="round-btn">Reservez des maintenant</button>
-                </div>
-            </div>
-        </div>
+     <?php
+        if ( $layout_class == 'sidebar-right' ):
+                get_sidebar();
+        endif;
+       ?>
 	</div>
 <?php
 get_footer();

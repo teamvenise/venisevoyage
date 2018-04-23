@@ -65,9 +65,11 @@
 	<div id="content" class="main-container">
 		<?php if ( ! is_page_template( 'page-templates/template-home.php' ) ): ?>
 			<div class="header-callout">
-				<?php shapely_top_callout(); ?>
+				<?php shapely_top_callout();
+                               ?>
 			</div>
 		<?php endif; ?>
+              
 
 		<section class="content-area <?php echo ( get_theme_mod( 'top_callout', true ) ) ? '' : ' pt0 ' ?>">
 			<div id="main" class="<?php echo ( ! is_page_template( 'page-templates/template-home.php' ) ) ? 'container' : ''; ?>"
