@@ -10,6 +10,9 @@
     border-bottom: 1px solid #d7d7d7;
     letter-spacing: 3px;
 }
+.transport-vue .onRow .item {
+        min-width: 33.33%;
+}
 
 .transfert-component .item {
     display: flex;
