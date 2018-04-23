@@ -1,6 +1,12 @@
+    
+.sidebar-right {
+    min-height: 1060px;
+}
+
 .sidebar-right p{
     text-align: justify;
 }
+
 .transport-vue {
     background: #f5f5f5;
     display: flex;

@@ -11,7 +11,7 @@ $layout_class = shapely_get_layout_class();
 	<div class="row">
 		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
             <div class="main-contents">
-                 
+                <?php get_template_part('bloc', 'booking-vol'); ?>
                 <h3 class="page-title title">Vols à Venise</h3>
                 <p>
                     Vestibulum velit sem, tempor et congue non, vulputate ac risus. 

@@ -16,8 +16,10 @@ $paraphFooter = CParagraphe::getFooterTitleBy($pageid);
 	<div class="row">
 		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
             <div class="main-contents">
+
+                <?php get_template_part('bloc', 'booking-hebergement'); ?>
                 
-               <h2 class="page-title title">
+                <h2 class="page-title title">
                     <?php  echo  $paraph1->title; ?>
                 </h2>
                  <p><?php  echo $paraph1->content; ?> </p>

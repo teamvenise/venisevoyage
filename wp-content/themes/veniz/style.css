@@ -1080,9 +1080,9 @@ a:visited {
     opacity: .9;
 }
 
-a:hover {
-    color: #5d47d7;
-    text-decoration: none;
+a:hover {    
+    color: #844a49;
+    text-decoration: underline;
 }
 
 blockquote {
@@ -1135,7 +1135,6 @@ th, td {
 section, footer {
     padding: 40px 0;
     position: relative;
-    overflow: hidden;
 }
 
 .page-template-page-templatestemplate-home-php .content-area {
@@ -3911,6 +3910,7 @@ blockquote {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .input-component {

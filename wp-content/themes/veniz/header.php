@@ -66,16 +66,6 @@
 		<?php if ( ! is_page_template( 'page-templates/template-home.php' ) ): ?>
 			<div class="header-callout">
 				<?php shapely_top_callout(); ?>
-                                <?php if(is_page_template('page-templates/page-vols.php')): ?>
-                                    <div class="fix_wrapper">
-                                         <?php get_template_part('bloc', 'booking-vol'); ?>
-                                    </div>
-                                <?php endif; ?>
-                             <?php if(is_page_template('page-templates/page-hebergement.php')): ?>
-                                    <div class="fix_wrapper">
-                                         <?php get_template_part('bloc', 'booking-hebergement'); ?>
-                                    </div>
-                                <?php endif; ?>
 			</div>
 		<?php endif; ?>
 
