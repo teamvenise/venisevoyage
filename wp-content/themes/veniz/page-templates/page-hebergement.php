@@ -12,6 +12,8 @@ $paraph1 = CParagraphe::getBy($pageid, 1);
 $paraph2 = CParagraphe::getBy($pageid, 2);
 $paraph3 = CParagraphe::getBy($pageid, 3);
 $paraphFooter = CParagraphe::getFooterBy($pageid);
+
+$hotels = CHotel::getBy(6, 'date', 'desc', null);
 ?>
 	<div class="row">
 		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
@@ -42,76 +44,24 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                
                 <div id="hotels-list">
                     <div class="onRow">
-                        <a class="item" href="">
+                        <?php if (count($hotels) > 0) : ?>
+                        <?php foreach ($hotels as $hotel): ?>
+                        <a class="item" href="<?php echo get_permalink($hotel->id); ?>">
                             <span class="hotel-photo">
-                                <img src="<?php echo get_template_directory_uri()?>/assets/images/hotel_picture.jpg" alt="" srcset="">
+                                <img src="<?php echo CHotel::getHotelImage($hotel->thumbnail);  ?>" />
                             </span>
-                            <span class="hotel_name">Hotel Ai Due Principi</span>
+                            <span class="hotel_name"> <?php echo $hotel->title; ?></span>
                             <div class="evaluation">
                                 <span class="stars">★★★☆☆</span>
                             </div>
-                            <p>Donec velit magna, vulputate nec placerat quis, placerat vitae massa.</p>
+                            <p ><?php echo $hotel->content; ?></p>
                             <button class="round-btn">Voir</button>
                         </a>
-                        <a class="item" href="">
-                            <span class="hotel-photo">
-                                <img src="<?php echo get_template_directory_uri()?>/assets/images/hotel_picture.jpg" alt="" srcset="">
-                            </span>
-                            <span class="hotel_name">Hotel Ai Due Principi</span>
-                            <div class="evaluation">
-                                <span class="stars">★★★☆☆</span>
-                            </div>
-                            <p>Donec velit magna, vulputate nec placerat quis, placerat vitae massa.</p>
-                            <button class="round-btn">Voir</button>
-                        </a>
-                        <a class="item" href="">
-                            <span class="hotel-photo">
-                                <img src="<?php echo get_template_directory_uri()?>/assets/images/hotel_picture.jpg" alt="" srcset="">
-                            </span>
-                            <span class="hotel_name">Hotel Ai Due Principi</span>
-                            <div class="evaluation">
-                                <span class="stars">★★★☆☆</span>
-                            </div>
-                            <p>Donec velit magna, vulputate nec placerat quis, placerat vitae massa.</p>
-                            <button class="round-btn">Voir</button>
-                        </a>
-                    </div>
-
-                    <div class="onRow">
-                        <a class="item" href="">
-                            <span class="hotel-photo">
-                                <img src="<?php echo get_template_directory_uri()?>/assets/images/hotel_picture.jpg" alt="" srcset="">
-                            </span>
-                            <span class="hotel_name">Hotel Ai Due Principi</span>
-                            <div class="evaluation">
-                                <span class="stars">★★★☆☆</span>
-                            </div>
-                            <p>Donec velit magna, vulputate nec placerat quis, placerat vitae massa.</p>
-                            <button class="round-btn">Voir</button>
-                        </a>
-                        <a class="item" href="">
-                            <span class="hotel-photo">
-                                <img src="<?php echo get_template_directory_uri()?>/assets/images/hotel_picture.jpg" alt="" srcset="">
-                            </span>
-                            <span class="hotel_name">Hotel Ai Due Principi</span>
-                            <div class="evaluation">
-                                <span class="stars">★★★☆☆</span>
-                            </div>
-                            <p>Donec velit magna, vulputate nec placerat quis, placerat vitae massa.</p>
-                            <button class="round-btn">Voir</button>
-                        </a>
-                        <a class="item" href="">
-                            <span class="hotel-photo">
-                                <img src="<?php echo get_template_directory_uri()?>/assets/images/hotel_picture.jpg" alt="" srcset="">
-                            </span>
-                            <span class="hotel_name">Hotel Ai Due Principi</span>
-                            <div class="evaluation">
-                                <span class="stars">★★★☆☆</span>
-                            </div>
-                            <p>Donec velit magna, vulputate nec placerat quis, placerat vitae massa.</p>
-                            <button class="round-btn">Voir</button>
-                        </a>
-                    </div>
+                         <?php endforeach; ?>
+                        <?php endif;?>
+                        
+                    </div>              
+                   
                 </div>
             </div>
 		</div>
