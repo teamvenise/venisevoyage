@@ -36,7 +36,7 @@ class CHotel {
 	$pid = intval($pid);
     $p = get_post($pid);
 	
-    if($p->post_type == "post"){
+    if($p->post_type == "hotel"){
    	    $element = new stdClass();
             
    	   //traitement des donn�es
@@ -58,7 +58,7 @@ class CHotel {
         $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
         $args = array(
-            'post_type' => 'carte',
+            'post_type' => 'hotel',
             'post_status' => 'publish',
             'paged'=> $paged,
             'posts_per_page' => $numberposts,

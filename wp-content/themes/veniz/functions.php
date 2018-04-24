@@ -13,7 +13,7 @@
  require_once( get_template_directory() . '/inc/carte.class.php' );
  require_once( get_template_directory() . '/inc/paragraphe.class.php' );
  require_once( get_template_directory() . '/inc/transfert.class.php' );
-  require_once( get_template_directory() . '/inc/hotel.class.php' );
+ require_once( get_template_directory() . '/inc/hotel.class.php' );
 
  require_once( get_template_directory() . '/inc/widgets/ActiviteWidget.php' );
  require_once( get_template_directory() . '/inc/widgets/ImageWidget.php' );
@@ -412,6 +412,41 @@ function venise_post_type() {
 			'capability_type'     => 'page',
 	);
 	register_post_type( 'transfert', $args );
+
+        $labels = array(
+			'name'                => _x( 'Hotel', 'Post Type General Name', 'text_domain' ),
+			'singular_name'       => _x( 'Hotel', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'           => __( 'Hotel', 'text_domain' ),
+			'all_items'           => __( 'Tous les hotels', 'text_domain' ),
+			'view_item'           => __( 'Voir', 'text_domain' ),
+			'add_new_item'        => __( 'Ajouter nouveau', 'text_domain' ),
+			'add_new'             => __( 'Ajouter nouveau', 'text_domain' ),
+			'edit_item'           => __( 'Modifier', 'text_domain' ),
+			'update_item'         => __( 'Mettre a jour', 'text_domain' ),
+			'search_items'        => __( 'Rechercher', 'text_domain' ),
+			'not_found'           => __( 'Aucune carte', 'text_domain' ),
+			'not_found_in_trash'  => __( 'Aucune carte', 'text_domain' ),
+	);
+	$args = array(
+			'label'               => __( 'Hotel', 'text_domain' ),
+			'description'         => __( 'Hotel', 'text_domain' ),
+			'labels'              => $labels,
+			'supports'            =>   array( 'title', 'editor', 'custom-fields','thumbnail' ),
+			'taxonomies'          => array(''),
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'menu_position'       => 4,
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'capability_type'     => 'page',
+	);
+	register_post_type( 'hotel', $args );
 }
 
 
