@@ -58,12 +58,70 @@
 }
 
 /* BOOKING TEMPLATE */
+
+/* BOOKING WIDGET STYLE */
+
+.booking-component #flexi_searchbox #b_searchboxInc #b_searchCheckInDate, #flexi_searchbox #b_searchboxInc #b_searchCheckOutDate {
+    float: none;
+}
+
+.booking-component .search-box-title-1 {
+    display: none;
+}
+.booking-component #b_frmInner {
+    font-family: 'dproCondR';
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.booking-component #b_frmInner h4 {
+    font-family: 'dproCondR';
+    font-size: 24px;
+}
+
+.booking-component #flexi_searchbox #b_searchboxInc #b_destination {
+    width: 100%;
+    margin: 0;
+    color: #313131;
+    padding: 7px 10px !important;
+    border-radius: 3px;
+    border: 1px solid #e0e0e0;
+}
+
+.booking-component #flexi_searchbox #b_searchboxInc .b_submitButton_wrapper .b_submitButton {
+    border:none !important;
+    border-radius: 5px !important;
+    box-shadow:none !important;
+    font-family: 'dproCondR';
+    font-size: 36px !important;
+}
+.booking-component #flexi_searchbox #b_searchboxInc .b_submitButton_wrapper .b_submitButton:hover {
+    font-size: 36px;
+}
+
+.booking-component #flexi_searchbox select {
+    padding: 7px 10px !important;
+    border-radius: 3px;
+}
+.booking-component #b_frmInner input[type="hidden"],
+.booking-component #b_logo,
+.booking-component #flexi_searchbox #b_searchboxInc #b_flexible_dates {
+    display: none;
+}
+
+.booking-component #b_searchDest {
+    min-width: 100%;
+    margin: 0;
+}
+
+/* end BOOKING WIDGET STYLE */
 .header-callout .booking-component {
     margin-top: -100px;
 }
 .booking-component {
     max-width: 630px;
-    background-color: white;
+    background-color: #f8f8f8;
     border-radius: 10px;
     padding: 0px 24px 10px;
     position: relative;
@@ -72,13 +130,8 @@
     margin-bottom: 40px;
 }
 #b_searchboxInc{  
-     background:#ffff !important;
+     background:#f8f8f8 !important;
 }
-
-#flexi_searchbox #b_searchboxInc input[type="text"]{
-    background:rgba(182, 177, 177, 0.2) !important;
-}
-
 .b_submitButton_wrapper button {
     width: 84px !important;
     height: 84px !important;
@@ -94,6 +147,7 @@
     text-align: center;
     margin: 0;
     font-size: 24px;
+    padding-top: 14px;
 }
 .booking-title::before, 
 .booking-title::after {

@@ -40,7 +40,6 @@
     font-weight: bold;
     text-transform: uppercase;
     font-size: 24px;
-    margin-top: 20px;
 }
 
 .transport-vue .onRow:last-child {
@@ -57,7 +56,7 @@
     line-height: 35px;
     background: none;
     border: 1px solid #814c4c;
-    padding: 0 20px;
+    padding: 10px 20px;
     color: #814c4c;
     font-family: "dproCondR", Arial;
     font-size: 16px;
@@ -73,6 +72,7 @@
 .round-btn:hover {
     background: #814c4c;
     color: white;
+    text-decoration: none;
 }
 
 .round-btn i {
@@ -85,17 +85,26 @@
     display: inline-block;
 }
 
-.page-title {
+.page-intern h2 {
     display: inline-block;
     letter-spacing: 5px;
+    font-family: 'Amatic-Bold';
+    color: #844a49;
+    margin: 0;
 }
 
-.page-title::after {
+.page-intern h2::after {
     content: url(../../assets/images/trait_couleur.png);
     margin-top: -18px;
     display: inline-block;
     margin-left: 5px;
     vertical-align: middle;
+}
+
+.page-intern h3 {
+    color: #e7bb0b;
+    text-transform: uppercase;
+    margin: 0;
 }
 
 .sidebar .rowList {

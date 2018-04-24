@@ -17,7 +17,6 @@
 .transfert-component .item {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 16px 0;
     border-bottom: 1px solid #d7d7d7;
 }
@@ -29,7 +28,7 @@
 .transfert-component .icones {
     display: flex;
     justify-content: space-between;
-    min-width: 210px;
+    min-width: 190px;
     align-items: center;
     margin-right: 24px;
 }
@@ -76,12 +75,15 @@
     text-align: center;
     border-right: dashed 2px #aaaaaa;
     border-left: dashed 2px #aaaaaa;
+	display: flex;
+    align-items: center;
 }
 
 .transfert-component .reserve .round-btn{
     border-color: #e7bb0b;
     color: #e7bb0b;
     margin: 0;
+	padding: 0px 20px;
 }
 
 

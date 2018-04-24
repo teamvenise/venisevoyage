@@ -16,8 +16,13 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
 $hotels = CHotel::getBy(6, 'date', 'desc', null);
 ?>
 	<div class="row">
-		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
+		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?> page-intern">
             <div class="main-contents">
+
+                <div class="booking-component">
+                  <h4 class="booking-title title dino"><strong class="yellow-text">Pour</strong> venise</h4>
+                  <?php get_sidebar('top');?>
+                </div>
                 <h2>
                     <?php  echo  $paraph1->title; ?>
                 </h2>
