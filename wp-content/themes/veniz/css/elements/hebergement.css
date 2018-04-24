@@ -10,6 +10,12 @@
 #hotels-list .item {
     flex: 1;
     padding: 0 14px;
+    max-width: 33.33%;
+    text-decoration: none;
+}
+
+#hotels-list .item:hover {
+    text-decoration: none;
 }
 
 #hotels-list .item > * {
@@ -55,6 +61,7 @@
 
 #hotels-list .item > button {
     margin: 0 auto;
+    padding: 0;
 }
 
 /* BOOKING TEMPLATE */
