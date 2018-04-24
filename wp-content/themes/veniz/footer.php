@@ -20,8 +20,8 @@
 			<span class="copyright">© Copyright 2018, Voyage-venise.com</span>
 			<div class="right-menu-footer">
 				<ul>
-					<li><a href="#">Mentions légales</a></li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="<?php echo esc_url( get_permalink(62) ); ?>">Mentions légales</a></li>
+					<li><a href="<?php echo esc_url( get_permalink(55) ); ?>">Contact</a></li>
 				</ul>
 			</div>
 		</div>
