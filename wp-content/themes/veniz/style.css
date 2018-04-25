@@ -1309,8 +1309,8 @@ footer .right-menu-footer ul li a {
 }
 
 .image-bg .btn.btn-filled:hover, .woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover, .woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover {
-    background: #5d47d7;
-    border-color: #5d47d7;
+    background: #5c3635;
+    border-color: #5c3635;
     color: #fff;
 }
 
@@ -1340,12 +1340,12 @@ footer .right-menu-footer ul li a {
 }
 
 .btn-filled:hover, .btn:visited:hover {
-    background: #5d47d7;
-    border-color: #5d47d7;
+    background: #5c3635;
+    border-color: #5c3635;
 }
 
 input[type="submit"]:hover {
-    background-color: #5d47d7;
+    background-color: #5c3635;
     color: #fff;
 }
 
@@ -1355,7 +1355,7 @@ input[type="submit"]:hover {
 }
 
 .widget input[type="submit"]:hover {
-    color: #5d47d7;
+    color: #5c3635;
     background-color: #fff;
 }
 
@@ -1722,7 +1722,7 @@ nav.fixed.scrolled {
 }
 
 .btn.searchsubmit:hover {
-    background-color: #5d47d7;
+    background-color: #5c3635;
     color: #fff;
 }
 
@@ -3942,6 +3942,20 @@ blockquote {
 .contact-field {
     max-width: 830px;
     margin: 20px auto 0;
+}
+
+.contact-field label, .contact-field input{
+    margin:0;
+    display: block;
+}
+
+.contact-field div.wpcf7 .ajax-loader {
+    margin: 0 auto;
+}
+
+.contact-field input[type="submit"]{
+    display: block;
+    margin: 0 auto;
 }
 
 .contact-field .title {
