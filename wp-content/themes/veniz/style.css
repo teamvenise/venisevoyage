@@ -3974,10 +3974,24 @@ blockquote {
     min-height: 200px;
 }
 .contact-field .round-btn {
-    border-color: #e7bb0b;
+    border: none !important;
     background: #e7bb0b;
-    color: white
+    color: white;
+    border-radius: 35px !important;
+    padding: 0 !important;
+    width: auto;
+    font-size: 16px;
 }
 
-.contactField .onRow {
-margin-bottom: 24px;}
+.contact-field .round-btn:hover {
+    background: #cba40a;
+}
+
+.contact-field .onRow {
+    margin: 0 -12px 24px;
+}
+
+.contact-field .onRow .wpcf7-form-control-wrap {
+    flex: 1;
+    margin: 0 12px;
+}
