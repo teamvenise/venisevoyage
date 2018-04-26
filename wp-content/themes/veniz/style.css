@@ -3958,6 +3958,15 @@ blockquote {
     margin: 0 auto;
 }
 
+.contact-field form .w50{
+    width: 49%;
+    display: inline-block;
+}
+
+.contact-field form .margLeft{
+    margin-left: 2%;
+}
+
 .contact-field .title {
     text-transform: uppercase;
 }
@@ -3976,5 +3985,9 @@ blockquote {
 .contact-field .round-btn {
     border-color: #e7bb0b;
     background: #e7bb0b;
-    color: white
+    color: white;
+    border-radius: 28px !important;
+    padding: 0 0 !important;
+    width: auto;
+    font-size: 20px;
 }
