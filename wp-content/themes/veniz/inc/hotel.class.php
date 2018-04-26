@@ -50,7 +50,7 @@ class CHotel {
             $element->option_hotel = get_field_object('options_hotel', intval($pid));
 
             $element->gallery_images  = acf_photo_gallery('gallery_images',intval($pid));
-
+            $element->avis = get_field('avis', intval($pid));
 
             //stocker dans le tableau statique
             self::$_elements[$pid] = $element;

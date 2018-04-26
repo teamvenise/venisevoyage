@@ -16,10 +16,11 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
 		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?> page-intern">
             <div class="main-contents">
                 <div class="booking-component">
-                  <h4 class="booking-title title dino"><strong class="yellow-text">Pour</strong> venise</h4>
+                   <h3 class="booking-title title dino"><strong class="yellow-text">Pour</strong> venise</h4>
                   <?php get_sidebar('top');?>
                 </div>
-                <h2>
+                <h2 class="page-title title">
+
                     <?php  echo  $paraph1->title; ?>
                 </h2>
                  <p><?php  echo $paraph1->content; ?> </p>
@@ -27,14 +28,14 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                         <div class="photo"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                   <?php endif; ?>
 
-                <h3><?php  echo  $paraph2->title; ?></h3>
+                  <h3 class="subtitle"><?php  echo  $paraph2->title; ?></h3>
                 <p><?php  echo $paraph2->content; ?> </p>
 
                  <?php $image = $paraph2->image; $size = 'full'; if( $image ) : ?>
                         <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                  <?php endif; ?>
 
-                <h3><?php  echo  $paraph3->title; ?></h3>
+                  <h3 class="subtitle"><?php  echo  $paraph3->title; ?></h3>
                 <p><?php  echo $paraph3->content; ?> </p>
                  <?php $image = $paraph3->image; $size = 'full'; if( $image ) : ?>
                         <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>

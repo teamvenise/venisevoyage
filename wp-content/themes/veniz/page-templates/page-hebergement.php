@@ -20,11 +20,11 @@ $hotels = CHotel::getBy(6, 'date', 'desc', null);
             <div class="main-contents">
 
                 <div class="booking-component">
-                  <h4 class="booking-title title dino"><strong class="yellow-text">Pour</strong> venise</h4>
+                  <h3 class="booking-title title dino"><strong class="yellow-text">Pour</strong> venise</h3>
                   <?php get_sidebar('top');?>
                 </div>
                  <?php  if( $paraph1->title ) : ?>
-                    <h2>
+                    <h2 class="page-title title">
                         <?php  echo  $paraph1->title; ?>
                     </h2>
                  <?php endif; ?>
@@ -36,9 +36,9 @@ $hotels = CHotel::getBy(6, 'date', 'desc', null);
                   <?php endif; ?>
 
                   <?php  if( $paraph2->title ) : ?>
-                    <h2>
+                   <h3 class="subtitle">
                         <?php  echo  $paraph2->title; ?>
-                    </h2>
+                    </h3>
                  <?php endif; ?>
                 <?php  if( $paraph2->content ) : ?>
                  <p><?php  echo $paraph2->content; ?> </p>
@@ -50,9 +50,9 @@ $hotels = CHotel::getBy(6, 'date', 'desc', null);
                  <?php endif; ?>
 
               <?php  if( $paraph3->title ) : ?>
-                    <h2>
+                   <h3 class="subtitle">
                         <?php  echo  $paraph3->title; ?>
-                    </h2>
+                    </h3>
                  <?php endif; ?>
                 <?php  if( $paraph3->content ) : ?>
                  <p><?php  echo $paraph3->content; ?> </p>
@@ -61,7 +61,7 @@ $hotels = CHotel::getBy(6, 'date', 'desc', null);
                         <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                  <?php endif; ?>
 
-                <h3><?php  echo $paraphFooter->title_footer;   ?></h3>
+                 <h3 class="subtitle"><?php  echo $paraphFooter->title_footer;   ?></h3>
 
                
                 <div id="hotels-list">
@@ -74,7 +74,9 @@ $hotels = CHotel::getBy(6, 'date', 'desc', null);
                             </span>
                             <span class="hotel_name"> <?php echo $hotel->title; ?></span>
                             <div class="evaluation">
-                                <span class="stars">★★★☆☆</span>
+                                <span class="stars">                                   
+                                   <input id="input-7-xs" class="rating rating-xs rating-loading" value="<?php echo $hotel->avis; ?>" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-show-caption="false" data-readonly="true">
+                                </span>
                             </div>
                             <p ><?php echo $hotel->content; ?></p>
                             <button class="round-btn">Voir</button>

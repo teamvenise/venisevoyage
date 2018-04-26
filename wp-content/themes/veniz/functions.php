@@ -218,6 +218,15 @@ function shapely_widgets_init() {
 		                  'after_title'   => '</h2>',
 	                  ) );
 
+      register_sidebar( array(
+              'id'            => 'sidebar-map',
+              'name'          => esc_html__( 'Map', 'voyagevenise' ),
+              'before_widget' => '<div id="%1$s" class="widget %2$s">',
+              'after_widget'  => '</div>',
+              'before_title'  => '<h2 class="widget-title">',
+              'after_title'   => '</h2>',
+      ) );
+
 }
 
 add_action( 'widgets_init', 'shapely_widgets_init' );
@@ -310,6 +319,11 @@ function shapely_scripts() {
 	wp_enqueue_style( 'owl.carousel.theme', get_template_directory_uri() . '/js/owl-carousel/owl.theme.default.css' );
 
 	wp_enqueue_script( 'voyagevenise-scripts', get_template_directory_uri() . '/js/voyagevenise-scripts.js', array( 'jquery' ), '20160115', true );
+
+        // Add star CSS
+	wp_enqueue_style( 'star-rating', get_template_directory_uri() . '/inc/css/star-rating.css' );
+        // Add star JS
+	wp_enqueue_script( 'star-rating', get_template_directory_uri() . '/js/star-rating.min.js', array( 'jquery' ), '20160222', true );
 
 }
 

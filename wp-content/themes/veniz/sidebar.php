@@ -8,13 +8,14 @@
  */ ?>
 
 <?php
+global $post;
 if ( ! is_active_sidebar( 'sidebar-1' ) || ! shapely_show_sidebar() ) {
 	return;
 }
 ?>
 
+<?php if($post->post_type == 'hotel') dynamic_sidebar( 'sidebar-map' ); ?>
 
-	<?php dynamic_sidebar( 'sidebar-1' );
-       ?>
+	<?php dynamic_sidebar( 'sidebar-1' ); ?>
 <!-- #secondary -->
 

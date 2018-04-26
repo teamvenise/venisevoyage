@@ -8,12 +8,10 @@ get_header();
 $layout_class = shapely_get_layout_class();
 global $post;
 $pageid = get_the_id();
-$paraph1 = CParagraphe::getBy($pageid, 1);
-$paraph2 = CParagraphe::getBy($pageid, 2);
-$paraph3 = CParagraphe::getBy($pageid, 3);
-$hotel = CHotel::getById($pageid);
 
+$hotel = CHotel::getById($pageid);
 $gallery = CHotel::getHotelGallery($pageid);
+$paraphFooter = CParagraphe::getFooterBy($pageid);
 //var_dump($gallery); die;
 ?>
 <div class="row">
@@ -81,100 +79,13 @@ $gallery = CHotel::getHotelGallery($pageid);
                     <?php endif;?>
 
                 </div>
-
-                <h4 class="subtitle yellow-text">Résumé des avis</h4>
-                <div id="avis">
-                    <table id="avis-table">
-                        <tr class="fiveStars">
-                            <td>5</td>
-                            <td class="star"><i class="fa fa-star"></i></td>
-                            <td>
-                                <span class="barre-avis">
-                                    <div class="size"></div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr class="fourStars">
-                            <td>4</td>
-                            <td class="star"><i class="fa fa-star"></i></td>
-                            <td>
-                                <span class="barre-avis">
-                                    <div class="size"></div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr class="threeStars">
-                            <td>3</td>
-                            <td class="star"><i class="fa fa-star"></i></td>
-                            <td>
-                                <span class="barre-avis">
-                                    <div class="size"></div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr class="twoStars">
-                            <td>2</td>
-                            <td class="star"><i class="fa fa-star"></i></td>
-                            <td>
-                                <span class="barre-avis">
-                                    <div class="size"></div>
-                                </span>
-                            </td>
-                        </tr>
-                        <tr class="oneStar">
-                            <td>1</td>
-                            <td class="star"><i class="fa fa-star"></i></td>
-                            <td>
-                                <span class="barre-avis">
-                                    <div class="size"></div>
-                                </span>
-                            </td>
-                        </tr>
-                    </table>
-
-                    <div id="avis-note">
-                        <span class="note">4.1</span>
-                        <span class="rate">
-                            <i class="fa fa-star check"></i>
-                            <i class="fa fa-star check"></i>
-                            <i class="fa fa-star check"></i>
-                            <i class="fa fa-star-o"></i>
-                            <i class="fa fa-star-o"></i>
-                        </span>
-                    </div>
-                </div>
             </div>
-
-            <h4 class="subtitle yellow-text">Lorem ipsum dolor</h4>
-            <p>
-                In facilisis tincidunt semper.
-                Integer eget eleifend ligula.
-                Donec nec consectetur ligula.
-                In hac habitasse platea dictumst.
-                Nunc dapibus luctus venenatis.
-                Curabitur dignissim eros id mauris sagittis, eu tincidunt enim vehicula.
-                Sed felis tortor, bibendum vel elementum venenatis, feugiat at diam.</p>
-
-            <p>
-                Cras scelerisque leo sit amet dui viverra viverra.
-                Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                Donec vitae dolor convallis, aliquam justo ut, rutrum augue.
-                Vestibulum sagittis maximus felis egestas congue.
-                Vivamus sit amet ante nec eros bibendum accumsan.
-                Donec tristique orci in tellus tincidunt feugiat.
-                Sed ultrices neque dolor, a pulvinar eros scelerisque a.
-                Maecenas tempor nisl quis ligula iaculis mattis.
-                Praesent aliquam diam in nisi posuere vestibulum.
-                Pellentesque sagittis convallis maximus. Fusce ac justo nisi.
-                Nam in risus sit amet est finibus lobortis ac in quam.
-                Nulla pretium eros vel mauris mattis finibus.
-                Maecenas et convallis eros. </p>
+            <h3 class="subtitle yellow-text"><?php  echo $paraphFooter->title_footer;   ?></h3>           
+            <p><?php  echo $paraphFooter->content_footer; ?> </p>
         </div>
     </div>
-    <?php
-    if ( $layout_class == 'sidebar-right' ):
-        get_sidebar();
-    endif;
+    <?php   
+        get_sidebar( );
     ?>
 </div>
 <?php
