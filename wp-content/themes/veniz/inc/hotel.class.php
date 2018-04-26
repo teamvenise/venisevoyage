@@ -1,60 +1,67 @@
 <?php 
 class CHotel {
 
-  private static $_elements;
-	
-  public function __construct() {
-    
-  }
-  
-  /**
-   * fonction qui prend les informations son Id. 
-   * 
-   * @param type $pid
-   */
-  public static function getById($pid) {
-    $pid = intval($pid);
-    
-    //On essaye de charger l'element
-    if(!isset(self::$_elements[$pid])) {
-      self::_load($pid);
-    }
-    //Si on a pas réussi à chargé l'article (pas publiée?)
-    if(!isset(self::$_elements[$pid])) {
-      return FALSE;
+    private static $_elements;
+
+    public function __construct() {
+
     }
 
-    return self::$_elements[$pid];
-  }
-  
-  /**
-   * fonction qui charge toutes les informations dans le variable statique $_elements.
-   * 
-   * @param type $pid 
-   */
-  private static function _load($pid) {
-	$pid = intval($pid);
-    $p = get_post($pid);
-	
-    if($p->post_type == "hotel"){
-   	    $element = new stdClass();
-            
-   	   //traitement des donn�es
+    /**
+     * fonction qui prend les informations son Id.
+     *
+     * @param type $pid
+     */
+    public static function getById($pid) {
+        $pid = intval($pid);
+
+        //On essaye de charger l'element
+        if(!isset(self::$_elements[$pid])) {
+            self::_load($pid);
+        }
+        //Si on a pas réussi à chargé l'article (pas publiée?)
+        if(!isset(self::$_elements[$pid])) {
+            return FALSE;
+        }
+
+        return self::$_elements[$pid];
+    }
+
+    /**
+     * fonction qui charge toutes les informations dans le variable statique $_elements.
+     *
+     * @param type $pid
+     */
+    private static function _load($pid) {
+        $pid = intval($pid);
+        $p = get_post($pid);
+
+        if($p->post_type == "hotel") {
+            $element = new stdClass();
+
+            //traitement des donn�es
             $element->id = $pid;
             $element->title = $p->post_title;
             $element->content = $p->post_content;
             $element->thumbnail = get_post_thumbnail_id($pid);
-            
-   	    //stocker dans le tableau statique 
-	    self::$_elements[$pid] = $element;
+
+            $element->hotel_infos = get_field('hotel_info', intval($pid));
+            $element->about_hotel = get_field('about_hotel', intval($pid));
+            $element->option_hotel = get_field_object('options_hotel', intval($pid));
+
+            $element->gallery_images  = acf_photo_gallery('gallery_images',intval($pid));
+
+
+            //stocker dans le tableau statique
+            self::$_elements[$pid] = $element;
+        }
     }
-  }
-  
-  /**
-   * fonction qui retourne une liste filtrée
-   * 
-   */
-  public static function getBy( $numberposts = -1, $orderby = 'date', $order = 'DESC', $meta_key = null) {
+
+    /**
+     * fonction qui retourne une liste filtrée
+     *
+     */
+    public static function getBy( $numberposts = -1, $orderby = 'date', $order = 'DESC', $meta_key = null) {
         $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
         $args = array(
@@ -71,7 +78,7 @@ class CHotel {
             $args['meta_key'] = $meta_key;
         }
 
-     
+
 
         // tableau id genre
         if (!is_null($name)) {
@@ -83,7 +90,7 @@ class CHotel {
         }
 
         $elements = new WP_Query ( $args );
-        
+
         $GLOBALS['wp_query'] = $elements;
 
         $elts = array ();
@@ -92,8 +99,8 @@ class CHotel {
             $elements = $elements->posts;
 
             foreach ( $elements as $id ) {
-                    $elt = self::getById ( intval ( $id ) );
-                    $elts [] = $elt;
+                $elt = self::getById ( intval ( $id ) );
+                $elts [] = $elt;
             }
         }
         wp_reset_postdata ();
@@ -101,9 +108,45 @@ class CHotel {
         return $elts;
     }
 
-       public static function getHotelImage($id, $size = null) {
+    public static function getHotelImage($id, $size = null) {
         return wp_get_attachment_image_url($id, $size);
     }
 
+    public static function getHotelOption($key, $options) {
+        $isOption = in_array($key, $options);
+        switch ($isOption) {
+            case 1:
+                return "";
+                break;
+
+            default: return " unavailable";
+                break;
+        }
+    }
+
+    public static function getHotelGallery($id, $size = null) {
+    //Get the images ids from the post_metadata
+        $images = acf_photo_gallery('gallery_images', $id);
+
+        //Check if return array has anything in it
+        if( count($images) ) {
+
+        //Cool, we got some data so now let's loop over it
+            foreach($images as $image) {
+                $id = $image['id']; // The attachment id of the media
+                $title = $image['title']; //The title
+                $caption= $image['caption']; //The caption
+                $full_image_url= $image['full_image_url']; //Full size image url
+                $full_image_url = acf_photo_gallery_resize_image($full_image_url, 262, 160); //Resized size to 262px width by 160px height image url
+                $thumbnail_image_url= $image['thumbnail_image_url']; //Get the thumbnail size image url 150px by 150px
+                $url= $image['url']; //Goto any link when clicked
+                $target= $image['target']; //Open normal or new tab
+                $alt = get_field('photo_gallery_alt', $id); //Get the alt which is a extra field (See below how to add extra fields)
+                $class = get_field('photo_gallery_class', $id); //Get the class which is a extra field (See below how to add extra fields)
+            }
+        }
+
+        return $images;
+    }
 }  
 ?>

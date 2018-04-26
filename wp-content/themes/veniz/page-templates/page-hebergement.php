@@ -23,23 +23,40 @@ $hotels = CHotel::getBy(6, 'date', 'desc', null);
                   <h4 class="booking-title title dino"><strong class="yellow-text">Pour</strong> venise</h4>
                   <?php get_sidebar('top');?>
                 </div>
-                <h2>
-                    <?php  echo  $paraph1->title; ?>
-                </h2>
+                 <?php  if( $paraph1->title ) : ?>
+                    <h2>
+                        <?php  echo  $paraph1->title; ?>
+                    </h2>
+                 <?php endif; ?>
+                <?php  if( $paraph1->content ) : ?>
                  <p><?php  echo $paraph1->content; ?> </p>
+                  <?php endif; ?>
                   <?php $image = $paraph1->image; $size = 'full'; if( $image ) : ?>
                         <div class="photo"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                   <?php endif; ?>
-                        
-                <h3><?php  echo  $paraph2->title; ?></h3>
-                <p><?php  echo $paraph2->content; ?> </p>
+
+                  <?php  if( $paraph2->title ) : ?>
+                    <h2>
+                        <?php  echo  $paraph2->title; ?>
+                    </h2>
+                 <?php endif; ?>
+                <?php  if( $paraph2->content ) : ?>
+                 <p><?php  echo $paraph2->content; ?> </p>
+                  <?php endif; ?>
+             
 
                  <?php $image = $paraph2->image; $size = 'full'; if( $image ) : ?>
                         <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                  <?php endif; ?>
 
-                <h3><?php  echo  $paraph3->title; ?></h3>
-                <p><?php  echo $paraph3->content; ?> </p>
+              <?php  if( $paraph3->title ) : ?>
+                    <h2>
+                        <?php  echo  $paraph3->title; ?>
+                    </h2>
+                 <?php endif; ?>
+                <?php  if( $paraph3->content ) : ?>
+                 <p><?php  echo $paraph3->content; ?> </p>
+                  <?php endif; ?>
                  <?php $image = $paraph3->image; $size = 'full'; if( $image ) : ?>
                         <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
                  <?php endif; ?>

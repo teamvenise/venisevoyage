@@ -23,8 +23,8 @@ $layout_class = shapely_get_layout_class(); ?>
 		</div><!-- #primary -->
 		
 		<div class="sidebar">
-			qsmdlfkjapoiu
-		</div>
+			
+		</div><!-- #sidebar -->
 	</div>
 <?php
 get_footer();
