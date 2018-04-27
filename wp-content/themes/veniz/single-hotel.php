@@ -20,34 +20,39 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
 <div class="row">
     <div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
         <div class="main-contents">
-            <p><?php  echo  $hotel->content; ?>
+            <p>
+                <?php  echo apply_filters('the_content', $hotel->content ); ?>
             </p>
             <div class="hotel-infos">
                 <?php  echo  $hotel->hotel_infos; ?>
             </div>
-            <?php $image = $hotel->thumbnail; if( $image ) : ?>
-            <div class="photo">  <img src="<?php echo CHotel::getHotelImage($hotel->thumbnail); ?>" /> </div>
-            <?php endif; ?>
-            <!-- GALERIE PHOTO -->
-            <section class="hotel-slide">
-                <?php  if( count($gallery) ):?>
 
-                    <?php  foreach($gallery as $image): ?>
-                <div class="col-xs-6 col-md-3">
-                    <div class="thumbnail">
-                                <?php  
-                                $url= $image['url'];
-                                $full_image_url= $image['full_image_url'];
-                                $full_image_url = acf_photo_gallery_resize_image($full_image_url, 262, 160);
-                                $title = $image['title'];
-                                 $target= $image['target'];
-                                 //var_dump($image['full_image_url']); die;
-                                if( !empty($url) ) { ?><a href="<?php echo $url; ?>" <?php echo ($target == 'true' )? 'target="_blank"': ''; ?>><?php } ?>
-                            <img src="<?php echo $full_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
-                                <?php if( !empty($url) ) { ?></a><?php } ?>
-                    </div>
-                </div>
-                    <?php endforeach; ?>
+            <!-- GALERIE PHOTO -->
+            <section class="hotel-slide">                  
+                <?php  if( count($gallery) ):?>
+                    <div id="slider-gallery" class="flexslider">
+                        <ul class="slides">
+                        <?php  foreach($gallery as $image): ?>
+                                <li>
+                                    <?php   $full_image_url= $image['full_image_url']; $full_image_url = acf_photo_gallery_resize_image($full_image_url, 262, 160);
+                                    $title = $image['title'];   ?>
+                                <img src="<?php echo $full_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+                                    </li>
+                        <?php endforeach; ?>
+                        </ul>
+                     </div>
+                      <div id="carousel-gallery" class="flexslider">
+                            <ul class="slides">
+                            <?php  foreach($gallery as $image): ?>
+                                    <li>
+                                        <?php   $full_image_url= $image['full_image_url']; $full_image_url = acf_photo_gallery_resize_image($full_image_url, 262, 160);
+                                        $title = $image['title'];   ?>
+                                    <img src="<?php echo $full_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+                                        </li>
+                            <?php endforeach; ?>
+                            </ul>
+                         </div>
+
                 <?php endif; ?>
             </section>
             <!-- FIN GALERIE PHOTO -->

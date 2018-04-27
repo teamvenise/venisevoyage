@@ -17,7 +17,7 @@ $paraph3 = CParagraphe::getBy($pageid, 3);
 <div class="row">
     <div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
         <div class="main-contents">
-
+        
             <p><?php  echo $carte->content; ?> </p>
             <?php  if( $paraph1->title ) : ?>
             <h2 class="page-title title">
@@ -61,9 +61,7 @@ $paraph3 = CParagraphe::getBy($pageid, 3);
         </div>
     </div>
     <?php
-    if ( $layout_class == 'sidebar-right' ):
-        get_sidebar();
-    endif;
+        get_sidebar( );
     ?>
 </div>
 <?php

@@ -45,7 +45,7 @@ class ActiviteWidget  extends WP_Widget {
         $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
         ?>
 
-       	 <div class="sidebar">
+<div class="sidebar" style="margin-bottom: 20px;">
             <div class="activityList">
                 <div class="rowList">
                     <h2 class="sidebar-title"><?php  echo $titre; ?></h2>

@@ -21,5 +21,6 @@ if ( ! is_active_sidebar( 'sidebar-1' ) || ! shapely_show_sidebar() ) {
             
 
 	<?php dynamic_sidebar( 'sidebar-1' ); ?>
+
 <!-- #secondary -->
 
