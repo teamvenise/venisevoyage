@@ -45,12 +45,14 @@ class CHotel {
             $element->content = $p->post_content;
             $element->thumbnail = get_post_thumbnail_id($pid);
 
-            $element->hotel_infos = get_field('hotel_info', intval($pid));
-            $element->about_hotel = get_field('about_hotel', intval($pid));
-            $element->option_hotel = get_field_object('options_hotel', intval($pid));
+            $element->hotel_infos = get_field('hotel_info', $pid);
+            $element->adresse = get_field('adresse', $pid);
+            $element->about_hotel = get_field('about_hotel', $pid);
+            $element->option_hotel = get_field_object('options_hotel', $pid);
 
-            $element->gallery_images  = acf_photo_gallery('gallery_images',intval($pid));
-            $element->avis = get_field('avis', intval($pid));
+            $element->gallery_images  = acf_photo_gallery('gallery_images',$pid);
+            $element->avis = get_field('avis', $pid);
+             $element->extrait = get_field('extrait', $pid);
 
             //stocker dans le tableau statique
             self::$_elements[$pid] = $element;

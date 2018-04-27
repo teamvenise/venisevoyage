@@ -14,6 +14,7 @@ $paraph3 = CParagraphe::getBy($pageid, 3);
 $paraphFooter = CParagraphe::getFooterBy($pageid);
 
 $hotels = CHotel::getBy(6, 'date', 'desc', null);
+
 ?>
 	<div class="row">
 		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?> page-intern">
@@ -78,7 +79,7 @@ $hotels = CHotel::getBy(6, 'date', 'desc', null);
                                    <input id="input-7-xs" class="rating rating-xs rating-loading" value="<?php echo $hotel->avis; ?>" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-show-caption="false" data-readonly="true">
                                 </span>
                             </div>
-                            <p ><?php echo $hotel->content; ?></p>
+                            <p ><?php echo $hotel->extrait; ?></p>
                             <button class="round-btn">Voir</button>
                         </a>
                          <?php endforeach; ?>

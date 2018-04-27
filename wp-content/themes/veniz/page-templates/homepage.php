@@ -29,13 +29,14 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                 <?php if (count($services) > 0) : ?>
                     <?php foreach ($services as $service): ?>
                         <div class="item">
-                            <a href="<?php echo get_permalink($service->id); ?>">
+                           
+                            <a href="<?php echo CCarte::getCarteLink($service->id); ?>">
                                 <span class="icon">
                                     <img src="<?php echo CCarte::getCarteImage($service->thumbnail); ?>" />
                                 </span>
                                 <h3><?php echo $service->title; ?></h3>
                                 <span class="text">
-                                    <p ><?php echo $service->content; ?></p>
+                                    <p ><?php echo  substr($service->content, 0, 300); ?> ...</p>
                                 </span>
                             </a>
                         </div>

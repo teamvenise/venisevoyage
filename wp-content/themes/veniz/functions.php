@@ -14,7 +14,7 @@
  require_once( get_template_directory() . '/inc/paragraphe.class.php' );
  require_once( get_template_directory() . '/inc/transfert.class.php' );
  require_once( get_template_directory() . '/inc/hotel.class.php' );
-
+ //require_once( get_template_directory() . '/inc/rewrite.php' );
  require_once( get_template_directory() . '/inc/widgets/ActiviteWidget.php' );
  require_once( get_template_directory() . '/inc/widgets/ImageWidget.php' );
 
