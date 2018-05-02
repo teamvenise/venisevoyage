@@ -4,6 +4,7 @@ jQuery(document).ready (function(){
         dateFormat: "dd-mm-yy"
     });
 
+
       jQuery('#carousel-gallery').flexslider({
     animation: "slide",
     controlNav: false,
@@ -21,5 +22,11 @@ jQuery(document).ready (function(){
     slideshow: true,
     sync: "#carousel-gallery"
   });
+
+
+
+    jQuery(".w50").parent().addClass("width50");
+    jQuery(".wpcf7-submit").addClass("round-btn");
+
 
 });

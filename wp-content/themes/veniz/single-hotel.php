@@ -24,6 +24,8 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                 <?php  echo apply_filters('the_content', $hotel->content ); ?>
             </p>
             <div class="hotel-infos">
+                <?php  echo  $hotel->adresse; ?><br>
+
                 <?php  echo  $hotel->hotel_infos; ?>
             </div>
 
