@@ -46,24 +46,24 @@ class ActiviteWidget  extends WP_Widget {
         ?>
 
 <div class="sidebar" style="margin-bottom: 20px;">
-            <div class="activityList">
-                <div class="rowList">
-                    <h2 class="sidebar-title"><?php  echo $titre; ?></h2>
-                        <?php if (count($activites) > 0) : ?>
-                            <?php foreach ($activites as $activite): ?>
-                            <div class="item">
-                                <span class="photo">
-                                     <img src="<?php echo CCarte::getCarteImage($activite->thumbnail); ?>" />
-                                </span>
-                                <span class="title">
-                                     <a href="<?php echo get_permalink($activite->id); ?>"> <?php echo $activite->title; ?></a>
-                                </span>
-                            </div>
-                            <?php endforeach; ?>
-                        <?php endif;?>
-                </div>
-                  </div>
-               </div>
+    <div class="activityList">
+        <div class="rowList">
+            <h2 class="sidebar-title"><?php  echo $titre; ?></h2>
+                    <?php if (count($activites) > 0) : ?>
+                        <?php foreach ($activites as $activite): ?>
+            <div class="item">
+                <span class="photo">
+                    <img src="<?php echo CCarte::getCarteImage($activite->thumbnail); ?>" />
+                </span>
+                <span class="title">
+                    <a href="<?php echo get_permalink($activite->id); ?>"> <?php echo $activite->title; ?></a>
+                </span>
+            </div>
+                        <?php endforeach; ?>
+                    <?php endif;?>
+        </div>
+    </div>
+</div>
            
         <?php
     }

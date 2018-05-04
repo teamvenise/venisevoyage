@@ -405,8 +405,8 @@ function venise_post_type() {
 			'edit_item'           => __( 'Modifier', 'text_domain' ),
 			'update_item'         => __( 'Mettre a jour', 'text_domain' ),
 			'search_items'        => __( 'Rechercher', 'text_domain' ),
-			'not_found'           => __( 'Aucune carte', 'text_domain' ),
-			'not_found_in_trash'  => __( 'Aucune carte', 'text_domain' ),
+			'not_found'           => __( 'Aucun transfert', 'text_domain' ),
+			'not_found_in_trash'  => __( 'Aucun transfert', 'text_domain' ),
 	);
 	$args = array(
 			'label'               => __( 'Transfert', 'text_domain' ),
@@ -430,9 +430,9 @@ function venise_post_type() {
 	register_post_type( 'transfert', $args );
 
         $labels = array(
-			'name'                => _x( 'Hotel', 'Post Type General Name', 'text_domain' ),
-			'singular_name'       => _x( 'Hotel', 'Post Type Singular Name', 'text_domain' ),
-			'menu_name'           => __( 'Hotel', 'text_domain' ),
+			'name'                => _x( 'Auberge', 'Post Type General Name', 'text_domain' ),
+			'singular_name'       => _x( 'Auberge', 'Post Type Singular Name', 'text_domain' ),
+			'menu_name'           => __( 'Auberge', 'text_domain' ),
 			'all_items'           => __( 'Tous les hotels', 'text_domain' ),
 			'view_item'           => __( 'Voir', 'text_domain' ),
 			'add_new_item'        => __( 'Ajouter nouveau', 'text_domain' ),
@@ -440,12 +440,12 @@ function venise_post_type() {
 			'edit_item'           => __( 'Modifier', 'text_domain' ),
 			'update_item'         => __( 'Mettre a jour', 'text_domain' ),
 			'search_items'        => __( 'Rechercher', 'text_domain' ),
-			'not_found'           => __( 'Aucune carte', 'text_domain' ),
-			'not_found_in_trash'  => __( 'Aucune carte', 'text_domain' ),
+			'not_found'           => __( 'Aucune auberge', 'text_domain' ),
+			'not_found_in_trash'  => __( 'Aucune auberge', 'text_domain' ),
 	);
 	$args = array(
-			'label'               => __( 'Hotel', 'text_domain' ),
-			'description'         => __( 'Hotel', 'text_domain' ),
+			'label'               => __( 'Auberge', 'text_domain' ),
+			'description'         => __( 'Auberge', 'text_domain' ),
 			'labels'              => $labels,
 			'supports'            =>   array( 'title', 'editor', 'custom-fields','thumbnail' ),
 			'taxonomies'          => array(''),
@@ -462,7 +462,7 @@ function venise_post_type() {
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
 	);
-	register_post_type( 'hotel', $args );
+	register_post_type( 'auberge', $args );
 }
 
 

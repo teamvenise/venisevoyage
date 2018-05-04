@@ -20,9 +20,7 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
 <div class="row">
     <div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
         <div class="main-contents">
-            <p>
-                <?php  echo apply_filters('the_content', $hotel->content ); ?>
-            </p>
+           
             <div class="hotel-infos">
                 <?php  echo  $hotel->adresse; ?><br>
 
@@ -58,37 +56,28 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                 <?php endif; ?>
             </section>
             <!-- FIN GALERIE PHOTO -->
-            <div class="about-hotel">
-                <h2 class="subtitle yellow-text">Informations sur l'hôtel</h2>
+            <div class="about-hotel">               
                 <p><?php  echo  $hotel->about_hotel; ?>
                 </p>
                 <div id="option-container">
-                    <?php $options = $hotel->option_hotel[value];if (count($options) > 0) : ?>
 
-                    <span class= "option " <?php  echo  CHotel::getHotelOption('0',$options)  ?> >
-                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/wifi.png" alt="" srcset=""></i>
-                        <p>Wifi</p>
-                    </span>
-
-                    <span class= "option <?php  echo  CHotel::getHotelOption('1',$options) ?> "  >
-                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/parking.png" alt="" srcset=""></i>
-                        <p>Parking</p>
-                    </span>
-
-                    <span class= "option <?php  echo  CHotel::getHotelOption('2',$options) ?> "  >
-                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/bar.png" alt="" srcset=""></i>
-                        <p>Bar</p>
-                    </span>
-
-                    <span class= "option <?php  echo  CHotel::getHotelOption('3',$options) ?> "  >
-                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/service_chambre.png" alt="" srcset=""></i>
-                        <p>Service de chambre</p>
-                    </span>
-
+                    
+                    <?php
+                        $hotel_options = $hotel->option_hotel;
+                        $options = $hotel->option_hotel[value];
+                        if (count($options) > 0) : ?>
+                      <?php  foreach($options as $option): ?>
+                           <span class= "option " >
+                               <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/<?php echo CHotel::getHotelOptionUrl($option)?>" alt="" srcset=""></i>
+                                <p><?php echo $hotel_options[choices][$option] ?></p>
+                            </span>
+                        <?php endforeach; ?>
 
                     <?php endif;?>
 
                 </div>
+
+                
             </div>
             <h3 class="subtitle yellow-text"><?php  echo $paraphFooter->title_footer;   ?></h3>           
             <p><?php  echo $paraphFooter->content_footer; ?> </p>

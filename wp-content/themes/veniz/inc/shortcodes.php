@@ -17,7 +17,7 @@ function carte_shortcode() {
             <span class="title dino">
                             <?php echo $transport->title; ?>
             </span>
-            <p ><?php echo $transport->content; ?></p>
+            <p ><?php echo substr($transport->content, 0, 125); ?> ... </p>
             <a class="round-btn" href="<?php echo get_permalink($transport->id); ?>">En savoir plus <i class="fa fa-angle-right"></i></a>
         </div>
                 <?php endforeach; ?>

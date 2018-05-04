@@ -44,8 +44,11 @@
 				</div>
 			</nav><!-- #site-navigation -->
 		</div>
-
-		<div id="slider">
+                <?php
+                    $header = get_the_post_thumbnail_url($post->ID);
+                  
+		?>
+		<div id="slider" <?php echo $header ? 'style="background: #824c4c url('.$header.') no-repeat top center;"' : 'class="home-bg"' ?>>
 			<div id="slider-text">
                             <h1 class="title">  <?php echo single_post_title( '', false );  ?></h1>
 				<p>

@@ -621,20 +621,31 @@ function shapely_show_sidebar() {
 	return $show_sidebar;
 }
 
+
+
+
 /*
  * Top Callout
  */
 function shapely_top_callout() {
+     global $post;
 	if ( get_theme_mod( 'top_callout', true ) ) {
-		$header = get_header_image();
-		?>
+		//$header = get_header_image();             
+                $header = get_the_post_thumbnail_url($post->ID);
+                $genre_associe = wp_get_post_terms($post->ID, 'genre', array('fields' => 'ids'));
+                
+                if($genre_associe)
+                    $header ='';
+                
+                ?>
+       
 	<section
-		class="page-title-section bg-secondary <?php echo $header ? 'header-image-bg' : '' ?>" <?php echo $header ? 'style="background-image:url(' . $header . ')"' : '' ?>>
+		class=" <?php echo $header ? 'header-image-bg page-title-section bg-secondary' : 'bg-secondary"  style="padding: 15px;' ?>" <?php echo $header ? '  style="background-image:url(' . $header . ')"' : '' ?>>
 		<div class="container">
 			<div class="row">
 				<?php
 				$breadcrumbs_enabled = false;
-				$title_in_post       = true;
+				$title_in_post       = is_page_template( 'page-templates/template-home.php' );
 				if ( function_exists( 'yoast_breadcrumb' ) ) {
 					$options             = get_option( 'wpseo_internallinks' );
 					$breadcrumbs_enabled = ( $options['breadcrumbs-enable'] === true );

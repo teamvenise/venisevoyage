@@ -1,12 +1,16 @@
 #slider {
     min-height: 500px;
-    background-size: cover;
-    background: #824c4c url(../../assets/images/slider_pic.jpg) no-repeat top center;
+    background-size: cover !important;
+   
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+}
+
+.home-bg {
+     background: url(../../assets/images/slider_pic.jpg)  no-repeat top center;
 }
 
 #slider::before {

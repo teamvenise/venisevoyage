@@ -36,7 +36,7 @@ class CHotel {
         $pid = intval($pid);
         $p = get_post($pid);
 
-        if($p->post_type == "hotel") {
+        if($p->post_type == "auberge") {
             $element = new stdClass();
 
             //traitement des donn�es
@@ -52,7 +52,7 @@ class CHotel {
 
             $element->gallery_images  = acf_photo_gallery('gallery_images',$pid);
             $element->avis = get_field('avis', $pid);
-             $element->extrait = get_field('extrait', $pid);
+             $element->extrait = $p->post_content; //get_field('extrait', $pid);
 
             //stocker dans le tableau statique
             self::$_elements[$pid] = $element;
@@ -67,7 +67,7 @@ class CHotel {
         $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
 
         $args = array(
-            'post_type' => 'hotel',
+            'post_type' => 'auberge',
             'post_status' => 'publish',
             'paged'=> $paged,
             'posts_per_page' => $numberposts,
@@ -125,6 +125,50 @@ class CHotel {
                 break;
         }
     }
+
+     public static function getHotelOptionUrl($key) {
+       
+        switch ($key) {
+            case 0:
+                return "wifi.png";
+                break;
+            case 1:
+                return "parking.png";
+                break;
+            case 2:
+                return "bar.png";
+                break;
+            case 3:
+                return "service_chambre.png";
+                break;
+
+            default: return " ";
+                break;
+        }
+    }
+
+     public static function getHotelOptionChoices($key,$options) {
+
+        switch ($key) {
+            case 0:
+                return $options[choices][0];
+                break;
+            case 1:
+                return "parking.png";
+                break;
+            case 2:
+                return "bar.png";
+                break;
+            case 3:
+                return "service_chambre.png";
+                break;
+
+            default: return " ";
+                break;
+        }
+    }
+
+    
 
     public static function getHotelGallery($id, $size = null) {
     //Get the images ids from the post_metadata
