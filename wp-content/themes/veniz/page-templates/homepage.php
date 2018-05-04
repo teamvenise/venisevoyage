@@ -98,7 +98,7 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                     <?php foreach ($activites as $activite): ?>
                         <div class="item">
                             <span class="photo">
-                                  <img src="<?php echo CCarte::getCarteImage($activite->thumbnail); ?>" />
+                                  <img src="<?php echo CCarte::getCarteImage($activite->thumbnail,'activity-small'); ?>" />
                             </span>
                             <span class="title">
                                  <a href="<?php echo get_permalink($activite->id); ?>"> <?php echo $activite->title; ?></a>

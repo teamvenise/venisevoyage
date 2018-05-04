@@ -18,6 +18,7 @@
  require_once( get_template_directory() . '/inc/widgets/ActiviteWidget.php' );
  require_once( get_template_directory() . '/inc/widgets/ImageWidget.php' );
 
+add_image_size('activity-small', 282, 163, true);
 if ( ! function_exists( 'voyagevenise_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
