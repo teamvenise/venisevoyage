@@ -1,3 +1,7 @@
+
+.clr       { display: block;}
+.clr:after      { display:table; width: 100%; clear: both; content: '';}
+
 .home-header > nav {
     border: none;
 }
@@ -151,8 +155,15 @@
 }
 
 .activityList .item {
-    flex: 1;
-    max-width: 24%;
+    max-width: 25%;
+    float: left;
+    padding: 0 5px;
+}
+
+.activityList .rowList {
+    width: 100%;
+   
+    margin: 0 auto;
 }
 
 .activityList .photo {
@@ -207,6 +218,7 @@
     margin: 10px 0;
 }
 
+
 @media screen and (max-width: 1080px) {
     #slider {
         min-height: 500px;
@@ -233,6 +245,7 @@
         text-align: justify;
         margin: 0;
     }
+    .activityList .item {max-width:33.33%}
 }
 
 @media screen and (max-width: 990px) {
@@ -283,6 +296,10 @@
     }
 }
 
+@media screen and(max-width: 640px) {
+.activityList .item {max-width:50%}
+}
+
 @media screen and (max-width: 500px) {
     .fix_wrapper,
     .containerGrey,
@@ -323,6 +340,7 @@
 
     .activityList .item {
         width: 100%;
-        max-width: inherit;
+        max-width: 100%;
     }
+
 }

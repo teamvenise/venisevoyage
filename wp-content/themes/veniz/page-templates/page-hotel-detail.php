@@ -7,7 +7,7 @@ Template Post Type: page
 get_header();
 $layout_class = shapely_get_layout_class(); ?>
 	<div class="row">
-		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
+		<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?> page-intern">
             <div class="main-contents">
                 <div class="booking-component">
                   <h4 class="booking-title title dino"><strong class="yellow-text">Pour</strong> venise</h4>

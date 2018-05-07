@@ -31,6 +31,14 @@
 
         return $return;
      }
+
+      public static function getExtractBy($pageid) {
+
+	$return  = new stdClass();
+        $return->extrait = get_field( 'extrait' , $pageid );
+
+        return $return;
+     }
      
       
 }

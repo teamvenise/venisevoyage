@@ -42,12 +42,12 @@ class ActiviteWidget  extends WP_Widget {
         // Récupération des paramètres
         $titre = $instance['titre'];
 
-        $activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
+       $activites = CCarte::getAllActivites();
         ?>
 
 <div class="sidebar" style="margin-bottom: 20px;">
     <div class="activityList">
-        <div class="rowList">
+        <div class="rowList clr">
             <h2 class="sidebar-title"><?php  echo $titre; ?></h2>
                     <?php if (count($activites) > 0) : ?>
                         <?php foreach ($activites as $activite): ?>

@@ -79,7 +79,7 @@ $hotels = CHotel::getBy(6, 'date', 'desc', null);
                                    <input id="input-7-xs" class="rating rating-xs rating-loading" value="<?php echo $hotel->avis; ?>" data-min="0" data-max="5" data-step="0.5" data-size="xs" data-show-caption="false" data-readonly="true">
                                 </span>
                             </div>
-                            <p ><?php echo $hotel->extrait; ?></p>
+                            <p ><?php echo substr($hotel->extrait,0,100); ?>...</p>
                             <button class="round-btn">Voir</button>
                         </a>
                          <?php endforeach; ?>

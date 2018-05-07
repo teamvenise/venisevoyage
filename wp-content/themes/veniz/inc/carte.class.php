@@ -36,14 +36,17 @@ class CCarte {
         $pid = intval($pid);
         $p = get_post($pid);
 
-        if($p->post_type == "carte") {
+        if($p->post_type == "carte" || $p->post_type == "page") {
             $element = new stdClass();
 
             //traitement des donn�es
             $element->id = $pid;
             $element->title = $p->post_title;
             $element->content = $p->post_content;
+           
+            $element->icone_en_avant = get_field( 'icone_en_avant' , $pid );
             $element->thumbnail = get_post_thumbnail_id($pid);
+            $element->extrait = get_field( 'extrait' , $pid );
 
             $genre = wp_get_post_terms($pid, 'genre');
             if (count($genre) > 0) {
@@ -129,6 +132,34 @@ class CCarte {
                 $url = esc_url( get_permalink(14) );
         }
         return $url;
+    }
+
+
+    public function getAllActivites($meta_value = 'page-activite.php'){
+        $args = array(
+            'meta_key'     => '_wp_page_template',
+            'meta_value'   => $meta_value,
+            'post_type'    => 'page',
+            'fields' => 'ids'
+        );
+
+         $elements = new WP_Query ( $args );
+     
+         $GLOBALS['wp_query'] = $elements;
+
+        $elts = array ();
+        if ( $elements->have_posts () ) {
+
+            $elements = $elements->posts;
+
+            foreach ( $elements as $id ) {
+                $elt = self::getById ( intval ( $id ) );
+                $elts [] = $elt;
+            }
+        }
+        wp_reset_postdata ();
+
+        return $elts;
     }
 
 }

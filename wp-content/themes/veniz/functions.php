@@ -19,6 +19,8 @@
  require_once( get_template_directory() . '/inc/widgets/ImageWidget.php' );
 
 add_image_size('activity-small', 282, 163, true);
+add_image_size('page-bg', 1920, 110, true);
+
 if ( ! function_exists( 'voyagevenise_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -333,6 +335,9 @@ function shapely_scripts() {
 add_action( 'wp_enqueue_scripts', 'shapely_scripts' );
 
 add_action( 'init', 'venise_post_type', 0 );
+
+
+
 function venise_post_type() {
      $labels = array(
 			'name'                => _x( 'Carte', 'Post Type General Name', 'text_domain' ),
@@ -464,6 +469,62 @@ function venise_post_type() {
 			'capability_type'     => 'page',
 	);
 	register_post_type( 'auberge', $args );
+}
+
+
+
+
+function veniz_breadcrumb(){
+    global $post;
+     ob_start();
+    ?>
+<div class="fix_wrapper"><i class="fa fa-home"></i> <a property="item" typeof="WebPage" href="<?php echo  get_option("siteurl"); ?>" class="post post-page current-item">
+                        <span property="name">Accueil</span>
+                    </a> &gt;
+    <?php if($post->post_type == 'page') : ?>
+         <!-- Breadcrumb NavXT 6.0.4 -->
+        <span property="itemListElement" typeof="ListItem">
+            <span property="name"><?php echo $post->post_title; ?></span>
+            <meta property="position" content="1">
+        </span>
+    <?php elseif($post->post_type == 'carte') : ?>
+        <?php $genre_associe = wp_get_post_terms($post->ID, 'genre', array()); ?>
+        <?php if (isset($genre_associe) && count($genre_associe) > 0) : ?>
+            <?php if ($genre_associe[0]->slug == 'transport') : ?>
+                <span property="itemListElement" typeof="ListItem">
+                    <a property="item" typeof="WebPage" href="<?php echo  get_permalink(get_page_by_path("transport")->ID); ?>" class="post post-page current-item">
+                        <span property="name">Transport</span>
+                    </a>
+                    <meta property="position" content="2">
+                </span> &gt;
+                 <span property="itemListElement" typeof="ListItem">
+                    <span property="name"><?php echo $post->post_title; ?></span>
+                    <meta property="position" content="1">
+                </span>
+            <?php else : ?>
+                <span property="itemListElement" typeof="ListItem">
+                    <span property="name"><?php echo $post->post_title; ?></span>
+                    <meta property="position" content="1">
+                </span>
+            <?php endif; ?>
+        <?php endif; ?>
+     <?php elseif($post->post_type == 'auberge') : ?>
+
+                <span property="itemListElement" typeof="ListItem">
+                    <a property="item" typeof="WebPage" href="<?php echo get_permalink(get_page_by_path("hotel")->ID); ?>" class="post post-page current-item">
+                        <span property="name">Hotel</span>
+                    </a>
+                    <meta property="position" content="2">
+                </span> &gt;
+                 <span property="itemListElement" typeof="ListItem">
+                    <span property="name"><?php echo $post->post_title; ?></span>
+                    <meta property="position" content="1">
+                </span>       
+    <?php endif; ?>
+     </div>
+    <?php
+    $output_string = ob_get_clean();
+    echo $output_string;
 }
 
 

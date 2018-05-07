@@ -14,7 +14,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
+        <meta name="robots" content="noindex,nofollow" />
 	<?php wp_head(); ?>
 </head>
 
@@ -52,10 +52,8 @@
 			<div id="slider-text">
                             <h1 class="title">  <?php echo single_post_title( '', false );  ?></h1>
 				<p>
-				<?php
-                                  while ( have_posts() ) : the_post();
-                                   the_content();
-                                  endwhile;?></p>
+				<?php $pagehome = CParagraphe::getExtractBy($post->ID);
+                                   echo $pagehome->extrait; ?></p>
 			</div>
 			<span class="btn-scroll"></span>
 		</div>

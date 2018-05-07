@@ -2,9 +2,10 @@
 <?php get_header('headerHome'); 
 global $pageid;
 $pageid = get_the_id();
-$services = CCarte::getBy('service', 4, 'date', 'asc', null);
-$activites = CCarte::getBy('activite', 8, 'date', 'asc', null);
 
+$services = CCarte::getAllActivites(array('page-templates/page-transport.php','page-service.php' ,'page-templates/page-hebergement.php'));
+
+$activites = CCarte::getAllActivites();
 $paraph1 = CParagraphe::getBy($pageid, 1);
 $paraph2 = CParagraphe::getBy($pageid, 2);
 $paraph3 = CParagraphe::getBy($pageid, 3);
@@ -30,13 +31,13 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                     <?php foreach ($services as $service): ?>
                         <div class="item">
                            
-                            <a href="<?php echo CCarte::getCarteLink($service->id); ?>">
+                            <a href="<?php echo get_permalink($service->id); ?>">
                                 <span class="icon">
-                                    <img src="<?php echo CCarte::getCarteImage($service->thumbnail); ?>" />
+                                    <img src="<?php echo CCarte::getCarteImage($service->icone_en_avant); ?>" />
                                 </span>
                                 <h3><?php echo $service->title; ?></h3>
                                 <span class="text">
-                                    <p ><?php echo  substr($service->content, 0, 300); ?> ...</p>
+                                    <p ><?php echo  substr($service->extrait, 0, 300); ?> ...</p>
                                 </span>
                             </a>
                         </div>

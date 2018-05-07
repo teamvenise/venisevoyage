@@ -621,9 +621,6 @@ function shapely_show_sidebar() {
 	return $show_sidebar;
 }
 
-
-
-
 /*
  * Top Callout
  */
@@ -632,11 +629,13 @@ function shapely_top_callout() {
 	if ( get_theme_mod( 'top_callout', true ) ) {
 		//$header = get_header_image();             
                 $header = get_the_post_thumbnail_url($post->ID);
+
                 $genre_associe = wp_get_post_terms($post->ID, 'genre', array('fields' => 'ids'));
-                
-                if($genre_associe)
+              
+                if(count($genre_associe)== 0 || $genre_associe)
                     $header ='';
-                
+
+                 
                 ?>
        
 	<section

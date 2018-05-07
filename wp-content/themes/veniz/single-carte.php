@@ -15,7 +15,7 @@ $paraph3 = CParagraphe::getBy($pageid, 3);
 // <h2 class="page-title title"><?php  echo $carte->title;  </h2>
 ?>
 <div class="row">
-    <div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
+    <div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>  page-intern">
         <div class="main-contents">
         
             <p><?php  echo $carte->content; ?> </p>

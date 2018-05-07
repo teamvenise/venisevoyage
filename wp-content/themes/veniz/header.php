@@ -16,7 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-
+        <meta name="robots" content="noindex,nofollow" />
 	<?php wp_head(); ?>
 </head>
 
@@ -58,12 +58,12 @@
 		</div>
                 <?php if ( ! is_home() && ! is_front_page() ) :  ?>
                 <div class="breadcrumb">
-                        <div class="fix_wrapper"><i class="fa fa-home"></i> Accueil >
-                            <?php if(function_exists('bcn_display'))
+                    
+                            <?php if(function_exists('veniz_breadcrumb'))
                             {
-                                bcn_display();
+                                //bcn_display();
+                                veniz_breadcrumb();
                             }?>
-                        </div>
                     </div>
 
                 <?php endif; ?>

@@ -87,10 +87,10 @@
 
 .page-intern h2 {
     display: inline-block;
-    letter-spacing: 5px;
+    letter-spacing: 4px;
     font-family: 'Amatic-Bold';
     color: #844a49;
-    margin: 0;
+  
 }
 
 .page-intern h2::after {
@@ -104,7 +104,15 @@
 .page-intern h3 {
     color: #e7bb0b;
     text-transform: uppercase;
-    margin: 0;
+  
+	font-size: 22px;
+    font-weight: bold;
+}
+
+.page-intern h4 {
+    color: #844a49;
+    font-size: 17px;
+    
 }
 
 .sidebar .rowList {

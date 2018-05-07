@@ -18,7 +18,7 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
     var address = '<?php echo $hotel->adresse?>';
 </script>
 <div class="row">
-    <div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?>">
+<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?> page-intern">
         <div class="main-contents">
            
             <div class="hotel-infos">

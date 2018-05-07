@@ -29,6 +29,9 @@ class rewrite {
       case 'carte' :
         $permalink = $this->rewrite_permalink($post, $permalink);
         break;
+      case 'auberge':
+          $permalink = str_replace('auberge/', 'hotel/', $permalink);
+          break;
     }
 
     return $permalink;
@@ -96,6 +99,20 @@ class rewrite {
 
         $wp_rewrite->rules = $new_rule + $wp_rewrite->rules;
        
+    } elseif (preg_match("#.*?\/(hotel)\/(.+?)\/$#", $_SERVER['REQUEST_URI'])) {
+         // Define custom rewrite tokens
+        $post_type = '%posttype%';
+
+        // Add the rewrite tokens
+        $wp_rewrite->add_rewrite_tag($post_type, '(.+?)', 'post_type=auberge');
+
+        // Define the custom permalink structure
+        $rewrite_keywords_structure = $wp_rewrite->root . "hotel/%auberge%/";
+
+        // Generate the rewrite rules
+        $new_rule = $wp_rewrite->generate_rewrite_rules( $rewrite_keywords_structure, EP_NONE, false,false,false,false,false	 );
+
+        $wp_rewrite->rules = $new_rule + $wp_rewrite->rules;
     }
     
     return $wp_rewrite->rules;
