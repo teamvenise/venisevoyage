@@ -2043,6 +2043,10 @@ input[type="submit"]:focus {
     font-weight: 300;
 }
 
+.breadcrumb .fix_wrapper    { padding: 0 30px;}
+.breadcrumb .fix_wrapper>span   { margin-left:33px;}
+.breadcrumb .current-item    { margin-right:33px; color:#696969}
+
 /*!---------- 10. PAGINATION ----------*/
 
 .pagination {
