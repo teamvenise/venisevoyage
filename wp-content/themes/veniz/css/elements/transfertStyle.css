@@ -69,6 +69,9 @@
 .transert-details p {
     margin: 0;
 }
+.transert-details .subtitle {
+    color: #e7bb0b;
+}
 
 .transfert-component .reserve {
     padding: 24px;
