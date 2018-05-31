@@ -19,32 +19,32 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                    <h3 class="booking-title title dino"><strong class="yellow-text">Pour</strong> venise</h4>
                   <?php get_sidebar('top');?>
                 </div>
-                <h2 class="page-title title">
-
+                <h1 class="page-title title">
                     <?php  echo  $paraph1->title; ?>
-                </h2>
-                 <p><?php  echo $paraph1->content; ?> </p>
-                  <?php $image = $paraph1->image; $size = 'full'; if( $image ) : ?>
-                        <div class="photo"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
-                  <?php endif; ?>
+                </h1>
+                <p><?php  echo $paraph1->content; ?> </p>
+                <?php $image = $paraph1->image; $size = 'full'; if( $image ) : ?>
+                    <div class="photo"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
+                <?php endif; ?>
 
-                  <h3 class="subtitle"><?php  echo  $paraph2->title; ?></h3>
-                <p><?php  echo $paraph2->content; ?> </p>
+                <h2 class="subtitle"><?php  echo  $paraph2->title; ?></h2>
+                <p><?php  echo $paraph2->content; ?></p>
 
-                 <?php $image = $paraph2->image; $size = 'full'; if( $image ) : ?>
-                        <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
-                 <?php endif; ?>
+                <?php $image = $paraph2->image; $size = 'full'; if( $image ) : ?>
+                    <div class="full-width-img">
+                        <img src="<?php  echo $image ?>" alt="" srcset="">
+                    </div>
+                <?php endif; ?>
 
-                  <h3 class="subtitle"><?php  echo  $paraph3->title; ?></h3>
+                <h2 class="subtitle"><?php  echo  $paraph3->title; ?></h2>
                 <p><?php  echo $paraph3->content; ?> </p>
-                 <?php $image = $paraph3->image; $size = 'full'; if( $image ) : ?>
-                        <div class="full-width-img"><img src="<?php  echo $image ?>" alt="" srcset=""> </div>
-                 <?php endif; ?>
-
+                <?php $image = $paraph3->image; $size = 'full'; if( $image ) : ?>
+                    <div class="full-width-img">
+                        <img src="<?php  echo $image ?>" alt="" srcset="">
+                    </div>
+                <?php endif; ?>
 
                 <?php  echo apply_filters('the_content', $paraphFooter->content_footer ); ?>
-
-               
             </div>
 		</div>
 
