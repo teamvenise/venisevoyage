@@ -634,8 +634,8 @@ function shapely_top_callout() {
               
                 if(count($genre_associe)== 0 || $genre_associe)
                     $header ='';
-
-                 
+               if(is_page_template( 'page-templates/page-hebergement.php' ) || is_page_template( 'page-templates/page-vols.php' ) )
+                 $header = get_the_post_thumbnail_url($post->ID);
                 ?>
        
 	<section
