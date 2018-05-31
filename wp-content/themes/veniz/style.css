@@ -1150,14 +1150,13 @@ footer {
     letter-spacing: 1.5px;
 }
 
-footer::before {
-    width: 100%;
-    background: url(assets/images/footer_path.png) no-repeat left top;
+footer::before {width: 100%;
+    background: url(assets/images/footer_path.svg) no-repeat center;
     height: 27px;
     position: absolute;
     z-index: 50;
     top: -27px;
-}
+    background-size: cover;}
 
 footer .copyright,
 footer .right-menu-footer {

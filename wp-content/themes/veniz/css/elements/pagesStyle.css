@@ -136,7 +136,7 @@
 
 .sidebar .rowList .sidebar-title::after {
     content: "";
-    background: url(../../assets/images/aside_bottom_path.png) no-repeat left top;
+    background: url(../../assets/images/aside_bottom_path.svg) no-repeat left top;
     background-size: 100%;
     width: 100%;
     height: 12px;

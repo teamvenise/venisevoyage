@@ -47,8 +47,9 @@ class ActiviteWidget  extends WP_Widget {
 
 <div class="sidebar" style="margin-bottom: 20px;">
     <div class="activityList">
+        
         <div class="rowList clr">
-            <h2 class="sidebar-title"><?php  echo $titre; ?></h2>
+            <h3 class="sidebar-title">Nos activités</h3>
                     <?php if (count($activites) > 0) : ?>
                         <?php foreach ($activites as $activite): ?>
             <div class="item">
