@@ -1,4 +1,9 @@
     
+.no-header-image {
+    margin: 0;
+    padding: 0;
+    display: none;
+}
 .sidebar-right.page-intern {
     min-height: 1060px;
 }
