@@ -142,6 +142,7 @@
     font-size: 30px;
     color: #18b657;
     font-weight: bold;
+    margin-bottom: 40px;
 }
 #hotels-list .price-section .bouton {
     display: block;
@@ -362,95 +363,158 @@
 }
 
 /* HOTEL DETAIL */
-#option-container {
+#hotel-review {
+    display: flex;
+    margin-bottom: 31px;
+}
+.hotel-infos{
+    display: flex;
+    align-items: center;
+    margin-bottom: 27px;
+}
+.hotel-infos .hotel-name {
+    font-family: 'Amatic-Bold';
+    font-size: 30px;
+    letter-spacing: 1.4px;
+    padding-right: 14px;
+    color: #824e4e;
+    line-height: normal;
+}
+.hotel-infos .stars {
+    padding-right: 30px;
+}
+.hotel-infos .addresse-hotel {
+    padding-left: 30px;
+    border-left: 1px solid #e1e1e1;
+}
+#hotel-review .hotel-slide {
+    flex: 1px;
+    margin-right: 5px;
+}
+#hotel-review .right {
+    background: #f8f8f8;
+    flex: 1px;
+    border-radius: 5px;
+    padding: 15px;
+    margin-left: 5px;
+}
+
+#hotel-review .right p {
+    line-height: 21px;
+    margin: 0 0 6px;
+}
+
+#hotel-review .right .option{
+    border: 1px solid #814c4c;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
+    margin: 10px 0;
 }
 
-#option-container .option {
-    display: flex;
-    line-height: 36px;
+#hotel-review .right i {
+    max-width: 40px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
-#option-container .option.unavailable {
-    opacity: 0.4;
+#hotel-review .right i img {
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle
 }
 
-#option-container .option i {
-    margin-right: 14px;
-}
-
-#option-container .option p {
-    font-size: 18px;
-    text-transform: uppercase;
+#hotel-review .right > span {
+    font-size: 19px;
     font-weight: bold;
-    color: #824e4e
-}
-
-#avis {
-    display: flex;
-}
-
-#avis-table {
-    max-width: 186px;
-    margin-right: 100px;
-}
-
-#avis-table .barre-avis {
-    width: 146px;
-    height: 12px;
     display: block;
-    position: relative;
-    background: #ebebeb;
+}
+#hotel-review .right .temoignages {
+    padding: 0;
+    margin: 0;
+}
+#hotel-review .right .temoignages li {
+    list-style: none;
+    padding: 0;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+#hotel-review .right .temoignages li:last-of-type {
+    margin-bottom: 0;
+}
+#hotel-review .right .temoignages li i{
+    color:#6ac259;
+    margin-right: 13px;
 }
 
-#avis-table .star {
-    padding: 0 5px;
-    color: #c1c1c1;
+#hotel-review .right .separator {
+    display: block;
+    width: 100%;
+    border-top: 1px solid #e5e5e5;
+    margin: 20px 0 16px;
 }
 
-#avis-table .barre-avis .size{
-    height: 12px;
-    background: #824e4e;
+#hotel-review .right .round-btn{
+    background: #e7bb0b;
+    border: none;
+    line-height: 35px;
+    padding: 0;
+    color: white;
+    margin: 0 auto;
+    max-width: 160px;
+    display: block;
 }
 
-/* Changer avec jQuery pour des données dymamiques */
-#avis-table .fiveStars .size{
-    width: 85%;
+#hotel-review .right .temoignages li
+
+#hotel-review .slides > li {
+    width: 20% !important;
 }
 
-#avis-table .fourStars .size{
-    width: 70%;
+.similar-hotels {
+    margin-top: 40px;
+}
+.similar-hotels h2 {
+    background: #814c4c;
+    color: white;
+    font-family: 'dproCondR';
+    font-size: 22px;
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 0;
 }
 
-#avis-table .threeStars .size{
-    width: 40%;
+.similar-hotels .hotel-list {
+    background-color: #f6f6f6;
+    padding: 30px 10px;
 }
-
-#avis-table .twoStars .size{
-    width: 20%;
+.similar-hotels .hotel-list .item {
+    flex: 1;
+    min-width: 30%;
+    padding:0 10px;
 }
-
-#avis-table .oneStar .size{
-    width: 0;
+.similar-hotels .photo {
+    border-radius: 5px;
+    overflow: hidden;
+    display: block;
+    margin-top: 6px;
 }
-
-#avis-note {
-    border: 2px solid #824e4e;
+.similar-hotels .hotel-list .title {
+    background: white;
+    display: block;
+    border-radius: 5px;
     text-align: center;
-    color: #824e4e;
-    width: 153px;
-    height: 128px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 20px 15px;
+    margin-top: 6px;
+    min-height: 92px;
 }
-
-#avis-note .note {
-    font-size: 70px;
-    display: block;
-    margin: 20px 0;
+.similar-hotels .hotel-list .title > a,
+.similar-hotels .hotel-list .title > a:hover,
+.similar-hotels .hotel-list .title > a:visited {
+    border: none;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 500px) {
