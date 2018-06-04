@@ -44,7 +44,8 @@ class CTemoignage {
             $element->title = $p->post_title;
             $element->content = $p->post_content;
             $element->author = get_field('author', intval($pid));
-            
+            $element->hotel_id = get_field('hotel_id', intval($pid));
+          
    	    //stocker dans le tableau statique
 	    self::$_elements[$pid] = $element;
     }
@@ -56,7 +57,8 @@ class CTemoignage {
    */
   public static function getBy($numberposts = -1, $orderby = 'date', $order = 'DESC', $meta_key = null) {
         $paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
-
+        $ids = get_field('hotel_id', false, false);
+       
         $args = array(
             'post_type' => 'temoignage',
             'post_status' => 'publish',
@@ -64,9 +66,10 @@ class CTemoignage {
             'posts_per_page' => $numberposts,
             'order' => $order,
             'orderby' => $orderby,
-            'fields' => 'ids'
+              'fields' => 'ids',
+            'post__in' => $ids
         );
-
+        
         if (!is_null($meta_key)) {
             $args['meta_key'] = $meta_key;
         }        
@@ -74,6 +77,7 @@ class CTemoignage {
         $elements = new WP_Query ( $args );
 
         $GLOBALS['wp_query'] = $elements;
+       
 
         $elts = array ();
         if ( $elements->have_posts () ) {
@@ -89,5 +93,7 @@ class CTemoignage {
 
         return $elts;
     }
+
+     
 }  
 ?>
