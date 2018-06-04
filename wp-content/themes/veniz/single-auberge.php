@@ -12,6 +12,9 @@ $pageid = get_the_id();
 $hotel = CHotel::getById($pageid);
 $gallery = CHotel::getHotelGallery($pageid);
 $paraphFooter = CParagraphe::getFooterBy($pageid);
+$temoignages = CTemoignage::getBy(5, 'date', 'desc',null);
+
+
 
 ?>
 <script>
@@ -75,12 +78,17 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                     </div>
                     
                     <span>Les clients aiment...</span>
-                    <ul class="temoignages">
-                        <li><i class="fa fa-check-circle"></i>« très bonne situation géographique »</li>
-                        <li><i class="fa fa-check-circle"></i>« très propre et ordonné »</li>
-                        <li><i class="fa fa-check-circle"></i>« personnel exceptionnel »</li>
-                        <li><i class="fa fa-check-circle"></i>« l'esprit boutique hôtel »</li>
-                    </ul>
+                    <?php
+                            $hotel_options = $hotel->option_hotel;
+                            $options = $hotel->option_hotel[value];
+                            if (count($options) > 0) : ?>
+                        <ul class="temoignages">
+                        <?php foreach($temoignages as $temoignage): ?>
+                            <li><i class="fa fa-check-circle"></i>« <?php echo $temoignage->title ?> »</li>
+                            <?php endforeach; ?>
+                                </ul>
+                        <?php endif;?>
+                   
                     <span class="separator"></span>
                     <a class="btn round-btn">Reservez</a>
                 </div>
