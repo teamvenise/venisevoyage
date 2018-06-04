@@ -22,9 +22,20 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
         <div class="main-contents">
            
             <div class="hotel-infos">
+<<<<<<< Updated upstream
                 <?php  echo  $hotel->adresse; ?><br>
 
                 <?php  echo  $hotel->hotel_infos; ?>
+=======
+                <span class="hotel-name">L'Albergo Quattro Fontane</span>
+                <span class="stars">
+                    <img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/full_star.png" alt="" srcset=""> 
+                    <img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/full_star.png" alt="" srcset="">                                 
+                    <img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/full_star.png" alt="" srcset="">                                 
+                </span>
+                <div class="addresse-hotel"><?php echo  $hotel->adresse; ?></div>
+               
+>>>>>>> Stashed changes
             </div>
 
             <!-- GALERIE PHOTO -->
@@ -53,9 +64,40 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                             </ul>
                          </div>
 
+<<<<<<< Updated upstream
                 <?php endif; ?>
             </section>
             <!-- FIN GALERIE PHOTO -->
+=======
+                    <?php endif; ?>
+                </div>
+                <div class="right">
+                    <?php echo  $hotel->hotel_infos; ?>
+                    <span>Ses points forts</span>
+                     <div class="option clearfix">
+                    <?php
+                        $hotel_options = $hotel->option_hotel;
+                        $options = $hotel->option_hotel[value];
+                        if (count($options) > 0) : ?>
+                      <?php foreach($options as $option): ?>                          
+                               <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/<?php echo CHotel::getHotelOptionUrl($option)?>" alt="" srcset=""></i>                                                          
+                        <?php endforeach; ?>
+                    <?php endif;?>
+                          </div>
+                   
+                    <span>Les clients aiment...</span>
+                    <ul class="temoignages">
+                        <li><i class="fa fa-check-circle"></i>« très bonne situation géographique »</li>
+                        <li><i class="fa fa-check-circle"></i>« très propre et ordonné »</li>
+                        <li><i class="fa fa-check-circle"></i>« personnel exceptionnel »</li>
+                        <li><i class="fa fa-check-circle"></i>« l'esprit boutique hôtel »</li>
+                    </ul>
+                    <span class="separator"></span>
+                    <a class="btn round-btn">Reservez</a>
+                </div>
+                <!-- FIN GALERIE PHOTO -->
+            </div>
+>>>>>>> Stashed changes
             <div class="about-hotel">               
                 <p><?php  echo  $hotel->about_hotel; ?>
                 </p>

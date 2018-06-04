@@ -1,32 +1,36 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 31, 2018 at 12:17 PM
--- Server version: 5.1.73
--- PHP Version: 5.6.30
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  lun. 04 juin 2018 à 06:36
+-- Version du serveur :  5.7.21
+-- Version de PHP :  5.6.35
 
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `venise_voyage`
+-- Base de données :  `venise_voyage`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_bwg_album`
+-- Structure de la table `wp_bwg_album`
 --
 
-CREATE TABLE `wp_bwg_album` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `wp_bwg_album`;
+CREATE TABLE IF NOT EXISTS `wp_bwg_album` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `description` mediumtext NOT NULL,
@@ -35,11 +39,12 @@ CREATE TABLE `wp_bwg_album` (
   `order` bigint(20) NOT NULL,
   `author` bigint(20) NOT NULL,
   `published` tinyint(1) NOT NULL,
-  `modified_date` int(10) NOT NULL
-) ;
+  `modified_date` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_bwg_album`
+-- Déchargement des données de la table `wp_bwg_album`
 --
 
 INSERT INTO `wp_bwg_album` (`id`, `name`, `slug`, `description`, `preview_image`, `random_preview_image`, `order`, `author`, `published`, `modified_date`) VALUES
@@ -48,19 +53,21 @@ INSERT INTO `wp_bwg_album` (`id`, `name`, `slug`, `description`, `preview_image`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_bwg_album_gallery`
+-- Structure de la table `wp_bwg_album_gallery`
 --
 
-CREATE TABLE `wp_bwg_album_gallery` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `wp_bwg_album_gallery`;
+CREATE TABLE IF NOT EXISTS `wp_bwg_album_gallery` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `album_id` bigint(20) NOT NULL,
   `is_album` tinyint(1) NOT NULL,
   `alb_gal_id` bigint(20) NOT NULL,
-  `order` bigint(20) NOT NULL
-) ;
+  `order` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_bwg_album_gallery`
+-- Déchargement des données de la table `wp_bwg_album_gallery`
 --
 
 INSERT INTO `wp_bwg_album_gallery` (`id`, `album_id`, `is_album`, `alb_gal_id`, `order`) VALUES
@@ -69,11 +76,12 @@ INSERT INTO `wp_bwg_album_gallery` (`id`, `album_id`, `is_album`, `alb_gal_id`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_bwg_gallery`
+-- Structure de la table `wp_bwg_gallery`
 --
 
-CREATE TABLE `wp_bwg_gallery` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `wp_bwg_gallery`;
+CREATE TABLE IF NOT EXISTS `wp_bwg_gallery` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `slug` varchar(255) NOT NULL,
   `description` mediumtext NOT NULL,
@@ -87,11 +95,12 @@ CREATE TABLE `wp_bwg_gallery` (
   `gallery_source` varchar(256) NOT NULL,
   `autogallery_image_number` int(4) NOT NULL,
   `update_flag` varchar(32) NOT NULL,
-  `modified_date` int(10) NOT NULL
-) ;
+  `modified_date` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_bwg_gallery`
+-- Déchargement des données de la table `wp_bwg_gallery`
 --
 
 INSERT INTO `wp_bwg_gallery` (`id`, `name`, `slug`, `description`, `page_link`, `preview_image`, `random_preview_image`, `order`, `author`, `published`, `gallery_type`, `gallery_source`, `autogallery_image_number`, `update_flag`, `modified_date`) VALUES
@@ -100,11 +109,12 @@ INSERT INTO `wp_bwg_gallery` (`id`, `name`, `slug`, `description`, `page_link`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_bwg_image`
+-- Structure de la table `wp_bwg_image`
 --
 
-CREATE TABLE `wp_bwg_image` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `wp_bwg_image`;
+CREATE TABLE IF NOT EXISTS `wp_bwg_image` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `gallery_id` bigint(20) NOT NULL,
   `slug` longtext NOT NULL,
   `filename` varchar(255) NOT NULL,
@@ -125,11 +135,12 @@ CREATE TABLE `wp_bwg_image` (
   `hit_count` bigint(20) NOT NULL,
   `redirect_url` varchar(255) NOT NULL,
   `pricelist_id` bigint(20) NOT NULL,
-  `modified_date` int(10) NOT NULL
-) ;
+  `modified_date` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_bwg_image`
+-- Déchargement des données de la table `wp_bwg_image`
 --
 
 INSERT INTO `wp_bwg_image` (`id`, `gallery_id`, `slug`, `filename`, `image_url`, `thumb_url`, `description`, `alt`, `date`, `size`, `filetype`, `resolution`, `author`, `order`, `published`, `comment_count`, `avg_rating`, `rate_count`, `hit_count`, `redirect_url`, `pricelist_id`, `modified_date`) VALUES
@@ -139,60 +150,68 @@ INSERT INTO `wp_bwg_image` (`id`, `gallery_id`, `slug`, `filename`, `image_url`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_bwg_image_comment`
+-- Structure de la table `wp_bwg_image_comment`
 --
 
-CREATE TABLE `wp_bwg_image_comment` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `wp_bwg_image_comment`;
+CREATE TABLE IF NOT EXISTS `wp_bwg_image_comment` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `image_id` bigint(20) NOT NULL,
   `name` varchar(255) NOT NULL,
   `date` varchar(64) NOT NULL,
   `comment` mediumtext NOT NULL,
   `url` mediumtext NOT NULL,
   `mail` mediumtext NOT NULL,
-  `published` tinyint(1) NOT NULL
-) ;
+  `published` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_bwg_image_rate`
+-- Structure de la table `wp_bwg_image_rate`
 --
 
-CREATE TABLE `wp_bwg_image_rate` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `wp_bwg_image_rate`;
+CREATE TABLE IF NOT EXISTS `wp_bwg_image_rate` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `image_id` bigint(20) NOT NULL,
   `rate` float NOT NULL,
   `ip` varchar(64) NOT NULL,
-  `date` varchar(64) NOT NULL
-) ;
+  `date` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_bwg_image_tag`
+-- Structure de la table `wp_bwg_image_tag`
 --
 
-CREATE TABLE `wp_bwg_image_tag` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `wp_bwg_image_tag`;
+CREATE TABLE IF NOT EXISTS `wp_bwg_image_tag` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `tag_id` bigint(20) NOT NULL,
   `image_id` bigint(20) NOT NULL,
-  `gallery_id` bigint(20) NOT NULL
-) ;
+  `gallery_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_bwg_shortcode`
+-- Structure de la table `wp_bwg_shortcode`
 --
 
-CREATE TABLE `wp_bwg_shortcode` (
+DROP TABLE IF EXISTS `wp_bwg_shortcode`;
+CREATE TABLE IF NOT EXISTS `wp_bwg_shortcode` (
   `id` bigint(20) NOT NULL,
-  `tagtext` mediumtext NOT NULL
-) ;
+  `tagtext` mediumtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_bwg_shortcode`
+-- Déchargement des données de la table `wp_bwg_shortcode`
 --
 
 INSERT INTO `wp_bwg_shortcode` (`id`, `tagtext`) VALUES
@@ -203,18 +222,20 @@ INSERT INTO `wp_bwg_shortcode` (`id`, `tagtext`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_bwg_theme`
+-- Structure de la table `wp_bwg_theme`
 --
 
-CREATE TABLE `wp_bwg_theme` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `wp_bwg_theme`;
+CREATE TABLE IF NOT EXISTS `wp_bwg_theme` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `options` longtext NOT NULL,
-  `default_theme` tinyint(1) NOT NULL
-) ;
+  `default_theme` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_bwg_theme`
+-- Déchargement des données de la table `wp_bwg_theme`
 --
 
 INSERT INTO `wp_bwg_theme` (`id`, `name`, `options`, `default_theme`) VALUES
@@ -224,16 +245,18 @@ INSERT INTO `wp_bwg_theme` (`id`, `name`, `options`, `default_theme`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_cntctfrm_field`
+-- Structure de la table `wp_cntctfrm_field`
 --
 
-CREATE TABLE `wp_cntctfrm_field` (
-  `id` int(11) NOT NULL,
-  `name` char(100) NOT NULL
-) ;
+DROP TABLE IF EXISTS `wp_cntctfrm_field`;
+CREATE TABLE IF NOT EXISTS `wp_cntctfrm_field` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` char(100) NOT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_cntctfrm_field`
+-- Déchargement des données de la table `wp_cntctfrm_field`
 --
 
 INSERT INTO `wp_cntctfrm_field` (`id`, `name`) VALUES
@@ -254,24 +277,29 @@ INSERT INTO `wp_cntctfrm_field` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_commentmeta`
+-- Structure de la table `wp_commentmeta`
 --
 
-CREATE TABLE `wp_commentmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_commentmeta`;
+CREATE TABLE IF NOT EXISTS `wp_commentmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `comment_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) DEFAULT NULL,
-  `meta_value` longtext
-) ;
+  `meta_value` longtext,
+  PRIMARY KEY (`meta_id`),
+  KEY `comment_id` (`comment_id`),
+  KEY `meta_key` (`meta_key`(191))
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_comments`
+-- Structure de la table `wp_comments`
 --
 
-CREATE TABLE `wp_comments` (
-  `comment_ID` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_comments`;
+CREATE TABLE IF NOT EXISTS `wp_comments` (
+  `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `comment_post_ID` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `comment_author` tinytext NOT NULL,
   `comment_author_email` varchar(100) NOT NULL DEFAULT '',
@@ -285,11 +313,17 @@ CREATE TABLE `wp_comments` (
   `comment_agent` varchar(255) NOT NULL DEFAULT '',
   `comment_type` varchar(20) NOT NULL DEFAULT '',
   `comment_parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0'
-) ;
+  `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+  PRIMARY KEY (`comment_ID`),
+  KEY `comment_post_ID` (`comment_post_ID`),
+  KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
+  KEY `comment_date_gmt` (`comment_date_gmt`),
+  KEY `comment_parent` (`comment_parent`),
+  KEY `comment_author_email` (`comment_author_email`(10))
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_comments`
+-- Déchargement des données de la table `wp_comments`
 --
 
 INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `comment_author_email`, `comment_author_url`, `comment_author_IP`, `comment_date`, `comment_date_gmt`, `comment_content`, `comment_karma`, `comment_approved`, `comment_agent`, `comment_type`, `comment_parent`, `user_id`) VALUES
@@ -298,11 +332,12 @@ INSERT INTO `wp_comments` (`comment_ID`, `comment_post_ID`, `comment_author`, `c
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_links`
+-- Structure de la table `wp_links`
 --
 
-CREATE TABLE `wp_links` (
-  `link_id` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_links`;
+CREATE TABLE IF NOT EXISTS `wp_links` (
+  `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `link_url` varchar(255) NOT NULL DEFAULT '',
   `link_name` varchar(255) NOT NULL DEFAULT '',
   `link_image` varchar(255) NOT NULL DEFAULT '',
@@ -314,28 +349,32 @@ CREATE TABLE `wp_links` (
   `link_updated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `link_rel` varchar(255) NOT NULL DEFAULT '',
   `link_notes` mediumtext NOT NULL,
-  `link_rss` varchar(255) NOT NULL DEFAULT ''
-) ;
+  `link_rss` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`link_id`),
+  KEY `link_visible` (`link_visible`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_nf3_actions`
+-- Structure de la table `wp_nf3_actions`
 --
 
-CREATE TABLE `wp_nf3_actions` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `wp_nf3_actions`;
+CREATE TABLE IF NOT EXISTS `wp_nf3_actions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` longtext,
   `key` longtext,
   `type` longtext,
   `active` tinyint(1) DEFAULT '1',
   `parent_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ;
+  `updated_at` datetime DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_nf3_actions`
+-- Déchargement des données de la table `wp_nf3_actions`
 --
 
 INSERT INTO `wp_nf3_actions` (`id`, `title`, `key`, `type`, `active`, `parent_id`, `created_at`, `updated_at`) VALUES
@@ -354,18 +393,20 @@ INSERT INTO `wp_nf3_actions` (`id`, `title`, `key`, `type`, `active`, `parent_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_nf3_action_meta`
+-- Structure de la table `wp_nf3_action_meta`
 --
 
-CREATE TABLE `wp_nf3_action_meta` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `wp_nf3_action_meta`;
+CREATE TABLE IF NOT EXISTS `wp_nf3_action_meta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL,
   `key` longtext NOT NULL,
-  `value` longtext
-) ;
+  `value` longtext,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=222 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_nf3_action_meta`
+-- Déchargement des données de la table `wp_nf3_action_meta`
 --
 
 INSERT INTO `wp_nf3_action_meta` (`id`, `parent_id`, `key`, `value`) VALUES
@@ -594,21 +635,23 @@ INSERT INTO `wp_nf3_action_meta` (`id`, `parent_id`, `key`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_nf3_fields`
+-- Structure de la table `wp_nf3_fields`
 --
 
-CREATE TABLE `wp_nf3_fields` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `wp_nf3_fields`;
+CREATE TABLE IF NOT EXISTS `wp_nf3_fields` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` longtext,
   `key` longtext,
   `type` longtext,
   `parent_id` int(11) NOT NULL,
   `created_at` timestamp NOT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ;
+  `updated_at` datetime DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_nf3_fields`
+-- Déchargement des données de la table `wp_nf3_fields`
 --
 
 INSERT INTO `wp_nf3_fields` (`id`, `label`, `key`, `type`, `parent_id`, `created_at`, `updated_at`) VALUES
@@ -640,18 +683,20 @@ INSERT INTO `wp_nf3_fields` (`id`, `label`, `key`, `type`, `parent_id`, `created
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_nf3_field_meta`
+-- Structure de la table `wp_nf3_field_meta`
 --
 
-CREATE TABLE `wp_nf3_field_meta` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `wp_nf3_field_meta`;
+CREATE TABLE IF NOT EXISTS `wp_nf3_field_meta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL,
   `key` longtext NOT NULL,
-  `value` longtext
-) ;
+  `value` longtext,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=774 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_nf3_field_meta`
+-- Déchargement des données de la table `wp_nf3_field_meta`
 --
 
 INSERT INTO `wp_nf3_field_meta` (`id`, `parent_id`, `key`, `value`) VALUES
@@ -1434,21 +1479,23 @@ INSERT INTO `wp_nf3_field_meta` (`id`, `parent_id`, `key`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_nf3_forms`
+-- Structure de la table `wp_nf3_forms`
 --
 
-CREATE TABLE `wp_nf3_forms` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `wp_nf3_forms`;
+CREATE TABLE IF NOT EXISTS `wp_nf3_forms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` longtext,
   `key` longtext,
   `created_at` timestamp NOT NULL,
   `updated_at` datetime DEFAULT NULL,
   `views` int(11) DEFAULT NULL,
-  `subs` int(11) DEFAULT NULL
-) ;
+  `subs` int(11) DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_nf3_forms`
+-- Déchargement des données de la table `wp_nf3_forms`
 --
 
 INSERT INTO `wp_nf3_forms` (`id`, `title`, `key`, `created_at`, `updated_at`, `views`, `subs`) VALUES
@@ -1459,18 +1506,20 @@ INSERT INTO `wp_nf3_forms` (`id`, `title`, `key`, `created_at`, `updated_at`, `v
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_nf3_form_meta`
+-- Structure de la table `wp_nf3_form_meta`
 --
 
-CREATE TABLE `wp_nf3_form_meta` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `wp_nf3_form_meta`;
+CREATE TABLE IF NOT EXISTS `wp_nf3_form_meta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL,
   `key` longtext NOT NULL,
-  `value` longtext
-) ;
+  `value` longtext,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=209 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_nf3_form_meta`
+-- Déchargement des données de la table `wp_nf3_form_meta`
 --
 
 INSERT INTO `wp_nf3_form_meta` (`id`, `parent_id`, `key`, `value`) VALUES
@@ -1686,66 +1735,75 @@ INSERT INTO `wp_nf3_form_meta` (`id`, `parent_id`, `key`, `value`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_nf3_objects`
+-- Structure de la table `wp_nf3_objects`
 --
 
-CREATE TABLE `wp_nf3_objects` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `wp_nf3_objects`;
+CREATE TABLE IF NOT EXISTS `wp_nf3_objects` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` longtext,
   `title` longtext,
   `created_at` timestamp NOT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ;
+  `updated_at` datetime DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_nf3_object_meta`
+-- Structure de la table `wp_nf3_object_meta`
 --
 
-CREATE TABLE `wp_nf3_object_meta` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `wp_nf3_object_meta`;
+CREATE TABLE IF NOT EXISTS `wp_nf3_object_meta` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL,
   `key` longtext NOT NULL,
-  `value` longtext
-) ;
+  `value` longtext,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_nf3_relationships`
+-- Structure de la table `wp_nf3_relationships`
 --
 
-CREATE TABLE `wp_nf3_relationships` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `wp_nf3_relationships`;
+CREATE TABLE IF NOT EXISTS `wp_nf3_relationships` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `child_id` int(11) NOT NULL,
   `child_type` longtext NOT NULL,
   `parent_id` int(11) NOT NULL,
   `parent_type` longtext NOT NULL,
   `created_at` timestamp NOT NULL,
-  `updated_at` datetime DEFAULT NULL
-) ;
+  `updated_at` datetime DEFAULT NULL,
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_options`
+-- Structure de la table `wp_options`
 --
 
-CREATE TABLE `wp_options` (
-  `option_id` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_options`;
+CREATE TABLE IF NOT EXISTS `wp_options` (
+  `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `option_name` varchar(191) NOT NULL DEFAULT '',
   `option_value` longtext NOT NULL,
-  `autoload` varchar(20) NOT NULL DEFAULT 'yes'
-) ;
+  `autoload` varchar(20) NOT NULL DEFAULT 'yes',
+  PRIMARY KEY (`option_id`),
+  UNIQUE KEY `option_name` (`option_name`)
+) ENGINE=MyISAM AUTO_INCREMENT=1827 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_options`
+-- Déchargement des données de la table `wp_options`
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'https://www.gotovenise.com', 'yes'),
-(2, 'home', 'https://www.gotovenise.com', 'yes'),
+(1, 'siteurl', 'http://localhost/sites/gotovenise/gotovenise/', 'yes'),
+(2, 'home', 'http://localhost/sites/gotovenise/gotovenise/', 'yes'),
 (3, 'blogname', 'Venise Voyage', 'yes'),
 (4, 'blogdescription', 'Lorem ipsum dolor', 'yes'),
 (5, 'users_can_register', '0', 'yes'),
@@ -1775,7 +1833,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (30, 'hack_file', '0', 'yes'),
 (31, 'blog_charset', 'UTF-8', 'yes'),
 (32, 'moderation_keys', '', 'no'),
-(33, 'active_plugins', 'a:13:{i:0;s:30:\"advanced-custom-fields/acf.php\";i:1;s:19:\"akismet/akismet.php\";i:2;s:60:\"bookingcom-official-searchbox/booking-official-searchbox.php\";i:3;s:37:\"breadcrumb-navxt/breadcrumb-navxt.php\";i:4;s:36:\"contact-form-7/wp-contact-form-7.php\";i:5;s:32:\"duplicate-page/duplicatepage.php\";i:6;s:41:\"google-maps-widget/google-maps-widget.php\";i:7;s:41:\"navz-photo-gallery/navz-photo-gallery.php\";i:8;s:27:\"ninja-forms/ninja-forms.php\";i:9;s:41:\"wordpress-importer/wordpress-importer.php\";i:10;s:23:\"wp-datepicker/index.php\";i:11;s:39:\"wp-file-manager/file_folder_manager.php\";i:12;s:31:\"wp-migrate-db/wp-migrate-db.php\";}', 'yes'),
+(33, 'active_plugins', 'a:8:{i:0;s:30:\"advanced-custom-fields/acf.php\";i:1;s:19:\"akismet/akismet.php\";i:2;s:60:\"bookingcom-official-searchbox/booking-official-searchbox.php\";i:3;s:41:\"navz-photo-gallery/navz-photo-gallery.php\";i:4;s:27:\"ninja-forms/ninja-forms.php\";i:5;s:41:\"wordpress-importer/wordpress-importer.php\";i:6;s:23:\"wp-datepicker/index.php\";i:7;s:31:\"wp-migrate-db/wp-migrate-db.php\";}', 'yes'),
 (34, 'category_base', '', 'yes'),
 (35, 'ping_sites', 'http://rpc.pingomatic.com/', 'yes'),
 (36, 'comment_max_links', '2', 'yes'),
@@ -1852,14 +1910,14 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (107, 'widget_tag_cloud', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (108, 'widget_nav_menu', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (109, 'widget_custom_html', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
-(110, 'cron', 'a:7:{i:1527761841;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1527786699;a:1:{s:19:\"wpseo-reindex-links\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1527794407;a:3:{s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1527794438;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1527794475;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1529166924;a:1:{s:13:\"nf_optin_cron\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"nf-monthly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:2678400;}}}s:7:\"version\";i:2;}', 'yes'),
+(110, 'cron', 'a:7:{i:1528053441;a:1:{s:34:\"wp_privacy_delete_old_export_files\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:6:\"hourly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:3600;}}}i:1528053607;a:3:{s:16:\"wp_version_check\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:17:\"wp_update_plugins\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}s:16:\"wp_update_themes\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"twicedaily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:43200;}}}i:1528053638;a:2:{s:19:\"wp_scheduled_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}s:25:\"delete_expired_transients\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1528053675;a:1:{s:30:\"wp_scheduled_auto_draft_delete\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1528132299;a:1:{s:19:\"wpseo-reindex-links\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:5:\"daily\";s:4:\"args\";a:0:{}s:8:\"interval\";i:86400;}}}i:1529166924;a:1:{s:13:\"nf_optin_cron\";a:1:{s:32:\"40cd750bba9870f18aada2478b24840a\";a:3:{s:8:\"schedule\";s:10:\"nf-monthly\";s:4:\"args\";a:0:{}s:8:\"interval\";i:2678400;}}}s:7:\"version\";i:2;}', 'yes'),
 (111, 'theme_mods_twentyseventeen', 'a:2:{s:18:\"custom_css_post_id\";i:-1;s:16:\"sidebars_widgets\";a:2:{s:4:\"time\";i:1523474445;s:4:\"data\";a:4:{s:19:\"wp_inactive_widgets\";a:0:{}s:9:\"sidebar-1\";a:6:{i:0;s:8:\"search-2\";i:1;s:14:\"recent-posts-2\";i:2;s:17:\"recent-comments-2\";i:3;s:10:\"archives-2\";i:4;s:12:\"categories-2\";i:5;s:6:\"meta-2\";}s:9:\"sidebar-2\";a:0:{}s:9:\"sidebar-3\";a:0:{}}}}', 'yes'),
 (126, 'can_compress_scripts', '1', 'no'),
 (141, 'current_theme', 'Shapely', 'yes'),
 (142, 'theme_mods_veniz', 'a:3:{s:18:\"custom_css_post_id\";i:-1;s:18:\"nav_menu_locations\";a:1:{s:7:\"primary\";i:2;}s:11:\"custom_logo\";i:293;}', 'yes'),
 (143, 'theme_switched', '', 'yes'),
 (148, 'nav_menu_options', 'a:2:{i:0;b:0;s:8:\"auto_add\";a:0:{}}', 'yes'),
-(157, 'recently_activated', 'a:1:{s:69:\"ultimate-responsive-image-slider/ultimate-responsive-image-slider.php\";i:1524829180;}', 'yes'),
+(157, 'recently_activated', 'a:0:{}', 'yes'),
 (164, 'acf_version', '4.4.12', 'yes'),
 (165, 'widget_akismet_widget', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (231, 'wpseo', 'a:18:{s:15:\"ms_defaults_set\";b:0;s:7:\"version\";s:3:\"7.2\";s:20:\"disableadvanced_meta\";b:1;s:19:\"onpage_indexability\";b:1;s:12:\"googleverify\";s:0:\"\";s:8:\"msverify\";s:0:\"\";s:12:\"yandexverify\";s:0:\"\";s:9:\"site_type\";s:0:\"\";s:20:\"has_multiple_authors\";s:0:\"\";s:16:\"environment_type\";s:7:\"staging\";s:23:\"content_analysis_active\";b:1;s:23:\"keyword_analysis_active\";b:1;s:21:\"enable_admin_bar_menu\";b:1;s:26:\"enable_cornerstone_content\";b:1;s:18:\"enable_xml_sitemap\";b:1;s:24:\"enable_text_link_counter\";b:1;s:22:\"show_onboarding_notice\";b:1;s:18:\"first_activated_on\";i:1523639499;}', 'yes'),
@@ -1870,7 +1928,8 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (236, '_transient_wpseo_link_table_inaccessible', '0', 'no'),
 (237, '_transient_timeout_wpseo_meta_table_inaccessible', '1555175499', 'no'),
 (238, '_transient_wpseo_meta_table_inaccessible', '0', 'no'),
-(243, 'rewrite_rules', 'a:200:{s:33:\"hotel/[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:43:\"hotel/[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:63:\"hotel/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:58:\"hotel/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:58:\"hotel/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:39:\"hotel/[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:22:\"hotel/([^/]+)/embed/?$\";s:40:\"index.php?auberge=$matches[1]&embed=true\";s:26:\"hotel/([^/]+)/trackback/?$\";s:34:\"index.php?auberge=$matches[1]&tb=1\";s:30:\"hotel/([^/]+)(?:/([0-9]+))?/?$\";s:46:\"index.php?auberge=$matches[1]&page=$matches[2]\";s:22:\"hotel/[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:32:\"hotel/[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:52:\"hotel/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:47:\"hotel/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:47:\"hotel/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:28:\"hotel/[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:8:\"carte/?$\";s:25:\"index.php?post_type=carte\";s:38:\"carte/feed/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?post_type=carte&feed=$matches[1]\";s:33:\"carte/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?post_type=carte&feed=$matches[1]\";s:25:\"carte/page/([0-9]{1,})/?$\";s:43:\"index.php?post_type=carte&paged=$matches[1]\";s:12:\"transfert/?$\";s:29:\"index.php?post_type=transfert\";s:42:\"transfert/feed/(feed|rdf|rss|rss2|atom)/?$\";s:46:\"index.php?post_type=transfert&feed=$matches[1]\";s:37:\"transfert/(feed|rdf|rss|rss2|atom)/?$\";s:46:\"index.php?post_type=transfert&feed=$matches[1]\";s:29:\"transfert/page/([0-9]{1,})/?$\";s:47:\"index.php?post_type=transfert&paged=$matches[1]\";s:10:\"auberge/?$\";s:27:\"index.php?post_type=auberge\";s:40:\"auberge/feed/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?post_type=auberge&feed=$matches[1]\";s:35:\"auberge/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?post_type=auberge&feed=$matches[1]\";s:27:\"auberge/page/([0-9]{1,})/?$\";s:45:\"index.php?post_type=auberge&paged=$matches[1]\";s:9:\"nf_sub/?$\";s:26:\"index.php?post_type=nf_sub\";s:39:\"nf_sub/feed/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?post_type=nf_sub&feed=$matches[1]\";s:34:\"nf_sub/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?post_type=nf_sub&feed=$matches[1]\";s:26:\"nf_sub/page/([0-9]{1,})/?$\";s:44:\"index.php?post_type=nf_sub&paged=$matches[1]\";s:11:\"^wp-json/?$\";s:22:\"index.php?rest_route=/\";s:14:\"^wp-json/(.*)?\";s:33:\"index.php?rest_route=/$matches[1]\";s:21:\"^index.php/wp-json/?$\";s:22:\"index.php?rest_route=/\";s:24:\"^index.php/wp-json/(.*)?\";s:33:\"index.php?rest_route=/$matches[1]\";s:47:\"category/(.+?)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:52:\"index.php?category_name=$matches[1]&feed=$matches[2]\";s:42:\"category/(.+?)/(feed|rdf|rss|rss2|atom)/?$\";s:52:\"index.php?category_name=$matches[1]&feed=$matches[2]\";s:23:\"category/(.+?)/embed/?$\";s:46:\"index.php?category_name=$matches[1]&embed=true\";s:35:\"category/(.+?)/page/?([0-9]{1,})/?$\";s:53:\"index.php?category_name=$matches[1]&paged=$matches[2]\";s:17:\"category/(.+?)/?$\";s:35:\"index.php?category_name=$matches[1]\";s:44:\"tag/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?tag=$matches[1]&feed=$matches[2]\";s:39:\"tag/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?tag=$matches[1]&feed=$matches[2]\";s:20:\"tag/([^/]+)/embed/?$\";s:36:\"index.php?tag=$matches[1]&embed=true\";s:32:\"tag/([^/]+)/page/?([0-9]{1,})/?$\";s:43:\"index.php?tag=$matches[1]&paged=$matches[2]\";s:14:\"tag/([^/]+)/?$\";s:25:\"index.php?tag=$matches[1]\";s:45:\"type/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:50:\"index.php?post_format=$matches[1]&feed=$matches[2]\";s:40:\"type/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:50:\"index.php?post_format=$matches[1]&feed=$matches[2]\";s:21:\"type/([^/]+)/embed/?$\";s:44:\"index.php?post_format=$matches[1]&embed=true\";s:33:\"type/([^/]+)/page/?([0-9]{1,})/?$\";s:51:\"index.php?post_format=$matches[1]&paged=$matches[2]\";s:15:\"type/([^/]+)/?$\";s:33:\"index.php?post_format=$matches[1]\";s:33:\"carte/[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:43:\"carte/[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:63:\"carte/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:58:\"carte/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:58:\"carte/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:39:\"carte/[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:22:\"carte/([^/]+)/embed/?$\";s:38:\"index.php?carte=$matches[1]&embed=true\";s:26:\"carte/([^/]+)/trackback/?$\";s:32:\"index.php?carte=$matches[1]&tb=1\";s:46:\"carte/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?carte=$matches[1]&feed=$matches[2]\";s:41:\"carte/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?carte=$matches[1]&feed=$matches[2]\";s:34:\"carte/([^/]+)/page/?([0-9]{1,})/?$\";s:45:\"index.php?carte=$matches[1]&paged=$matches[2]\";s:41:\"carte/([^/]+)/comment-page-([0-9]{1,})/?$\";s:45:\"index.php?carte=$matches[1]&cpage=$matches[2]\";s:30:\"carte/([^/]+)(?:/([0-9]+))?/?$\";s:44:\"index.php?carte=$matches[1]&page=$matches[2]\";s:22:\"carte/[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:32:\"carte/[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:52:\"carte/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:47:\"carte/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:47:\"carte/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:28:\"carte/[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:46:\"genre/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?genre=$matches[1]&feed=$matches[2]\";s:41:\"genre/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?genre=$matches[1]&feed=$matches[2]\";s:22:\"genre/([^/]+)/embed/?$\";s:38:\"index.php?genre=$matches[1]&embed=true\";s:34:\"genre/([^/]+)/page/?([0-9]{1,})/?$\";s:45:\"index.php?genre=$matches[1]&paged=$matches[2]\";s:16:\"genre/([^/]+)/?$\";s:27:\"index.php?genre=$matches[1]\";s:37:\"transfert/[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:47:\"transfert/[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:67:\"transfert/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:62:\"transfert/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:62:\"transfert/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:43:\"transfert/[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:26:\"transfert/([^/]+)/embed/?$\";s:42:\"index.php?transfert=$matches[1]&embed=true\";s:30:\"transfert/([^/]+)/trackback/?$\";s:36:\"index.php?transfert=$matches[1]&tb=1\";s:50:\"transfert/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:48:\"index.php?transfert=$matches[1]&feed=$matches[2]\";s:45:\"transfert/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:48:\"index.php?transfert=$matches[1]&feed=$matches[2]\";s:38:\"transfert/([^/]+)/page/?([0-9]{1,})/?$\";s:49:\"index.php?transfert=$matches[1]&paged=$matches[2]\";s:45:\"transfert/([^/]+)/comment-page-([0-9]{1,})/?$\";s:49:\"index.php?transfert=$matches[1]&cpage=$matches[2]\";s:34:\"transfert/([^/]+)(?:/([0-9]+))?/?$\";s:48:\"index.php?transfert=$matches[1]&page=$matches[2]\";s:26:\"transfert/[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:36:\"transfert/[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:56:\"transfert/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:51:\"transfert/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:51:\"transfert/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:32:\"transfert/[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:35:\"auberge/[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:45:\"auberge/[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:65:\"auberge/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:60:\"auberge/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:60:\"auberge/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:41:\"auberge/[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:24:\"auberge/([^/]+)/embed/?$\";s:40:\"index.php?auberge=$matches[1]&embed=true\";s:28:\"auberge/([^/]+)/trackback/?$\";s:34:\"index.php?auberge=$matches[1]&tb=1\";s:48:\"auberge/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:46:\"index.php?auberge=$matches[1]&feed=$matches[2]\";s:43:\"auberge/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:46:\"index.php?auberge=$matches[1]&feed=$matches[2]\";s:36:\"auberge/([^/]+)/page/?([0-9]{1,})/?$\";s:47:\"index.php?auberge=$matches[1]&paged=$matches[2]\";s:43:\"auberge/([^/]+)/comment-page-([0-9]{1,})/?$\";s:47:\"index.php?auberge=$matches[1]&cpage=$matches[2]\";s:32:\"auberge/([^/]+)(?:/([0-9]+))?/?$\";s:46:\"index.php?auberge=$matches[1]&page=$matches[2]\";s:24:\"auberge/[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:34:\"auberge/[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:54:\"auberge/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:49:\"auberge/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:49:\"auberge/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:30:\"auberge/[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:34:\"nf_sub/[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:44:\"nf_sub/[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:64:\"nf_sub/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:59:\"nf_sub/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:59:\"nf_sub/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:40:\"nf_sub/[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:23:\"nf_sub/([^/]+)/embed/?$\";s:39:\"index.php?nf_sub=$matches[1]&embed=true\";s:27:\"nf_sub/([^/]+)/trackback/?$\";s:33:\"index.php?nf_sub=$matches[1]&tb=1\";s:47:\"nf_sub/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:45:\"index.php?nf_sub=$matches[1]&feed=$matches[2]\";s:42:\"nf_sub/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:45:\"index.php?nf_sub=$matches[1]&feed=$matches[2]\";s:35:\"nf_sub/([^/]+)/page/?([0-9]{1,})/?$\";s:46:\"index.php?nf_sub=$matches[1]&paged=$matches[2]\";s:42:\"nf_sub/([^/]+)/comment-page-([0-9]{1,})/?$\";s:46:\"index.php?nf_sub=$matches[1]&cpage=$matches[2]\";s:31:\"nf_sub/([^/]+)(?:/([0-9]+))?/?$\";s:45:\"index.php?nf_sub=$matches[1]&page=$matches[2]\";s:23:\"nf_sub/[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:33:\"nf_sub/[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:53:\"nf_sub/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:48:\"nf_sub/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:48:\"nf_sub/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:29:\"nf_sub/[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:12:\"robots\\.txt$\";s:18:\"index.php?robots=1\";s:48:\".*wp-(atom|rdf|rss|rss2|feed|commentsrss2)\\.php$\";s:18:\"index.php?feed=old\";s:20:\".*wp-app\\.php(/.*)?$\";s:19:\"index.php?error=403\";s:18:\".*wp-register.php$\";s:23:\"index.php?register=true\";s:32:\"feed/(feed|rdf|rss|rss2|atom)/?$\";s:27:\"index.php?&feed=$matches[1]\";s:27:\"(feed|rdf|rss|rss2|atom)/?$\";s:27:\"index.php?&feed=$matches[1]\";s:8:\"embed/?$\";s:21:\"index.php?&embed=true\";s:20:\"page/?([0-9]{1,})/?$\";s:28:\"index.php?&paged=$matches[1]\";s:27:\"comment-page-([0-9]{1,})/?$\";s:40:\"index.php?&page_id=137&cpage=$matches[1]\";s:41:\"comments/feed/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?&feed=$matches[1]&withcomments=1\";s:36:\"comments/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?&feed=$matches[1]&withcomments=1\";s:17:\"comments/embed/?$\";s:21:\"index.php?&embed=true\";s:44:\"search/(.+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:40:\"index.php?s=$matches[1]&feed=$matches[2]\";s:39:\"search/(.+)/(feed|rdf|rss|rss2|atom)/?$\";s:40:\"index.php?s=$matches[1]&feed=$matches[2]\";s:20:\"search/(.+)/embed/?$\";s:34:\"index.php?s=$matches[1]&embed=true\";s:32:\"search/(.+)/page/?([0-9]{1,})/?$\";s:41:\"index.php?s=$matches[1]&paged=$matches[2]\";s:14:\"search/(.+)/?$\";s:23:\"index.php?s=$matches[1]\";s:47:\"author/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:50:\"index.php?author_name=$matches[1]&feed=$matches[2]\";s:42:\"author/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:50:\"index.php?author_name=$matches[1]&feed=$matches[2]\";s:23:\"author/([^/]+)/embed/?$\";s:44:\"index.php?author_name=$matches[1]&embed=true\";s:35:\"author/([^/]+)/page/?([0-9]{1,})/?$\";s:51:\"index.php?author_name=$matches[1]&paged=$matches[2]\";s:17:\"author/([^/]+)/?$\";s:33:\"index.php?author_name=$matches[1]\";s:69:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$\";s:80:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]\";s:64:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$\";s:80:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]\";s:45:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/embed/?$\";s:74:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&embed=true\";s:57:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/page/?([0-9]{1,})/?$\";s:81:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&paged=$matches[4]\";s:39:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/?$\";s:63:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]\";s:56:\"([0-9]{4})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$\";s:64:\"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]\";s:51:\"([0-9]{4})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$\";s:64:\"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]\";s:32:\"([0-9]{4})/([0-9]{1,2})/embed/?$\";s:58:\"index.php?year=$matches[1]&monthnum=$matches[2]&embed=true\";s:44:\"([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/?$\";s:65:\"index.php?year=$matches[1]&monthnum=$matches[2]&paged=$matches[3]\";s:26:\"([0-9]{4})/([0-9]{1,2})/?$\";s:47:\"index.php?year=$matches[1]&monthnum=$matches[2]\";s:43:\"([0-9]{4})/feed/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?year=$matches[1]&feed=$matches[2]\";s:38:\"([0-9]{4})/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?year=$matches[1]&feed=$matches[2]\";s:19:\"([0-9]{4})/embed/?$\";s:37:\"index.php?year=$matches[1]&embed=true\";s:31:\"([0-9]{4})/page/?([0-9]{1,})/?$\";s:44:\"index.php?year=$matches[1]&paged=$matches[2]\";s:13:\"([0-9]{4})/?$\";s:26:\"index.php?year=$matches[1]\";s:27:\".?.+?/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:37:\".?.+?/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:57:\".?.+?/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:52:\".?.+?/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:52:\".?.+?/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:33:\".?.+?/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:16:\"(.?.+?)/embed/?$\";s:41:\"index.php?pagename=$matches[1]&embed=true\";s:20:\"(.?.+?)/trackback/?$\";s:35:\"index.php?pagename=$matches[1]&tb=1\";s:40:\"(.?.+?)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:47:\"index.php?pagename=$matches[1]&feed=$matches[2]\";s:35:\"(.?.+?)/(feed|rdf|rss|rss2|atom)/?$\";s:47:\"index.php?pagename=$matches[1]&feed=$matches[2]\";s:28:\"(.?.+?)/page/?([0-9]{1,})/?$\";s:48:\"index.php?pagename=$matches[1]&paged=$matches[2]\";s:35:\"(.?.+?)/comment-page-([0-9]{1,})/?$\";s:48:\"index.php?pagename=$matches[1]&cpage=$matches[2]\";s:24:\"(.?.+?)(?:/([0-9]+))?/?$\";s:47:\"index.php?pagename=$matches[1]&page=$matches[2]\";s:27:\"[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:37:\"[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:57:\"[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:52:\"[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:52:\"[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:33:\"[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:16:\"([^/]+)/embed/?$\";s:37:\"index.php?name=$matches[1]&embed=true\";s:20:\"([^/]+)/trackback/?$\";s:31:\"index.php?name=$matches[1]&tb=1\";s:40:\"([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?name=$matches[1]&feed=$matches[2]\";s:35:\"([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?name=$matches[1]&feed=$matches[2]\";s:28:\"([^/]+)/page/?([0-9]{1,})/?$\";s:44:\"index.php?name=$matches[1]&paged=$matches[2]\";s:35:\"([^/]+)/comment-page-([0-9]{1,})/?$\";s:44:\"index.php?name=$matches[1]&cpage=$matches[2]\";s:24:\"([^/]+)(?:/([0-9]+))?/?$\";s:43:\"index.php?name=$matches[1]&page=$matches[2]\";s:16:\"[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:26:\"[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:46:\"[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:41:\"[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:41:\"[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:22:\"[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";}', 'yes'),
+(243, 'rewrite_rules', 'a:184:{s:8:\"carte/?$\";s:25:\"index.php?post_type=carte\";s:38:\"carte/feed/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?post_type=carte&feed=$matches[1]\";s:33:\"carte/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?post_type=carte&feed=$matches[1]\";s:25:\"carte/page/([0-9]{1,})/?$\";s:43:\"index.php?post_type=carte&paged=$matches[1]\";s:12:\"transfert/?$\";s:29:\"index.php?post_type=transfert\";s:42:\"transfert/feed/(feed|rdf|rss|rss2|atom)/?$\";s:46:\"index.php?post_type=transfert&feed=$matches[1]\";s:37:\"transfert/(feed|rdf|rss|rss2|atom)/?$\";s:46:\"index.php?post_type=transfert&feed=$matches[1]\";s:29:\"transfert/page/([0-9]{1,})/?$\";s:47:\"index.php?post_type=transfert&paged=$matches[1]\";s:10:\"auberge/?$\";s:27:\"index.php?post_type=auberge\";s:40:\"auberge/feed/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?post_type=auberge&feed=$matches[1]\";s:35:\"auberge/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?post_type=auberge&feed=$matches[1]\";s:27:\"auberge/page/([0-9]{1,})/?$\";s:45:\"index.php?post_type=auberge&paged=$matches[1]\";s:9:\"nf_sub/?$\";s:26:\"index.php?post_type=nf_sub\";s:39:\"nf_sub/feed/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?post_type=nf_sub&feed=$matches[1]\";s:34:\"nf_sub/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?post_type=nf_sub&feed=$matches[1]\";s:26:\"nf_sub/page/([0-9]{1,})/?$\";s:44:\"index.php?post_type=nf_sub&paged=$matches[1]\";s:11:\"^wp-json/?$\";s:22:\"index.php?rest_route=/\";s:14:\"^wp-json/(.*)?\";s:33:\"index.php?rest_route=/$matches[1]\";s:21:\"^index.php/wp-json/?$\";s:22:\"index.php?rest_route=/\";s:24:\"^index.php/wp-json/(.*)?\";s:33:\"index.php?rest_route=/$matches[1]\";s:47:\"category/(.+?)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:52:\"index.php?category_name=$matches[1]&feed=$matches[2]\";s:42:\"category/(.+?)/(feed|rdf|rss|rss2|atom)/?$\";s:52:\"index.php?category_name=$matches[1]&feed=$matches[2]\";s:23:\"category/(.+?)/embed/?$\";s:46:\"index.php?category_name=$matches[1]&embed=true\";s:35:\"category/(.+?)/page/?([0-9]{1,})/?$\";s:53:\"index.php?category_name=$matches[1]&paged=$matches[2]\";s:17:\"category/(.+?)/?$\";s:35:\"index.php?category_name=$matches[1]\";s:44:\"tag/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?tag=$matches[1]&feed=$matches[2]\";s:39:\"tag/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?tag=$matches[1]&feed=$matches[2]\";s:20:\"tag/([^/]+)/embed/?$\";s:36:\"index.php?tag=$matches[1]&embed=true\";s:32:\"tag/([^/]+)/page/?([0-9]{1,})/?$\";s:43:\"index.php?tag=$matches[1]&paged=$matches[2]\";s:14:\"tag/([^/]+)/?$\";s:25:\"index.php?tag=$matches[1]\";s:45:\"type/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:50:\"index.php?post_format=$matches[1]&feed=$matches[2]\";s:40:\"type/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:50:\"index.php?post_format=$matches[1]&feed=$matches[2]\";s:21:\"type/([^/]+)/embed/?$\";s:44:\"index.php?post_format=$matches[1]&embed=true\";s:33:\"type/([^/]+)/page/?([0-9]{1,})/?$\";s:51:\"index.php?post_format=$matches[1]&paged=$matches[2]\";s:15:\"type/([^/]+)/?$\";s:33:\"index.php?post_format=$matches[1]\";s:33:\"carte/[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:43:\"carte/[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:63:\"carte/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:58:\"carte/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:58:\"carte/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:39:\"carte/[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:22:\"carte/([^/]+)/embed/?$\";s:38:\"index.php?carte=$matches[1]&embed=true\";s:26:\"carte/([^/]+)/trackback/?$\";s:32:\"index.php?carte=$matches[1]&tb=1\";s:46:\"carte/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?carte=$matches[1]&feed=$matches[2]\";s:41:\"carte/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?carte=$matches[1]&feed=$matches[2]\";s:34:\"carte/([^/]+)/page/?([0-9]{1,})/?$\";s:45:\"index.php?carte=$matches[1]&paged=$matches[2]\";s:41:\"carte/([^/]+)/comment-page-([0-9]{1,})/?$\";s:45:\"index.php?carte=$matches[1]&cpage=$matches[2]\";s:30:\"carte/([^/]+)(?:/([0-9]+))?/?$\";s:44:\"index.php?carte=$matches[1]&page=$matches[2]\";s:22:\"carte/[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:32:\"carte/[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:52:\"carte/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:47:\"carte/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:47:\"carte/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:28:\"carte/[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:46:\"genre/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?genre=$matches[1]&feed=$matches[2]\";s:41:\"genre/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:44:\"index.php?genre=$matches[1]&feed=$matches[2]\";s:22:\"genre/([^/]+)/embed/?$\";s:38:\"index.php?genre=$matches[1]&embed=true\";s:34:\"genre/([^/]+)/page/?([0-9]{1,})/?$\";s:45:\"index.php?genre=$matches[1]&paged=$matches[2]\";s:16:\"genre/([^/]+)/?$\";s:27:\"index.php?genre=$matches[1]\";s:37:\"transfert/[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:47:\"transfert/[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:67:\"transfert/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:62:\"transfert/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:62:\"transfert/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:43:\"transfert/[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:26:\"transfert/([^/]+)/embed/?$\";s:42:\"index.php?transfert=$matches[1]&embed=true\";s:30:\"transfert/([^/]+)/trackback/?$\";s:36:\"index.php?transfert=$matches[1]&tb=1\";s:50:\"transfert/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:48:\"index.php?transfert=$matches[1]&feed=$matches[2]\";s:45:\"transfert/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:48:\"index.php?transfert=$matches[1]&feed=$matches[2]\";s:38:\"transfert/([^/]+)/page/?([0-9]{1,})/?$\";s:49:\"index.php?transfert=$matches[1]&paged=$matches[2]\";s:45:\"transfert/([^/]+)/comment-page-([0-9]{1,})/?$\";s:49:\"index.php?transfert=$matches[1]&cpage=$matches[2]\";s:34:\"transfert/([^/]+)(?:/([0-9]+))?/?$\";s:48:\"index.php?transfert=$matches[1]&page=$matches[2]\";s:26:\"transfert/[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:36:\"transfert/[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:56:\"transfert/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:51:\"transfert/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:51:\"transfert/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:32:\"transfert/[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:35:\"auberge/[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:45:\"auberge/[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:65:\"auberge/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:60:\"auberge/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:60:\"auberge/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:41:\"auberge/[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:24:\"auberge/([^/]+)/embed/?$\";s:40:\"index.php?auberge=$matches[1]&embed=true\";s:28:\"auberge/([^/]+)/trackback/?$\";s:34:\"index.php?auberge=$matches[1]&tb=1\";s:48:\"auberge/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:46:\"index.php?auberge=$matches[1]&feed=$matches[2]\";s:43:\"auberge/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:46:\"index.php?auberge=$matches[1]&feed=$matches[2]\";s:36:\"auberge/([^/]+)/page/?([0-9]{1,})/?$\";s:47:\"index.php?auberge=$matches[1]&paged=$matches[2]\";s:43:\"auberge/([^/]+)/comment-page-([0-9]{1,})/?$\";s:47:\"index.php?auberge=$matches[1]&cpage=$matches[2]\";s:32:\"auberge/([^/]+)(?:/([0-9]+))?/?$\";s:46:\"index.php?auberge=$matches[1]&page=$matches[2]\";s:24:\"auberge/[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:34:\"auberge/[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:54:\"auberge/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:49:\"auberge/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:49:\"auberge/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:30:\"auberge/[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:34:\"nf_sub/[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:44:\"nf_sub/[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:64:\"nf_sub/[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:59:\"nf_sub/[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:59:\"nf_sub/[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:40:\"nf_sub/[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:23:\"nf_sub/([^/]+)/embed/?$\";s:39:\"index.php?nf_sub=$matches[1]&embed=true\";s:27:\"nf_sub/([^/]+)/trackback/?$\";s:33:\"index.php?nf_sub=$matches[1]&tb=1\";s:47:\"nf_sub/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:45:\"index.php?nf_sub=$matches[1]&feed=$matches[2]\";s:42:\"nf_sub/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:45:\"index.php?nf_sub=$matches[1]&feed=$matches[2]\";s:35:\"nf_sub/([^/]+)/page/?([0-9]{1,})/?$\";s:46:\"index.php?nf_sub=$matches[1]&paged=$matches[2]\";s:42:\"nf_sub/([^/]+)/comment-page-([0-9]{1,})/?$\";s:46:\"index.php?nf_sub=$matches[1]&cpage=$matches[2]\";s:31:\"nf_sub/([^/]+)(?:/([0-9]+))?/?$\";s:45:\"index.php?nf_sub=$matches[1]&page=$matches[2]\";s:23:\"nf_sub/[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:33:\"nf_sub/[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:53:\"nf_sub/[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:48:\"nf_sub/[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:48:\"nf_sub/[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:29:\"nf_sub/[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:48:\".*wp-(atom|rdf|rss|rss2|feed|commentsrss2)\\.php$\";s:18:\"index.php?feed=old\";s:20:\".*wp-app\\.php(/.*)?$\";s:19:\"index.php?error=403\";s:18:\".*wp-register.php$\";s:23:\"index.php?register=true\";s:32:\"feed/(feed|rdf|rss|rss2|atom)/?$\";s:27:\"index.php?&feed=$matches[1]\";s:27:\"(feed|rdf|rss|rss2|atom)/?$\";s:27:\"index.php?&feed=$matches[1]\";s:8:\"embed/?$\";s:21:\"index.php?&embed=true\";s:20:\"page/?([0-9]{1,})/?$\";s:28:\"index.php?&paged=$matches[1]\";s:27:\"comment-page-([0-9]{1,})/?$\";s:40:\"index.php?&page_id=137&cpage=$matches[1]\";s:41:\"comments/feed/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?&feed=$matches[1]&withcomments=1\";s:36:\"comments/(feed|rdf|rss|rss2|atom)/?$\";s:42:\"index.php?&feed=$matches[1]&withcomments=1\";s:17:\"comments/embed/?$\";s:21:\"index.php?&embed=true\";s:44:\"search/(.+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:40:\"index.php?s=$matches[1]&feed=$matches[2]\";s:39:\"search/(.+)/(feed|rdf|rss|rss2|atom)/?$\";s:40:\"index.php?s=$matches[1]&feed=$matches[2]\";s:20:\"search/(.+)/embed/?$\";s:34:\"index.php?s=$matches[1]&embed=true\";s:32:\"search/(.+)/page/?([0-9]{1,})/?$\";s:41:\"index.php?s=$matches[1]&paged=$matches[2]\";s:14:\"search/(.+)/?$\";s:23:\"index.php?s=$matches[1]\";s:47:\"author/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:50:\"index.php?author_name=$matches[1]&feed=$matches[2]\";s:42:\"author/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:50:\"index.php?author_name=$matches[1]&feed=$matches[2]\";s:23:\"author/([^/]+)/embed/?$\";s:44:\"index.php?author_name=$matches[1]&embed=true\";s:35:\"author/([^/]+)/page/?([0-9]{1,})/?$\";s:51:\"index.php?author_name=$matches[1]&paged=$matches[2]\";s:17:\"author/([^/]+)/?$\";s:33:\"index.php?author_name=$matches[1]\";s:69:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$\";s:80:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]\";s:64:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$\";s:80:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&feed=$matches[4]\";s:45:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/embed/?$\";s:74:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&embed=true\";s:57:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/page/?([0-9]{1,})/?$\";s:81:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]&paged=$matches[4]\";s:39:\"([0-9]{4})/([0-9]{1,2})/([0-9]{1,2})/?$\";s:63:\"index.php?year=$matches[1]&monthnum=$matches[2]&day=$matches[3]\";s:56:\"([0-9]{4})/([0-9]{1,2})/feed/(feed|rdf|rss|rss2|atom)/?$\";s:64:\"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]\";s:51:\"([0-9]{4})/([0-9]{1,2})/(feed|rdf|rss|rss2|atom)/?$\";s:64:\"index.php?year=$matches[1]&monthnum=$matches[2]&feed=$matches[3]\";s:32:\"([0-9]{4})/([0-9]{1,2})/embed/?$\";s:58:\"index.php?year=$matches[1]&monthnum=$matches[2]&embed=true\";s:44:\"([0-9]{4})/([0-9]{1,2})/page/?([0-9]{1,})/?$\";s:65:\"index.php?year=$matches[1]&monthnum=$matches[2]&paged=$matches[3]\";s:26:\"([0-9]{4})/([0-9]{1,2})/?$\";s:47:\"index.php?year=$matches[1]&monthnum=$matches[2]\";s:43:\"([0-9]{4})/feed/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?year=$matches[1]&feed=$matches[2]\";s:38:\"([0-9]{4})/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?year=$matches[1]&feed=$matches[2]\";s:19:\"([0-9]{4})/embed/?$\";s:37:\"index.php?year=$matches[1]&embed=true\";s:31:\"([0-9]{4})/page/?([0-9]{1,})/?$\";s:44:\"index.php?year=$matches[1]&paged=$matches[2]\";s:13:\"([0-9]{4})/?$\";s:26:\"index.php?year=$matches[1]\";s:27:\".?.+?/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:37:\".?.+?/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:57:\".?.+?/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:52:\".?.+?/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:52:\".?.+?/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:33:\".?.+?/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:16:\"(.?.+?)/embed/?$\";s:41:\"index.php?pagename=$matches[1]&embed=true\";s:20:\"(.?.+?)/trackback/?$\";s:35:\"index.php?pagename=$matches[1]&tb=1\";s:40:\"(.?.+?)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:47:\"index.php?pagename=$matches[1]&feed=$matches[2]\";s:35:\"(.?.+?)/(feed|rdf|rss|rss2|atom)/?$\";s:47:\"index.php?pagename=$matches[1]&feed=$matches[2]\";s:28:\"(.?.+?)/page/?([0-9]{1,})/?$\";s:48:\"index.php?pagename=$matches[1]&paged=$matches[2]\";s:35:\"(.?.+?)/comment-page-([0-9]{1,})/?$\";s:48:\"index.php?pagename=$matches[1]&cpage=$matches[2]\";s:24:\"(.?.+?)(?:/([0-9]+))?/?$\";s:47:\"index.php?pagename=$matches[1]&page=$matches[2]\";s:27:\"[^/]+/attachment/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:37:\"[^/]+/attachment/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:57:\"[^/]+/attachment/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:52:\"[^/]+/attachment/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:52:\"[^/]+/attachment/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:33:\"[^/]+/attachment/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";s:16:\"([^/]+)/embed/?$\";s:37:\"index.php?name=$matches[1]&embed=true\";s:20:\"([^/]+)/trackback/?$\";s:31:\"index.php?name=$matches[1]&tb=1\";s:40:\"([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?name=$matches[1]&feed=$matches[2]\";s:35:\"([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:43:\"index.php?name=$matches[1]&feed=$matches[2]\";s:28:\"([^/]+)/page/?([0-9]{1,})/?$\";s:44:\"index.php?name=$matches[1]&paged=$matches[2]\";s:35:\"([^/]+)/comment-page-([0-9]{1,})/?$\";s:44:\"index.php?name=$matches[1]&cpage=$matches[2]\";s:24:\"([^/]+)(?:/([0-9]+))?/?$\";s:43:\"index.php?name=$matches[1]&page=$matches[2]\";s:16:\"[^/]+/([^/]+)/?$\";s:32:\"index.php?attachment=$matches[1]\";s:26:\"[^/]+/([^/]+)/trackback/?$\";s:37:\"index.php?attachment=$matches[1]&tb=1\";s:46:\"[^/]+/([^/]+)/feed/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:41:\"[^/]+/([^/]+)/(feed|rdf|rss|rss2|atom)/?$\";s:49:\"index.php?attachment=$matches[1]&feed=$matches[2]\";s:41:\"[^/]+/([^/]+)/comment-page-([0-9]{1,})/?$\";s:50:\"index.php?attachment=$matches[1]&cpage=$matches[2]\";s:22:\"[^/]+/([^/]+)/embed/?$\";s:43:\"index.php?attachment=$matches[1]&embed=true\";}', 'yes'),
+(1823, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:3:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:7:\"upgrade\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-4.9.6.zip\";s:6:\"locale\";s:5:\"fr_FR\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-4.9.6.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"4.9.6\";s:7:\"version\";s:5:\"4.9.6\";s:11:\"php_version\";s:5:\"5.2.4\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"4.7\";s:15:\"partial_version\";s:0:\"\";}i:1;O:8:\"stdClass\":10:{s:8:\"response\";s:7:\"upgrade\";s:8:\"download\";s:59:\"https://downloads.wordpress.org/release/wordpress-4.9.6.zip\";s:6:\"locale\";s:5:\"en_US\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:59:\"https://downloads.wordpress.org/release/wordpress-4.9.6.zip\";s:10:\"no_content\";s:70:\"https://downloads.wordpress.org/release/wordpress-4.9.6-no-content.zip\";s:11:\"new_bundled\";s:71:\"https://downloads.wordpress.org/release/wordpress-4.9.6-new-bundled.zip\";s:7:\"partial\";s:69:\"https://downloads.wordpress.org/release/wordpress-4.9.6-partial-5.zip\";s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"4.9.6\";s:7:\"version\";s:5:\"4.9.6\";s:11:\"php_version\";s:5:\"5.2.4\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"4.7\";s:15:\"partial_version\";s:5:\"4.9.5\";}i:2;O:8:\"stdClass\":11:{s:8:\"response\";s:10:\"autoupdate\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-4.9.6.zip\";s:6:\"locale\";s:5:\"fr_FR\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-4.9.6.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"4.9.6\";s:7:\"version\";s:5:\"4.9.6\";s:11:\"php_version\";s:5:\"5.2.4\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"4.7\";s:15:\"partial_version\";s:0:\"\";s:9:\"new_files\";s:1:\"1\";}}s:12:\"last_checked\";i:1528049055;s:15:\"version_checked\";s:5:\"4.9.5\";s:12:\"translations\";a:1:{i:0;a:7:{s:4:\"type\";s:4:\"core\";s:4:\"slug\";s:7:\"default\";s:8:\"language\";s:5:\"fr_FR\";s:7:\"version\";s:5:\"4.9.5\";s:7:\"updated\";s:19:\"2018-04-30 07:13:07\";s:7:\"package\";s:64:\"https://downloads.wordpress.org/translation/core/4.9.5/fr_FR.zip\";s:10:\"autoupdate\";b:1;}}}', 'no'),
 (244, 'wpseo_sitemap_1_cache_validator', '5zgD7', 'no'),
 (245, 'wpseo_sitemap_page_cache_validator', '5zgDa', 'no'),
 (291, 'wp_datepicker_months', '', 'yes'),
@@ -1910,7 +1969,7 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (677, 'widget_imagewidget', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
 (729, 'bos_searchbox_options', 'a:1:{s:10:\"plugin_ver\";s:3:\"2.1\";}', 'yes'),
 (730, 'widget_bos_searchbox_widget_class', 'a:2:{i:7;a:0:{}s:12:\"_multiwidget\";i:1;}', 'yes'),
-(734, 'bos_searchbox_user_options', 'a:22:{s:3:\"aid\";s:7:\"1524720\";s:12:\"widget_width\";s:0:\"\";s:8:\"calendar\";i:1;s:12:\"month_format\";s:5:\"short\";s:14:\"flexible_dates\";i:1;s:7:\"logodim\";s:11:\"blue_150x25\";s:9:\"buttonpos\";s:5:\"right\";s:7:\"logopos\";s:4:\"left\";s:11:\"destination\";s:6:\"Venise\";s:9:\"dest_type\";s:6:\"select\";s:7:\"dest_id\";s:0:\"\";s:28:\"display_in_custom_post_types\";s:0:\"\";s:7:\"bgcolor\";s:7:\"#efefef\";s:9:\"textcolor\";s:7:\"#0c0003\";s:14:\"submit_bgcolor\";s:7:\"#f2d441\";s:18:\"submit_bordercolor\";s:7:\"#f2ec37\";s:16:\"submit_textcolor\";s:7:\"#FFFFFF\";s:9:\"maintitle\";s:0:\"\";s:10:\"dest_title\";s:0:\"\";s:7:\"checkin\";s:7:\"Départ\";s:8:\"checkout\";s:6:\"Retour\";s:6:\"submit\";s:2:\"GO\";}', 'yes'),
+(734, 'bos_searchbox_user_options', 'a:22:{s:3:\"aid\";s:7:\"1524720\";s:12:\"widget_width\";s:0:\"\";s:8:\"calendar\";i:1;s:12:\"month_format\";s:5:\"short\";s:14:\"flexible_dates\";i:1;s:7:\"logodim\";s:11:\"blue_150x25\";s:9:\"buttonpos\";s:5:\"right\";s:7:\"logopos\";s:4:\"left\";s:11:\"destination\";s:6:\"Venise\";s:9:\"dest_type\";s:6:\"select\";s:7:\"dest_id\";s:0:\"\";s:28:\"display_in_custom_post_types\";s:0:\"\";s:7:\"bgcolor\";s:7:\"#efefef\";s:9:\"textcolor\";s:7:\"#3e3e3e\";s:14:\"submit_bgcolor\";s:7:\"#e6bb21\";s:18:\"submit_bordercolor\";s:7:\"#e6bb21\";s:16:\"submit_textcolor\";s:7:\"#FFFFFF\";s:9:\"maintitle\";s:0:\"\";s:10:\"dest_title\";s:0:\"\";s:7:\"checkin\";s:15:\"Date de départ\";s:8:\"checkout\";s:17:\"Date d’arrivée\";s:6:\"submit\";s:2:\"GO\";}', 'yes'),
 (742, 'new_admin_email', 'volatiana.helisoa@yahoo.fr', 'yes'),
 (743, 'adminhash', 'a:2:{s:4:\"hash\";s:32:\"2e53f292a60947951873115a16ffa3fa\";s:8:\"newemail\";s:26:\"volatiana.helisoa@yahoo.fr\";}', 'yes'),
 (760, 'widget_bcn_widget', 'a:1:{s:12:\"_multiwidget\";i:1;}', 'yes'),
@@ -1933,32 +1992,37 @@ INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`
 (1234, 'wpmdb_usage', 'a:2:{s:6:\"action\";s:8:\"savefile\";s:4:\"time\";i:1525431500;}', 'no'),
 (1235, 'wpmdb_state_timeout_5aec3cccc7858', '1525517913', 'no'),
 (1236, 'wpmdb_state_5aec3cccc7858', 'a:22:{s:6:\"action\";s:19:\"wpmdb_migrate_table\";s:6:\"intent\";s:8:\"savefile\";s:3:\"url\";s:0:\"\";s:9:\"form_data\";s:440:\"action=savefile&save_computer=1&gzip_file=1&connection_info=&replace_old%5B%5D=&replace_new%5B%5D=&replace_old%5B%5D=%2F%2Fwww.gotovenise.com&replace_new%5B%5D=%2F%2Flocalhost%2Fprojets%2Fvenisevoyage&replace_old%5B%5D=%2Fvar%2Fwww%2Fvhosts%2Fgotovenise.com%2Fhttpdocs&replace_new%5B%5D=%2Fvar%2Fwww%2Fhtml%2Fprojets%2Fvenisevoyage&replace_guids=1&exclude_transients=1&save_migration_profile_option=new&create_new_profile=&remote_json_data=\";s:5:\"stage\";s:7:\"migrate\";s:5:\"nonce\";s:10:\"a26fba3427\";s:12:\"site_details\";a:1:{s:5:\"local\";a:10:{s:12:\"is_multisite\";s:5:\"false\";s:8:\"site_url\";s:26:\"https://www.gotovenise.com\";s:8:\"home_url\";s:26:\"https://www.gotovenise.com\";s:6:\"prefix\";s:3:\"wp_\";s:15:\"uploads_baseurl\";s:46:\"https://www.gotovenise.com/wp-content/uploads/\";s:7:\"uploads\";a:6:{s:4:\"path\";s:66:\"/var/www/vhosts/gotovenise.com/httpdocs/wp-content/uploads/2018/05\";s:3:\"url\";s:53:\"https://www.gotovenise.com/wp-content/uploads/2018/05\";s:6:\"subdir\";s:8:\"/2018/05\";s:7:\"basedir\";s:58:\"/var/www/vhosts/gotovenise.com/httpdocs/wp-content/uploads\";s:7:\"baseurl\";s:45:\"https://www.gotovenise.com/wp-content/uploads\";s:5:\"error\";b:0;}s:11:\"uploads_dir\";s:33:\"wp-content/uploads/wp-migrate-db/\";s:8:\"subsites\";a:0:{}s:13:\"subsites_info\";a:0:{}s:20:\"is_subdomain_install\";s:5:\"false\";}}s:4:\"code\";i:200;s:7:\"message\";s:2:\"OK\";s:4:\"body\";s:11:\"{\"error\":0}\";s:9:\"dump_path\";s:122:\"/var/www/vhosts/gotovenise.com/httpdocs/wp-content/uploads/wp-migrate-db/venise_voyage-migrate-20180504105820-in4t7.sql.gz\";s:13:\"dump_filename\";s:42:\"venise_voyage-migrate-20180504105820-in4t7\";s:8:\"dump_url\";s:109:\"https://www.gotovenise.com/wp-content/uploads/wp-migrate-db/venise_voyage-migrate-20180504105820-in4t7.sql.gz\";s:10:\"db_version\";s:6:\"5.1.73\";s:8:\"site_url\";s:26:\"https://www.gotovenise.com\";s:18:\"find_replace_pairs\";a:2:{s:11:\"replace_old\";a:2:{i:1;s:20:\"//www.gotovenise.com\";i:2;s:39:\"/var/www/vhosts/gotovenise.com/httpdocs\";}s:11:\"replace_new\";a:2:{i:1;s:32:\"//localhost/projets/venisevoyage\";i:2;s:34:\"/var/www/html/projets/venisevoyage\";}}s:18:\"migration_state_id\";s:13:\"5aec3cccc7858\";s:5:\"table\";s:17:\"wp_yoast_seo_meta\";s:11:\"current_row\";s:0:\"\";s:10:\"last_table\";s:1:\"1\";s:12:\"primary_keys\";s:0:\"\";s:4:\"gzip\";s:1:\"0\";}', 'no'),
-(1299, 'category_children', 'a:0:{}', 'yes'),
-(1300, 'genre_children', 'a:0:{}', 'yes'),
-(1366, '_transient_is_multi_author', '0', 'yes'),
-(1367, '_transient_shapely_categories', '1', 'yes'),
+(1754, 'category_children', 'a:0:{}', 'yes'),
+(1755, 'genre_children', 'a:0:{}', 'yes'),
 (1581, 'auto_core_update_notified', 'a:4:{s:4:\"type\";s:7:\"success\";s:5:\"email\";s:25:\"mediaclickdev18@gmail.com\";s:7:\"version\";s:5:\"4.9.6\";s:9:\"timestamp\";i:1527148493;}', 'no'),
-(1629, '_site_transient_update_core', 'O:8:\"stdClass\":4:{s:7:\"updates\";a:1:{i:0;O:8:\"stdClass\":10:{s:8:\"response\";s:6:\"latest\";s:8:\"download\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-4.9.6.zip\";s:6:\"locale\";s:5:\"fr_FR\";s:8:\"packages\";O:8:\"stdClass\":5:{s:4:\"full\";s:65:\"https://downloads.wordpress.org/release/fr_FR/wordpress-4.9.6.zip\";s:10:\"no_content\";b:0;s:11:\"new_bundled\";b:0;s:7:\"partial\";b:0;s:8:\"rollback\";b:0;}s:7:\"current\";s:5:\"4.9.6\";s:7:\"version\";s:5:\"4.9.6\";s:11:\"php_version\";s:5:\"5.2.4\";s:13:\"mysql_version\";s:3:\"5.0\";s:11:\"new_bundled\";s:3:\"4.7\";s:15:\"partial_version\";s:0:\"\";}}s:12:\"last_checked\";i:1527752008;s:15:\"version_checked\";s:5:\"4.9.6\";s:12:\"translations\";a:0:{}}', 'no'),
-(1704, '_site_transient_timeout_theme_roots', '1527753809', 'no'),
-(1705, '_site_transient_theme_roots', 'a:2:{s:6:\"showme\";s:7:\"/themes\";s:5:\"veniz\";s:7:\"/themes\";}', 'no'),
-(1706, '_site_transient_update_themes', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1527752010;s:7:\"checked\";a:2:{s:6:\"showme\";s:6:\"1.0.16\";s:5:\"veniz\";s:5:\"1.1.2\";}s:8:\"response\";a:1:{s:6:\"showme\";a:4:{s:5:\"theme\";s:6:\"showme\";s:11:\"new_version\";s:6:\"1.0.19\";s:3:\"url\";s:36:\"https://wordpress.org/themes/showme/\";s:7:\"package\";s:55:\"https://downloads.wordpress.org/theme/showme.1.0.19.zip\";}}s:12:\"translations\";a:0:{}}', 'no'),
-(1707, '_site_transient_update_plugins', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1527752010;s:7:\"checked\";a:18:{s:41:\"navz-photo-gallery/navz-photo-gallery.php\";s:5:\"1.6.1\";s:30:\"advanced-custom-fields/acf.php\";s:6:\"4.4.12\";s:19:\"akismet/akismet.php\";s:5:\"4.0.3\";s:60:\"bookingcom-official-searchbox/booking-official-searchbox.php\";s:3:\"2.1\";s:37:\"breadcrumb-navxt/breadcrumb-navxt.php\";s:5:\"6.0.4\";s:36:\"contact-form-7/wp-contact-form-7.php\";s:5:\"5.0.1\";s:36:\"contact-form-plugin/contact_form.php\";s:5:\"4.0.9\";s:32:\"duplicate-page/duplicatepage.php\";s:3:\"2.6\";s:41:\"google-maps-widget/google-maps-widget.php\";s:4:\"3.83\";s:9:\"hello.php\";s:3:\"1.7\";s:34:\"wp-login-att/login-attempt-log.php\";s:3:\"1.3\";s:27:\"ninja-forms/ninja-forms.php\";s:6:\"3.2.21\";s:69:\"ultimate-responsive-image-slider/ultimate-responsive-image-slider.php\";s:5:\"3.1.4\";s:41:\"wordpress-importer/wordpress-importer.php\";s:5:\"0.6.4\";s:23:\"wp-datepicker/index.php\";s:5:\"1.4.2\";s:39:\"wp-file-manager/file_folder_manager.php\";s:3:\"2.4\";s:31:\"wp-migrate-db/wp-migrate-db.php\";s:5:\"1.0.2\";s:24:\"wordpress-seo/wp-seo.php\";s:3:\"7.2\";}s:8:\"response\";a:10:{s:41:\"navz-photo-gallery/navz-photo-gallery.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:32:\"w.org/plugins/navz-photo-gallery\";s:4:\"slug\";s:18:\"navz-photo-gallery\";s:6:\"plugin\";s:41:\"navz-photo-gallery/navz-photo-gallery.php\";s:11:\"new_version\";s:5:\"1.6.2\";s:3:\"url\";s:49:\"https://wordpress.org/plugins/navz-photo-gallery/\";s:7:\"package\";s:67:\"https://downloads.wordpress.org/plugin/navz-photo-gallery.1.6.2.zip\";s:5:\"icons\";a:1:{s:2:\"1x\";s:71:\"https://ps.w.org/navz-photo-gallery/assets/icon-128x128.png?rev=1561241\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:73:\"https://ps.w.org/navz-photo-gallery/assets/banner-772x250.png?rev=1561242\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:19:\"akismet/akismet.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:21:\"w.org/plugins/akismet\";s:4:\"slug\";s:7:\"akismet\";s:6:\"plugin\";s:19:\"akismet/akismet.php\";s:11:\"new_version\";s:5:\"4.0.7\";s:3:\"url\";s:38:\"https://wordpress.org/plugins/akismet/\";s:7:\"package\";s:56:\"https://downloads.wordpress.org/plugin/akismet.4.0.7.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:59:\"https://ps.w.org/akismet/assets/icon-256x256.png?rev=969272\";s:2:\"1x\";s:59:\"https://ps.w.org/akismet/assets/icon-128x128.png?rev=969272\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:61:\"https://ps.w.org/akismet/assets/banner-772x250.jpg?rev=479904\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:36:\"contact-form-7/wp-contact-form-7.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:28:\"w.org/plugins/contact-form-7\";s:4:\"slug\";s:14:\"contact-form-7\";s:6:\"plugin\";s:36:\"contact-form-7/wp-contact-form-7.php\";s:11:\"new_version\";s:5:\"5.0.2\";s:3:\"url\";s:45:\"https://wordpress.org/plugins/contact-form-7/\";s:7:\"package\";s:63:\"https://downloads.wordpress.org/plugin/contact-form-7.5.0.2.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:66:\"https://ps.w.org/contact-form-7/assets/icon-256x256.png?rev=984007\";s:2:\"1x\";s:66:\"https://ps.w.org/contact-form-7/assets/icon-128x128.png?rev=984007\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:69:\"https://ps.w.org/contact-form-7/assets/banner-1544x500.png?rev=860901\";s:2:\"1x\";s:68:\"https://ps.w.org/contact-form-7/assets/banner-772x250.png?rev=880427\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:36:\"contact-form-plugin/contact_form.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:33:\"w.org/plugins/contact-form-plugin\";s:4:\"slug\";s:19:\"contact-form-plugin\";s:6:\"plugin\";s:36:\"contact-form-plugin/contact_form.php\";s:11:\"new_version\";s:5:\"4.1.0\";s:3:\"url\";s:50:\"https://wordpress.org/plugins/contact-form-plugin/\";s:7:\"package\";s:68:\"https://downloads.wordpress.org/plugin/contact-form-plugin.4.1.0.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:72:\"https://ps.w.org/contact-form-plugin/assets/icon-256x256.png?rev=1607302\";s:2:\"1x\";s:72:\"https://ps.w.org/contact-form-plugin/assets/icon-128x128.png?rev=1607302\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:75:\"https://ps.w.org/contact-form-plugin/assets/banner-1544x500.jpg?rev=1590611\";s:2:\"1x\";s:74:\"https://ps.w.org/contact-form-plugin/assets/banner-772x250.jpg?rev=1590611\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:41:\"google-maps-widget/google-maps-widget.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:32:\"w.org/plugins/google-maps-widget\";s:4:\"slug\";s:18:\"google-maps-widget\";s:6:\"plugin\";s:41:\"google-maps-widget/google-maps-widget.php\";s:11:\"new_version\";s:4:\"3.90\";s:3:\"url\";s:49:\"https://wordpress.org/plugins/google-maps-widget/\";s:7:\"package\";s:66:\"https://downloads.wordpress.org/plugin/google-maps-widget.3.90.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:71:\"https://ps.w.org/google-maps-widget/assets/icon-256x256.png?rev=1625687\";s:2:\"1x\";s:71:\"https://ps.w.org/google-maps-widget/assets/icon-128x128.png?rev=1566956\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:74:\"https://ps.w.org/google-maps-widget/assets/banner-1544x500.png?rev=1653423\";s:2:\"1x\";s:73:\"https://ps.w.org/google-maps-widget/assets/banner-772x250.png?rev=1653423\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";s:3:\"5.2\";s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:27:\"ninja-forms/ninja-forms.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:25:\"w.org/plugins/ninja-forms\";s:4:\"slug\";s:11:\"ninja-forms\";s:6:\"plugin\";s:27:\"ninja-forms/ninja-forms.php\";s:11:\"new_version\";s:5:\"3.3.1\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/ninja-forms/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/plugin/ninja-forms.3.3.1.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:64:\"https://ps.w.org/ninja-forms/assets/icon-256x256.png?rev=1649747\";s:2:\"1x\";s:64:\"https://ps.w.org/ninja-forms/assets/icon-128x128.png?rev=1649747\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:67:\"https://ps.w.org/ninja-forms/assets/banner-1544x500.png?rev=1649747\";s:2:\"1x\";s:66:\"https://ps.w.org/ninja-forms/assets/banner-772x250.png?rev=1649747\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:69:\"ultimate-responsive-image-slider/ultimate-responsive-image-slider.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:46:\"w.org/plugins/ultimate-responsive-image-slider\";s:4:\"slug\";s:32:\"ultimate-responsive-image-slider\";s:6:\"plugin\";s:69:\"ultimate-responsive-image-slider/ultimate-responsive-image-slider.php\";s:11:\"new_version\";s:5:\"3.1.6\";s:3:\"url\";s:63:\"https://wordpress.org/plugins/ultimate-responsive-image-slider/\";s:7:\"package\";s:81:\"https://downloads.wordpress.org/plugin/ultimate-responsive-image-slider.3.1.6.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:85:\"https://ps.w.org/ultimate-responsive-image-slider/assets/icon-256x256.png?rev=1122649\";s:2:\"1x\";s:85:\"https://ps.w.org/ultimate-responsive-image-slider/assets/icon-128x128.png?rev=1122649\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:87:\"https://ps.w.org/ultimate-responsive-image-slider/assets/banner-772x250.jpg?rev=1787938\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.5\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:23:\"wp-datepicker/index.php\";O:8:\"stdClass\":13:{s:2:\"id\";s:27:\"w.org/plugins/wp-datepicker\";s:4:\"slug\";s:13:\"wp-datepicker\";s:6:\"plugin\";s:23:\"wp-datepicker/index.php\";s:11:\"new_version\";s:5:\"1.4.8\";s:3:\"url\";s:44:\"https://wordpress.org/plugins/wp-datepicker/\";s:7:\"package\";s:62:\"https://downloads.wordpress.org/plugin/wp-datepicker.1.4.8.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:66:\"https://ps.w.org/wp-datepicker/assets/icon-256x256.png?rev=1233624\";s:2:\"1x\";s:66:\"https://ps.w.org/wp-datepicker/assets/icon-128x128.png?rev=1233624\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:69:\"https://ps.w.org/wp-datepicker/assets/banner-1544x500.png?rev=1233624\";s:2:\"1x\";s:68:\"https://ps.w.org/wp-datepicker/assets/banner-772x250.png?rev=1233624\";}s:11:\"banners_rtl\";a:0:{}s:14:\"upgrade_notice\";s:48:\"<p>Added extra checks for front end scripts.</p>\";s:6:\"tested\";s:3:\"5.0\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:39:\"wp-file-manager/file_folder_manager.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:29:\"w.org/plugins/wp-file-manager\";s:4:\"slug\";s:15:\"wp-file-manager\";s:6:\"plugin\";s:39:\"wp-file-manager/file_folder_manager.php\";s:11:\"new_version\";s:3:\"2.6\";s:3:\"url\";s:46:\"https://wordpress.org/plugins/wp-file-manager/\";s:7:\"package\";s:58:\"https://downloads.wordpress.org/plugin/wp-file-manager.zip\";s:5:\"icons\";a:1:{s:2:\"1x\";s:68:\"https://ps.w.org/wp-file-manager/assets/icon-128x128.png?rev=1846029\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:70:\"https://ps.w.org/wp-file-manager/assets/banner-772x250.jpg?rev=1846030\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";s:5:\"5.2.4\";s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:24:\"wordpress-seo/wp-seo.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:27:\"w.org/plugins/wordpress-seo\";s:4:\"slug\";s:13:\"wordpress-seo\";s:6:\"plugin\";s:24:\"wordpress-seo/wp-seo.php\";s:11:\"new_version\";s:5:\"7.5.3\";s:3:\"url\";s:44:\"https://wordpress.org/plugins/wordpress-seo/\";s:7:\"package\";s:62:\"https://downloads.wordpress.org/plugin/wordpress-seo.7.5.3.zip\";s:5:\"icons\";a:3:{s:2:\"2x\";s:66:\"https://ps.w.org/wordpress-seo/assets/icon-256x256.png?rev=1834347\";s:2:\"1x\";s:58:\"https://ps.w.org/wordpress-seo/assets/icon.svg?rev=1859687\";s:3:\"svg\";s:58:\"https://ps.w.org/wordpress-seo/assets/icon.svg?rev=1859687\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:69:\"https://ps.w.org/wordpress-seo/assets/banner-1544x500.png?rev=1843435\";s:2:\"1x\";s:68:\"https://ps.w.org/wordpress-seo/assets/banner-772x250.png?rev=1843435\";}s:11:\"banners_rtl\";a:2:{s:2:\"2x\";s:73:\"https://ps.w.org/wordpress-seo/assets/banner-1544x500-rtl.png?rev=1843435\";s:2:\"1x\";s:72:\"https://ps.w.org/wordpress-seo/assets/banner-772x250-rtl.png?rev=1843435\";}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";s:5:\"5.2.4\";s:13:\"compatibility\";O:8:\"stdClass\":0:{}}}s:12:\"translations\";a:0:{}s:9:\"no_update\";a:8:{s:30:\"advanced-custom-fields/acf.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:36:\"w.org/plugins/advanced-custom-fields\";s:4:\"slug\";s:22:\"advanced-custom-fields\";s:6:\"plugin\";s:30:\"advanced-custom-fields/acf.php\";s:11:\"new_version\";s:6:\"4.4.12\";s:3:\"url\";s:53:\"https://wordpress.org/plugins/advanced-custom-fields/\";s:7:\"package\";s:72:\"https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.12.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:75:\"https://ps.w.org/advanced-custom-fields/assets/icon-256x256.png?rev=1082746\";s:2:\"1x\";s:75:\"https://ps.w.org/advanced-custom-fields/assets/icon-128x128.png?rev=1082746\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:78:\"https://ps.w.org/advanced-custom-fields/assets/banner-1544x500.jpg?rev=1729099\";s:2:\"1x\";s:77:\"https://ps.w.org/advanced-custom-fields/assets/banner-772x250.jpg?rev=1729102\";}s:11:\"banners_rtl\";a:0:{}}s:60:\"bookingcom-official-searchbox/booking-official-searchbox.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:43:\"w.org/plugins/bookingcom-official-searchbox\";s:4:\"slug\";s:29:\"bookingcom-official-searchbox\";s:6:\"plugin\";s:60:\"bookingcom-official-searchbox/booking-official-searchbox.php\";s:11:\"new_version\";s:3:\"2.1\";s:3:\"url\";s:60:\"https://wordpress.org/plugins/bookingcom-official-searchbox/\";s:7:\"package\";s:76:\"https://downloads.wordpress.org/plugin/bookingcom-official-searchbox.2.1.zip\";s:5:\"icons\";a:1:{s:2:\"1x\";s:82:\"https://ps.w.org/bookingcom-official-searchbox/assets/icon-128x128.png?rev=1134398\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:85:\"https://ps.w.org/bookingcom-official-searchbox/assets/banner-1544x500.jpg?rev=1691289\";s:2:\"1x\";s:84:\"https://ps.w.org/bookingcom-official-searchbox/assets/banner-772x250.jpg?rev=1691289\";}s:11:\"banners_rtl\";a:0:{}}s:37:\"breadcrumb-navxt/breadcrumb-navxt.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:30:\"w.org/plugins/breadcrumb-navxt\";s:4:\"slug\";s:16:\"breadcrumb-navxt\";s:6:\"plugin\";s:37:\"breadcrumb-navxt/breadcrumb-navxt.php\";s:11:\"new_version\";s:5:\"6.0.4\";s:3:\"url\";s:47:\"https://wordpress.org/plugins/breadcrumb-navxt/\";s:7:\"package\";s:65:\"https://downloads.wordpress.org/plugin/breadcrumb-navxt.6.0.4.zip\";s:5:\"icons\";a:3:{s:2:\"2x\";s:68:\"https://ps.w.org/breadcrumb-navxt/assets/icon-256x256.png?rev=971477\";s:2:\"1x\";s:60:\"https://ps.w.org/breadcrumb-navxt/assets/icon.svg?rev=971477\";s:3:\"svg\";s:60:\"https://ps.w.org/breadcrumb-navxt/assets/icon.svg?rev=971477\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:70:\"https://ps.w.org/breadcrumb-navxt/assets/banner-772x250.jpg?rev=479408\";}s:11:\"banners_rtl\";a:0:{}}s:32:\"duplicate-page/duplicatepage.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:28:\"w.org/plugins/duplicate-page\";s:4:\"slug\";s:14:\"duplicate-page\";s:6:\"plugin\";s:32:\"duplicate-page/duplicatepage.php\";s:11:\"new_version\";s:3:\"2.6\";s:3:\"url\";s:45:\"https://wordpress.org/plugins/duplicate-page/\";s:7:\"package\";s:57:\"https://downloads.wordpress.org/plugin/duplicate-page.zip\";s:5:\"icons\";a:1:{s:2:\"1x\";s:67:\"https://ps.w.org/duplicate-page/assets/icon-128x128.jpg?rev=1412874\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:69:\"https://ps.w.org/duplicate-page/assets/banner-772x250.jpg?rev=1410328\";}s:11:\"banners_rtl\";a:0:{}}s:9:\"hello.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:25:\"w.org/plugins/hello-dolly\";s:4:\"slug\";s:11:\"hello-dolly\";s:6:\"plugin\";s:9:\"hello.php\";s:11:\"new_version\";s:3:\"1.6\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/hello-dolly/\";s:7:\"package\";s:58:\"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:63:\"https://ps.w.org/hello-dolly/assets/icon-256x256.jpg?rev=969907\";s:2:\"1x\";s:63:\"https://ps.w.org/hello-dolly/assets/icon-128x128.jpg?rev=969907\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:65:\"https://ps.w.org/hello-dolly/assets/banner-772x250.png?rev=478342\";}s:11:\"banners_rtl\";a:0:{}}s:34:\"wp-login-att/login-attempt-log.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:34:\"w.org/plugins/wp-login-attempt-log\";s:4:\"slug\";s:20:\"wp-login-attempt-log\";s:6:\"plugin\";s:34:\"wp-login-att/login-attempt-log.php\";s:11:\"new_version\";s:3:\"1.3\";s:3:\"url\";s:51:\"https://wordpress.org/plugins/wp-login-attempt-log/\";s:7:\"package\";s:67:\"https://downloads.wordpress.org/plugin/wp-login-attempt-log.1.3.zip\";s:5:\"icons\";a:1:{s:7:\"default\";s:64:\"https://s.w.org/plugins/geopattern-icon/wp-login-attempt-log.svg\";}s:7:\"banners\";a:0:{}s:11:\"banners_rtl\";a:0:{}}s:41:\"wordpress-importer/wordpress-importer.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:32:\"w.org/plugins/wordpress-importer\";s:4:\"slug\";s:18:\"wordpress-importer\";s:6:\"plugin\";s:41:\"wordpress-importer/wordpress-importer.php\";s:11:\"new_version\";s:5:\"0.6.4\";s:3:\"url\";s:49:\"https://wordpress.org/plugins/wordpress-importer/\";s:7:\"package\";s:67:\"https://downloads.wordpress.org/plugin/wordpress-importer.0.6.4.zip\";s:5:\"icons\";a:1:{s:7:\"default\";s:69:\"https://s.w.org/plugins/geopattern-icon/wordpress-importer_5696b3.svg\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:72:\"https://ps.w.org/wordpress-importer/assets/banner-772x250.png?rev=547654\";}s:11:\"banners_rtl\";a:0:{}}s:31:\"wp-migrate-db/wp-migrate-db.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:27:\"w.org/plugins/wp-migrate-db\";s:4:\"slug\";s:13:\"wp-migrate-db\";s:6:\"plugin\";s:31:\"wp-migrate-db/wp-migrate-db.php\";s:11:\"new_version\";s:5:\"1.0.2\";s:3:\"url\";s:44:\"https://wordpress.org/plugins/wp-migrate-db/\";s:7:\"package\";s:62:\"https://downloads.wordpress.org/plugin/wp-migrate-db.1.0.2.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:66:\"https://ps.w.org/wp-migrate-db/assets/icon-256x256.jpg?rev=1809889\";s:2:\"1x\";s:66:\"https://ps.w.org/wp-migrate-db/assets/icon-128x128.jpg?rev=1809889\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:69:\"https://ps.w.org/wp-migrate-db/assets/banner-1544x500.jpg?rev=1809889\";s:2:\"1x\";s:68:\"https://ps.w.org/wp-migrate-db/assets/banner-772x250.jpg?rev=1809889\";}s:11:\"banners_rtl\";a:0:{}}}}', 'no');
+(1820, '_site_transient_timeout_theme_roots', '1528050839', 'no'),
+(1821, '_site_transient_theme_roots', 'a:1:{s:5:\"veniz\";s:7:\"/themes\";}', 'no'),
+(1824, '_site_transient_update_themes', 'O:8:\"stdClass\":4:{s:12:\"last_checked\";i:1528049058;s:7:\"checked\";a:1:{s:5:\"veniz\";s:0:\"\";}s:8:\"response\";a:0:{}s:12:\"translations\";a:0:{}}', 'no'),
+(1825, '_site_transient_update_plugins', 'O:8:\"stdClass\":5:{s:12:\"last_checked\";i:1528049079;s:7:\"checked\";a:10:{s:41:\"navz-photo-gallery/navz-photo-gallery.php\";s:5:\"1.6.2\";s:30:\"advanced-custom-fields/acf.php\";s:6:\"4.4.12\";s:19:\"akismet/akismet.php\";s:5:\"4.0.3\";s:60:\"bookingcom-official-searchbox/booking-official-searchbox.php\";s:3:\"2.1\";s:9:\"hello.php\";s:3:\"1.7\";s:27:\"ninja-forms/ninja-forms.php\";s:6:\"3.2.21\";s:41:\"wordpress-importer/wordpress-importer.php\";s:5:\"0.6.4\";s:23:\"wp-datepicker/index.php\";s:5:\"1.4.2\";s:31:\"wp-migrate-db/wp-migrate-db.php\";s:5:\"1.0.2\";s:24:\"wordpress-seo/wp-seo.php\";s:3:\"7.2\";}s:8:\"response\";a:4:{s:19:\"akismet/akismet.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:21:\"w.org/plugins/akismet\";s:4:\"slug\";s:7:\"akismet\";s:6:\"plugin\";s:19:\"akismet/akismet.php\";s:11:\"new_version\";s:5:\"4.0.7\";s:3:\"url\";s:38:\"https://wordpress.org/plugins/akismet/\";s:7:\"package\";s:56:\"https://downloads.wordpress.org/plugin/akismet.4.0.7.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:59:\"https://ps.w.org/akismet/assets/icon-256x256.png?rev=969272\";s:2:\"1x\";s:59:\"https://ps.w.org/akismet/assets/icon-128x128.png?rev=969272\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:61:\"https://ps.w.org/akismet/assets/banner-772x250.jpg?rev=479904\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:27:\"ninja-forms/ninja-forms.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:25:\"w.org/plugins/ninja-forms\";s:4:\"slug\";s:11:\"ninja-forms\";s:6:\"plugin\";s:27:\"ninja-forms/ninja-forms.php\";s:11:\"new_version\";s:5:\"3.3.1\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/ninja-forms/\";s:7:\"package\";s:60:\"https://downloads.wordpress.org/plugin/ninja-forms.3.3.1.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:64:\"https://ps.w.org/ninja-forms/assets/icon-256x256.png?rev=1649747\";s:2:\"1x\";s:64:\"https://ps.w.org/ninja-forms/assets/icon-128x128.png?rev=1649747\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:67:\"https://ps.w.org/ninja-forms/assets/banner-1544x500.png?rev=1649747\";s:2:\"1x\";s:66:\"https://ps.w.org/ninja-forms/assets/banner-772x250.png?rev=1649747\";}s:11:\"banners_rtl\";a:0:{}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:23:\"wp-datepicker/index.php\";O:8:\"stdClass\":13:{s:2:\"id\";s:27:\"w.org/plugins/wp-datepicker\";s:4:\"slug\";s:13:\"wp-datepicker\";s:6:\"plugin\";s:23:\"wp-datepicker/index.php\";s:11:\"new_version\";s:5:\"1.4.8\";s:3:\"url\";s:44:\"https://wordpress.org/plugins/wp-datepicker/\";s:7:\"package\";s:62:\"https://downloads.wordpress.org/plugin/wp-datepicker.1.4.8.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:66:\"https://ps.w.org/wp-datepicker/assets/icon-256x256.png?rev=1233624\";s:2:\"1x\";s:66:\"https://ps.w.org/wp-datepicker/assets/icon-128x128.png?rev=1233624\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:69:\"https://ps.w.org/wp-datepicker/assets/banner-1544x500.png?rev=1233624\";s:2:\"1x\";s:68:\"https://ps.w.org/wp-datepicker/assets/banner-772x250.png?rev=1233624\";}s:11:\"banners_rtl\";a:0:{}s:14:\"upgrade_notice\";s:48:\"<p>Added extra checks for front end scripts.</p>\";s:6:\"tested\";s:3:\"5.0\";s:12:\"requires_php\";b:0;s:13:\"compatibility\";O:8:\"stdClass\":0:{}}s:24:\"wordpress-seo/wp-seo.php\";O:8:\"stdClass\":12:{s:2:\"id\";s:27:\"w.org/plugins/wordpress-seo\";s:4:\"slug\";s:13:\"wordpress-seo\";s:6:\"plugin\";s:24:\"wordpress-seo/wp-seo.php\";s:11:\"new_version\";s:5:\"7.5.3\";s:3:\"url\";s:44:\"https://wordpress.org/plugins/wordpress-seo/\";s:7:\"package\";s:62:\"https://downloads.wordpress.org/plugin/wordpress-seo.7.5.3.zip\";s:5:\"icons\";a:3:{s:2:\"2x\";s:66:\"https://ps.w.org/wordpress-seo/assets/icon-256x256.png?rev=1834347\";s:2:\"1x\";s:58:\"https://ps.w.org/wordpress-seo/assets/icon.svg?rev=1859687\";s:3:\"svg\";s:58:\"https://ps.w.org/wordpress-seo/assets/icon.svg?rev=1859687\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:69:\"https://ps.w.org/wordpress-seo/assets/banner-1544x500.png?rev=1843435\";s:2:\"1x\";s:68:\"https://ps.w.org/wordpress-seo/assets/banner-772x250.png?rev=1843435\";}s:11:\"banners_rtl\";a:2:{s:2:\"2x\";s:73:\"https://ps.w.org/wordpress-seo/assets/banner-1544x500-rtl.png?rev=1843435\";s:2:\"1x\";s:72:\"https://ps.w.org/wordpress-seo/assets/banner-772x250-rtl.png?rev=1843435\";}s:6:\"tested\";s:5:\"4.9.6\";s:12:\"requires_php\";s:5:\"5.2.4\";s:13:\"compatibility\";O:8:\"stdClass\":0:{}}}s:12:\"translations\";a:3:{i:0;a:7:{s:4:\"type\";s:6:\"plugin\";s:4:\"slug\";s:7:\"akismet\";s:8:\"language\";s:5:\"fr_FR\";s:7:\"version\";s:5:\"4.0.3\";s:7:\"updated\";s:19:\"2018-05-26 15:35:00\";s:7:\"package\";s:74:\"https://downloads.wordpress.org/translation/plugin/akismet/4.0.3/fr_FR.zip\";s:10:\"autoupdate\";b:1;}i:1;a:7:{s:4:\"type\";s:6:\"plugin\";s:4:\"slug\";s:11:\"hello-dolly\";s:8:\"language\";s:5:\"fr_FR\";s:7:\"version\";s:3:\"1.6\";s:7:\"updated\";s:19:\"2018-04-27 10:03:32\";s:7:\"package\";s:76:\"https://downloads.wordpress.org/translation/plugin/hello-dolly/1.6/fr_FR.zip\";s:10:\"autoupdate\";b:1;}i:2;a:7:{s:4:\"type\";s:6:\"plugin\";s:4:\"slug\";s:18:\"wordpress-importer\";s:8:\"language\";s:5:\"fr_FR\";s:7:\"version\";s:5:\"0.6.4\";s:7:\"updated\";s:19:\"2018-03-12 18:37:24\";s:7:\"package\";s:85:\"https://downloads.wordpress.org/translation/plugin/wordpress-importer/0.6.4/fr_FR.zip\";s:10:\"autoupdate\";b:1;}}s:9:\"no_update\";a:6:{s:41:\"navz-photo-gallery/navz-photo-gallery.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:32:\"w.org/plugins/navz-photo-gallery\";s:4:\"slug\";s:18:\"navz-photo-gallery\";s:6:\"plugin\";s:41:\"navz-photo-gallery/navz-photo-gallery.php\";s:11:\"new_version\";s:5:\"1.6.2\";s:3:\"url\";s:49:\"https://wordpress.org/plugins/navz-photo-gallery/\";s:7:\"package\";s:67:\"https://downloads.wordpress.org/plugin/navz-photo-gallery.1.6.2.zip\";s:5:\"icons\";a:1:{s:2:\"1x\";s:71:\"https://ps.w.org/navz-photo-gallery/assets/icon-128x128.png?rev=1561241\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:73:\"https://ps.w.org/navz-photo-gallery/assets/banner-772x250.png?rev=1561242\";}s:11:\"banners_rtl\";a:0:{}}s:30:\"advanced-custom-fields/acf.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:36:\"w.org/plugins/advanced-custom-fields\";s:4:\"slug\";s:22:\"advanced-custom-fields\";s:6:\"plugin\";s:30:\"advanced-custom-fields/acf.php\";s:11:\"new_version\";s:6:\"4.4.12\";s:3:\"url\";s:53:\"https://wordpress.org/plugins/advanced-custom-fields/\";s:7:\"package\";s:72:\"https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.12.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:75:\"https://ps.w.org/advanced-custom-fields/assets/icon-256x256.png?rev=1082746\";s:2:\"1x\";s:75:\"https://ps.w.org/advanced-custom-fields/assets/icon-128x128.png?rev=1082746\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:78:\"https://ps.w.org/advanced-custom-fields/assets/banner-1544x500.jpg?rev=1729099\";s:2:\"1x\";s:77:\"https://ps.w.org/advanced-custom-fields/assets/banner-772x250.jpg?rev=1729102\";}s:11:\"banners_rtl\";a:0:{}}s:60:\"bookingcom-official-searchbox/booking-official-searchbox.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:43:\"w.org/plugins/bookingcom-official-searchbox\";s:4:\"slug\";s:29:\"bookingcom-official-searchbox\";s:6:\"plugin\";s:60:\"bookingcom-official-searchbox/booking-official-searchbox.php\";s:11:\"new_version\";s:3:\"2.1\";s:3:\"url\";s:60:\"https://wordpress.org/plugins/bookingcom-official-searchbox/\";s:7:\"package\";s:76:\"https://downloads.wordpress.org/plugin/bookingcom-official-searchbox.2.1.zip\";s:5:\"icons\";a:1:{s:2:\"1x\";s:82:\"https://ps.w.org/bookingcom-official-searchbox/assets/icon-128x128.png?rev=1134398\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:85:\"https://ps.w.org/bookingcom-official-searchbox/assets/banner-1544x500.jpg?rev=1691289\";s:2:\"1x\";s:84:\"https://ps.w.org/bookingcom-official-searchbox/assets/banner-772x250.jpg?rev=1691289\";}s:11:\"banners_rtl\";a:0:{}}s:9:\"hello.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:25:\"w.org/plugins/hello-dolly\";s:4:\"slug\";s:11:\"hello-dolly\";s:6:\"plugin\";s:9:\"hello.php\";s:11:\"new_version\";s:3:\"1.6\";s:3:\"url\";s:42:\"https://wordpress.org/plugins/hello-dolly/\";s:7:\"package\";s:58:\"https://downloads.wordpress.org/plugin/hello-dolly.1.6.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:63:\"https://ps.w.org/hello-dolly/assets/icon-256x256.jpg?rev=969907\";s:2:\"1x\";s:63:\"https://ps.w.org/hello-dolly/assets/icon-128x128.jpg?rev=969907\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:65:\"https://ps.w.org/hello-dolly/assets/banner-772x250.png?rev=478342\";}s:11:\"banners_rtl\";a:0:{}}s:41:\"wordpress-importer/wordpress-importer.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:32:\"w.org/plugins/wordpress-importer\";s:4:\"slug\";s:18:\"wordpress-importer\";s:6:\"plugin\";s:41:\"wordpress-importer/wordpress-importer.php\";s:11:\"new_version\";s:5:\"0.6.4\";s:3:\"url\";s:49:\"https://wordpress.org/plugins/wordpress-importer/\";s:7:\"package\";s:67:\"https://downloads.wordpress.org/plugin/wordpress-importer.0.6.4.zip\";s:5:\"icons\";a:1:{s:7:\"default\";s:69:\"https://s.w.org/plugins/geopattern-icon/wordpress-importer_5696b3.svg\";}s:7:\"banners\";a:1:{s:2:\"1x\";s:72:\"https://ps.w.org/wordpress-importer/assets/banner-772x250.png?rev=547654\";}s:11:\"banners_rtl\";a:0:{}}s:31:\"wp-migrate-db/wp-migrate-db.php\";O:8:\"stdClass\":9:{s:2:\"id\";s:27:\"w.org/plugins/wp-migrate-db\";s:4:\"slug\";s:13:\"wp-migrate-db\";s:6:\"plugin\";s:31:\"wp-migrate-db/wp-migrate-db.php\";s:11:\"new_version\";s:5:\"1.0.2\";s:3:\"url\";s:44:\"https://wordpress.org/plugins/wp-migrate-db/\";s:7:\"package\";s:62:\"https://downloads.wordpress.org/plugin/wp-migrate-db.1.0.2.zip\";s:5:\"icons\";a:2:{s:2:\"2x\";s:66:\"https://ps.w.org/wp-migrate-db/assets/icon-256x256.jpg?rev=1809889\";s:2:\"1x\";s:66:\"https://ps.w.org/wp-migrate-db/assets/icon-128x128.jpg?rev=1809889\";}s:7:\"banners\";a:2:{s:2:\"2x\";s:69:\"https://ps.w.org/wp-migrate-db/assets/banner-1544x500.jpg?rev=1809889\";s:2:\"1x\";s:68:\"https://ps.w.org/wp-migrate-db/assets/banner-772x250.jpg?rev=1809889\";}s:11:\"banners_rtl\";a:0:{}}}}', 'no'),
+(1709, '_site_transient_timeout_browser_a83f0395992b1c134b40a171734e504a', '1528369124', 'no'),
+(1710, '_site_transient_browser_a83f0395992b1c134b40a171734e504a', 'a:10:{s:4:\"name\";s:6:\"Chrome\";s:7:\"version\";s:13:\"66.0.3359.181\";s:8:\"platform\";s:7:\"Windows\";s:10:\"update_url\";s:29:\"https://www.google.com/chrome\";s:7:\"img_src\";s:43:\"http://s.w.org/images/browsers/chrome.png?1\";s:11:\"img_src_ssl\";s:44:\"https://s.w.org/images/browsers/chrome.png?1\";s:15:\"current_version\";s:2:\"18\";s:7:\"upgrade\";b:0;s:8:\"insecure\";b:0;s:6:\"mobile\";b:0;}', 'no'),
+(1814, '_transient_is_multi_author', '0', 'yes'),
+(1815, '_transient_shapely_categories', '1', 'yes');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_postmeta`
+-- Structure de la table `wp_postmeta`
 --
 
-CREATE TABLE `wp_postmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_postmeta`;
+CREATE TABLE IF NOT EXISTS `wp_postmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `post_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) DEFAULT NULL,
-  `meta_value` longtext
-) ;
+  `meta_value` longtext,
+  PRIMARY KEY (`meta_id`),
+  KEY `post_id` (`post_id`),
+  KEY `meta_key` (`meta_key`(191))
+) ENGINE=MyISAM AUTO_INCREMENT=4117 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_postmeta`
+-- Déchargement des données de la table `wp_postmeta`
 --
 
 INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
@@ -1971,7 +2035,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (7, 7, '_wp_attached_file', '2018/04/cropped-logo.png'),
 (8, 7, '_wp_attachment_context', 'custom-logo'),
 (9, 7, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:218;s:6:\"height\";i:55;s:4:\"file\";s:24:\"2018/04/cropped-logo.png\";s:5:\"sizes\";a:1:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:23:\"cropped-logo-150x55.png\";s:5:\"width\";i:150;s:6:\"height\";i:55;s:9:\"mime-type\";s:9:\"image/png\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
-(14, 2, '_edit_lock', '1525673396:1'),
+(14, 2, '_edit_lock', '1527773506:1'),
 (15, 2, '_edit_last', '1'),
 (25, 13, '_menu_item_type', 'post_type'),
 (26, 13, '_menu_item_menu_item_parent', '0'),
@@ -1982,7 +2046,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (31, 13, '_menu_item_xfn', ''),
 (32, 13, '_menu_item_url', ''),
 (34, 14, '_edit_last', '1'),
-(35, 14, '_edit_lock', '1525673588:1'),
+(35, 14, '_edit_lock', '1527775306:1'),
 (36, 14, '_wp_page_template', 'page-templates/page-hebergement.php'),
 (37, 16, '_menu_item_type', 'post_type'),
 (38, 16, '_menu_item_menu_item_parent', '0'),
@@ -2062,51 +2126,15 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (156, 62, '_edit_last', '1'),
 (157, 62, '_edit_lock', '1525437585:1'),
 (158, 62, '_wp_page_template', 'page-templates/page-mentions.php'),
-(159, 65, '_menu_item_type', 'post_type'),
-(160, 65, '_menu_item_menu_item_parent', '0'),
-(161, 65, '_menu_item_object_id', '62'),
-(162, 65, '_menu_item_object', 'page'),
-(163, 65, '_menu_item_target', ''),
-(164, 65, '_menu_item_classes', 'a:1:{i:0;s:0:\"\";}'),
-(165, 65, '_menu_item_xfn', ''),
-(166, 65, '_menu_item_url', ''),
-(167, 65, '_menu_item_orphaned', '1523952689'),
-(168, 66, '_menu_item_type', 'post_type'),
-(169, 66, '_menu_item_menu_item_parent', '0'),
-(170, 66, '_menu_item_object_id', '55'),
-(171, 66, '_menu_item_object', 'page'),
-(172, 66, '_menu_item_target', ''),
-(173, 66, '_menu_item_classes', 'a:1:{i:0;s:0:\"\";}'),
-(174, 66, '_menu_item_xfn', ''),
-(175, 66, '_menu_item_url', ''),
-(176, 66, '_menu_item_orphaned', '1523952689'),
-(177, 67, '_menu_item_type', 'post_type'),
-(178, 67, '_menu_item_menu_item_parent', '0'),
-(179, 67, '_menu_item_object_id', '36'),
-(180, 67, '_menu_item_object', 'page'),
-(181, 67, '_menu_item_target', ''),
-(182, 67, '_menu_item_classes', 'a:1:{i:0;s:0:\"\";}'),
-(183, 67, '_menu_item_xfn', ''),
-(184, 67, '_menu_item_url', ''),
-(185, 67, '_menu_item_orphaned', '1523952689'),
-(186, 68, '_menu_item_type', 'post_type'),
-(187, 68, '_menu_item_menu_item_parent', '0'),
-(188, 68, '_menu_item_object_id', '30'),
-(189, 68, '_menu_item_object', 'page'),
-(190, 68, '_menu_item_target', ''),
-(191, 68, '_menu_item_classes', 'a:1:{i:0;s:0:\"\";}'),
-(192, 68, '_menu_item_xfn', ''),
-(193, 68, '_menu_item_url', ''),
-(194, 68, '_menu_item_orphaned', '1523952689'),
-(213, 71, '_menu_item_type', 'post_type'),
-(214, 71, '_menu_item_menu_item_parent', '0'),
-(215, 71, '_menu_item_object_id', '45'),
-(216, 71, '_menu_item_object', 'page'),
-(217, 71, '_menu_item_target', ''),
-(218, 71, '_menu_item_classes', 'a:1:{i:0;s:0:\"\";}'),
-(219, 71, '_menu_item_xfn', ''),
-(220, 71, '_menu_item_url', ''),
-(221, 71, '_menu_item_orphaned', '1523952689'),
+(3902, 364, 'field_5ad832e834ae1', 'a:11:{s:3:\"key\";s:19:\"field_5ad832e834ae1\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:9:\"contenu_1\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(3901, 364, 'field_5ad832a034ae0', 'a:14:{s:3:\"key\";s:19:\"field_5ad832a034ae0\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:7:\"titre_1\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(3900, 364, 'field_5ad8328334adf', 'a:8:{s:3:\"key\";s:19:\"field_5ad8328334adf\";s:5:\"label\";s:12:\"Paragraphe 1\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(3899, 364, '_edit_last', '1'),
+(3898, 124, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"carte\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(3897, 124, 'hide_on_screen', ''),
+(3896, 124, 'layout', 'no_box'),
+(3895, 124, 'position', 'normal'),
+(3894, 124, '_edit_last', '1'),
 (240, 74, '_wp_attached_file', '2018/04/cropped-activity_photo.jpg'),
 (241, 74, '_wp_attachment_context', 'custom-header'),
 (242, 74, '_wp_attachment_metadata', 'a:6:{s:5:\"width\";i:1900;s:6:\"height\";i:225;s:4:\"file\";s:34:\"2018/04/cropped-activity_photo.jpg\";s:5:\"sizes\";a:7:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:34:\"cropped-activity_photo-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:33:\"cropped-activity_photo-300x36.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:36;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:33:\"cropped-activity_photo-768x91.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:91;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:35:\"cropped-activity_photo-1024x121.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:121;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:35:\"cropped-activity_photo-1110x225.jpg\";s:5:\"width\";i:1110;s:6:\"height\";i:225;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:34:\"cropped-activity_photo-730x225.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:225;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:34:\"cropped-activity_photo-350x225.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:225;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}s:17:\"attachment_parent\";i:28;}'),
@@ -2127,7 +2155,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (285, 136, 'hide_on_screen', ''),
 (286, 136, '_edit_lock', '1524742748:1'),
 (287, 137, '_edit_last', '1'),
-(288, 137, '_edit_lock', '1525696882:1'),
+(288, 137, '_edit_lock', '1527767918:1'),
 (289, 137, '_wp_page_template', 'page-templates/homepage.php'),
 (291, 136, 'field_5ad8336cdfbac', 'a:8:{s:3:\"key\";s:19:\"field_5ad8336cdfbac\";s:5:\"label\";s:12:\"Paragraphe 2\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:4;}'),
 (292, 136, 'field_5ad8337bdfbad', 'a:14:{s:3:\"key\";s:19:\"field_5ad8337bdfbad\";s:5:\"label\";s:6:\"Titre \";s:4:\"name\";s:7:\"titre_2\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:5;}'),
@@ -2507,7 +2535,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (708, 2, '_image_2', 'field_5ad834d87687c'),
 (709, 2, 'titre_3', 'Les différents types de transport vénitiens'),
 (710, 2, '_titre_3', 'field_5ad84b3059db1'),
-(711, 2, 'contenu_3', 'Pour se déplacer à Venise, il faut connaître tous les types de transport existants, surtout ceux qui caractérisent la cité. Vous prenez un cliché du Grand Canal qui traverse la ville, et vous aurez une vue d’ensemble de tous les bateaux qui sillonnent la ville, allant du vaporetto à l’Alilaguna, en passant par le bus, le bateau-taxi, le motoscafo, le traghetto et la gondole.\r\n<ul>\r\n 	<li>Le vaporetto</li>\r\n</ul>\r\nVaporetti au pluriel, le vaporetto est un ferry de passagers. Il est un peu l’équivalent du métro. Ce service public est géré par une compagnie, l’ACTV (Azienda Consorzio Trasporti Veneziano). Ce consortium d’entreprise des transports vénitiens exploite également les transports extra-urbains de l’agglomération vénitienne et de la province. Il gère aussi les lignes de bus qui desservent Chioggia et Mestre.\r\n\r\nUne variante plus luxueuse est le vaporetto dell’Arte aux fauteuils rouges au dos desquels sont installés des écrans émettant en plusieurs langues des informations sur les sites traversés.\r\n<ul>\r\n 	<li>Les bus</li>\r\n</ul>\r\nOn parle ici des autobus qui assurent la liaison entre les différents secteurs de la partie terre ferme de la contrée.\r\n<ul>\r\n 	<li>L’Alilaguna</li>\r\n</ul>\r\nLes voyageurs qui atterrissent à l’aéroport Marco Polo et qui voudront rejoindre Venise par la lagune ont le choix entre prendre un bateau Alilaguna et un taxi bateau. Les lignes Alilaguna sont gérées par une autre compagnie que l’ACTV.\r\n<ul>\r\n 	<li>Le taxi bateau</li>\r\n</ul>\r\nPratique mais onéreux, ce moyen de déplacement convient aux personnes chargées ou pressées. On reconnaît le taxi par sa bande jaune qui porte son numéro de licence. Une recommandation : aussi pressé que vous êtes, n’incitez jamais votre conducteur à accélérer. Les vagues provoquées par l’excès de vitesse risquent en effet d’impacter les fondations anciennes de cette délicate cité vénitienne.\r\n<ul>\r\n 	<li>Le motoscafo</li>\r\n</ul>\r\nC’est une sorte de bateau à moteur blanc ou en bois verni utilisé pour les transports sur de longues distances. Sa cabine est séparée du poste de pilotage.\r\n<ul>\r\n 	<li>Le traghetto</li>\r\n</ul>\r\nÀ l’opposé du vaporetto qui longe le Canal Grande, ce traversier atypique va d’une rive à l’autre, manœuvré par deux robustes rameurs. On s’y tient debout.\r\n<ul>\r\n 	<li>La gondole</li>\r\n</ul>\r\nSi le motoscafo est une icône vénitienne, la gondole en est une autre. Celle-ci est même très représentative de la Cité des Doges. Ramée par un gondolier, elle est très prisée des amoureux, surtout quand elle est animée de chansons.'),
+(711, 2, 'contenu_3', 'Pour se déplacer à Venise, il faut connaître tous les types de transport existants, surtout ceux qui caractérisent la cité. Vous prenez un cliché du Grand Canal qui traverse la ville, et vous aurez une vue d’ensemble de tous les bateaux qui sillonnent la ville, allant du vaporetto à l’Alilaguna, en passant par le bus, le bateau-taxi, le motoscafo, le traghetto et la gondole.\r\n<h3>Le vaporetto</h3>\r\nVaporetti au pluriel, le vaporetto est un ferry de passagers. Il est un peu l’équivalent du métro. Ce service public est géré par une compagnie, l’ACTV (Azienda Consorzio Trasporti Veneziano). Ce consortium d’entreprise des transports vénitiens exploite également les transports extra-urbains de l’agglomération vénitienne et de la province. Il gère aussi les lignes de bus qui desservent Chioggia et Mestre.\r\n\r\nUne variante plus luxueuse est le vaporetto dell’Arte aux fauteuils rouges au dos desquels sont installés des écrans émettant en plusieurs langues des informations sur les sites traversés.\r\n<h3>Les bus</h3>\r\nOn parle ici des autobus qui assurent la liaison entre les différents secteurs de la partie terre ferme de la contrée.\r\n<h3>L’Alilaguna</h3>\r\nLes voyageurs qui atterrissent à l’aéroport Marco Polo et qui voudront rejoindre Venise par la lagune ont le choix entre prendre un bateau Alilaguna et un taxi bateau. Les lignes Alilaguna sont gérées par une autre compagnie que l’ACTV.\r\n<h3>Le taxi bateau</h3>\r\nPratique mais onéreux, ce moyen de déplacement convient aux personnes chargées ou pressées. On reconnaît le taxi par sa bande jaune qui porte son numéro de licence. Une recommandation : aussi pressé que vous êtes, n’incitez jamais votre conducteur à accélérer. Les vagues provoquées par l’excès de vitesse risquent en effet d’impacter les fondations anciennes de cette délicate cité vénitienne.\r\n<h3>Le motoscafo</h3>\r\nC’est une sorte de bateau à moteur blanc ou en bois verni utilisé pour les transports sur de longues distances. Sa cabine est séparée du poste de pilotage.\r\n<h3>Le traghetto</h3>\r\nÀ l’opposé du vaporetto qui longe le Canal Grande, ce traversier atypique va d’une rive à l’autre, manœuvré par deux robustes rameurs. On s’y tient debout.\r\n<h3>La gondole</h3>\r\nSi le motoscafo est une icône vénitienne, la gondole en est une autre. Celle-ci est même très représentative de la Cité des Doges. Ramée par un gondolier, elle est très prisée des amoureux, surtout quand elle est animée de chansons.'),
 (712, 2, '_contenu_3', 'field_5ad84b4359db2'),
 (713, 2, 'image_3', ''),
 (714, 2, '_image_3', 'field_5ad84b5259db3'),
@@ -3316,7 +3344,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (1581, 258, 'position', 'normal'),
 (1582, 258, 'layout', 'no_box'),
 (1583, 258, 'hide_on_screen', ''),
-(1584, 258, '_edit_lock', '1525416212:1'),
+(1584, 258, '_edit_lock', '1527773520:1'),
 (1595, 258, 'field_5ae08fa0d0976', 'a:8:{s:3:\"key\";s:19:\"field_5ae08fa0d0976\";s:5:\"label\";s:27:\"Paragraphe info sur l\'hotel\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
 (1596, 258, 'field_5ae08fcad0977', 'a:14:{s:3:\"key\";s:19:\"field_5ae08fcad0977\";s:5:\"label\";s:7:\"Adresse\";s:4:\"name\";s:7:\"adresse\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
 (1600, 245, 'icone_start', 'Sestiere Castello, 4971, 30122 Venezia VE, Italie\r\n+39 041 241 3979'),
@@ -3442,30 +3470,6 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (1894, 182, '_contenu_3', 'field_5ad84b4359db2'),
 (1895, 182, 'image_3', ''),
 (1896, 182, '_image_3', 'field_5ad84b5259db3'),
-(1897, 284, '_edit_last', '1'),
-(1898, 284, '_edit_lock', '1525442384:1'),
-(1899, 284, '_thumbnail_id', '158'),
-(1900, 284, 'icone_carte', ''),
-(1901, 284, '_icone_carte', 'field_5ad7570d99261'),
-(1902, 284, 'titre_1', 'Les meilleurs restaurants à Venise'),
-(1903, 284, '_titre_1', 'field_5ad832a034ae0'),
-(1904, 284, 'contenu_1', 'À Venise, vous pouvez déguster de nombreux plats, tout aussi délicieux et succulents les uns que les autres, et ceci, dans les restaurants de la ville. Voici une petite liste des meilleures tables vénitiennes qui méritent un détour.\r\n<h3>L’Osteria Dal Riccio Peoco</h3>\r\nDans ce restaurant, vous goûterez à des plats finement concoctés par le chef, dont la spécialité et le farci au saucisson artisanal qu’on appelle le Panino Scrocchio. Vous pourrez même l’accompagner d’un verre de vin de la région. La cuvée s’obtient à un prix abordable. L’Osteria Dal Riccio Peoco organise chaque vendredi une soirée concert.\r\n<h3>L’Osteria Alla Frasca</h3>\r\nCe lieu reflète l’authenticité de la cuisine italienne. Ce restaurant propose des plats originaux qui sont, non seulement de qualité, mais la quantité est également au menu. Vous aurez l’occasion de discuter avec le propriétaire qui vous racontera fièrement les débuts et l’histoire de son établissement. Parmi les recettes qui font la renommée de la maison, vous pouvez tester les rigatonis aux langoustines et au radicchio tardivo, ou encore la sole au citron et le poisson frit.\r\n<h3>L’Osteria Da Carla</h3>\r\nSi vous souhaitez casser la croûte à l’Osteria Da Carla, on vous recommande de goûter à son fameux plat de gnocchis au pesto de roquette avec des crevettes fraîches et leur burrata. Dans une ambiance conviviale, vous dégusterez les mets dans la bonne humeur. Venez en groupe, entre amis ou en famille !\r\n<h3>L’Osteria Ai Nevodi</h3>\r\nSi vous êtes à la recherche d’un restaurant italien classique doté de tables en terrasse et offrant une ambiance chaleureuse et charmante, rendez-vous au restaurant Osteria Ai Nevodi. C’est dans un endroit agréable, aménagé avec des murs en briques rouges, des tables en bois, des lumières douces et tamisées que vous vous régalerez avec les menus qu’il propose. Dès que vous y êtes, n’oubliez pas d’essayer leurs fruits de mer qui sont un véritable délice.\r\n\r\n&nbsp;\r\n\r\n&nbsp;'),
-(1905, 284, '_contenu_1', 'field_5ad832e834ae1'),
-(1906, 284, 'image_1', '256'),
-(1907, 284, '_image_1', 'field_5ad833c87687b'),
-(1908, 284, 'titre_2', 'Il Mercante'),
-(1909, 284, '_titre_2', 'field_5ad8337bdfbad'),
-(1910, 284, 'contenu_2', 'Si vous souhaitez déguster des plats parfaitement réalisés et ayant des saveurs qui vous raviront, Il Mercante est le restaurant dans lequel vous devez vous rendre. L’originalité de cet établissement réside dans le fait que derrière chaque boisson affichée au menu, vous trouverez une anecdote. Une fois que vous aurez essayé les plats du restaurant Il Mercante, vous ne vous en lasserez plus. Vous y passerez un moment de détente tout en savourant les meilleures recettes vénitiennes.'),
-(1911, 284, '_contenu_2', 'field_5ad833af7687a'),
-(1912, 284, 'image_2', ''),
-(1913, 284, '_image_2', 'field_5ad834d87687c'),
-(1914, 284, 'titre_3', 'La Trattoria'),
-(1915, 284, '_titre_3', 'field_5ad84b3059db1'),
-(1916, 284, 'contenu_3', '<h3>Pizzeria da Paolo</h3>\r\nQue serait un voyage à Venise sans goûter aux fameuses pizzas dans leur terre d’origine ? Pendant votre séjour, vous pouvez aller au restaurant Trattoria Pizzeria da Paolo qui propose une variété de pizzas. Et même si vous n’êtes pas un amateur de pizza, soyez sûr que vous en redemanderez. Vous dégusterez également vos plats sur une terrasse spacieuse et bien ensoleillée. De plus, le service est de qualité, très sympathique, ce qui vous permettra de passer un bon moment.\r\n<h3>Al Ponte del Megio</h3>\r\nPour les fans de pâtes à l’italienne, on vous conseille ce restaurant. Disposant d’une petite terrasse située près d’un joli pont, vous pourrez goûter aux plats de pâtes aux légumes ou aux fruits de mer. Vous pourrez également y commander d’autres menus typiquement italiens, tout en profitant de prix abordables. Même si vous avez un petit budget, vous pouvez vous régaler au restaurant La Trattoria Al Ponte del Megio.\r\nAinsi, faire un choix inédit des transports à utiliser à Venise est une chose quand on voyage dans la région de Vénétie, mais découvrir les spécialités culinaires vénitiennes en est une autre.'),
-(1917, 284, '_contenu_3', 'field_5ad84b4359db2'),
-(1918, 284, 'image_3', ''),
-(1919, 284, '_image_3', 'field_5ad84b5259db3'),
-(1928, 284, '_wp_old_slug', 'restaurant'),
 (1929, 156, '_wp_old_slug', 'transport'),
 (1934, 245, 'extrait', 'Vivamus suscipit tortor eget felis porttitor volutpat. Donec rutrum congue leo eget malesuada. Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum porta. Quisque velit nisi, pretium ut lacinia in, elementum id enim.'),
 (1935, 245, '_extrait', 'field_5ae2e2b37534e'),
@@ -3580,8 +3584,6 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2074, 293, '_wp_attached_file', '2018/04/cropped-logo-2.png'),
 (2075, 293, '_wp_attachment_context', 'custom-logo'),
 (2076, 293, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:218;s:6:\"height\";i:55;s:4:\"file\";s:26:\"2018/04/cropped-logo-2.png\";s:5:\"sizes\";a:1:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:25:\"cropped-logo-2-150x55.png\";s:5:\"width\";i:150;s:6:\"height\";i:55;s:9:\"mime-type\";s:9:\"image/png\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
-(2077, 294, '_wp_trash_meta_status', 'publish'),
-(2078, 294, '_wp_trash_meta_time', '1525354376'),
 (2079, 298, 'titre_1', 'Voyage Venise dans le temps : de La Cité des Doges à La Cité des Amoureux'),
 (2080, 298, '_titre_1', 'field_5ad832a034ae0'),
 (2081, 298, 'contenu_1', 'Ville portuaire hors du commun, Venise est constituée de 118 îlots situés côte à côte dans la lagune vénète, au nord-est de l’Italie. Tout un réseau de canaux sépare ces bouts de terre, et des ponts les relient. La mer Adriatique l’embrasse de ses doux flots. Un voyage Venise vous permettra de remonter dans le temps pour mieux connaître son histoire.\r\n\r\nLa Cité des Doges a connu des hauts et des bas et finit par se transformer en La Cité des Amoureux. Son histoire est marquée par sa domination économique sur l’Italie au Moyen Âge. Riche et paisible durant plus d’un millénaire grâce à l’aisance navale de ses habitants, la Sérénissime flétrit à la Renaissance, mais rayonne sur le plan culturel.'),
@@ -3720,8 +3722,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2216, 124, 'layout', 'no_box'),
 (2217, 124, 'hide_on_screen', ''),
 (2218, 124, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"carte\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
-(2219, 136, '_edit_last', '1');
-INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
+(2219, 136, '_edit_last', '1'),
 (2220, 136, 'field_5ad8328334adf', 'a:8:{s:3:\"key\";s:19:\"field_5ad8328334adf\";s:5:\"label\";s:12:\"Paragraphe 1\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
 (2221, 136, 'field_5ad832a034ae0', 'a:14:{s:3:\"key\";s:19:\"field_5ad832a034ae0\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:7:\"titre_1\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
 (2222, 136, 'field_5ad832e834ae1', 'a:11:{s:3:\"key\";s:19:\"field_5ad832e834ae1\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:9:\"contenu_1\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
@@ -3733,7 +3734,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2228, 136, 'field_5ad833c87687b', 'a:11:{s:3:\"key\";s:19:\"field_5ad833c87687b\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_1\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
 (2229, 136, 'field_5ad833af7687a', 'a:11:{s:3:\"key\";s:19:\"field_5ad833af7687a\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:9:\"contenu_2\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:6;}'),
 (2230, 136, 'field_5ad834d87687c', 'a:11:{s:3:\"key\";s:19:\"field_5ad834d87687c\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_2\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:7;}'),
-(2231, 136, 'field_5ad84b2059db0', 'a:8:{s:3:\"key\";s:19:\"field_5ad84b2059db0\";s:5:\"label\";s:12:\"Paragraphe 3\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:8;}'),
+(2231, 136, 'field_5ad84b2059db0', 'a:8:{s:3:\"key\";s:19:\"field_5ad84b2059db0\";s:5:\"label\";s:12:\"Paragraphe 3\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:8;}');
+INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (2232, 136, 'field_5ad84b3059db1', 'a:14:{s:3:\"key\";s:19:\"field_5ad84b3059db1\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:7:\"titre_3\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:9;}'),
 (2233, 136, 'field_5ad84b4359db2', 'a:11:{s:3:\"key\";s:19:\"field_5ad84b4359db2\";s:5:\"label\";s:8:\"Contenu \";s:4:\"name\";s:9:\"contenu_3\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:10;}'),
 (2234, 136, 'field_5ad84b5259db3', 'a:11:{s:3:\"key\";s:19:\"field_5ad84b5259db3\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_3\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:11;}'),
@@ -3949,8 +3951,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2449, 312, 'image_1', '51'),
 (2450, 312, '_image_1', 'field_5ad833c87687b'),
 (2451, 312, 'titre_2', 'Hôtels'),
-(2452, 312, '_titre_2', 'field_5ad8337bdfbad');
-INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
+(2452, 312, '_titre_2', 'field_5ad8337bdfbad'),
 (2453, 312, 'contenu_2', '<p style=\"text-align: justify;\">Envie de vous offrir un séjour inoubliable dans un luxueux palace vénitien ? De nombreux établissements somptueux vous attendent dans des cadres chics et sophistiqués, surtout dans les quartiers de San Marco et de San Polo. Vous découvrirez également des hôtels plus classiques, mais confortables accessibles à tous dans certains quartiers de la Reine de l’Adriatique.</p>\r\n\r\n<h4>Auberges de jeunesse</h4>\r\n<p style=\"text-align: justify;\">Pour profiter d’une ambiance familiale typiquement italienne tout au long de votre séjour à Venise, les auberges de jeunesse et les maisons d’accueil sont faites pour vous. Si vous souhaitez vous éloigner un peu de la trépidante vie du centre-ville, rendez-vous sur l’île de la Giudecca pour plus de sérénité.</p>\r\n\r\n<h4>Appartements</h4>\r\n<p style=\"text-align: justify;\">Si vous êtes en vacances à Venise en famille ou en groupe, la location d’appartement s’avère intéressante pour plus d’autonomie et de praticité. Dans la Cité des Masques, une multitude d’appartements et de studios de toute taille se plient à tous les besoins, même des plus exigeants. Quel plaisir de passer un agréable et confortable séjour dans un spacieux bâtiment, tout en profitant d’une vue panoramique sur les gondoles. Vous pourrez réserver votre location d’appartement en passant par une agence spécialisée. C’est la formule la plus économique pour les familles et les groupes d’amis.</p>'),
 (2454, 312, '_contenu_2', 'field_5ad833af7687a'),
 (2455, 312, 'image_2', ''),
@@ -3975,7 +3976,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2475, 314, 'adresse', 'Isola San Clemente 1, 30133 Venise, Italie'),
 (2476, 314, '_adresse', 'field_5ae08fcad0977'),
 (2477, 314, 'hotel_info', ''),
-(2478, 314, '_hotel_info', 'field_5ae0ad3733076'),
+(2478, 314, '_hotel_info', 'field_5ae0ad3733076');
+INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (2479, 314, 'about_hotel', '<h3>San Clemente Palace Resort : un hôtel pour toute la famille à Venise</h3>\r\nSi vous comptez passer un séjour à Venise, installez-vous à l’hôtel San Clemente Palace. Se trouvant sur l’île privée du même nom, l’établissement propose de nombreux services à la grande satisfaction de ses clients. Il offre par exemple un service de chambre disponible à toute heure, un service de baby-sitting, un service de change ainsi qu’une réception pouvant répondre à vos besoins 24 h/24.\r\n\r\nLes chambres et les suites sont climatisées et décorées avec un style original vénitien pour vous offrir un cadre relaxant. Elles sont équipées d’une télévision à écran plat, d’un minibar, de chaussons, d’un coffre-fort et d’une salle de bain en marbre avec baignoire.\r\n\r\nL’hôtel dispose d’un terrain de golf, d’une cour de tennis et d’une salle de sport bien équipée. Vous avez accès au sauna et à la piscine de l’hôtel. Vous pouvez vous rendre au bar pour siroter un cocktail avant de prendre place au restaurant de l’hôtel pour goûter aux spécialités de la région. Le cadre est idéal pour toute la famille.\r\n\r\nCet hotel pour famille à Venise possède un personnel multilingue prêt à vous guider lors des sorties. En ce qui concerne le transport, un service de navette gratuit se tient à votre disposition pour les va-et-vient entre l’île et la place Saint-Marc.'),
 (2480, 314, '_about_hotel', 'field_5ae0b47d5a9a2'),
 (2481, 314, 'options_hotel', 'a:1:{i:0;s:1:\"0\";}'),
@@ -4039,7 +4041,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2539, 326, '_wp_attached_file', '2018/05/Serenissima-4.jpg'),
 (2540, 326, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:1024;s:6:\"height\";i:768;s:4:\"file\";s:25:\"2018/05/Serenissima-4.jpg\";s:5:\"sizes\";a:7:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:25:\"Serenissima-4-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:25:\"Serenissima-4-300x225.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:225;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:25:\"Serenissima-4-768x576.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:576;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:26:\"Serenissima-4-1024x768.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:768;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:26:\"Serenissima-4-1024x530.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:530;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:25:\"Serenissima-4-730x350.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:350;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:25:\"Serenissima-4-350x300.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:300;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (2541, 327, '_edit_last', '1'),
-(2542, 327, '_edit_lock', '1525444029:1'),
+(2542, 327, '_edit_lock', '1527863046:1'),
 (2543, 328, '_wp_attached_file', '2018/05/galleria-1.jpg'),
 (2544, 328, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:1024;s:6:\"height\";i:424;s:4:\"file\";s:22:\"2018/05/galleria-1.jpg\";s:5:\"sizes\";a:6:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:22:\"galleria-1-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:22:\"galleria-1-300x124.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:124;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:22:\"galleria-1-768x318.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:318;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:23:\"galleria-1-1024x424.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:424;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:22:\"galleria-1-730x350.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:350;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:22:\"galleria-1-350x300.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:300;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (2545, 329, '_wp_attached_file', '2018/05/galleria-2.jpg'),
@@ -4058,7 +4060,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2558, 327, '_options_hotel', 'field_5ae0b4d37cf7e'),
 (2559, 327, 'gallery_images', '330,329,328'),
 (2560, 332, '_edit_last', '1'),
-(2561, 332, '_edit_lock', '1525698461:1'),
+(2561, 332, '_edit_lock', '1527876482:1'),
 (2562, 333, '_wp_attached_file', '2018/05/Residenza-1.jpg'),
 (2563, 333, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:1024;s:6:\"height\";i:683;s:4:\"file\";s:23:\"2018/05/Residenza-1.jpg\";s:5:\"sizes\";a:7:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:23:\"Residenza-1-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:23:\"Residenza-1-300x200.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:23:\"Residenza-1-768x512.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:512;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:24:\"Residenza-1-1024x683.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:683;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:24:\"Residenza-1-1024x530.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:530;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:23:\"Residenza-1-730x350.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:350;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:23:\"Residenza-1-350x300.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:300;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (2564, 334, '_wp_attached_file', '2018/05/Residenza-2.jpg'),
@@ -4133,8 +4135,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2633, 342, '_image_3', 'field_5ad84b5259db3'),
 (2634, 344, '_edit_last', '1'),
 (2635, 344, '_edit_lock', '1525425822:1'),
-(2636, 345, '_wp_attached_file', '2018/05/la-basilique-santa-maria-della-salute.jpg');
-INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
+(2636, 345, '_wp_attached_file', '2018/05/la-basilique-santa-maria-della-salute.jpg'),
 (2637, 345, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:910;s:6:\"height\";i:683;s:4:\"file\";s:49:\"2018/05/la-basilique-santa-maria-della-salute.jpg\";s:5:\"sizes\";a:7:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:49:\"la-basilique-santa-maria-della-salute-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:49:\"la-basilique-santa-maria-della-salute-300x225.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:225;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:49:\"la-basilique-santa-maria-della-salute-768x576.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:576;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:14:\"activity-small\";a:4:{s:4:\"file\";s:49:\"la-basilique-santa-maria-della-salute-282x163.jpg\";s:5:\"width\";i:282;s:6:\"height\";i:163;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:49:\"la-basilique-santa-maria-della-salute-910x530.jpg\";s:5:\"width\";i:910;s:6:\"height\";i:530;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:49:\"la-basilique-santa-maria-della-salute-730x350.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:350;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:49:\"la-basilique-santa-maria-della-salute-350x300.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:300;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (2638, 344, '_thumbnail_id', '345'),
 (2639, 344, 'titre_1', ''),
@@ -4159,7 +4160,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2658, 17, '_thumbnail_id', '40'),
 (2659, 346, '_wp_attached_file', '2018/05/hebergement-1.jpg'),
 (2660, 346, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:225;s:6:\"height\";i:225;s:4:\"file\";s:25:\"2018/05/hebergement-1.jpg\";s:5:\"sizes\";a:3:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:25:\"hebergement-1-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:14:\"activity-small\";a:4:{s:4:\"file\";s:25:\"hebergement-1-225x163.jpg\";s:5:\"width\";i:225;s:6:\"height\";i:163;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:7:\"page-bg\";a:4:{s:4:\"file\";s:25:\"hebergement-1-225x110.jpg\";s:5:\"width\";i:225;s:6:\"height\";i:110;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
-(2661, 347, '_wp_attached_file', '2018/05/hebergement-1-1.jpg'),
+(2661, 347, '_wp_attached_file', '2018/05/hebergement-1-1.jpg');
+INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (2662, 347, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:2501;s:6:\"height\";i:1667;s:4:\"file\";s:27:\"2018/05/hebergement-1-1.jpg\";s:5:\"sizes\";a:9:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:27:\"hebergement-1-1-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:27:\"hebergement-1-1-300x200.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:27:\"hebergement-1-1-768x512.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:512;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:28:\"hebergement-1-1-1024x683.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:683;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:14:\"activity-small\";a:4:{s:4:\"file\";s:27:\"hebergement-1-1-282x163.jpg\";s:5:\"width\";i:282;s:6:\"height\";i:163;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:7:\"page-bg\";a:4:{s:4:\"file\";s:28:\"hebergement-1-1-1920x110.jpg\";s:5:\"width\";i:1920;s:6:\"height\";i:110;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:28:\"hebergement-1-1-1110x530.jpg\";s:5:\"width\";i:1110;s:6:\"height\";i:530;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:27:\"hebergement-1-1-730x350.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:350;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:27:\"hebergement-1-1-350x300.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:300;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (2663, 348, '_wp_attached_file', '2018/05/Hebergement_01.jpg'),
 (2664, 348, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:1920;s:6:\"height\";i:493;s:4:\"file\";s:26:\"2018/05/Hebergement_01.jpg\";s:5:\"sizes\";a:9:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:26:\"Hebergement_01-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:25:\"Hebergement_01-300x77.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:77;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:26:\"Hebergement_01-768x197.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:197;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:27:\"Hebergement_01-1024x263.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:263;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:14:\"activity-small\";a:4:{s:4:\"file\";s:26:\"Hebergement_01-282x163.jpg\";s:5:\"width\";i:282;s:6:\"height\";i:163;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:7:\"page-bg\";a:4:{s:4:\"file\";s:27:\"Hebergement_01-1920x110.jpg\";s:5:\"width\";i:1920;s:6:\"height\";i:110;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:27:\"Hebergement_01-1110x493.jpg\";s:5:\"width\";i:1110;s:6:\"height\";i:493;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:26:\"Hebergement_01-730x350.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:350;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:26:\"Hebergement_01-350x300.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:300;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
@@ -4181,9 +4183,6 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2680, 355, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:1920;s:6:\"height\";i:200;s:4:\"file\";s:24:\"2018/05/COntact_02-1.jpg\";s:5:\"sizes\";a:9:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:24:\"COntact_02-1-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:23:\"COntact_02-1-300x31.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:31;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:23:\"COntact_02-1-768x80.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:80;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:25:\"COntact_02-1-1024x107.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:107;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:14:\"activity-small\";a:4:{s:4:\"file\";s:24:\"COntact_02-1-282x163.jpg\";s:5:\"width\";i:282;s:6:\"height\";i:163;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:7:\"page-bg\";a:4:{s:4:\"file\";s:25:\"COntact_02-1-1920x110.jpg\";s:5:\"width\";i:1920;s:6:\"height\";i:110;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:25:\"COntact_02-1-1110x200.jpg\";s:5:\"width\";i:1110;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:24:\"COntact_02-1-730x200.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:24:\"COntact_02-1-350x200.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (2683, 357, '_wp_attached_file', '2018/05/Mentions-légales_02-2.jpg'),
 (2684, 357, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:1920;s:6:\"height\";i:200;s:4:\"file\";s:34:\"2018/05/Mentions-légales_02-2.jpg\";s:5:\"sizes\";a:9:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:34:\"Mentions-légales_02-2-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:33:\"Mentions-légales_02-2-300x31.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:31;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:33:\"Mentions-légales_02-2-768x80.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:80;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:35:\"Mentions-légales_02-2-1024x107.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:107;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:14:\"activity-small\";a:4:{s:4:\"file\";s:34:\"Mentions-légales_02-2-282x163.jpg\";s:5:\"width\";i:282;s:6:\"height\";i:163;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:7:\"page-bg\";a:4:{s:4:\"file\";s:35:\"Mentions-légales_02-2-1920x110.jpg\";s:5:\"width\";i:1920;s:6:\"height\";i:110;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:35:\"Mentions-légales_02-2-1110x200.jpg\";s:5:\"width\";i:1110;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:34:\"Mentions-légales_02-2-730x200.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:34:\"Mentions-légales_02-2-350x200.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:1:\"0\";s:6:\"credit\";s:0:\"\";s:6:\"camera\";s:0:\"\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:1:\"0\";s:9:\"copyright\";s:0:\"\";s:12:\"focal_length\";s:1:\"0\";s:3:\"iso\";s:1:\"0\";s:13:\"shutter_speed\";s:1:\"0\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
-(2685, 284, '_wp_trash_meta_status', 'publish'),
-(2686, 284, '_wp_trash_meta_time', '1525442528'),
-(2687, 284, '_wp_desired_post_slug', 'restaurant-2'),
 (2690, 124, '_edit_last', '1'),
 (2691, 124, 'position', 'normal'),
 (2692, 124, 'layout', 'no_box'),
@@ -4291,8 +4290,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2796, 367, 'image_2', ''),
 (2797, 367, '_image_2', 'field_5ad834d87687c'),
 (2798, 367, 'titre_3', 'Les différents types de transport vénitiens'),
-(2799, 367, '_titre_3', 'field_5ad84b3059db1');
-INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
+(2799, 367, '_titre_3', 'field_5ad84b3059db1'),
 (2800, 367, 'contenu_3', 'Pour se déplacer à Venise, il faut connaître tous les types de transport existants, surtout ceux qui caractérisent la cité. Vous prenez un cliché du Grand Canal qui traverse la ville, et vous aurez une vue d’ensemble de tous les bateaux qui sillonnent la ville, allant du vaporetto à l’Alilaguna, en passant par le bus, le bateau-taxi, le motoscafo, le traghetto et la gondole.\r\n<ul>\r\n 	<li>Le vaporetto</li>\r\n</ul>\r\nVaporetti au pluriel, le vaporetto est un ferry de passagers. Il est un peu l’équivalent du métro. Ce service public est géré par une compagnie, l’ACTV (Azienda Consorzio Trasporti Veneziano). Ce consortium d’entreprise des transports vénitiens exploite également les transports extra-urbains de l’agglomération vénitienne et de la province. Il gère aussi les lignes de bus qui desservent Chioggia et Mestre.\r\n\r\nUne variante plus luxueuse est le vaporetto dell’Arte aux fauteuils rouges au dos desquels sont installés des écrans émettant en plusieurs langues des informations sur les sites traversés.\r\n<ul>\r\n 	<li>Les bus</li>\r\n</ul>\r\nOn parle ici des autobus qui assurent la liaison entre les différents secteurs de la partie terre ferme de la contrée.\r\n<ul>\r\n 	<li>L’Alilaguna</li>\r\n</ul>\r\nLes voyageurs qui atterrissent à l’aéroport Marco Polo et qui voudront rejoindre Venise par la lagune ont le choix entre prendre un bateau Alilaguna et un taxi bateau. Les lignes Alilaguna sont gérées par une autre compagnie que l’ACTV.\r\n<ul>\r\n 	<li>Le taxi bateau</li>\r\n</ul>\r\nPratique mais onéreux, ce moyen de déplacement convient aux personnes chargées ou pressées. On reconnaît le taxi par sa bande jaune qui porte son numéro de licence. Une recommandation : aussi pressé que vous êtes, n’incitez jamais votre conducteur à accélérer. Les vagues provoquées par l’excès de vitesse risquent en effet d’impacter les fondations anciennes de cette délicate cité vénitienne.\r\n<ul>\r\n 	<li>Le motoscafo</li>\r\n</ul>\r\nC’est une sorte de bateau à moteur blanc ou en bois verni utilisé pour les transports sur de longues distances. Sa cabine est séparée du poste de pilotage.\r\n<ul>\r\n 	<li>Le traghetto</li>\r\n</ul>\r\nÀ l’opposé du vaporetto qui longe le Canal Grande, ce traversier atypique va d’une rive à l’autre, manœuvré par deux robustes rameurs. On s’y tient debout.\r\n<ul>\r\n 	<li>La gondole</li>\r\n</ul>\r\nSi le motoscafo est une icône vénitienne, la gondole en est une autre. Celle-ci est même très représentative de la Cité des Doges. Ramée par un gondolier, elle est très prisée des amoureux, surtout quand elle est animée de chansons.'),
 (2801, 367, '_contenu_3', 'field_5ad84b4359db2'),
 (2802, 367, 'image_3', ''),
@@ -4312,7 +4310,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (2816, 368, 'image_1', '51'),
 (2817, 368, '_image_1', 'field_5ad833c87687b'),
 (2818, 368, 'titre_2', 'Hôtels'),
-(2819, 368, '_titre_2', 'field_5ad8337bdfbad'),
+(2819, 368, '_titre_2', 'field_5ad8337bdfbad');
+INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (2820, 368, 'contenu_2', '<p style=\"text-align: justify;\">Envie de vous offrir un séjour inoubliable dans un luxueux palace vénitien ? De nombreux établissements somptueux vous attendent dans des cadres chics et sophistiqués, surtout dans les quartiers de San Marco et de San Polo. Vous découvrirez également des hôtels plus classiques, mais confortables accessibles à tous dans certains quartiers de la Reine de l’Adriatique.</p>\r\n\r\n<h4>Auberges de jeunesse</h4>\r\n<p style=\"text-align: justify;\">Pour profiter d’une ambiance familiale typiquement italienne tout au long de votre séjour à Venise, les auberges de jeunesse et les maisons d’accueil sont faites pour vous. Si vous souhaitez vous éloigner un peu de la trépidante vie du centre-ville, rendez-vous sur l’île de la Giudecca pour plus de sérénité.</p>\r\n\r\n<h4>Appartements</h4>\r\n<p style=\"text-align: justify;\">Si vous êtes en vacances à Venise en famille ou en groupe, la location d’appartement s’avère intéressante pour plus d’autonomie et de praticité. Dans la Cité des Masques, une multitude d’appartements et de studios de toute taille se plient à tous les besoins, même des plus exigeants. Quel plaisir de passer un agréable et confortable séjour dans un spacieux bâtiment, tout en profitant d’une vue panoramique sur les gondoles. Vous pourrez réserver votre location d’appartement en passant par une agence spécialisée. C’est la formule la plus économique pour les familles et les groupes d’amis.</p>'),
 (2821, 368, '_contenu_2', 'field_5ad833af7687a'),
 (2822, 368, 'image_2', ''),
@@ -4550,8 +4549,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (3065, 379, 'image_1', ''),
 (3066, 379, '_image_1', 'field_5ad833c87687b'),
 (3067, 379, 'titre_2', 'Emprunter l’avion, puis le bateau pour rejoindre Venise'),
-(3068, 379, '_titre_2', 'field_5ad8337bdfbad');
-INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
+(3068, 379, '_titre_2', 'field_5ad8337bdfbad'),
 (3069, 379, 'contenu_2', 'L’avion que vous prenez va atterrir soit à l’aéroport de Trévise, soit à l’aéroport San Marco, aussi appelé l’aéroport Marco Polo. Pour vous rendre à Venise depuis l’aéroport Marco Polo y Tessera qui se trouve sur Mestre, sur le continent, vous devez ensuite prendre les navires comme les taxis bateaux ou les navettes de vaporettos de la compagnie ACTV. Les taxis bateaux sont assez chers, mais ce sont les moyens les plus rapides et les plus confortables pour rejoindre le centre de la cité. En effet, si vous partez de l’embarcadère de l’aéroport, vous arriverez à moins de 30 minutes à Venise. De plus, la plupart de ces taxis bateaux peuvent vous déposer aux portes de votre hébergement. Quant aux vaporettos de l’ACTV, ce sont les solutions les plus économiques pour aller jusqu’à Piazzale Roma. Vous pouvez rejoindre les embarcadères de l’ACTV à pied en quelques minutes, desquels partent les principales lignes de navigation publique ou les bateaux-bus dans toutes les directions, soit à travers le Grand Canal ou suivant les lignes circulaires ou le parcours interne de la ville.'),
 (3070, 379, '_contenu_2', 'field_5ad833af7687a'),
 (3071, 379, 'image_2', ''),
@@ -4579,7 +4577,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (3093, 381, 'image_2', ''),
 (3094, 381, '_image_2', 'field_5ad834d87687c'),
 (3095, 381, 'titre_3', 'L’histoire de la Pointe de la Douane vénitienne'),
-(3096, 381, '_titre_3', 'field_5ad84b3059db1'),
+(3096, 381, '_titre_3', 'field_5ad84b3059db1');
+INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (3097, 381, 'contenu_3', 'À l’aube du XVe siècle, du temps où la douane était près de l’entrée de l’Arsenal, au Castello, les activités commerciales se sont accrues. Les services douaniers devaient être divisés en deux à savoir la douane terrestre et la douane maritime. Cette dernière a été installée à la pointe ouest de Dorsoduro. En 1682, l’idée vient de construire le monument de la Punta della Dogana, cinq ans précédant l’agencement de la basilique de la Salute qui se situe aux environs. Cet édifice a été conçu par l’architecte Giuseppe Benoni. Sa tour est surmontée d’un ensemble de sculptures qui représentent deux Atlas soutenant sur le dos le globe terrestre teinté en bronze doré. Sur cette sphère géante se dresse une statue qui symbolise la Fortune, et qui joue le rôle de phare pour guider les bateaux entrant dans le Grand Canal. Notons également que ce phare indique la direction du vent et peut donc être considéré comme une sorte de girouette. C’est dans les années 80 que les activités de la Pointe de la Douane se sont achevées.\r\n<h3>La rénovation de la Punta della Dogana</h3>\r\nQuelques années plus tard, la ville de Venise décide de lancer un concours pour la conception d’un centre d’art contemporain. Cette décision a été initiée par l’homme d’affaires François Pinault. C’est ainsi que la Dogana da mar a vu le jour en 2007 pour y exposer quelques-unes des œuvres artistiques de la collection personnelle du milliardaire français, et dont d’autres sont présentées au palais Grassi. Le monument a été rénové. Sa restauration a été confiée à l’architecte Tadao Ando. Suite à 14 mois de travaux, la Pointe de la Douane est rouverte au public. Elle présente des expositions temporaires depuis juin 2009. Visiter la Pointe de la Douane est une expérience à vivre. Vous serez impressionnés par l’architecture aérienne du bâtiment depuis lequel vous bénéficierez d’une vue incroyable sur le Grand Canal, le Palais des Doges, l’Église Santa Maria della Salute et autres lieux célèbres.\r\n\r\nQu’en est-il de la douane terrestre ? Celle-ci a été aménagée le long de la Riva del Vin, au bord du Grand Canal, entre le Pont du Rialto et l’église San Silvestro actuelle.'),
 (3098, 381, '_contenu_3', 'field_5ad84b4359db2'),
 (3099, 381, 'image_3', ''),
@@ -4835,8 +4834,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (3379, 396, 'image_2', ''),
 (3380, 396, '_image_2', 'field_5ad834d87687c'),
 (3381, 396, 'titre_3', 'L’histoire de la Pointe de la Douane vénitienne'),
-(3382, 396, '_titre_3', 'field_5ad84b3059db1');
-INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
+(3382, 396, '_titre_3', 'field_5ad84b3059db1'),
 (3383, 396, 'contenu_3', 'À l’aube du XVe siècle, du temps où la douane était près de l’entrée de l’Arsenal, au Castello, les activités commerciales se sont accrues. Les services douaniers devaient être divisés en deux à savoir la douane terrestre et la douane maritime. Cette dernière a été installée à la pointe ouest de Dorsoduro. En 1682, l’idée vient de construire le monument de la Punta della Dogana, cinq ans précédant l’agencement de la basilique de la Salute qui se situe aux environs. Cet édifice a été conçu par l’architecte Giuseppe Benoni. Sa tour est surmontée d’un ensemble de sculptures qui représentent deux Atlas soutenant sur le dos le globe terrestre teinté en bronze doré. Sur cette sphère géante se dresse une statue qui symbolise la Fortune, et qui joue le rôle de phare pour guider les bateaux entrant dans le Grand Canal. Notons également que ce phare indique la direction du vent et peut donc être considéré comme une sorte de girouette. C’est dans les années 80 que les activités de la Pointe de la Douane se sont achevées.\r\n<h3>La rénovation de la Punta della Dogana</h3>\r\nQuelques années plus tard, la ville de Venise décide de lancer un concours pour la conception d’un centre d’art contemporain. Cette décision a été initiée par l’homme d’affaires François Pinault. C’est ainsi que la Dogana da mar a vu le jour en 2007 pour y exposer quelques-unes des œuvres artistiques de la collection personnelle du milliardaire français, et dont d’autres sont présentées au palais Grassi. Le monument a été rénové. Sa restauration a été confiée à l’architecte Tadao Ando. Suite à 14 mois de travaux, la Pointe de la Douane est rouverte au public. Elle présente des expositions temporaires depuis juin 2009. Visiter la Pointe de la Douane est une expérience à vivre. Vous serez impressionnés par l’architecture aérienne du bâtiment depuis lequel vous bénéficierez d’une vue incroyable sur le Grand Canal, le Palais des Doges, l’Église Santa Maria della Salute et autres lieux célèbres.\r\n\r\nQu’en est-il de la douane terrestre ? Celle-ci a été aménagée le long de la Riva del Vin, au bord du Grand Canal, entre le Pont du Rialto et l’église San Silvestro actuelle.'),
 (3384, 396, '_contenu_3', 'field_5ad84b4359db2'),
 (3385, 396, 'image_3', ''),
@@ -4854,7 +4852,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (3397, 397, 'image_2', ''),
 (3398, 397, '_image_2', 'field_5ad834d87687c'),
 (3399, 397, 'titre_3', 'L’histoire de la Pointe de la Douane vénitienne'),
-(3400, 397, '_titre_3', 'field_5ad84b3059db1'),
+(3400, 397, '_titre_3', 'field_5ad84b3059db1');
+INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (3401, 397, 'contenu_3', 'À l’aube du XVe siècle, du temps où la douane était près de l’entrée de l’Arsenal, au Castello, les activités commerciales se sont accrues. Les services douaniers devaient être divisés en deux à savoir la douane terrestre et la douane maritime. Cette dernière a été installée à la pointe ouest de Dorsoduro. En 1682, l’idée vient de construire le monument de la Punta della Dogana, cinq ans précédant l’agencement de la basilique de la Salute qui se situe aux environs. Cet édifice a été conçu par l’architecte Giuseppe Benoni. Sa tour est surmontée d’un ensemble de sculptures qui représentent deux Atlas soutenant sur le dos le globe terrestre teinté en bronze doré. Sur cette sphère géante se dresse une statue qui symbolise la Fortune, et qui joue le rôle de phare pour guider les bateaux entrant dans le Grand Canal. Notons également que ce phare indique la direction du vent et peut donc être considéré comme une sorte de girouette. C’est dans les années 80 que les activités de la Pointe de la Douane se sont achevées.\r\n<h3>La rénovation de la Punta della Dogana</h3>\r\nQuelques années plus tard, la ville de Venise décide de lancer un concours pour la conception d’un centre d’art contemporain. Cette décision a été initiée par l’homme d’affaires François Pinault. C’est ainsi que la Dogana da mar a vu le jour en 2007 pour y exposer quelques-unes des œuvres artistiques de la collection personnelle du milliardaire français, et dont d’autres sont présentées au palais Grassi. Le monument a été rénové. Sa restauration a été confiée à l’architecte Tadao Ando. Suite à 14 mois de travaux, la Pointe de la Douane est rouverte au public. Elle présente des expositions temporaires depuis juin 2009. Visiter la Pointe de la Douane est une expérience à vivre. Vous serez impressionnés par l’architecture aérienne du bâtiment depuis lequel vous bénéficierez d’une vue incroyable sur le Grand Canal, le Palais des Doges, l’Église Santa Maria della Salute et autres lieux célèbres.\r\n\r\nQu’en est-il de la douane terrestre ? Celle-ci a été aménagée le long de la Riva del Vin, au bord du Grand Canal, entre le Pont du Rialto et l’église San Silvestro actuelle.'),
 (3402, 397, '_contenu_3', 'field_5ad84b4359db2'),
 (3403, 397, 'image_3', ''),
@@ -4950,7 +4949,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (3499, 403, 'image_3', ''),
 (3500, 403, '_image_3', 'field_5ad84b5259db3'),
 (3507, 404, '_wp_attached_file', '2018/05/Pont-Rialto-Venise.jpg'),
-(3508, 404, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:1900;s:6:\"height\";i:1268;s:4:\"file\";s:30:\"2018/05/Pont-Rialto-Venise.jpg\";s:5:\"sizes\";a:9:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-300x200.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-768x513.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:513;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:31:\"Pont-Rialto-Venise-1024x683.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:683;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:14:\"activity-small\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-282x163.jpg\";s:5:\"width\";i:282;s:6:\"height\";i:163;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:7:\"page-bg\";a:4:{s:4:\"file\";s:31:\"Pont-Rialto-Venise-1900x110.jpg\";s:5:\"width\";i:1900;s:6:\"height\";i:110;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:31:\"Pont-Rialto-Venise-1110x530.jpg\";s:5:\"width\";i:1110;s:6:\"height\";i:530;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-730x350.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:350;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-350x300.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:300;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:3:\"2.8\";s:6:\"credit\";s:11:\"Rmi Ravaz\";s:6:\"camera\";s:12:\"PENTAX K100D\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:10:\"1302277088\";s:9:\"copyright\";s:11:\"Rmi Ravaz\";s:12:\"focal_length\";s:2:\"38\";s:3:\"iso\";s:3:\"200\";s:13:\"shutter_speed\";s:19:\"0.00033333333333333\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
+(3508, 404, '_wp_attachment_metadata', 'a:5:{s:5:\"width\";i:1900;s:6:\"height\";i:1268;s:4:\"file\";s:30:\"2018/05/Pont-Rialto-Venise.jpg\";s:5:\"sizes\";a:9:{s:9:\"thumbnail\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-150x150.jpg\";s:5:\"width\";i:150;s:6:\"height\";i:150;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:6:\"medium\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-300x200.jpg\";s:5:\"width\";i:300;s:6:\"height\";i:200;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:12:\"medium_large\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-768x513.jpg\";s:5:\"width\";i:768;s:6:\"height\";i:513;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:5:\"large\";a:4:{s:4:\"file\";s:31:\"Pont-Rialto-Venise-1024x683.jpg\";s:5:\"width\";i:1024;s:6:\"height\";i:683;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:14:\"activity-small\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-282x163.jpg\";s:5:\"width\";i:282;s:6:\"height\";i:163;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:7:\"page-bg\";a:4:{s:4:\"file\";s:31:\"Pont-Rialto-Venise-1900x110.jpg\";s:5:\"width\";i:1900;s:6:\"height\";i:110;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-full\";a:4:{s:4:\"file\";s:31:\"Pont-Rialto-Venise-1110x530.jpg\";s:5:\"width\";i:1110;s:6:\"height\";i:530;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:21:\"voyagevenise-featured\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-730x350.jpg\";s:5:\"width\";i:730;s:6:\"height\";i:350;s:9:\"mime-type\";s:10:\"image/jpeg\";}s:17:\"voyagevenise-grid\";a:4:{s:4:\"file\";s:30:\"Pont-Rialto-Venise-350x300.jpg\";s:5:\"width\";i:350;s:6:\"height\";i:300;s:9:\"mime-type\";s:10:\"image/jpeg\";}}s:10:\"image_meta\";a:12:{s:8:\"aperture\";s:3:\"2.8\";s:6:\"credit\";s:11:\"R?mi Ravaz\";s:6:\"camera\";s:12:\"PENTAX K100D\";s:7:\"caption\";s:0:\"\";s:17:\"created_timestamp\";s:10:\"1302277088\";s:9:\"copyright\";s:11:\"R?mi Ravaz\";s:12:\"focal_length\";s:2:\"38\";s:3:\"iso\";s:3:\"200\";s:13:\"shutter_speed\";s:19:\"0.00033333333333333\";s:5:\"title\";s:0:\"\";s:11:\"orientation\";s:1:\"0\";s:8:\"keywords\";a:0:{}}}'),
 (3509, 405, 'titre_1', 'Pont de Rialto et pont des soupirs - 2 ponts parmi tant d’autres'),
 (3510, 405, '_titre_1', 'field_5ad832a034ae0'),
 (3511, 405, 'contenu_1', 'Balise description : Un pont en cache un autre, à chacun son histoire, comme celles du pont de Rialto et du pont des Soupirs. Tout y est pour enchanter les touristes de passage à Venise.'),
@@ -5108,8 +5107,7 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (3663, 412, 'image_1', ''),
 (3664, 412, '_image_1', 'field_5ad833c87687b'),
 (3665, 412, 'titre_2', 'Venise : sa beauté n\'a d\'égal que sa renommée '),
-(3666, 412, '_titre_2', 'field_5ad8337bdfbad');
-INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
+(3666, 412, '_titre_2', 'field_5ad8337bdfbad'),
 (3667, 412, 'contenu_2', 'Retenez ce nouveau surnom de Venise qui est en mesure de traduire la forte attraction que la ville opère à l’endroit des touristes du monde entier. La Cité sortie des Eaux est victime de son succès. Elle arrive à peine à gérer ses plus de 20 millions par an de visiteurs. Ne souhaiteriez-vous pas emboîter leurs pas ?\r\n\r\nRien ne vous empêche d’organiser vos prochaines vacances Venise. Sur place, vous ne vous ennuierez pas, c’est sûr. Appréciez la beauté architecturale des bâtisses vénitiennes, vivez en direct le célèbre carnaval du pays, goûtez aux succulents plats d’auteur dans une ambiance conviviale, côtoyez les Vénitiens et découvrez ses traditions, profitez de la plage et des diverses activités culturelles organisées, et on en passe…'),
 (3668, 412, '_contenu_2', 'field_5ad833af7687a'),
 (3669, 412, 'image_2', '146'),
@@ -5131,7 +5129,8 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (3685, 413, 'image_1', ''),
 (3686, 413, '_image_1', 'field_5ad833c87687b'),
 (3687, 413, 'titre_2', 'Venise : sa beauté n\'a d\'égal que sa renommée '),
-(3688, 413, '_titre_2', 'field_5ad8337bdfbad'),
+(3688, 413, '_titre_2', 'field_5ad8337bdfbad');
+INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
 (3689, 413, 'contenu_2', 'Retenez ce nouveau surnom de Venise qui est en mesure de traduire la forte attraction que la ville opère à l’endroit des touristes du monde entier. La Cité sortie des Eaux est victime de son succès. Elle arrive à peine à gérer ses plus de 20 millions par an de visiteurs. Ne souhaiteriez-vous pas emboîter leurs pas ?\r\n\r\nRien ne vous empêche d’organiser vos prochaines vacances Venise. Sur place, vous ne vous ennuierez pas, c’est sûr. Appréciez la beauté architecturale des bâtisses vénitiennes, vivez en direct le célèbre carnaval du pays, goûtez aux succulents plats d’auteur dans une ambiance conviviale, côtoyez les Vénitiens et découvrez ses traditions, profitez de la plage et des diverses activités culturelles organisées, et on en passe…'),
 (3690, 413, '_contenu_2', 'field_5ad833af7687a'),
 (3691, 413, 'image_2', '146'),
@@ -5230,16 +5229,332 @@ INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUE
 (3784, 220, 'lien_reserver', ''),
 (3785, 220, '_lien_reserver', 'field_5ad9e68232296'),
 (3786, 211, 'lien_reserver', ''),
-(3787, 211, '_lien_reserver', 'field_5ad9e68232296');
+(3787, 211, '_lien_reserver', 'field_5ad9e68232296'),
+(3788, 421, 'extrait', 'Transport à Venise – Divers moyens comme le vaporetto, l’Alilaguna, le taxi bateau, le motoscafo, le traghetto et la gondole sont utilisés pour se déplacer à Venise.'),
+(3789, 421, '_extrait', 'field_5aed55c6be634'),
+(3790, 421, 'icone_en_avant', '157'),
+(3791, 421, '_icone_en_avant', 'field_5aed625f21cb7'),
+(3792, 421, 'titre_1', 'Destination touristique Venise : circuler autrement'),
+(3793, 421, '_titre_1', 'field_5ad832a034ae0'),
+(3794, 421, 'contenu_1', 'Que de curiosités Venise vous réserve ! La cité aux mille attraits vous invite à vous déplacer d’un bout à l’autre, d’îlot en îlot, mais comment, puisque tout est eau ? Même les parties terrestres comme Marghera ou Mestre sont à deux pas des eaux. Il est donc tout à fait raisonnable de se demander dès la descente d’avion, du bus ou du train, comment circuler dans la ville et quels sont les moyens de transport les plus appropriés.\r\n\r\n[transport]'),
+(3795, 421, '_contenu_1', 'field_5ad832e834ae1'),
+(3796, 421, 'image_1', ''),
+(3797, 421, '_image_1', 'field_5ad833c87687b'),
+(3798, 421, 'titre_2', 'La circulation à Venise'),
+(3799, 421, '_titre_2', 'field_5ad8337bdfbad'),
+(3800, 421, 'contenu_2', 'Quand les vaporetti affichent pleins aux heures de pointe ou en haute saison touristique, autant marcher, vous irez sans doute plus vite. Vous vous posez peut-être la question des motos, des vélos ou des voitures. Elles ne sont pas autorisées dans la plupart des quartiers, sauf à Pellestrina et sur le Lido. Des agences de location de vélos existent. Elles sont au service de ceux qui voudront se rendre aux stations balnéaires éloignées. Place donc aux embarcations diverses, ce sont les moyens de déplacement les plus utilisés à Venise.'),
+(3801, 421, '_contenu_2', 'field_5ad833af7687a'),
+(3802, 421, 'image_2', ''),
+(3803, 421, '_image_2', 'field_5ad834d87687c'),
+(3804, 421, 'titre_3', 'Les différents types de transport vénitiens'),
+(3805, 421, '_titre_3', 'field_5ad84b3059db1'),
+(3806, 421, 'contenu_3', 'Pour se déplacer à Venise, il faut connaître tous les types de transport existants, surtout ceux qui caractérisent la cité. Vous prenez un cliché du Grand Canal qui traverse la ville, et vous aurez une vue d’ensemble de tous les bateaux qui sillonnent la ville, allant du vaporetto à l’Alilaguna, en passant par le bus, le bateau-taxi, le motoscafo, le traghetto et la gondole.\r\n<ul>\r\n 	<li>Le vaporetto</li>\r\n</ul>\r\nVaporetti au pluriel, le vaporetto est un ferry de passagers. Il est un peu l’équivalent du métro. Ce service public est géré par une compagnie, l’ACTV (Azienda Consorzio Trasporti Veneziano). Ce consortium d’entreprise des transports vénitiens exploite également les transports extra-urbains de l’agglomération vénitienne et de la province. Il gère aussi les lignes de bus qui desservent Chioggia et Mestre.\r\n\r\nUne variante plus luxueuse est le vaporetto dell’Arte aux fauteuils rouges au dos desquels sont installés des écrans émettant en plusieurs langues des informations sur les sites traversés.\r\n<ul>\r\n 	<li>Les bus</li>\r\n</ul>\r\nOn parle ici des autobus qui assurent la liaison entre les différents secteurs de la partie terre ferme de la contrée.\r\n<ul>\r\n 	<li>L’Alilaguna</li>\r\n</ul>\r\nLes voyageurs qui atterrissent à l’aéroport Marco Polo et qui voudront rejoindre Venise par la lagune ont le choix entre prendre un bateau Alilaguna et un taxi bateau. Les lignes Alilaguna sont gérées par une autre compagnie que l’ACTV.\r\n<ul>\r\n 	<li>Le taxi bateau</li>\r\n</ul>\r\nPratique mais onéreux, ce moyen de déplacement convient aux personnes chargées ou pressées. On reconnaît le taxi par sa bande jaune qui porte son numéro de licence. Une recommandation : aussi pressé que vous êtes, n’incitez jamais votre conducteur à accélérer. Les vagues provoquées par l’excès de vitesse risquent en effet d’impacter les fondations anciennes de cette délicate cité vénitienne.\r\n<ul>\r\n 	<li>Le motoscafo</li>\r\n</ul>\r\nC’est une sorte de bateau à moteur blanc ou en bois verni utilisé pour les transports sur de longues distances. Sa cabine est séparée du poste de pilotage.\r\n<ul>\r\n 	<li>Le traghetto</li>\r\n</ul>\r\nÀ l’opposé du vaporetto qui longe le Canal Grande, ce traversier atypique va d’une rive à l’autre, manœuvré par deux robustes rameurs. On s’y tient debout.\r\n<ul>\r\n 	<li>La gondole</li>\r\n</ul>\r\nSi le motoscafo est une icône vénitienne, la gondole en est une autre. Celle-ci est même très représentative de la Cité des Doges. Ramée par un gondolier, elle est très prisée des amoureux, surtout quand elle est animée de chansons.'),
+(3807, 421, '_contenu_3', 'field_5ad84b4359db2'),
+(3808, 421, 'image_3', ''),
+(3809, 421, '_image_3', 'field_5ad84b5259db3'),
+(3810, 421, 'titre_footer', 'Transfert'),
+(3811, 421, '_titre_footer', 'field_5ad9a2dc71426'),
+(3812, 421, 'contenu_footer', '[transfert]'),
+(3813, 421, '_contenu_footer', 'field_5ad9efc12aae2'),
+(3814, 422, 'extrait', 'Transport à Venise – Divers moyens comme le vaporetto, l’Alilaguna, le taxi bateau, le motoscafo, le traghetto et la gondole sont utilisés pour se déplacer à Venise.'),
+(3815, 422, '_extrait', 'field_5aed55c6be634'),
+(3816, 422, 'icone_en_avant', '157'),
+(3817, 422, '_icone_en_avant', 'field_5aed625f21cb7'),
+(3818, 422, 'titre_1', 'Destination touristique Venise : circuler autrement'),
+(3819, 422, '_titre_1', 'field_5ad832a034ae0'),
+(3820, 422, 'contenu_1', 'Que de curiosités Venise vous réserve ! La cité aux mille attraits vous invite à vous déplacer d’un bout à l’autre, d’îlot en îlot, mais comment, puisque tout est eau ? Même les parties terrestres comme Marghera ou Mestre sont à deux pas des eaux. Il est donc tout à fait raisonnable de se demander dès la descente d’avion, du bus ou du train, comment circuler dans la ville et quels sont les moyens de transport les plus appropriés.\r\n\r\n[transport]'),
+(3821, 422, '_contenu_1', 'field_5ad832e834ae1'),
+(3822, 422, 'image_1', ''),
+(3823, 422, '_image_1', 'field_5ad833c87687b'),
+(3824, 422, 'titre_2', 'La circulation à Venise'),
+(3825, 422, '_titre_2', 'field_5ad8337bdfbad'),
+(3826, 422, 'contenu_2', 'Quand les vaporetti affichent pleins aux heures de pointe ou en haute saison touristique, autant marcher, vous irez sans doute plus vite. Vous vous posez peut-être la question des motos, des vélos ou des voitures. Elles ne sont pas autorisées dans la plupart des quartiers, sauf à Pellestrina et sur le Lido. Des agences de location de vélos existent. Elles sont au service de ceux qui voudront se rendre aux stations balnéaires éloignées. Place donc aux embarcations diverses, ce sont les moyens de déplacement les plus utilisés à Venise.'),
+(3827, 422, '_contenu_2', 'field_5ad833af7687a'),
+(3828, 422, 'image_2', ''),
+(3829, 422, '_image_2', 'field_5ad834d87687c'),
+(3830, 422, 'titre_3', 'Les différents types de transport vénitiens'),
+(3831, 422, '_titre_3', 'field_5ad84b3059db1'),
+(3832, 422, 'contenu_3', 'Pour se déplacer à Venise, il faut connaître tous les types de transport existants, surtout ceux qui caractérisent la cité. Vous prenez un cliché du Grand Canal qui traverse la ville, et vous aurez une vue d’ensemble de tous les bateaux qui sillonnent la ville, allant du vaporetto à l’Alilaguna, en passant par le bus, le bateau-taxi, le motoscafo, le traghetto et la gondole.\r\n<ul>\r\n 	<li>Le vaporetto</li>\r\n</ul>\r\nVaporetti au pluriel, le vaporetto est un ferry de passagers. Il est un peu l’équivalent du métro. Ce service public est géré par une compagnie, l’ACTV (Azienda Consorzio Trasporti Veneziano). Ce consortium d’entreprise des transports vénitiens exploite également les transports extra-urbains de l’agglomération vénitienne et de la province. Il gère aussi les lignes de bus qui desservent Chioggia et Mestre.\r\n\r\nUne variante plus luxueuse est le vaporetto dell’Arte aux fauteuils rouges au dos desquels sont installés des écrans émettant en plusieurs langues des informations sur les sites traversés.\r\n<ul>\r\n 	<li>Les bus</li>\r\n</ul>\r\nOn parle ici des autobus qui assurent la liaison entre les différents secteurs de la partie terre ferme de la contrée.\r\n<ul>\r\n 	<li>L’Alilaguna</li>\r\n</ul>\r\nLes voyageurs qui atterrissent à l’aéroport Marco Polo et qui voudront rejoindre Venise par la lagune ont le choix entre prendre un bateau Alilaguna et un taxi bateau. Les lignes Alilaguna sont gérées par une autre compagnie que l’ACTV.\r\n<ul>\r\n 	<li>Le taxi bateau</li>\r\n</ul>\r\nPratique mais onéreux, ce moyen de déplacement convient aux personnes chargées ou pressées. On reconnaît le taxi par sa bande jaune qui porte son numéro de licence. Une recommandation : aussi pressé que vous êtes, n’incitez jamais votre conducteur à accélérer. Les vagues provoquées par l’excès de vitesse risquent en effet d’impacter les fondations anciennes de cette délicate cité vénitienne.\r\n<ul>\r\n 	<li>Le motoscafo</li>\r\n</ul>\r\nC’est une sorte de bateau à moteur blanc ou en bois verni utilisé pour les transports sur de longues distances. Sa cabine est séparée du poste de pilotage.\r\n<ul>\r\n 	<li>Le traghetto</li>\r\n</ul>\r\nÀ l’opposé du vaporetto qui longe le Canal Grande, ce traversier atypique va d’une rive à l’autre, manœuvré par deux robustes rameurs. On s’y tient debout.\r\n<ul>\r\n 	<li>La gondole</li>\r\n</ul>\r\nSi le motoscafo est une icône vénitienne, la gondole en est une autre. Celle-ci est même très représentative de la Cité des Doges. Ramée par un gondolier, elle est très prisée des amoureux, surtout quand elle est animée de chansons.'),
+(3833, 422, '_contenu_3', 'field_5ad84b4359db2'),
+(3834, 422, 'image_3', ''),
+(3835, 422, '_image_3', 'field_5ad84b5259db3'),
+(3836, 422, 'titre_footer', 'Transfert'),
+(3837, 422, '_titre_footer', 'field_5ad9a2dc71426'),
+(3838, 422, 'contenu_footer', '[transfert]'),
+(3839, 422, '_contenu_footer', 'field_5ad9efc12aae2'),
+(3840, 423, 'extrait', 'Transport à Venise – Divers moyens comme le vaporetto, l’Alilaguna, le taxi bateau, le motoscafo, le traghetto et la gondole sont utilisés pour se déplacer à Venise.'),
+(3841, 423, '_extrait', 'field_5aed55c6be634'),
+(3842, 423, 'icone_en_avant', '157'),
+(3843, 423, '_icone_en_avant', 'field_5aed625f21cb7'),
+(3844, 423, 'titre_1', 'Destination touristique Venise : circuler autrement'),
+(3845, 423, '_titre_1', 'field_5ad832a034ae0'),
+(3846, 423, 'contenu_1', 'Que de curiosités Venise vous réserve ! La cité aux mille attraits vous invite à vous déplacer d’un bout à l’autre, d’îlot en îlot, mais comment, puisque tout est eau ? Même les parties terrestres comme Marghera ou Mestre sont à deux pas des eaux. Il est donc tout à fait raisonnable de se demander dès la descente d’avion, du bus ou du train, comment circuler dans la ville et quels sont les moyens de transport les plus appropriés.\r\n\r\n[transport]'),
+(3847, 423, '_contenu_1', 'field_5ad832e834ae1'),
+(3848, 423, 'image_1', ''),
+(3849, 423, '_image_1', 'field_5ad833c87687b'),
+(3850, 423, 'titre_2', 'La circulation à Venise'),
+(3851, 423, '_titre_2', 'field_5ad8337bdfbad'),
+(3852, 423, 'contenu_2', 'Quand les vaporetti affichent pleins aux heures de pointe ou en haute saison touristique, autant marcher, vous irez sans doute plus vite. Vous vous posez peut-être la question des motos, des vélos ou des voitures. Elles ne sont pas autorisées dans la plupart des quartiers, sauf à Pellestrina et sur le Lido. Des agences de location de vélos existent. Elles sont au service de ceux qui voudront se rendre aux stations balnéaires éloignées. Place donc aux embarcations diverses, ce sont les moyens de déplacement les plus utilisés à Venise.'),
+(3853, 423, '_contenu_2', 'field_5ad833af7687a'),
+(3854, 423, 'image_2', ''),
+(3855, 423, '_image_2', 'field_5ad834d87687c'),
+(3856, 423, 'titre_3', 'Les différents types de transport vénitiens'),
+(3857, 423, '_titre_3', 'field_5ad84b3059db1'),
+(3858, 423, 'contenu_3', 'Pour se déplacer à Venise, il faut connaître tous les types de transport existants, surtout ceux qui caractérisent la cité. Vous prenez un cliché du Grand Canal qui traverse la ville, et vous aurez une vue d’ensemble de tous les bateaux qui sillonnent la ville, allant du vaporetto à l’Alilaguna, en passant par le bus, le bateau-taxi, le motoscafo, le traghetto et la gondole.\r\n<h3>Le vaporetto</h3>\r\nVaporetti au pluriel, le vaporetto est un ferry de passagers. Il est un peu l’équivalent du métro. Ce service public est géré par une compagnie, l’ACTV (Azienda Consorzio Trasporti Veneziano). Ce consortium d’entreprise des transports vénitiens exploite également les transports extra-urbains de l’agglomération vénitienne et de la province. Il gère aussi les lignes de bus qui desservent Chioggia et Mestre.\r\n\r\nUne variante plus luxueuse est le vaporetto dell’Arte aux fauteuils rouges au dos desquels sont installés des écrans émettant en plusieurs langues des informations sur les sites traversés.\r\n<ul>\r\n 	<li>Les bus</li>\r\n</ul>\r\nOn parle ici des autobus qui assurent la liaison entre les différents secteurs de la partie terre ferme de la contrée.\r\n<ul>\r\n 	<li>L’Alilaguna</li>\r\n</ul>\r\nLes voyageurs qui atterrissent à l’aéroport Marco Polo et qui voudront rejoindre Venise par la lagune ont le choix entre prendre un bateau Alilaguna et un taxi bateau. Les lignes Alilaguna sont gérées par une autre compagnie que l’ACTV.\r\n<ul>\r\n 	<li>Le taxi bateau</li>\r\n</ul>\r\nPratique mais onéreux, ce moyen de déplacement convient aux personnes chargées ou pressées. On reconnaît le taxi par sa bande jaune qui porte son numéro de licence. Une recommandation : aussi pressé que vous êtes, n’incitez jamais votre conducteur à accélérer. Les vagues provoquées par l’excès de vitesse risquent en effet d’impacter les fondations anciennes de cette délicate cité vénitienne.\r\n<ul>\r\n 	<li>Le motoscafo</li>\r\n</ul>\r\nC’est une sorte de bateau à moteur blanc ou en bois verni utilisé pour les transports sur de longues distances. Sa cabine est séparée du poste de pilotage.\r\n<ul>\r\n 	<li>Le traghetto</li>\r\n</ul>\r\nÀ l’opposé du vaporetto qui longe le Canal Grande, ce traversier atypique va d’une rive à l’autre, manœuvré par deux robustes rameurs. On s’y tient debout.\r\n<ul>\r\n 	<li>La gondole</li>\r\n</ul>\r\nSi le motoscafo est une icône vénitienne, la gondole en est une autre. Celle-ci est même très représentative de la Cité des Doges. Ramée par un gondolier, elle est très prisée des amoureux, surtout quand elle est animée de chansons.'),
+(3859, 423, '_contenu_3', 'field_5ad84b4359db2'),
+(3860, 423, 'image_3', ''),
+(3861, 423, '_image_3', 'field_5ad84b5259db3'),
+(3862, 423, 'titre_footer', 'Transfert'),
+(3863, 423, '_titre_footer', 'field_5ad9a2dc71426'),
+(3864, 423, 'contenu_footer', '[transfert]'),
+(3865, 423, '_contenu_footer', 'field_5ad9efc12aae2'),
+(3866, 424, 'extrait', 'Transport à Venise – Divers moyens comme le vaporetto, l’Alilaguna, le taxi bateau, le motoscafo, le traghetto et la gondole sont utilisés pour se déplacer à Venise.'),
+(3867, 424, '_extrait', 'field_5aed55c6be634'),
+(3868, 424, 'icone_en_avant', '157'),
+(3869, 424, '_icone_en_avant', 'field_5aed625f21cb7'),
+(3870, 424, 'titre_1', 'Destination touristique Venise : circuler autrement'),
+(3871, 424, '_titre_1', 'field_5ad832a034ae0'),
+(3872, 424, 'contenu_1', 'Que de curiosités Venise vous réserve ! La cité aux mille attraits vous invite à vous déplacer d’un bout à l’autre, d’îlot en îlot, mais comment, puisque tout est eau ? Même les parties terrestres comme Marghera ou Mestre sont à deux pas des eaux. Il est donc tout à fait raisonnable de se demander dès la descente d’avion, du bus ou du train, comment circuler dans la ville et quels sont les moyens de transport les plus appropriés.\r\n\r\n[transport]'),
+(3873, 424, '_contenu_1', 'field_5ad832e834ae1'),
+(3874, 424, 'image_1', ''),
+(3875, 424, '_image_1', 'field_5ad833c87687b'),
+(3876, 424, 'titre_2', 'La circulation à Venise'),
+(3877, 424, '_titre_2', 'field_5ad8337bdfbad'),
+(3878, 424, 'contenu_2', 'Quand les vaporetti affichent pleins aux heures de pointe ou en haute saison touristique, autant marcher, vous irez sans doute plus vite. Vous vous posez peut-être la question des motos, des vélos ou des voitures. Elles ne sont pas autorisées dans la plupart des quartiers, sauf à Pellestrina et sur le Lido. Des agences de location de vélos existent. Elles sont au service de ceux qui voudront se rendre aux stations balnéaires éloignées. Place donc aux embarcations diverses, ce sont les moyens de déplacement les plus utilisés à Venise.'),
+(3879, 424, '_contenu_2', 'field_5ad833af7687a'),
+(3880, 424, 'image_2', ''),
+(3881, 424, '_image_2', 'field_5ad834d87687c'),
+(3882, 424, 'titre_3', 'Les différents types de transport vénitiens'),
+(3883, 424, '_titre_3', 'field_5ad84b3059db1'),
+(3884, 424, 'contenu_3', 'Pour se déplacer à Venise, il faut connaître tous les types de transport existants, surtout ceux qui caractérisent la cité. Vous prenez un cliché du Grand Canal qui traverse la ville, et vous aurez une vue d’ensemble de tous les bateaux qui sillonnent la ville, allant du vaporetto à l’Alilaguna, en passant par le bus, le bateau-taxi, le motoscafo, le traghetto et la gondole.\r\n<h3>Le vaporetto</h3>\r\nVaporetti au pluriel, le vaporetto est un ferry de passagers. Il est un peu l’équivalent du métro. Ce service public est géré par une compagnie, l’ACTV (Azienda Consorzio Trasporti Veneziano). Ce consortium d’entreprise des transports vénitiens exploite également les transports extra-urbains de l’agglomération vénitienne et de la province. Il gère aussi les lignes de bus qui desservent Chioggia et Mestre.\r\n\r\nUne variante plus luxueuse est le vaporetto dell’Arte aux fauteuils rouges au dos desquels sont installés des écrans émettant en plusieurs langues des informations sur les sites traversés.\r\n<h3>Les bus</h3>\r\nOn parle ici des autobus qui assurent la liaison entre les différents secteurs de la partie terre ferme de la contrée.\r\n<h3>L’Alilaguna</h3>\r\nLes voyageurs qui atterrissent à l’aéroport Marco Polo et qui voudront rejoindre Venise par la lagune ont le choix entre prendre un bateau Alilaguna et un taxi bateau. Les lignes Alilaguna sont gérées par une autre compagnie que l’ACTV.\r\n<h3>Le taxi bateau</h3>\r\nPratique mais onéreux, ce moyen de déplacement convient aux personnes chargées ou pressées. On reconnaît le taxi par sa bande jaune qui porte son numéro de licence. Une recommandation : aussi pressé que vous êtes, n’incitez jamais votre conducteur à accélérer. Les vagues provoquées par l’excès de vitesse risquent en effet d’impacter les fondations anciennes de cette délicate cité vénitienne.\r\n<h3>Le motoscafo</h3>\r\nC’est une sorte de bateau à moteur blanc ou en bois verni utilisé pour les transports sur de longues distances. Sa cabine est séparée du poste de pilotage.\r\n<h3>Le traghetto</h3>\r\nÀ l’opposé du vaporetto qui longe le Canal Grande, ce traversier atypique va d’une rive à l’autre, manœuvré par deux robustes rameurs. On s’y tient debout.\r\n<h3>La gondole</h3>\r\nSi le motoscafo est une icône vénitienne, la gondole en est une autre. Celle-ci est même très représentative de la Cité des Doges. Ramée par un gondolier, elle est très prisée des amoureux, surtout quand elle est animée de chansons.'),
+(3885, 424, '_contenu_3', 'field_5ad84b4359db2'),
+(3886, 424, 'image_3', ''),
+(3887, 424, '_image_3', 'field_5ad84b5259db3'),
+(3888, 424, 'titre_footer', 'Transfert'),
+(3889, 424, '_titre_footer', 'field_5ad9a2dc71426'),
+(3890, 424, 'contenu_footer', '[transfert]'),
+(3891, 424, '_contenu_footer', 'field_5ad9efc12aae2'),
+(3903, 364, 'position', 'acf_after_title'),
+(3904, 364, 'layout', 'default'),
+(3905, 364, 'hide_on_screen', ''),
+(3906, 364, 'field_5ad8336cdfbac', 'a:8:{s:3:\"key\";s:19:\"field_5ad8336cdfbac\";s:5:\"label\";s:12:\"Paragraphe 2\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:4;}'),
+(3907, 364, 'field_5ad8337bdfbad', 'a:14:{s:3:\"key\";s:19:\"field_5ad8337bdfbad\";s:5:\"label\";s:6:\"Titre \";s:4:\"name\";s:7:\"titre_2\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:5;}'),
+(3908, 364, 'field_5ad833c87687b', 'a:11:{s:3:\"key\";s:19:\"field_5ad833c87687b\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_1\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
+(3909, 364, 'field_5ad833af7687a', 'a:11:{s:3:\"key\";s:19:\"field_5ad833af7687a\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:9:\"contenu_2\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:6;}'),
+(3910, 364, 'field_5ad834d87687c', 'a:11:{s:3:\"key\";s:19:\"field_5ad834d87687c\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_2\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:7;}'),
+(3911, 364, 'field_5ad84b2059db0', 'a:8:{s:3:\"key\";s:19:\"field_5ad84b2059db0\";s:5:\"label\";s:12:\"Paragraphe 3\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:8;}'),
+(3912, 364, 'field_5ad84b3059db1', 'a:14:{s:3:\"key\";s:19:\"field_5ad84b3059db1\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:7:\"titre_3\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:9;}'),
+(3913, 364, 'field_5ad84b4359db2', 'a:11:{s:3:\"key\";s:19:\"field_5ad84b4359db2\";s:5:\"label\";s:8:\"Contenu \";s:4:\"name\";s:9:\"contenu_3\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:10;}'),
+(3914, 364, 'field_5ad84b5259db3', 'a:11:{s:3:\"key\";s:19:\"field_5ad84b5259db3\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_3\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:11;}'),
+(3915, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:3:\"137\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(3916, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"14\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:1;}'),
+(3917, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"2\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:2;}'),
+(3918, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"17\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:3;}'),
+(3919, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"62\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:4;}'),
+(3920, 364, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"carte\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:5;}'),
+(3921, 364, 'rule', 'a:5:{s:5:\"param\";s:13:\"page_template\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:17:\"page-activite.php\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:6;}'),
+(3922, 364, 'rule', 'a:5:{s:5:\"param\";s:13:\"page_template\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:16:\"page-service.php\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:7;}'),
+(3923, 205, '_edit_last', '1'),
+(3924, 205, 'field_5ad9a2dc71426', 'a:14:{s:3:\"key\";s:19:\"field_5ad9a2dc71426\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:12:\"titre_footer\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(3925, 205, 'position', 'normal'),
+(3926, 205, 'layout', 'no_box'),
+(3927, 205, 'hide_on_screen', ''),
+(3928, 205, 'field_5ad9a30ccfaab', 'a:8:{s:3:\"key\";s:19:\"field_5ad9a30ccfaab\";s:5:\"label\";s:18:\"Paragraphe footer \";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(3929, 205, 'field_5ad9efc12aae2', 'a:13:{s:3:\"key\";s:19:\"field_5ad9efc12aae2\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:14:\"contenu_footer\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";s:4:\"rows\";s:0:\"\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(3930, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:3:\"137\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(3931, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"14\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:1;}'),
+(3932, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"2\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:2;}'),
+(3933, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"17\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:3;}'),
+(3934, 205, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"hotel\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:4;}'),
+(3935, 209, '_edit_last', '1'),
+(3936, 209, 'field_5ad9c2baca9f0', 'a:11:{s:3:\"key\";s:19:\"field_5ad9c2baca9f0\";s:5:\"label\";s:11:\"icone start\";s:4:\"name\";s:11:\"icone_start\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(3937, 209, 'field_5ad9c570ca9f1', 'a:11:{s:3:\"key\";s:19:\"field_5ad9c570ca9f1\";s:5:\"label\";s:9:\"icone end\";s:4:\"name\";s:9:\"icone_end\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(3938, 209, 'position', 'normal'),
+(3939, 209, 'layout', 'no_box'),
+(3940, 209, 'hide_on_screen', ''),
+(3941, 209, 'field_5ad9cb2f8cd2c', 'a:12:{s:3:\"key\";s:19:\"field_5ad9cb2f8cd2c\";s:5:\"label\";s:4:\"Type\";s:4:\"name\";s:4:\"type\";s:4:\"type\";s:6:\"select\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:7:\"choices\";a:3:{i:0;s:5:\"Aller\";i:1;s:14:\"Aller / Retour\";s:0:\"\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:10:\"allow_null\";s:1:\"0\";s:8:\"multiple\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(3942, 209, 'field_5ad9e68232296', 'a:14:{s:3:\"key\";s:19:\"field_5ad9e68232296\";s:5:\"label\";s:18:\"Lien pour reserver\";s:4:\"name\";s:13:\"lien_reserver\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9cb2f8cd2c\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
+(3943, 209, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:9:\"transfert\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(3944, 258, '_edit_last', '1'),
+(3945, 258, 'position', 'normal'),
+(3946, 258, 'layout', 'no_box'),
+(3947, 258, 'hide_on_screen', ''),
+(3948, 258, 'field_5ae08fa0d0976', 'a:8:{s:3:\"key\";s:19:\"field_5ae08fa0d0976\";s:5:\"label\";s:27:\"Paragraphe info sur l\'hotel\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
+(3949, 258, 'field_5ae08fcad0977', 'a:14:{s:3:\"key\";s:19:\"field_5ae08fcad0977\";s:5:\"label\";s:7:\"Adresse\";s:4:\"name\";s:7:\"adresse\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:4;}'),
+(3950, 258, 'field_5ae0ad3733076', 'a:13:{s:3:\"key\";s:19:\"field_5ae0ad3733076\";s:5:\"label\";s:9:\"Telephone\";s:4:\"name\";s:10:\"hotel_info\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";s:4:\"rows\";s:0:\"\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:5;}'),
+(3951, 258, 'field_5ae0b47d5a9a2', 'a:11:{s:3:\"key\";s:19:\"field_5ae0b47d5a9a2\";s:5:\"label\";s:5:\"About\";s:4:\"name\";s:11:\"about_hotel\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:7;}'),
+(3952, 258, 'field_5ae0b4d37cf7e', 'a:11:{s:3:\"key\";s:19:\"field_5ae0b4d37cf7e\";s:5:\"label\";s:7:\"Options\";s:4:\"name\";s:13:\"options_hotel\";s:4:\"type\";s:8:\"checkbox\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:7:\"choices\";a:4:{i:0;s:4:\"Wifi\";i:1;s:7:\"Parking\";i:2;s:3:\"Bar\";i:3;s:18:\"Service de chambre\";}s:13:\"default_value\";s:0:\"\";s:6:\"layout\";s:8:\"vertical\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:8;}'),
+(3953, 258, 'field_5ae16a45d5889', 'a:8:{s:3:\"key\";s:19:\"field_5ae16a45d5889\";s:5:\"label\";s:14:\"Gallerie photo\";s:4:\"name\";s:14:\"gallery_images\";s:4:\"type\";s:13:\"photo_gallery\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:6;}'),
+(3954, 258, 'field_5ae1ca57d97cf', 'a:15:{s:3:\"key\";s:19:\"field_5ae1ca57d97cf\";s:5:\"label\";s:4:\"Avis\";s:4:\"name\";s:4:\"avis\";s:4:\"type\";s:6:\"number\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:1:\"0\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:3:\"min\";s:0:\"\";s:3:\"max\";s:0:\"\";s:4:\"step\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(3955, 258, 'cwp_meta_box_check', 'No'),
+(3956, 258, 'field_5ae2e2b37534e', 'a:13:{s:3:\"key\";s:19:\"field_5ae2e2b37534e\";s:5:\"label\";s:7:\"Extrait\";s:4:\"name\";s:7:\"extrait\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:3:\"350\";s:4:\"rows\";s:0:\"\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(3957, 258, 'field_5ae84c2ffa13c', 'a:8:{s:3:\"key\";s:19:\"field_5ae84c2ffa13c\";s:5:\"label\";s:23:\"Bloc extrait de l\'hotel\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(3958, 258, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:7:\"auberge\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(3959, 365, '_edit_last', '1');
+INSERT INTO `wp_postmeta` (`meta_id`, `post_id`, `meta_key`, `meta_value`) VALUES
+(3960, 365, 'field_5aed55c6be634', 'a:13:{s:3:\"key\";s:19:\"field_5aed55c6be634\";s:5:\"label\";s:7:\"Extrait\";s:4:\"name\";s:7:\"extrait\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:3:\"200\";s:4:\"rows\";s:1:\"4\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(3961, 365, 'position', 'acf_after_title'),
+(3962, 365, 'layout', 'default'),
+(3963, 365, 'hide_on_screen', ''),
+(3964, 365, 'field_5aed625f21cb7', 'a:11:{s:3:\"key\";s:19:\"field_5aed625f21cb7\";s:5:\"label\";s:14:\"Icone en avant\";s:4:\"name\";s:14:\"icone_en_avant\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:2:\"id\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(3965, 365, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"2\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(3966, 365, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"14\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:1;}'),
+(3969, 124, '_edit_last', '1'),
+(3970, 124, 'position', 'normal'),
+(3971, 124, 'layout', 'no_box'),
+(3972, 124, 'hide_on_screen', ''),
+(3973, 124, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"carte\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(3974, 364, '_edit_last', '1'),
+(3975, 364, 'field_5ad8328334adf', 'a:8:{s:3:\"key\";s:19:\"field_5ad8328334adf\";s:5:\"label\";s:12:\"Paragraphe 1\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(3976, 364, 'field_5ad832a034ae0', 'a:14:{s:3:\"key\";s:19:\"field_5ad832a034ae0\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:7:\"titre_1\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(3977, 364, 'field_5ad832e834ae1', 'a:11:{s:3:\"key\";s:19:\"field_5ad832e834ae1\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:9:\"contenu_1\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(3978, 364, 'position', 'acf_after_title'),
+(3979, 364, 'layout', 'default'),
+(3980, 364, 'hide_on_screen', ''),
+(3981, 364, 'field_5ad8336cdfbac', 'a:8:{s:3:\"key\";s:19:\"field_5ad8336cdfbac\";s:5:\"label\";s:12:\"Paragraphe 2\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:4;}'),
+(3982, 364, 'field_5ad8337bdfbad', 'a:14:{s:3:\"key\";s:19:\"field_5ad8337bdfbad\";s:5:\"label\";s:6:\"Titre \";s:4:\"name\";s:7:\"titre_2\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:5;}'),
+(3983, 364, 'field_5ad833c87687b', 'a:11:{s:3:\"key\";s:19:\"field_5ad833c87687b\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_1\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
+(3984, 364, 'field_5ad833af7687a', 'a:11:{s:3:\"key\";s:19:\"field_5ad833af7687a\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:9:\"contenu_2\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:6;}'),
+(3985, 364, 'field_5ad834d87687c', 'a:11:{s:3:\"key\";s:19:\"field_5ad834d87687c\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_2\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:7;}'),
+(3986, 364, 'field_5ad84b2059db0', 'a:8:{s:3:\"key\";s:19:\"field_5ad84b2059db0\";s:5:\"label\";s:12:\"Paragraphe 3\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:8;}'),
+(3987, 364, 'field_5ad84b3059db1', 'a:14:{s:3:\"key\";s:19:\"field_5ad84b3059db1\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:7:\"titre_3\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:9;}'),
+(3988, 364, 'field_5ad84b4359db2', 'a:11:{s:3:\"key\";s:19:\"field_5ad84b4359db2\";s:5:\"label\";s:8:\"Contenu \";s:4:\"name\";s:9:\"contenu_3\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:10;}'),
+(3989, 364, 'field_5ad84b5259db3', 'a:11:{s:3:\"key\";s:19:\"field_5ad84b5259db3\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_3\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:11;}'),
+(3990, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:3:\"137\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(3991, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"14\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:1;}'),
+(3992, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"2\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:2;}'),
+(3993, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"17\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:3;}'),
+(3994, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"62\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:4;}'),
+(3995, 364, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"carte\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:5;}'),
+(3996, 364, 'rule', 'a:5:{s:5:\"param\";s:13:\"page_template\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:17:\"page-activite.php\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:6;}'),
+(3997, 364, 'rule', 'a:5:{s:5:\"param\";s:13:\"page_template\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:16:\"page-service.php\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:7;}'),
+(3998, 205, '_edit_last', '1'),
+(3999, 205, 'field_5ad9a2dc71426', 'a:14:{s:3:\"key\";s:19:\"field_5ad9a2dc71426\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:12:\"titre_footer\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(4000, 205, 'position', 'normal'),
+(4001, 205, 'layout', 'no_box'),
+(4002, 205, 'hide_on_screen', ''),
+(4003, 205, 'field_5ad9a30ccfaab', 'a:8:{s:3:\"key\";s:19:\"field_5ad9a30ccfaab\";s:5:\"label\";s:18:\"Paragraphe footer \";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(4004, 205, 'field_5ad9efc12aae2', 'a:13:{s:3:\"key\";s:19:\"field_5ad9efc12aae2\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:14:\"contenu_footer\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";s:4:\"rows\";s:0:\"\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(4005, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:3:\"137\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4006, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"14\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:1;}'),
+(4007, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"2\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:2;}'),
+(4008, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"17\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:3;}'),
+(4009, 205, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"hotel\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:4;}'),
+(4010, 209, '_edit_last', '1'),
+(4011, 209, 'field_5ad9c2baca9f0', 'a:11:{s:3:\"key\";s:19:\"field_5ad9c2baca9f0\";s:5:\"label\";s:11:\"icone start\";s:4:\"name\";s:11:\"icone_start\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(4012, 209, 'field_5ad9c570ca9f1', 'a:11:{s:3:\"key\";s:19:\"field_5ad9c570ca9f1\";s:5:\"label\";s:9:\"icone end\";s:4:\"name\";s:9:\"icone_end\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(4013, 209, 'position', 'normal'),
+(4014, 209, 'layout', 'no_box'),
+(4015, 209, 'hide_on_screen', ''),
+(4016, 209, 'field_5ad9cb2f8cd2c', 'a:12:{s:3:\"key\";s:19:\"field_5ad9cb2f8cd2c\";s:5:\"label\";s:4:\"Type\";s:4:\"name\";s:4:\"type\";s:4:\"type\";s:6:\"select\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:7:\"choices\";a:3:{i:0;s:5:\"Aller\";i:1;s:14:\"Aller / Retour\";s:0:\"\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:10:\"allow_null\";s:1:\"0\";s:8:\"multiple\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(4017, 209, 'field_5ad9e68232296', 'a:14:{s:3:\"key\";s:19:\"field_5ad9e68232296\";s:5:\"label\";s:18:\"Lien pour reserver\";s:4:\"name\";s:13:\"lien_reserver\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9cb2f8cd2c\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
+(4018, 209, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:9:\"transfert\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4019, 258, '_edit_last', '1'),
+(4020, 258, 'position', 'normal'),
+(4021, 258, 'layout', 'no_box'),
+(4022, 258, 'hide_on_screen', ''),
+(4023, 258, 'field_5ae08fa0d0976', 'a:8:{s:3:\"key\";s:19:\"field_5ae08fa0d0976\";s:5:\"label\";s:27:\"Paragraphe info sur l\'hotel\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
+(4024, 258, 'field_5ae08fcad0977', 'a:14:{s:3:\"key\";s:19:\"field_5ae08fcad0977\";s:5:\"label\";s:7:\"Adresse\";s:4:\"name\";s:7:\"adresse\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:4;}'),
+(4025, 258, 'field_5ae0ad3733076', 'a:13:{s:3:\"key\";s:19:\"field_5ae0ad3733076\";s:5:\"label\";s:9:\"Telephone\";s:4:\"name\";s:10:\"hotel_info\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";s:4:\"rows\";s:0:\"\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:5;}'),
+(4026, 258, 'field_5ae0b47d5a9a2', 'a:11:{s:3:\"key\";s:19:\"field_5ae0b47d5a9a2\";s:5:\"label\";s:5:\"About\";s:4:\"name\";s:11:\"about_hotel\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:7;}'),
+(4027, 258, 'field_5ae0b4d37cf7e', 'a:11:{s:3:\"key\";s:19:\"field_5ae0b4d37cf7e\";s:5:\"label\";s:7:\"Options\";s:4:\"name\";s:13:\"options_hotel\";s:4:\"type\";s:8:\"checkbox\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:7:\"choices\";a:4:{i:0;s:4:\"Wifi\";i:1;s:7:\"Parking\";i:2;s:3:\"Bar\";i:3;s:18:\"Service de chambre\";}s:13:\"default_value\";s:0:\"\";s:6:\"layout\";s:8:\"vertical\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:8;}'),
+(4028, 258, 'field_5ae16a45d5889', 'a:8:{s:3:\"key\";s:19:\"field_5ae16a45d5889\";s:5:\"label\";s:14:\"Gallerie photo\";s:4:\"name\";s:14:\"gallery_images\";s:4:\"type\";s:13:\"photo_gallery\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:6;}'),
+(4029, 258, 'field_5ae1ca57d97cf', 'a:15:{s:3:\"key\";s:19:\"field_5ae1ca57d97cf\";s:5:\"label\";s:4:\"Avis\";s:4:\"name\";s:4:\"avis\";s:4:\"type\";s:6:\"number\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:1:\"0\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:3:\"min\";s:0:\"\";s:3:\"max\";s:0:\"\";s:4:\"step\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(4030, 258, 'cwp_meta_box_check', 'No'),
+(4031, 258, 'field_5ae2e2b37534e', 'a:13:{s:3:\"key\";s:19:\"field_5ae2e2b37534e\";s:5:\"label\";s:7:\"Extrait\";s:4:\"name\";s:7:\"extrait\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:3:\"350\";s:4:\"rows\";s:0:\"\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(4032, 258, 'field_5ae84c2ffa13c', 'a:8:{s:3:\"key\";s:19:\"field_5ae84c2ffa13c\";s:5:\"label\";s:23:\"Bloc extrait de l\'hotel\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(4033, 258, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:7:\"auberge\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4034, 365, '_edit_last', '1'),
+(4035, 365, 'field_5aed55c6be634', 'a:13:{s:3:\"key\";s:19:\"field_5aed55c6be634\";s:5:\"label\";s:7:\"Extrait\";s:4:\"name\";s:7:\"extrait\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:3:\"200\";s:4:\"rows\";s:1:\"4\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(4036, 365, 'position', 'acf_after_title'),
+(4037, 365, 'layout', 'default'),
+(4038, 365, 'hide_on_screen', ''),
+(4039, 365, 'field_5aed625f21cb7', 'a:11:{s:3:\"key\";s:19:\"field_5aed625f21cb7\";s:5:\"label\";s:14:\"Icone en avant\";s:4:\"name\";s:14:\"icone_en_avant\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:2:\"id\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(4040, 365, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"2\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4041, 365, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"14\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:1;}'),
+(4044, 124, '_edit_last', '1'),
+(4045, 124, 'position', 'normal'),
+(4046, 124, 'layout', 'no_box'),
+(4047, 124, 'hide_on_screen', ''),
+(4048, 124, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"carte\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4049, 364, '_edit_last', '1'),
+(4050, 364, 'field_5ad8328334adf', 'a:8:{s:3:\"key\";s:19:\"field_5ad8328334adf\";s:5:\"label\";s:12:\"Paragraphe 1\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(4051, 364, 'field_5ad832a034ae0', 'a:14:{s:3:\"key\";s:19:\"field_5ad832a034ae0\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:7:\"titre_1\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(4052, 364, 'field_5ad832e834ae1', 'a:11:{s:3:\"key\";s:19:\"field_5ad832e834ae1\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:9:\"contenu_1\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(4053, 364, 'position', 'acf_after_title'),
+(4054, 364, 'layout', 'default'),
+(4055, 364, 'hide_on_screen', ''),
+(4056, 364, 'field_5ad8336cdfbac', 'a:8:{s:3:\"key\";s:19:\"field_5ad8336cdfbac\";s:5:\"label\";s:12:\"Paragraphe 2\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:4;}'),
+(4057, 364, 'field_5ad8337bdfbad', 'a:14:{s:3:\"key\";s:19:\"field_5ad8337bdfbad\";s:5:\"label\";s:6:\"Titre \";s:4:\"name\";s:7:\"titre_2\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:5;}'),
+(4058, 364, 'field_5ad833c87687b', 'a:11:{s:3:\"key\";s:19:\"field_5ad833c87687b\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_1\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
+(4059, 364, 'field_5ad833af7687a', 'a:11:{s:3:\"key\";s:19:\"field_5ad833af7687a\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:9:\"contenu_2\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:6;}'),
+(4060, 364, 'field_5ad834d87687c', 'a:11:{s:3:\"key\";s:19:\"field_5ad834d87687c\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_2\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:7;}'),
+(4061, 364, 'field_5ad84b2059db0', 'a:8:{s:3:\"key\";s:19:\"field_5ad84b2059db0\";s:5:\"label\";s:12:\"Paragraphe 3\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:8;}'),
+(4062, 364, 'field_5ad84b3059db1', 'a:14:{s:3:\"key\";s:19:\"field_5ad84b3059db1\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:7:\"titre_3\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:9;}'),
+(4063, 364, 'field_5ad84b4359db2', 'a:11:{s:3:\"key\";s:19:\"field_5ad84b4359db2\";s:5:\"label\";s:8:\"Contenu \";s:4:\"name\";s:9:\"contenu_3\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:10;}'),
+(4064, 364, 'field_5ad84b5259db3', 'a:11:{s:3:\"key\";s:19:\"field_5ad84b5259db3\";s:5:\"label\";s:5:\"Image\";s:4:\"name\";s:7:\"image_3\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:11;}'),
+(4065, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:3:\"137\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4066, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"14\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:1;}'),
+(4067, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"2\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:2;}'),
+(4068, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"17\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:3;}'),
+(4069, 364, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"62\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:4;}'),
+(4070, 364, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"carte\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:5;}'),
+(4071, 364, 'rule', 'a:5:{s:5:\"param\";s:13:\"page_template\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:17:\"page-activite.php\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:6;}'),
+(4072, 364, 'rule', 'a:5:{s:5:\"param\";s:13:\"page_template\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:16:\"page-service.php\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:7;}'),
+(4073, 205, '_edit_last', '1'),
+(4074, 205, 'field_5ad9a2dc71426', 'a:14:{s:3:\"key\";s:19:\"field_5ad9a2dc71426\";s:5:\"label\";s:5:\"Titre\";s:4:\"name\";s:12:\"titre_footer\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(4075, 205, 'position', 'normal'),
+(4076, 205, 'layout', 'no_box'),
+(4077, 205, 'hide_on_screen', ''),
+(4078, 205, 'field_5ad9a30ccfaab', 'a:8:{s:3:\"key\";s:19:\"field_5ad9a30ccfaab\";s:5:\"label\";s:18:\"Paragraphe footer \";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(4079, 205, 'field_5ad9efc12aae2', 'a:13:{s:3:\"key\";s:19:\"field_5ad9efc12aae2\";s:5:\"label\";s:7:\"Contenu\";s:4:\"name\";s:14:\"contenu_footer\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";s:4:\"rows\";s:0:\"\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(4080, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:3:\"137\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4081, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"14\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:1;}'),
+(4082, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"2\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:2;}'),
+(4083, 205, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"17\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:3;}'),
+(4084, 205, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:5:\"hotel\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:4;}'),
+(4085, 209, '_edit_last', '1'),
+(4086, 209, 'field_5ad9c2baca9f0', 'a:11:{s:3:\"key\";s:19:\"field_5ad9c2baca9f0\";s:5:\"label\";s:11:\"icone start\";s:4:\"name\";s:11:\"icone_start\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(4087, 209, 'field_5ad9c570ca9f1', 'a:11:{s:3:\"key\";s:19:\"field_5ad9c570ca9f1\";s:5:\"label\";s:9:\"icone end\";s:4:\"name\";s:9:\"icone_end\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:3:\"url\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(4088, 209, 'position', 'normal'),
+(4089, 209, 'layout', 'no_box'),
+(4090, 209, 'hide_on_screen', ''),
+(4091, 209, 'field_5ad9cb2f8cd2c', 'a:12:{s:3:\"key\";s:19:\"field_5ad9cb2f8cd2c\";s:5:\"label\";s:4:\"Type\";s:4:\"name\";s:4:\"type\";s:4:\"type\";s:6:\"select\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:7:\"choices\";a:3:{i:0;s:5:\"Aller\";i:1;s:14:\"Aller / Retour\";s:0:\"\";s:0:\"\";}s:13:\"default_value\";s:0:\"\";s:10:\"allow_null\";s:1:\"0\";s:8:\"multiple\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(4092, 209, 'field_5ad9e68232296', 'a:14:{s:3:\"key\";s:19:\"field_5ad9e68232296\";s:5:\"label\";s:18:\"Lien pour reserver\";s:4:\"name\";s:13:\"lien_reserver\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9cb2f8cd2c\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
+(4093, 209, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:9:\"transfert\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4094, 258, '_edit_last', '1'),
+(4095, 258, 'position', 'normal'),
+(4096, 258, 'layout', 'no_box'),
+(4097, 258, 'hide_on_screen', ''),
+(4098, 258, 'field_5ae08fa0d0976', 'a:8:{s:3:\"key\";s:19:\"field_5ae08fa0d0976\";s:5:\"label\";s:27:\"Paragraphe info sur l\'hotel\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:3;}'),
+(4099, 258, 'field_5ae08fcad0977', 'a:14:{s:3:\"key\";s:19:\"field_5ae08fcad0977\";s:5:\"label\";s:7:\"Adresse\";s:4:\"name\";s:7:\"adresse\";s:4:\"type\";s:4:\"text\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:10:\"formatting\";s:4:\"html\";s:9:\"maxlength\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:4;}'),
+(4100, 258, 'field_5ae0ad3733076', 'a:13:{s:3:\"key\";s:19:\"field_5ae0ad3733076\";s:5:\"label\";s:9:\"Telephone\";s:4:\"name\";s:10:\"hotel_info\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:0:\"\";s:4:\"rows\";s:0:\"\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:5;}'),
+(4101, 258, 'field_5ae0b47d5a9a2', 'a:11:{s:3:\"key\";s:19:\"field_5ae0b47d5a9a2\";s:5:\"label\";s:5:\"About\";s:4:\"name\";s:11:\"about_hotel\";s:4:\"type\";s:7:\"wysiwyg\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:7:\"toolbar\";s:4:\"full\";s:12:\"media_upload\";s:3:\"yes\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ad9e68232296\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:7;}'),
+(4102, 258, 'field_5ae0b4d37cf7e', 'a:11:{s:3:\"key\";s:19:\"field_5ae0b4d37cf7e\";s:5:\"label\";s:7:\"Options\";s:4:\"name\";s:13:\"options_hotel\";s:4:\"type\";s:8:\"checkbox\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:7:\"choices\";a:4:{i:0;s:4:\"Wifi\";i:1;s:7:\"Parking\";i:2;s:3:\"Bar\";i:3;s:18:\"Service de chambre\";}s:13:\"default_value\";s:0:\"\";s:6:\"layout\";s:8:\"vertical\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:8;}'),
+(4103, 258, 'field_5ae16a45d5889', 'a:8:{s:3:\"key\";s:19:\"field_5ae16a45d5889\";s:5:\"label\";s:14:\"Gallerie photo\";s:4:\"name\";s:14:\"gallery_images\";s:4:\"type\";s:13:\"photo_gallery\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:6;}'),
+(4104, 258, 'field_5ae1ca57d97cf', 'a:15:{s:3:\"key\";s:19:\"field_5ae1ca57d97cf\";s:5:\"label\";s:4:\"Avis\";s:4:\"name\";s:4:\"avis\";s:4:\"type\";s:6:\"number\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:1:\"0\";s:11:\"placeholder\";s:0:\"\";s:7:\"prepend\";s:0:\"\";s:6:\"append\";s:0:\"\";s:3:\"min\";s:0:\"\";s:3:\"max\";s:0:\"\";s:4:\"step\";s:0:\"\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:2;}'),
+(4105, 258, 'cwp_meta_box_check', 'No'),
+(4106, 258, 'field_5ae2e2b37534e', 'a:13:{s:3:\"key\";s:19:\"field_5ae2e2b37534e\";s:5:\"label\";s:7:\"Extrait\";s:4:\"name\";s:7:\"extrait\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:3:\"350\";s:4:\"rows\";s:0:\"\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(4107, 258, 'field_5ae84c2ffa13c', 'a:8:{s:3:\"key\";s:19:\"field_5ae84c2ffa13c\";s:5:\"label\";s:23:\"Bloc extrait de l\'hotel\";s:4:\"name\";s:0:\"\";s:4:\"type\";s:3:\"tab\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:19:\"field_5ae0b4d37cf7e\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"0\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(4108, 258, 'rule', 'a:5:{s:5:\"param\";s:9:\"post_type\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:7:\"auberge\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4109, 365, '_edit_last', '1'),
+(4110, 365, 'field_5aed55c6be634', 'a:13:{s:3:\"key\";s:19:\"field_5aed55c6be634\";s:5:\"label\";s:7:\"Extrait\";s:4:\"name\";s:7:\"extrait\";s:4:\"type\";s:8:\"textarea\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:13:\"default_value\";s:0:\"\";s:11:\"placeholder\";s:0:\"\";s:9:\"maxlength\";s:3:\"200\";s:4:\"rows\";s:1:\"4\";s:10:\"formatting\";s:2:\"br\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:0;}'),
+(4111, 365, 'position', 'acf_after_title'),
+(4112, 365, 'layout', 'default'),
+(4113, 365, 'hide_on_screen', ''),
+(4114, 365, 'field_5aed625f21cb7', 'a:11:{s:3:\"key\";s:19:\"field_5aed625f21cb7\";s:5:\"label\";s:14:\"Icone en avant\";s:4:\"name\";s:14:\"icone_en_avant\";s:4:\"type\";s:5:\"image\";s:12:\"instructions\";s:0:\"\";s:8:\"required\";s:1:\"0\";s:11:\"save_format\";s:2:\"id\";s:12:\"preview_size\";s:9:\"thumbnail\";s:7:\"library\";s:3:\"all\";s:17:\"conditional_logic\";a:3:{s:6:\"status\";s:1:\"0\";s:5:\"rules\";a:1:{i:0;a:3:{s:5:\"field\";s:4:\"null\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:0:\"\";}}s:8:\"allorany\";s:3:\"all\";}s:8:\"order_no\";i:1;}'),
+(4115, 365, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:1:\"2\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:0;}'),
+(4116, 365, 'rule', 'a:5:{s:5:\"param\";s:4:\"page\";s:8:\"operator\";s:2:\"==\";s:5:\"value\";s:2:\"14\";s:8:\"order_no\";i:0;s:8:\"group_no\";i:1;}');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_posts`
+-- Structure de la table `wp_posts`
 --
 
-CREATE TABLE `wp_posts` (
-  `ID` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_posts`;
+CREATE TABLE IF NOT EXISTS `wp_posts` (
+  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `post_author` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `post_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `post_date_gmt` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -5261,28 +5576,33 @@ CREATE TABLE `wp_posts` (
   `menu_order` int(11) NOT NULL DEFAULT '0',
   `post_type` varchar(20) NOT NULL DEFAULT 'post',
   `post_mime_type` varchar(100) NOT NULL DEFAULT '',
-  `comment_count` bigint(20) NOT NULL DEFAULT '0'
-) ;
+  `comment_count` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `post_name` (`post_name`(191)),
+  KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
+  KEY `post_parent` (`post_parent`),
+  KEY `post_author` (`post_author`)
+) ENGINE=MyISAM AUTO_INCREMENT=428 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_posts`
+-- Déchargement des données de la table `wp_posts`
 --
 
 INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (1, 1, '2018-04-11 21:20:06', '2018-04-11 19:20:06', 'Bienvenue sur WordPress. Ceci est votre premier article. Modifiez-le ou supprimez-le, puis lancez-vous !', 'Hotel Ai Due Principi', '', 'publish', 'open', 'open', '', 'bonjour-tout-le-monde', '', '', '2018-04-23 15:37:04', '2018-04-23 13:37:04', '', 0, 'https://www.gotovenise.com/?p=1', 0, 'post', '', 1),
-(2, 1, '2018-04-11 21:20:06', '2018-04-11 19:20:06', '', 'Transport', '', 'publish', 'closed', 'open', '', 'transport', '', '', '2018-05-07 08:12:00', '2018-05-07 06:12:00', '', 0, 'https://www.gotovenise.com/?page_id=2', 0, 'page', '', 0),
+(2, 1, '2018-04-11 21:20:06', '2018-04-11 19:20:06', '', 'Transport', '', 'publish', 'closed', 'open', '', 'transport', '', '', '2018-05-31 13:18:43', '2018-05-31 11:18:43', '', 0, 'https://www.gotovenise.com/?page_id=2', 0, 'page', '', 0),
 (4, 1, '2018-04-11 21:22:29', '2018-04-11 19:22:29', '', 'Tourisme', '', 'publish', 'closed', 'closed', '', 'tourisme', '', '', '2018-04-19 10:59:28', '2018-04-19 08:59:28', '', 0, 'https://www.gotovenise.com/?page_id=4', 0, 'page', '', 0),
 (5, 1, '2018-04-11 21:22:29', '2018-04-11 19:22:29', '', 'Tourisme', '', 'inherit', 'closed', 'closed', '', '4-revision-v1', '', '', '2018-04-11 21:22:29', '2018-04-11 19:22:29', '', 4, 'https://www.gotovenise.com/2018/04/11/4-revision-v1/', 0, 'revision', '', 0),
 (6, 1, '2018-04-11 21:28:51', '2018-04-11 19:28:51', '', 'logo Voyage-Venise', '', 'inherit', 'open', 'closed', '', 'logo', '', '', '2018-04-11 21:29:05', '2018-04-11 19:29:05', '', 0, 'https://www.gotovenise.com/wp-content/uploads/2018/04/logo.png', 0, 'attachment', 'image/png', 0),
 (7, 1, '2018-04-11 21:29:13', '2018-04-11 19:29:13', 'https://www.gotovenise.com/wp-content/uploads/2018/04/cropped-logo.png', 'cropped-logo.png', '', 'inherit', 'open', 'closed', '', 'cropped-logo-png', '', '', '2018-04-11 21:29:13', '2018-04-11 19:29:13', '', 0, 'https://www.gotovenise.com/wp-content/uploads/2018/04/cropped-logo.png', 0, 'attachment', 'image/png', 0),
 (10, 1, '2018-04-11 21:47:53', '2018-04-11 19:47:53', 'Voici un exemple de page. Elle est différente d’un article de blog, en cela qu’elle restera à la même place, et s’affichera dans le menu de navigation de votre site (en fonction de votre thème). La plupart des gens commencent par écrire une page « À Propos » qui les présente aux visiteurs potentiels du site. Vous pourriez y écrire quelque chose de ce tenant :\r\n<blockquote>Bonjour ! Je suis un mécanicien qui aspire à devenir un acteur, et ceci est mon blog. J’habite à Bordeaux, j’ai un super chien qui s’appelle Russell, et j’aime la vodka-ananas (ainsi que perdre mon temps à regarder la pluie tomber).</blockquote>\r\n...ou bien quelque chose comme cela :\r\n<blockquote>La société 123 Machin Truc a été créée en 1971, et n’a cessé de proposer au public des machins-trucs de qualité depuis cette année. Située à Saint-Remy-en-Bouzemont-Saint-Genest-et-Isson, 123 Machin Truc emploie 2 000 personnes, et fabrique toutes sortes de bidules super pour la communauté bouzemontoise.</blockquote>\r\nÉtant donné que vous êtes un nouvel utilisateur ou une nouvelle utilisatrice de WordPress, vous devriez vous rendre sur votre <a href=\"https://www.gotovenise.com/wp-admin/\">tableau de bord</a> pour effacer la présente page, et créer de nouvelles pages avec votre propre contenu. Amusez-vous bien !', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-04-11 21:47:53', '2018-04-11 19:47:53', '', 2, 'https://www.gotovenise.com/2018/04/11/2-revision-v1/', 0, 'revision', '', 0),
-(13, 1, '2018-04-11 21:53:53', '2018-04-11 19:53:53', ' ', '', '', 'publish', 'closed', 'closed', '', '13', '', '', '2018-05-03 15:25:23', '2018-05-03 13:25:23', '', 0, 'https://www.gotovenise.com/?p=13', 2, 'nav_menu_item', '', 0),
+(13, 1, '2018-04-11 21:53:53', '2018-04-11 19:53:53', ' ', '', '', 'publish', 'closed', 'closed', '', '13', '', '', '2018-05-31 14:01:13', '2018-05-31 12:01:13', '', 0, 'https://www.gotovenise.com/?p=13', 2, 'nav_menu_item', '', 0),
 (14, 1, '2018-04-11 21:54:49', '2018-04-11 19:54:49', '', 'Hébergement', '', 'publish', 'closed', 'closed', '', 'hotel', '', '', '2018-05-07 08:13:16', '2018-05-07 06:13:16', '', 0, 'https://www.gotovenise.com/?page_id=14', 0, 'page', '', 0),
 (15, 1, '2018-04-11 21:54:49', '2018-04-11 19:54:49', '', 'Hébergement', '', 'inherit', 'closed', 'closed', '', '14-revision-v1', '', '', '2018-04-11 21:54:49', '2018-04-11 19:54:49', '', 14, 'https://www.gotovenise.com/2018/04/11/14-revision-v1/', 0, 'revision', '', 0),
-(16, 1, '2018-04-11 21:55:41', '2018-04-11 19:55:41', ' ', '', '', 'publish', 'closed', 'closed', '', '16', '', '', '2018-05-03 15:25:23', '2018-05-03 13:25:23', '', 0, 'https://www.gotovenise.com/?p=16', 3, 'nav_menu_item', '', 0),
+(16, 1, '2018-04-11 21:55:41', '2018-04-11 19:55:41', ' ', '', '', 'publish', 'closed', 'closed', '', '16', '', '', '2018-05-31 14:01:13', '2018-05-31 12:01:13', '', 0, 'https://www.gotovenise.com/?p=16', 3, 'nav_menu_item', '', 0),
 (17, 1, '2018-04-11 21:56:04', '2018-04-11 19:56:04', '', 'Vols', '', 'publish', 'closed', 'closed', '', 'vols', '', '', '2018-05-04 10:16:55', '2018-05-04 08:16:55', '', 0, 'https://www.gotovenise.com/?page_id=17', 0, 'page', '', 0),
 (18, 1, '2018-04-11 21:56:04', '2018-04-11 19:56:04', '', 'Vols', '', 'inherit', 'closed', 'closed', '', '17-revision-v1', '', '', '2018-04-11 21:56:04', '2018-04-11 19:56:04', '', 17, 'https://www.gotovenise.com/2018/04/11/17-revision-v1/', 0, 'revision', '', 0),
-(19, 1, '2018-04-11 22:02:48', '2018-04-11 20:02:48', ' ', '', '', 'publish', 'closed', 'closed', '', '19', '', '', '2018-05-03 15:25:23', '2018-05-03 13:25:23', '', 0, 'https://www.gotovenise.com/?p=19', 4, 'nav_menu_item', '', 0),
+(19, 1, '2018-04-11 22:02:48', '2018-04-11 20:02:48', ' ', '', '', 'publish', 'closed', 'closed', '', '19', '', '', '2018-05-31 14:01:13', '2018-05-31 12:01:13', '', 0, 'https://www.gotovenise.com/?p=19', 4, 'nav_menu_item', '', 0),
 (20, 1, '2018-04-11 22:09:47', '2018-04-11 20:09:47', '', 'slider', 'Temporary slider img', 'inherit', 'open', 'closed', '', 'bg_slide_temp', '', '', '2018-04-11 22:10:02', '2018-04-11 20:10:02', '', 2, 'https://www.gotovenise.com/wp-content/uploads/2018/04/bg_slide_temp.jpg', 0, 'attachment', 'image/jpeg', 0),
 (25, 1, '2018-04-12 19:41:15', '2018-04-12 17:41:15', '', 'page_background', '', 'inherit', 'open', 'closed', '', 'page_background', '', '', '2018-04-12 19:41:15', '2018-04-12 17:41:15', '', 0, 'https://www.gotovenise.com/wp-content/uploads/2018/04/page_background.jpg', 0, 'attachment', 'image/jpeg', 0),
 (27, 1, '2018-04-12 19:41:21', '2018-04-12 17:41:21', '', 'cropped-page_background.jpg', '', 'inherit', 'open', 'closed', '', 'cropped-page_background-jpg', '', '', '2018-04-12 19:41:21', '2018-04-12 17:41:21', '', 0, 'https://www.gotovenise.com/wp-content/uploads/2018/04/cropped-page_background.jpg', 0, 'attachment', 'image/jpeg', 0),
@@ -5314,11 +5634,6 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (62, 1, '2018-04-16 21:58:27', '2018-04-16 19:58:27', '', 'Mentions légales', '', 'publish', 'closed', 'closed', '', 'mentions-legales', '', '', '2018-05-04 12:22:04', '2018-05-04 10:22:04', '', 0, 'https://www.gotovenise.com/?page_id=62', 0, 'page', '', 0),
 (63, 1, '2018-04-16 21:58:27', '2018-04-16 19:58:27', '<h2>Hébergement du site</h2>\r\nLe site est hébergé en France sur les serveurs de la société OVH Adresse web : www.ovh.com Adresse Postale : 2 rue kellermann, BP 80157, 59053 ROUBAIX Cedex 1\r\n<h2>Responsabilité</h2>\r\nToute information fournie sur ce site l’est exclusivement à titre informatif.\r\n<h2>Liens hypertexte</h2>\r\nLe site peut contenir des liens d’affiliation menant à d’autres sites Internet totalement indépendants du site de l’éditeur. L’éditeur ne suppose aucunement, ni ne garantit que les informations contenues dans de tels liens hypertextes ou dans tout autre site Internet soient exactes, complètes ou véridiques. Dès lors, tout accès à un autre site Internet lié au site de l’éditeur s’effectue sous la propre responsabilité, pleine et entière, de l’utilisateur.', 'Mentions légales', '', 'inherit', 'closed', 'closed', '', '62-revision-v1', '', '', '2018-04-16 21:58:27', '2018-04-16 19:58:27', '', 62, 'https://www.gotovenise.com/2018/04/16/62-revision-v1/', 0, 'revision', '', 0),
 (64, 1, '2018-04-16 22:00:53', '2018-04-16 20:00:53', '', 'Mentions légales', '', 'inherit', 'closed', 'closed', '', '62-revision-v1', '', '', '2018-04-16 22:00:53', '2018-04-16 20:00:53', '', 62, 'https://www.gotovenise.com/2018/04/16/62-revision-v1/', 0, 'revision', '', 0),
-(65, 1, '2018-04-17 10:11:29', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'closed', 'closed', '', '', '', '', '2018-04-17 10:11:29', '0000-00-00 00:00:00', '', 0, 'https://www.gotovenise.com/?p=65', 1, 'nav_menu_item', '', 0),
-(66, 1, '2018-04-17 10:11:29', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'closed', 'closed', '', '', '', '', '2018-04-17 10:11:29', '0000-00-00 00:00:00', '', 0, 'https://www.gotovenise.com/?p=66', 1, 'nav_menu_item', '', 0),
-(67, 1, '2018-04-17 10:11:29', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'closed', 'closed', '', '', '', '', '2018-04-17 10:11:29', '0000-00-00 00:00:00', '', 0, 'https://www.gotovenise.com/?p=67', 1, 'nav_menu_item', '', 0),
-(68, 1, '2018-04-17 10:11:29', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'closed', 'closed', '', '', '', '', '2018-04-17 10:11:29', '0000-00-00 00:00:00', '', 0, 'https://www.gotovenise.com/?p=68', 1, 'nav_menu_item', '', 0),
-(71, 1, '2018-04-17 10:11:29', '0000-00-00 00:00:00', ' ', '', '', 'draft', 'closed', 'closed', '', '', '', '', '2018-04-17 10:11:29', '0000-00-00 00:00:00', '', 14, 'https://www.gotovenise.com/?p=71', 1, 'nav_menu_item', '', 0),
 (74, 1, '2018-04-17 12:09:17', '2018-04-17 10:09:17', '', 'cropped-activity_photo.jpg', '', 'inherit', 'open', 'closed', '', 'cropped-activity_photo-jpg', '', '', '2018-04-17 12:09:17', '2018-04-17 10:09:17', '', 0, 'https://www.gotovenise.com/wp-content/uploads/2018/04/cropped-activity_photo.jpg', 0, 'attachment', 'image/jpeg', 0),
 (76, 1, '2018-04-17 12:15:15', '2018-04-17 10:15:15', 'https://www.gotovenise.com/wp-content/uploads/2018/04/cropped-logo-1.png', 'cropped-logo-1.png', '', 'inherit', 'open', 'closed', '', 'cropped-logo-1-png', '', '', '2018-04-17 12:15:15', '2018-04-17 10:15:15', '', 0, 'https://www.gotovenise.com/wp-content/uploads/2018/04/cropped-logo-1.png', 0, 'attachment', 'image/png', 0),
 (81, 1, '2018-04-17 15:42:00', '2018-04-17 13:42:00', '[helloworld]', 'Hébergement', '', 'inherit', 'closed', 'closed', '', '14-revision-v1', '', '', '2018-04-17 15:42:00', '2018-04-17 13:42:00', '', 14, 'https://www.gotovenise.com/2018/04/17/14-revision-v1/', 0, 'revision', '', 0),
@@ -5377,7 +5692,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (192, 1, '2018-04-19 13:03:54', '2018-04-19 11:03:54', 'Une fois que vous aurez réservé votre vol et que vous saurez à quel aéroport vous arriverez, vous n’aurez plus qu’à savoir <strong>comment arriver jusqu’au centre de Venise</strong>', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-04-19 13:03:54', '2018-04-19 11:03:54', '', 2, 'https://www.gotovenise.com/2018/04/19/2-revision-v1/', 0, 'revision', '', 0),
 (193, 1, '2018-04-19 14:27:56', '2018-04-19 12:27:56', 'Notre <strong>guide</strong> <strong>touristique a été </strong><strong>conçu par et pour des voyageurs comme vous</strong>, dans un style simple, avec des conseils et astuces pour <strong>économiser et profiter au maximum de cette expérience</strong>.', 'A Venise', '', 'inherit', 'closed', 'closed', '', '137-revision-v1', '', '', '2018-04-19 14:27:56', '2018-04-19 12:27:56', '', 137, 'https://www.gotovenise.com/2018/04/19/137-revision-v1/', 0, 'revision', '', 0),
 (194, 1, '2018-04-19 15:39:59', '2018-04-19 13:39:59', 'Une fois que vous aurez réservé votre vol et que vous saurez à quel aéroport vous arriverez, vous n’aurez plus qu’à savoir <strong>comment arriver jusqu’au centre de Venise</strong>', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-04-19 15:39:59', '2018-04-19 13:39:59', '', 2, 'https://www.gotovenise.com/2018/04/19/2-revision-v1/', 0, 'revision', '', 0),
-(195, 1, '2018-04-19 15:51:05', '2018-04-19 13:51:05', '', 'Guide touristique', '', 'publish', 'closed', 'closed', '', 'guide-touristique', '', '', '2018-05-03 15:25:23', '2018-05-03 13:25:23', '', 0, 'https://www.gotovenise.com/?p=195', 1, 'nav_menu_item', '', 0),
+(195, 1, '2018-04-19 15:51:05', '2018-04-19 13:51:05', '', 'Voyage Venise', '', 'publish', 'closed', 'closed', '', 'guide-touristique', '', '', '2018-05-31 14:01:13', '2018-05-31 12:01:13', '', 0, 'https://www.gotovenise.com/?p=195', 1, 'nav_menu_item', '', 0),
 (200, 1, '2018-04-20 09:41:38', '2018-04-20 07:41:38', '', 'Hébergement', '', 'inherit', 'closed', 'closed', '', '14-revision-v1', '', '', '2018-04-20 09:41:38', '2018-04-20 07:41:38', '', 14, 'https://www.gotovenise.com/2018/04/20/14-revision-v1/', 0, 'revision', '', 0),
 (201, 1, '2018-04-20 10:07:50', '2018-04-20 08:07:50', '<div class=\"razon\">Plus de 600 000 logements</div>\r\n<div class=\"explicacion\">Trouvez des hôtels aux meilleurs prix et des milliers de logements partout dans le monde.</div>', 'Hébergement', '', 'inherit', 'closed', 'closed', '', '14-revision-v1', '', '', '2018-04-20 10:07:50', '2018-04-20 08:07:50', '', 14, 'https://www.gotovenise.com/2018/04/20/14-revision-v1/', 0, 'revision', '', 0),
 (202, 1, '2018-04-20 10:12:03', '2018-04-20 08:12:03', '<div class=\"razon\">Plus de 600 000 logements</div>\r\n<div class=\"explicacion\">Trouvez des hôtels aux meilleurs prix et des milliers de logements partout dans le monde.</div>', 'Hébergement', '', 'inherit', 'closed', 'closed', '', '14-revision-v1', '', '', '2018-04-20 10:12:03', '2018-04-20 08:12:03', '', 14, 'https://www.gotovenise.com/2018/04/20/14-revision-v1/', 0, 'revision', '', 0),
@@ -5393,11 +5708,11 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (213, 1, '2018-04-20 13:35:58', '2018-04-20 11:35:58', '', 'trajet_litmarron', '', 'inherit', 'open', 'closed', '', 'trajet_litmarron-2', '', '', '2018-04-20 13:35:58', '2018-04-20 11:35:58', '', 211, 'https://www.gotovenise.com/wp-content/uploads/2018/04/trajet_litmarron-1.png', 0, 'attachment', 'image/png', 0),
 (214, 1, '2018-04-20 13:35:59', '2018-04-20 11:35:59', '', 'trajet_planeblanc', '', 'inherit', 'open', 'closed', '', 'trajet_planeblanc-2', '', '', '2018-04-20 13:35:59', '2018-04-20 11:35:59', '', 211, 'https://www.gotovenise.com/wp-content/uploads/2018/04/trajet_planeblanc-1.png', 0, 'attachment', 'image/png', 0),
 (215, 1, '2018-04-20 13:36:01', '2018-04-20 11:36:01', '', 'trajet_planemarron', '', 'inherit', 'open', 'closed', '', 'trajet_planemarron-2', '', '', '2018-04-20 13:36:01', '2018-04-20 11:36:01', '', 211, 'https://www.gotovenise.com/wp-content/uploads/2018/04/trajet_planemarron-1.png', 0, 'attachment', 'image/png', 0),
-(216, 1, '2018-04-20 13:36:41', '2018-04-20 11:36:41', '', 'left_arrow', '', 'inherit', 'open', 'closed', '', 'left_arrow', '', '', '2018-04-20 13:36:41', '2018-04-20 11:36:41', '', 211, 'https://www.gotovenise.com/wp-content/uploads/2018/04/left_arrow.png', 0, 'attachment', 'image/png', 0);
-INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
+(216, 1, '2018-04-20 13:36:41', '2018-04-20 11:36:41', '', 'left_arrow', '', 'inherit', 'open', 'closed', '', 'left_arrow', '', '', '2018-04-20 13:36:41', '2018-04-20 11:36:41', '', 211, 'https://www.gotovenise.com/wp-content/uploads/2018/04/left_arrow.png', 0, 'attachment', 'image/png', 0),
 (217, 1, '2018-04-20 13:36:42', '2018-04-20 11:36:42', '', 'right_arrow', '', 'inherit', 'open', 'closed', '', 'right_arrow', '', '', '2018-04-20 13:36:42', '2018-04-20 11:36:42', '', 211, 'https://www.gotovenise.com/wp-content/uploads/2018/04/right_arrow.png', 0, 'attachment', 'image/png', 0),
 (220, 1, '2018-04-20 13:51:26', '2018-04-20 11:51:26', 'Laissez des professionnels organiser votre transfert de l\'hôtel à l\'aéroport. Une voiture avec chauffeur sera mise à votre disposition.', 'Hôtel - Aéroport', '', 'publish', 'closed', 'closed', '', 'hotel-aeroport', '', '', '2018-05-07 13:55:38', '2018-05-07 11:55:38', '', 0, 'https://www.gotovenise.com/?post_type=transfert&#038;p=220', 0, 'transfert', '', 0),
-(221, 1, '2018-04-20 13:54:48', '2018-04-20 11:54:48', '<p class=\"trasladoTextoImagen justificado\">Faites d\'une pierre deux coups, réservez un moyen de transport assurant votre trajet de l\'aéroport à l\'hôtel et de l\'hôtel à l\'aéroport.</p>', 'Aéroport - Hôtel (aller-retour)', '', 'publish', 'closed', 'closed', '', 'aeroport-hotel-2', '', '', '2018-05-07 13:46:58', '2018-05-07 11:46:58', '', 0, 'https://www.gotovenise.com/?post_type=transfert&#038;p=221', 0, 'transfert', '', 0),
+(221, 1, '2018-04-20 13:54:48', '2018-04-20 11:54:48', '<p class=\"trasladoTextoImagen justificado\">Faites d\'une pierre deux coups, réservez un moyen de transport assurant votre trajet de l\'aéroport à l\'hôtel et de l\'hôtel à l\'aéroport.</p>', 'Aéroport - Hôtel (aller-retour)', '', 'publish', 'closed', 'closed', '', 'aeroport-hotel-2', '', '', '2018-05-07 13:46:58', '2018-05-07 11:46:58', '', 0, 'https://www.gotovenise.com/?post_type=transfert&#038;p=221', 0, 'transfert', '', 0);
+INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (222, 1, '2018-04-20 15:43:05', '2018-04-20 13:43:05', 'Une fois que vous aurez réservé votre vol et que vous saurez à quel aéroport vous arriverez, vous n’aurez plus qu’à savoir <strong>comment arriver jusqu’au centre de Venise</strong>', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-04-20 15:43:05', '2018-04-20 13:43:05', '', 2, 'https://www.gotovenise.com/2018/04/20/2-revision-v1/', 0, 'revision', '', 0),
 (223, 1, '2018-04-20 15:43:27', '2018-04-20 13:43:27', 'Une fois que vous aurez réservé votre vol et que vous saurez à quel aéroport vous arriverez, vous n’aurez plus qu’à savoir <strong>comment arriver jusqu’au centre de Venise</strong>', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-04-20 15:43:27', '2018-04-20 13:43:27', '', 2, 'https://www.gotovenise.com/2018/04/20/2-revision-v1/', 0, 'revision', '', 0),
 (224, 1, '2018-04-20 15:44:53', '2018-04-20 13:44:53', 'Une fois que vous aurez réservé votre vol et que vous saurez à quel aéroport vous arriverez, vous n’aurez plus qu’à savoir <strong>comment arriver jusqu’au centre de Venise</strong>', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-04-20 15:44:53', '2018-04-20 13:44:53', '', 2, 'https://www.gotovenise.com/2018/04/20/2-revision-v1/', 0, 'revision', '', 0),
@@ -5447,7 +5762,6 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (274, 1, '2018-04-26 08:13:04', '2018-04-26 06:13:04', '', 'venecia', '', 'inherit', 'open', 'closed', '', 'venecia-2', '', '', '2018-04-26 08:13:04', '2018-04-26 06:13:04', '', 0, 'https://www.gotovenise.com/wp-content/uploads/2018/04/venecia-1.jpg', 0, 'attachment', 'image/jpeg', 0),
 (280, 1, '2018-04-26 13:19:50', '2018-04-26 11:19:50', 'Une fois que vous aurez réservé votre vol et que vous saurez à quel aéroport vous arriverez, vous n’aurez plus qu’à savoir <strong>comment arriver jusqu’au centre de Venise</strong>', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-04-26 13:19:50', '2018-04-26 11:19:50', '', 2, 'https://www.gotovenise.com/2-revision-v1/', 0, 'revision', '', 0),
 (283, 1, '2018-04-27 10:05:48', '2018-04-27 08:05:48', '', 'venecia', '', 'inherit', 'open', 'closed', '', 'venecia-3', '', '', '2018-04-27 10:05:48', '2018-04-27 08:05:48', '', 182, 'https://www.gotovenise.com/wp-content/uploads/2018/04/venecia-2.jpg', 0, 'attachment', 'image/jpeg', 0),
-(284, 1, '2018-04-27 10:08:05', '2018-04-27 08:08:05', '', 'Restaurant', '', 'trash', 'closed', 'closed', '', 'restaurant-2__trashed', '', '', '2018-05-04 16:02:08', '2018-05-04 14:02:08', '', 0, 'https://www.gotovenise.com/?post_type=carte&#038;p=284', 0, 'carte', '', 0),
 (285, 1, '2018-04-27 10:47:23', '2018-04-27 08:47:23', 'L\'établissement Un Hôtel à Bastille (ex Campanile Paris Bastille Le Marais) vous accueille dans le centre de Paris, à seulement 500 mètres de la célèbre place de la Bastille. Il propose des chambres climatisées avec télévision par satellite et plateau/bouilloire. La station de métro Chemin Vert se trouve à 150 mètres.', 'Un Hôtel à Bastille (ex Campanile Paris Bastille Le Marais)', '', 'inherit', 'closed', 'closed', '', '245-autosave-v1', '', '', '2018-04-27 10:47:23', '2018-04-27 08:47:23', '', 245, 'https://www.gotovenise.com/245-autosave-v1/', 0, 'revision', '', 0),
 (286, 1, '2018-04-27 11:00:56', '2018-04-27 09:00:56', 'L\'établissement Un Hôtel à Bastille (ex Campanile Paris Bastille Le Marais) vous accueille dans le centre de Paris, à seulement 500 mètres de la célèbre place de la Bastille. Il propose des chambres climatisées avec télévision par satellite et plateau/bouilloire. La station de métro Chemin Vert se trouve à 150 mètres.', 'Un Hôtel à Bastille 3', '', 'publish', 'closed', 'closed', '', 'un-hotel-a-bastille-ex-campanile-paris-bastille-le-marais-4', '', '', '2018-05-01 13:19:05', '2018-05-01 11:19:05', '', 0, 'https://www.gotovenise.com/?post_type=hotel&#038;p=286', 0, 'hotel', '', 0),
 (287, 1, '2018-04-27 11:00:11', '2018-04-27 09:00:11', 'L\'établissement Un Hôtel à Bastille (ex Campanile Paris Bastille Le Marais) vous accueille dans le centre de Paris, à seulement 500 mètres de la célèbre place de la Bastille. Il propose des chambres climatisées avec télévision par satellite et plateau/bouilloire. La station de métro Chemin Vert se trouve à 150 mètres.\r\n', 'Un Hôtel à Bastille 2', '', 'publish', 'closed', 'closed', '', 'un-hotel-a-bastille-ex-campanile-paris-bastille-le-marais-3', '', '', '2018-05-01 13:39:16', '2018-05-01 11:39:16', '', 0, 'https://www.gotovenise.com/?post_type=hotel&#038;p=287', 0, 'hotel', '', 0),
@@ -5456,11 +5770,9 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (290, 1, '2018-04-27 12:30:31', '2018-04-27 10:30:32', '[URIS id=289]', 'example page', '', 'inherit', 'closed', 'closed', '', '232-revision-v1', '', '', '2018-04-27 12:30:31', '2018-04-27 10:30:32', '', 232, 'https://www.gotovenise.com/232-revision-v1/', 0, 'revision', '', 0),
 (291, 1, '2018-04-27 12:31:17', '2018-04-27 10:31:17', '', 'example page', '', 'inherit', 'closed', 'closed', '', '232-autosave-v1', '', '', '2018-04-27 12:31:17', '2018-04-27 10:31:17', '', 232, 'https://www.gotovenise.com/232-autosave-v1/', 0, 'revision', '', 0),
 (293, 1, '2018-05-03 15:32:51', '2018-05-03 13:32:51', 'https://www.gotovenise.com/wp-content/uploads/2018/04/cropped-logo-2.png', 'cropped-logo-2.png', '', 'inherit', 'open', 'closed', '', 'cropped-logo-2-png', '', '', '2018-05-03 15:32:51', '2018-05-03 13:32:51', '', 0, 'https://www.gotovenise.com/wp-content/uploads/2018/04/cropped-logo-2.png', 0, 'attachment', 'image/png', 0),
-(294, 1, '2018-05-03 15:32:56', '2018-05-03 13:32:56', '{\n    \"veniz::custom_logo\": {\n        \"value\": 293,\n        \"type\": \"theme_mod\",\n        \"user_id\": 1,\n        \"date_modified_gmt\": \"2018-05-03 13:32:56\"\n    }\n}', '', '', 'trash', 'closed', 'closed', '', 'c95f4f67-8750-41f8-978f-240c1c1640fb', '', '', '2018-05-03 15:32:56', '2018-05-03 13:32:56', '', 0, 'https://www.gotovenise.com/c95f4f67-8750-41f8-978f-240c1c1640fb/', 0, 'customize_changeset', '', 0),
 (297, 1, '2018-05-03 15:41:13', '2018-05-03 13:41:13', '\" Aucun coin de la terre n\'a donné lieu, plus que Venise, à cette conspiration de l\'enthousiasme\" Guy de Maupassant. La vie errante (1890)', 'Venise', '', 'inherit', 'closed', 'closed', '', '137-autosave-v1', '', '', '2018-05-03 15:41:13', '2018-05-03 13:41:13', '', 137, 'https://www.gotovenise.com/137-autosave-v1/', 0, 'revision', '', 0),
 (298, 1, '2018-05-03 15:51:56', '2018-05-03 13:51:56', '\" Aucun coin de la terre n\'a donné lieu, plus que Venise, à cette conspiration de l\'enthousiasme\" Guy de Maupassant. La vie errante (1890)', 'Venise', '', 'inherit', 'closed', 'closed', '', '137-revision-v1', '', '', '2018-05-03 15:51:56', '2018-05-03 13:51:56', '', 137, 'https://www.gotovenise.com/137-revision-v1/', 0, 'revision', '', 0),
 (299, 1, '2018-05-03 16:00:54', '2018-05-03 14:00:54', '\" Aucun coin de la terre n\'a donné lieu, plus que Venise, à cette conspiration de l\'enthousiasme\" Guy de Maupassant. La vie errante (1890)', 'Venise', '', 'inherit', 'closed', 'closed', '', '137-revision-v1', '', '', '2018-05-03 16:00:54', '2018-05-03 14:00:54', '', 137, 'https://www.gotovenise.com/137-revision-v1/', 0, 'revision', '', 0),
-(300, 1, '2018-05-03 16:04:15', '2018-05-03 14:04:15', '', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-autosave-v1', '', '', '2018-05-03 16:04:15', '2018-05-03 14:04:15', '', 2, 'https://www.gotovenise.com/2-autosave-v1/', 0, 'revision', '', 0),
 (301, 1, '2018-05-03 16:05:34', '2018-05-03 14:05:34', '', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-05-03 16:05:34', '2018-05-03 14:05:34', '', 2, 'https://www.gotovenise.com/2-revision-v1/', 0, 'revision', '', 0),
 (302, 1, '2018-05-03 16:07:22', '2018-05-03 14:07:22', '\"Aucun coin de la terre n\'a donné lieu, plus que Venise, à cette conspiration de l\'enthousiasme\" Guy de Maupassant. La vie errante (1890)', 'Venise', '', 'inherit', 'closed', 'closed', '', '137-revision-v1', '', '', '2018-05-03 16:07:22', '2018-05-03 14:07:22', '', 137, 'https://www.gotovenise.com/137-revision-v1/', 0, 'revision', '', 0),
 (303, 1, '2018-05-03 16:09:34', '2018-05-03 14:09:34', '', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-05-03 16:09:34', '2018-05-03 14:09:34', '', 2, 'https://www.gotovenise.com/2-revision-v1/', 0, 'revision', '', 0),
@@ -5490,7 +5802,7 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (329, 1, '2018-05-04 09:27:57', '2018-05-04 07:27:57', '', 'galleria-2', '', 'inherit', 'open', 'closed', '', 'galleria-2', '', '', '2018-05-04 09:27:57', '2018-05-04 07:27:57', '', 327, 'https://www.gotovenise.com/wp-content/uploads/2018/05/galleria-2.jpg', 0, 'attachment', 'image/jpeg', 0),
 (330, 1, '2018-05-04 09:27:59', '2018-05-04 07:27:59', '', 'galleria-3', '', 'inherit', 'open', 'closed', '', 'galleria-3', '', '', '2018-05-04 09:27:59', '2018-05-04 07:27:59', '', 327, 'https://www.gotovenise.com/wp-content/uploads/2018/05/galleria-3.jpg', 0, 'attachment', 'image/jpeg', 0),
 (331, 1, '2018-05-04 15:39:46', '2018-05-04 13:39:46', 'Le lieu de prédilection du style classique vénitien et des amateurs\n\n&nbsp;\n\nPour un séjour reposant, il est nécessaire de s’installer dans un hébergement offrant un grand confort et divers services de qualité. L’hôtel Galleria est un établissement qui dispose de chambres confortables décorées avec un style classique vénitien. Il se situe à proximité des Gallerie dell’Accademia, l’emplacement idéal pour vos déplacements dans le centre de Venise.', 'Hôtel Galleria', '', 'inherit', 'closed', 'closed', '', '327-autosave-v1', '', '', '2018-05-04 15:39:46', '2018-05-04 13:39:46', '', 327, 'https://www.gotovenise.com/327-autosave-v1/', 0, 'revision', '', 0),
-(332, 1, '2018-05-04 09:34:19', '2018-05-04 07:34:19', 'Le meilleur des services offert dans un cadre de rêve empli d\'histoire', 'L\'Albergo Quattro Fontane', '', 'publish', 'closed', 'closed', '', 'la-residenza-depoca-albergo-quattro-fontane', '', '', '2018-05-07 15:09:58', '2018-05-07 13:09:58', '', 0, 'https://www.gotovenise.com/?post_type=auberge&#038;p=332', 0, 'auberge', '', 0),
+(332, 1, '2018-05-04 09:34:19', '2018-05-04 07:34:19', 'Le meilleur des services offert dans un cadre de rêve empli d\'histoire', 'L\'Albergo Quattro Fontane', '', 'publish', 'closed', 'closed', '', 'la-residenza-depoca-albergo-quattro-fontane', '', '', '2018-06-01 15:25:54', '2018-06-01 13:25:54', '', 0, 'https://www.gotovenise.com/?post_type=auberge&#038;p=332', 0, 'auberge', '', 0),
 (333, 1, '2018-05-04 09:34:06', '2018-05-04 07:34:06', '', 'Residenza-1', '', 'inherit', 'open', 'closed', '', 'residenza-1', '', '', '2018-05-04 09:34:06', '2018-05-04 07:34:06', '', 332, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Residenza-1.jpg', 0, 'attachment', 'image/jpeg', 0),
 (334, 1, '2018-05-04 09:34:08', '2018-05-04 07:34:08', '', 'Residenza-2', '', 'inherit', 'open', 'closed', '', 'residenza-2', '', '', '2018-05-04 09:34:08', '2018-05-04 07:34:08', '', 332, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Residenza-2.jpg', 0, 'attachment', 'image/jpeg', 0),
 (335, 1, '2018-05-04 09:34:10', '2018-05-04 07:34:10', '', 'Residenza-3', '', 'inherit', 'open', 'closed', '', 'residenza-3', '', '', '2018-05-04 09:34:10', '2018-05-04 07:34:10', '', 332, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Residenza-3.jpg', 0, 'attachment', 'image/jpeg', 0),
@@ -5503,22 +5815,21 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (342, 1, '2018-05-04 09:56:53', '2018-05-04 07:56:53', 'Si vous souhaitez découvrir les îles de la lagune de Venise, commencez par faire un tour sur l’île de Murano. Elle est la plus grande et la plus célèbre, et se trouve au nord de la cité. Il suffit de prendre un vaporetto pour la rejoindre en quelques minutes. Voici un guide qui vous permettra de savoir ce que vous découvrirez sur cette île.\r\n<h2>Les origines de Murano et l’industrie de la verrerie</h2>\r\nMurano a été vraisemblablement habitée à la même époque que Venise. Cette île est connue pour avoir accueilli des réfugiés qui fuyaient les invasions barbares. Elle est indépendante de la ville des amoureux, et c’est un port maritime florissant, un frappe monnaie, et dispose d’un Conseil similaire à celui de Venise. L’île est gouvernée par un Podestat désigné par Venise au XIIIe siècle, mais elle garde tout de même une certaine autonomie. La plupart des touristes visitent surtout l’île de Murano pour voir ses fameuses verreries, et elle est considérée comme le centre mondial de la verrerie. Les verriers qui se trouvaient à Venise ont été déplacés à Murano en 1291 à cause de nombreux incendies survenus à Venise. Il serait impossible de ne pas voir quelques boutiques à Venise qui vendent du verre de Murano. L’industrie de la verrerie a d’ailleurs assuré la prospérité de la Cité des Doges jusqu’au XVIIIe siècle.\r\n<h3>Que voir sur l’île de Murano ?</h3>\r\nIl suffit d’une demi-journée pour visiter l’île de Murano qui dispose de nombreux édifices intéressants, sans l’abondance de palais que vous observez à Venise, bien entendu. Une visite de Murano sera l’occasion de voir le travail du verre dans certains ateliers qui sont encore aujourd’hui en activité. Comme Venise, Murano est aussi dotée de son propre Grand Canal, le long duquel il est possible de faire une virée et de découvrir diverses habitations, des palais et évidemment des verriers.\r\n\r\nComme le Lido et sa plage sont indissociables, Murano et ses jardins le sont aussi. Le célèbre imprimeur vénitien Alduce Manuce en avait. Il y passait ses vacances avec ses amis. Vous serez donc envoûté par la beauté et l’odeur exaltante des fleurs de jasmin ou encore par les bosquets d’orangers qui y poussent. Par ailleurs, Murano a une réputation d’île légère et des plaisirs coquins au XVIIIe siècle à cause des couvents de nonnes qui ont été tentées par les plaisirs de cette terre que par les émotions divines, si l’on peut le dire. Vous ne le saviez peut être pas, mais Murano est aussi l’île où se trouve l’une des origines principales des contes de fées, comme les « Plaisantes Nuits » ou « Sur la lune », quelques contes de Giovan Francesco Staparola.', 'La passionnante île de Murano', '', 'publish', 'closed', 'closed', '', 'la-passionnante-ile-de-murano', '', '', '2018-05-04 09:56:53', '2018-05-04 07:56:53', '', 0, 'https://www.gotovenise.com/?post_type=carte&#038;p=342', 0, 'carte', '', 0),
 (343, 1, '2018-05-04 09:56:49', '2018-05-04 07:56:49', '', 'ile-de-murano-1', '', 'inherit', 'open', 'closed', '', 'ile-de-murano-1', '', '', '2018-05-04 09:56:49', '2018-05-04 07:56:49', '', 342, 'https://www.gotovenise.com/wp-content/uploads/2018/05/ile-de-murano-1.jpg', 0, 'attachment', 'image/jpeg', 0),
 (344, 1, '2018-05-04 09:59:11', '2018-05-04 07:59:11', '&nbsp;\r\n\r\nSi vous comptez faire un voyage à Venise, l’un des monuments que vous devez absolument voir est la Basilique Santa Maria della Salute. C’est l’un des édifices religieux ou églises les plus imposantes de la cité. Sur la plupart des cartes postales, elle est facilement reconnaissable grâce à son dôme qui y apparaît. Voici les particularités de ce monument qui font de lui une grande renommée.\r\n<h2>Les spécificités de la Basilique Santa Maria della Salute</h2>\r\nLes débuts de la construction de la Basilique Santa Maria della Salute remontent à l’année 1931. Elle a été édifiée afin de célébrer la fin de la peste qui a tué la majorité de la population vénitienne. La Basilique fut achevée 56 ans après le commencement de sa construction par Baldassare Longhena. Elle se situe dans le quartier de Dorsodura, au sud du Grand Canal. Par ailleurs, qu’il s’agisse d’amateur d’art, d’architecture, de fidèles ou simplement de simples touristes, tout le monde est impressionné par la splendeur de cet édifice. Difficile de ne pas voir quelques monuments catholiques lors d’un voyage en Italie, et la ville de Venise possède encore d’autres édifices plus impressionnants les uns que les autres. La Basilique Santa Maria della Salute, elle, est célèbre pour sa fête particulière. Chaque année, le 21 novembre est organisée la fête de la Madonna della Salute, l’une des célébrations qui attirent beaucoup de monde de toutes les nationalités à Venise. Pendant cette fête, les fidèles catholiques s’approchent de la Santa Maria della Salute pour faire des prières. En fait, ici, on prie plus que sur l’île de Murano, là où l’on s’adonne beaucoup aux plaisirs.\r\n<h2>L’architecture de la Basilique Santa Maria della Salute</h2>\r\nLa Basilique Santa Maria della Salute est vraiment imposante. Elle est surmontée d’un immense dôme entouré par des statues perchées sur des spirales. Vue de l’extérieur, elle a une forme octogonale et dispose de plusieurs petites chapelles sur chaque côté. Un peu surélevée, la Basilique Santa Maria della Salute est dotée d’un escalier majestueux, de deux dômes et de deux campaniles lui donnant un effet original et étonnant. Le monument est également orné par des volutes et par 125 statues. À l’intérieur, vous verrez six chapelles entourant une nef de forme octogonale remplie de lumière, installée en hauteur et couronnée d’une coupole. Vous découvrirez aussi dans la Basilique de nombreuses œuvres d’art comme la célèbre Madone à l’Enfant de style byzantin, des peintures de Titien ou encore le fameux tableau intitulé les Noces de Cana du Tintoret qui se trouve à l’intérieur de la sacristie.', 'La Basilique Santa Maria della Salute', '', 'publish', 'closed', 'closed', '', 'la-basilique-santa-maria-della-salute', '', '', '2018-05-04 09:59:11', '2018-05-04 07:59:11', '', 0, 'https://www.gotovenise.com/?post_type=carte&#038;p=344', 0, 'carte', '', 0),
-(345, 1, '2018-05-04 09:59:06', '2018-05-04 07:59:06', '', 'la-basilique-santa-maria-della-salute', '', 'inherit', 'open', 'closed', '', 'la-basilique-santa-maria-della-salute', '', '', '2018-05-04 09:59:06', '2018-05-04 07:59:06', '', 344, 'https://www.gotovenise.com/wp-content/uploads/2018/05/la-basilique-santa-maria-della-salute.jpg', 0, 'attachment', 'image/jpeg', 0);
-INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
+(345, 1, '2018-05-04 09:59:06', '2018-05-04 07:59:06', '', 'la-basilique-santa-maria-della-salute', '', 'inherit', 'open', 'closed', '', 'la-basilique-santa-maria-della-salute', '', '', '2018-05-04 09:59:06', '2018-05-04 07:59:06', '', 344, 'https://www.gotovenise.com/wp-content/uploads/2018/05/la-basilique-santa-maria-della-salute.jpg', 0, 'attachment', 'image/jpeg', 0),
 (346, 1, '2018-05-04 10:19:55', '2018-05-04 08:19:55', '', 'hebergement-1', '', 'inherit', 'open', 'closed', '', 'hebergement-1', '', '', '2018-05-04 10:19:55', '2018-05-04 08:19:55', '', 14, 'https://www.gotovenise.com/wp-content/uploads/2018/05/hebergement-1.jpg', 0, 'attachment', 'image/jpeg', 0),
 (347, 1, '2018-05-04 10:23:49', '2018-05-04 08:23:49', '', 'hebergement-1', '', 'inherit', 'open', 'closed', '', 'hebergement-1-2', '', '', '2018-05-04 10:23:49', '2018-05-04 08:23:49', '', 14, 'https://www.gotovenise.com/wp-content/uploads/2018/05/hebergement-1-1.jpg', 0, 'attachment', 'image/jpeg', 0),
 (348, 1, '2018-05-04 11:11:12', '2018-05-04 09:11:12', '', 'Hebergement_01', '', 'inherit', 'open', 'closed', '', 'hebergement_01', '', '', '2018-05-04 11:11:12', '2018-05-04 09:11:12', '', 14, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Hebergement_01.jpg', 0, 'attachment', 'image/jpeg', 0),
 (349, 1, '2018-05-04 11:12:17', '2018-05-04 09:12:17', '', 'Mentions-légales_02', '', 'inherit', 'open', 'closed', '', 'mentions-legales_02', '', '', '2018-05-04 11:12:17', '2018-05-04 09:12:17', '', 62, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Mentions-légales_02.jpg', 0, 'attachment', 'image/jpeg', 0),
 (350, 1, '2018-05-04 11:12:42', '2018-05-04 09:12:42', '', 'Mentions-légales_03', '', 'inherit', 'open', 'closed', '', 'mentions-legales_03', '', '', '2018-05-04 11:12:42', '2018-05-04 09:12:42', '', 62, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Mentions-légales_03.jpg', 0, 'attachment', 'image/jpeg', 0),
 (351, 1, '2018-05-04 11:13:43', '2018-05-04 09:13:43', '', 'Mentions-légales_03', '', 'inherit', 'open', 'closed', '', 'mentions-legales_02-2', '', '', '2018-05-04 11:13:52', '2018-05-04 09:13:52', '', 62, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Mentions-légales_02-1.jpg', 0, 'attachment', 'image/jpeg', 0),
-(352, 1, '2018-05-04 11:14:36', '2018-05-04 09:14:36', '', 'COntact_02', '', 'inherit', 'open', 'closed', '', 'contact_02', '', '', '2018-05-04 11:14:36', '2018-05-04 09:14:36', '', 55, 'https://www.gotovenise.com/wp-content/uploads/2018/05/COntact_02.jpg', 0, 'attachment', 'image/jpeg', 0),
+(352, 1, '2018-05-04 11:14:36', '2018-05-04 09:14:36', '', 'COntact_02', '', 'inherit', 'open', 'closed', '', 'contact_02', '', '', '2018-05-04 11:14:36', '2018-05-04 09:14:36', '', 55, 'https://www.gotovenise.com/wp-content/uploads/2018/05/COntact_02.jpg', 0, 'attachment', 'image/jpeg', 0);
+INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post_content`, `post_title`, `post_excerpt`, `post_status`, `comment_status`, `ping_status`, `post_password`, `post_name`, `to_ping`, `pinged`, `post_modified`, `post_modified_gmt`, `post_content_filtered`, `post_parent`, `guid`, `menu_order`, `post_type`, `post_mime_type`, `comment_count`) VALUES
 (353, 1, '2018-05-04 11:19:56', '2018-05-04 09:19:56', '', 'Mentions-légales_01', '', 'inherit', 'open', 'closed', '', 'mentions-legales_01', '', '', '2018-05-04 11:19:56', '2018-05-04 09:19:56', '', 62, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Mentions-légales_01.jpg', 0, 'attachment', 'image/jpeg', 0),
 (354, 1, '2018-05-04 11:22:17', '2018-05-04 09:22:17', '', 'Mentions-légales_01', '', 'inherit', 'open', 'closed', '', 'mentions-legales_01-2', '', '', '2018-05-04 11:22:17', '2018-05-04 09:22:17', '', 62, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Mentions-légales_01-1.jpg', 0, 'attachment', 'image/jpeg', 0),
 (355, 1, '2018-05-04 11:23:46', '2018-05-04 09:23:46', '', 'COntact_02', '', 'inherit', 'open', 'closed', '', 'contact_02-2', '', '', '2018-05-04 11:23:46', '2018-05-04 09:23:46', '', 55, 'https://www.gotovenise.com/wp-content/uploads/2018/05/COntact_02-1.jpg', 0, 'attachment', 'image/jpeg', 0),
 (357, 1, '2018-05-04 12:21:58', '2018-05-04 10:21:58', '', 'Mentions-légales_02', '', 'inherit', 'open', 'closed', '', 'mentions-legales_02-3', '', '', '2018-05-04 12:21:58', '2018-05-04 10:21:58', '', 62, 'https://www.gotovenise.com/wp-content/uploads/2018/05/Mentions-légales_02-2.jpg', 0, 'attachment', 'image/jpeg', 0),
 (358, 1, '2018-05-04 15:29:31', '2018-05-04 13:29:31', 'Un cadre intime et reposant au creux d\'une île privée', 'San Clemente Palace Kempinski', '', 'inherit', 'closed', 'closed', '', '314-autosave-v1', '', '', '2018-05-04 15:29:31', '2018-05-04 13:29:31', '', 314, 'https://www.gotovenise.com/314-autosave-v1/', 0, 'revision', '', 0),
 (359, 1, '2018-05-04 15:31:07', '2018-05-04 13:31:07', 'Le meilleur des services et un cadre de rêve Des chambres confortables et spacieuse à\n\nVoici un lieu d’hébergement idéal pour profiter d’un séjour de tout repos ! La Residenza d\'Epoca Albergo Quattro Fontane est dotée de plusieurs chambres spacieuses et confortables et de jardins luxuriants. Tout a été bien pensé pour vous offrir . La résidence est aménagée dans un ancien bâtiment historique.', 'La Residenza d\'Epoca Albergo Quattro Fontane', '', 'inherit', 'closed', 'closed', '', '332-autosave-v1', '', '', '2018-05-04 15:31:07', '2018-05-04 13:31:07', '', 332, 'https://www.gotovenise.com/332-autosave-v1/', 0, 'revision', '', 0),
-(360, 1, '2018-05-04 15:52:59', '2018-05-04 13:52:59', 'Nulla porttitor accumsan tincidunt. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.', 'Restaurant', '', 'inherit', 'closed', 'closed', '', '284-autosave-v1', '', '', '2018-05-04 15:52:59', '2018-05-04 13:52:59', '', 284, 'https://www.gotovenise.com/284-autosave-v1/', 0, 'revision', '', 0),
 (361, 1, '2018-05-04 16:05:20', '2018-05-04 14:05:20', 'Il existe plusieurs moyens de transport qui permettent de se rendre à Venise. Chacun d’eux a leurs avantages et leurs inconvénients, mais l’essentiel, c’est de pouvoir profiter pleinement de votre voyage à Venise. Dans cet article, nous vous indiquons comment aller à Venise : par avion, en train ou en voiture. Sinon, pour les bateaux, on part en général de l’aéroport pour rejoindre Venise.\n\n&nbsp;\n\n&nbsp;\n\n&nbsp;', 'Comment y aller ?', '', 'inherit', 'closed', 'closed', '', '166-autosave-v1', '', '', '2018-05-04 16:05:20', '2018-05-04 14:05:20', '', 166, 'https://www.gotovenise.com/166-autosave-v1/', 0, 'revision', '', 0),
 (364, 1, '2018-04-19 08:11:08', '2018-04-19 06:11:08', '', 'Bloc des paragraphes', '', 'publish', 'closed', 'closed', '', 'acf_bloc-des-paragraphes', '', '', '2018-04-19 08:11:08', '2018-04-19 06:11:08', '', 0, 'http://localhost/wp_veniz/?post_type=acf&amp;p=136', 1, 'acf', '', 0),
 (365, 1, '2018-05-05 08:58:10', '2018-05-05 06:58:10', '', 'Bloc du résumé', '', 'publish', 'closed', 'closed', '', 'acf_bloc-du-resume', '', '', '2018-05-07 13:05:16', '2018-05-07 11:05:16', '', 0, 'http://localhost/wp_veniz/?post_type=acf&#038;p=322', 0, 'acf', '', 0),
@@ -5574,36 +5885,49 @@ INSERT INTO `wp_posts` (`ID`, `post_author`, `post_date`, `post_date_gmt`, `post
 (416, 1, '2018-05-07 13:05:33', '2018-05-07 11:05:33', '\"Aucun coin de la terre n\'a donné lieu, plus que Venise, à cette conspiration de l\'enthousiasme\" Guy de Maupassant. La vie errante (1890)', 'Venise', '', 'inherit', 'closed', 'closed', '', '137-revision-v1', '', '', '2018-05-07 13:05:33', '2018-05-07 11:05:33', '', 137, 'https://www.gotovenise.com/137-revision-v1/', 0, 'revision', '', 0),
 (417, 1, '2018-05-07 13:44:59', '2018-05-07 11:44:59', '<p class=\"trasladoTextoImagen justificado\">FaIl s\'agit du transfert le plus populaire et le plus recommandé . <b>Ne vous préoccupez plus de rien</b> en réservant à la fois votre transfert de l\'aéroport à l\'hôtel et votre retour à l\'aéroport .</p>', 'Aéroport - Hôtel (aller-retour)', '', 'inherit', 'closed', 'closed', '', '221-autosave-v1', '', '', '2018-05-07 13:44:59', '2018-05-07 11:44:59', '', 221, 'https://www.gotovenise.com/221-autosave-v1/', 0, 'revision', '', 0),
 (418, 1, '2018-05-07 13:50:08', '2018-05-07 11:50:08', 'assurer votre trasfert de l\'hMettez toutes le chances de votre côtéNe ratez pas votre avion ! En réservant le transfert de l\'hôtel à l\'aéroport, vous vous assurez d\'avoir <b>un chauffeur qui vous attendra à la porte de votre hôtel à l\'heure demandée</b>.', 'Hôtel - Aéroport', '', 'inherit', 'closed', 'closed', '', '220-autosave-v1', '', '', '2018-05-07 13:50:08', '2018-05-07 11:50:08', '', 220, 'https://www.gotovenise.com/220-autosave-v1/', 0, 'revision', '', 0),
-(419, 1, '2018-05-07 13:57:47', '2018-05-07 11:57:47', '&nbsp;\n\n<b>Un chauffeur vous attendra dans le hall des arrivées avec une pancarte indiquant votre nom</b>. Evitez de nombreux problèmes : suppléments imprévus, arnaques, difficultés liées à la langue ou pour trouver votre hôtel, etc. .', 'Aéroport - Hôtel', '', 'inherit', 'closed', 'closed', '', '211-autosave-v1', '', '', '2018-05-07 13:57:47', '2018-05-07 11:57:47', '', 211, 'https://www.gotovenise.com/211-autosave-v1/', 0, 'revision', '', 0);
+(419, 1, '2018-05-07 13:57:47', '2018-05-07 11:57:47', '&nbsp;\n\n<b>Un chauffeur vous attendra dans le hall des arrivées avec une pancarte indiquant votre nom</b>. Evitez de nombreux problèmes : suppléments imprévus, arnaques, difficultés liées à la langue ou pour trouver votre hôtel, etc. .', 'Aéroport - Hôtel', '', 'inherit', 'closed', 'closed', '', '211-autosave-v1', '', '', '2018-05-07 13:57:47', '2018-05-07 11:57:47', '', 211, 'https://www.gotovenise.com/211-autosave-v1/', 0, 'revision', '', 0),
+(420, 1, '2018-05-31 12:58:45', '0000-00-00 00:00:00', '', 'Brouillon auto', '', 'auto-draft', 'open', 'open', '', '', '', '', '2018-05-31 12:58:45', '0000-00-00 00:00:00', '', 0, 'http://localhost/sites/gotovenise/gotovenise/?p=420', 0, 'post', '', 0),
+(421, 1, '2018-05-31 13:07:37', '2018-05-31 11:07:37', '', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-05-31 13:07:37', '2018-05-31 11:07:37', '', 2, 'http://localhost/sites/gotovenise/gotovenise/2-revision-v1/', 0, 'revision', '', 0),
+(422, 1, '2018-05-31 13:12:55', '2018-05-31 11:12:55', '', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-05-31 13:12:55', '2018-05-31 11:12:55', '', 2, 'http://localhost/sites/gotovenise/gotovenise/2-revision-v1/', 0, 'revision', '', 0),
+(423, 1, '2018-05-31 13:16:43', '2018-05-31 11:16:43', '', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-05-31 13:16:43', '2018-05-31 11:16:43', '', 2, 'http://localhost/sites/gotovenise/gotovenise/2-revision-v1/', 0, 'revision', '', 0),
+(424, 1, '2018-05-31 13:18:43', '2018-05-31 11:18:43', '', 'Transport', '', 'inherit', 'closed', 'closed', '', '2-revision-v1', '', '', '2018-05-31 13:18:43', '2018-05-31 11:18:43', '', 2, 'http://localhost/sites/gotovenise/gotovenise/2-revision-v1/', 0, 'revision', '', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_termmeta`
+-- Structure de la table `wp_termmeta`
 --
 
-CREATE TABLE `wp_termmeta` (
-  `meta_id` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_termmeta`;
+CREATE TABLE IF NOT EXISTS `wp_termmeta` (
+  `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) DEFAULT NULL,
-  `meta_value` longtext
-) ;
+  `meta_value` longtext,
+  PRIMARY KEY (`meta_id`),
+  KEY `term_id` (`term_id`),
+  KEY `meta_key` (`meta_key`(191))
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_terms`
+-- Structure de la table `wp_terms`
 --
 
-CREATE TABLE `wp_terms` (
-  `term_id` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_terms`;
+CREATE TABLE IF NOT EXISTS `wp_terms` (
+  `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL DEFAULT '',
   `slug` varchar(200) NOT NULL DEFAULT '',
-  `term_group` bigint(10) NOT NULL DEFAULT '0'
-) ;
+  `term_group` bigint(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`term_id`),
+  KEY `slug` (`slug`(191)),
+  KEY `name` (`name`(191))
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_terms`
+-- Déchargement des données de la table `wp_terms`
 --
 
 INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
@@ -5618,17 +5942,20 @@ INSERT INTO `wp_terms` (`term_id`, `name`, `slug`, `term_group`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_term_relationships`
+-- Structure de la table `wp_term_relationships`
 --
 
-CREATE TABLE `wp_term_relationships` (
+DROP TABLE IF EXISTS `wp_term_relationships`;
+CREATE TABLE IF NOT EXISTS `wp_term_relationships` (
   `object_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `term_order` int(11) NOT NULL DEFAULT '0'
-) ;
+  `term_order` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`object_id`,`term_taxonomy_id`),
+  KEY `term_taxonomy_id` (`term_taxonomy_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_term_relationships`
+-- Déchargement des données de la table `wp_term_relationships`
 --
 
 INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
@@ -5650,7 +5977,6 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 (183, 6, 0),
 (187, 7, 0),
 (195, 2, 0),
-(284, 5, 0),
 (338, 7, 0),
 (342, 7, 0),
 (344, 7, 0);
@@ -5658,20 +5984,24 @@ INSERT INTO `wp_term_relationships` (`object_id`, `term_taxonomy_id`, `term_orde
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_term_taxonomy`
+-- Structure de la table `wp_term_taxonomy`
 --
 
-CREATE TABLE `wp_term_taxonomy` (
-  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_term_taxonomy`;
+CREATE TABLE IF NOT EXISTS `wp_term_taxonomy` (
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `term_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `taxonomy` varchar(32) NOT NULL DEFAULT '',
   `description` longtext NOT NULL,
   `parent` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
-  `count` bigint(20) NOT NULL DEFAULT '0'
-) ;
+  `count` bigint(20) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`term_taxonomy_id`),
+  UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
+  KEY `taxonomy` (`taxonomy`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_term_taxonomy`
+-- Déchargement des données de la table `wp_term_taxonomy`
 --
 
 INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `description`, `parent`, `count`) VALUES
@@ -5686,18 +6016,22 @@ INSERT INTO `wp_term_taxonomy` (`term_taxonomy_id`, `term_id`, `taxonomy`, `desc
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_usermeta`
+-- Structure de la table `wp_usermeta`
 --
 
-CREATE TABLE `wp_usermeta` (
-  `umeta_id` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_usermeta`;
+CREATE TABLE IF NOT EXISTS `wp_usermeta` (
+  `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `meta_key` varchar(255) DEFAULT NULL,
-  `meta_value` longtext
-) ;
+  `meta_value` longtext,
+  PRIMARY KEY (`umeta_id`),
+  KEY `user_id` (`user_id`),
+  KEY `meta_key` (`meta_key`(191))
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_usermeta`
+-- Déchargement des données de la table `wp_usermeta`
 --
 
 INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALUES
@@ -5716,13 +6050,13 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 (13, 1, 'wp_user_level', '10'),
 (14, 1, 'dismissed_wp_pointers', 'bws_shortcode_button_tooltip,cntctfrm_install_multi_tooltip'),
 (15, 1, 'show_welcome_panel', '1'),
-(16, 1, 'session_tokens', 'a:3:{s:64:\"46940eb5cca9217172e415de15014b2871312e505ad88d1d4e0f41eb59a69585\";a:4:{s:10:\"expiration\";i:1526651376;s:2:\"ip\";s:12:\"197.149.27.8\";s:2:\"ua\";s:115:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\";s:5:\"login\";i:1525441776;}s:64:\"fef258179d72ada8aadfae08fe391e527886bb2fccad665c25f6dea8783b3d50\";a:4:{s:10:\"expiration\";i:1525863037;s:2:\"ip\";s:14:\"197.149.27.252\";s:2:\"ua\";s:115:\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\";s:5:\"login\";i:1525690237;}s:64:\"9b2aa31b5bef7aff0e431b98204e4be30dc514e8d3e69ffbc0a4e235f2197704\";a:4:{s:10:\"expiration\";i:1525864019;s:2:\"ip\";s:14:\"197.149.27.252\";s:2:\"ua\";s:121:\"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.139 Safari/537.36\";s:5:\"login\";i:1525691219;}}'),
-(17, 1, 'wp_dashboard_quick_press_last_post_id', '362'),
-(18, 1, 'community-events-location', 'a:1:{s:2:\"ip\";s:12:\"197.149.27.0\";}'),
+(16, 1, 'session_tokens', 'a:3:{s:64:\"c33d11db151d09445cea9046d6fd368bc2a5b172605e9b854315dd8fd34ee86d\";a:4:{s:10:\"expiration\";i:1527937118;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\";s:5:\"login\";i:1527764318;}s:64:\"9016fb879371eacff10794c3a81049003b575e7500612f985ef310f1b0d7779b\";a:4:{s:10:\"expiration\";i:1528011823;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\";s:5:\"login\";i:1527839023;}s:64:\"b2b65e7ae28dd8bb820749b9c0bc42bcca956a20c50579435eba76d98909af0d\";a:4:{s:10:\"expiration\";i:1528046312;s:2:\"ip\";s:3:\"::1\";s:2:\"ua\";s:114:\"Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36\";s:5:\"login\";i:1527873512;}}'),
+(17, 1, 'wp_dashboard_quick_press_last_post_id', '420'),
+(18, 1, 'community-events-location', 'a:1:{s:2:\"ip\";s:2:\"::\";}'),
 (19, 1, 'managenav-menuscolumnshidden', 'a:5:{i:0;s:11:\"link-target\";i:1;s:11:\"css-classes\";i:2;s:3:\"xfn\";i:3;s:11:\"description\";i:4;s:15:\"title-attribute\";}'),
 (20, 1, 'metaboxhidden_nav-menus', 'a:1:{i:0;s:12:\"add-post_tag\";}'),
-(21, 1, 'wp_user-settings', 'libraryContent=browse&editor=tinymce&hidetb=1'),
-(22, 1, 'wp_user-settings-time', '1525419398'),
+(21, 1, 'wp_user-settings', 'libraryContent=browse&editor=html&hidetb=1'),
+(22, 1, 'wp_user-settings-time', '1527764855'),
 (23, 1, 'nav_menu_recently_edited', '2'),
 (24, 1, 'bwg_photo_gallery', '1'),
 (25, 1, 'closedpostboxes_hotel', 'a:1:{i:0;s:10:\"postcustom\";}'),
@@ -5735,11 +6069,12 @@ INSERT INTO `wp_usermeta` (`umeta_id`, `user_id`, `meta_key`, `meta_value`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_users`
+-- Structure de la table `wp_users`
 --
 
-CREATE TABLE `wp_users` (
-  `ID` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_users`;
+CREATE TABLE IF NOT EXISTS `wp_users` (
+  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_login` varchar(60) NOT NULL DEFAULT '',
   `user_pass` varchar(255) NOT NULL DEFAULT '',
   `user_nicename` varchar(50) NOT NULL DEFAULT '',
@@ -5748,434 +6083,60 @@ CREATE TABLE `wp_users` (
   `user_registered` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `user_activation_key` varchar(255) NOT NULL DEFAULT '',
   `user_status` int(11) NOT NULL DEFAULT '0',
-  `display_name` varchar(250) NOT NULL DEFAULT ''
-) ;
+  `display_name` varchar(250) NOT NULL DEFAULT '',
+  PRIMARY KEY (`ID`),
+  KEY `user_login_key` (`user_login`),
+  KEY `user_nicename` (`user_nicename`),
+  KEY `user_email` (`user_email`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_users`
+-- Déchargement des données de la table `wp_users`
 --
 
 INSERT INTO `wp_users` (`ID`, `user_login`, `user_pass`, `user_nicename`, `user_email`, `user_url`, `user_registered`, `user_activation_key`, `user_status`, `display_name`) VALUES
-(1, 'admin', '$P$BG0ESq9FT3jTsbpweUNmEUw57IxHVn/', 'admin', 'mediaclickdev18@gmail.com', '', '2018-04-11 19:20:06', '', 0, 'mediaclick'),
+(1, 'admin', '$P$BYV4Z5EcbE6OjsSIojM8wM50vEhxra1', 'admin', 'mediaclickdev18@gmail.com', '', '2018-04-11 19:20:06', '', 0, 'mediaclick'),
 (2, 'wp.service.controller.cvaep', '$P$BpS3SskomVtlAgDe.s2oU6JF4A.Mt41', 'Service', '', '', '0000-00-00 00:00:00', '', 0, 'Service');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_yoast_seo_links`
+-- Structure de la table `wp_yoast_seo_links`
 --
 
-CREATE TABLE `wp_yoast_seo_links` (
-  `id` bigint(20) UNSIGNED NOT NULL,
+DROP TABLE IF EXISTS `wp_yoast_seo_links`;
+CREATE TABLE IF NOT EXISTS `wp_yoast_seo_links` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `url` varchar(255) NOT NULL,
   `post_id` bigint(20) UNSIGNED NOT NULL,
   `target_post_id` bigint(20) UNSIGNED NOT NULL,
-  `type` varchar(8) NOT NULL
-) ;
+  `type` varchar(8) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `link_direction` (`post_id`,`type`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `wp_yoast_seo_meta`
+-- Structure de la table `wp_yoast_seo_meta`
 --
 
-CREATE TABLE `wp_yoast_seo_meta` (
+DROP TABLE IF EXISTS `wp_yoast_seo_meta`;
+CREATE TABLE IF NOT EXISTS `wp_yoast_seo_meta` (
   `object_id` bigint(20) UNSIGNED NOT NULL,
   `internal_link_count` int(10) UNSIGNED DEFAULT NULL,
-  `incoming_link_count` int(10) UNSIGNED DEFAULT NULL
-) ;
+  `incoming_link_count` int(10) UNSIGNED DEFAULT NULL,
+  UNIQUE KEY `object_id` (`object_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wp_yoast_seo_meta`
+-- Déchargement des données de la table `wp_yoast_seo_meta`
 --
 
 INSERT INTO `wp_yoast_seo_meta` (`object_id`, `internal_link_count`, `incoming_link_count`) VALUES
 (30, 0, 0);
+COMMIT;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `wp_bwg_album`
---
-ALTER TABLE `wp_bwg_album`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `wp_bwg_album_gallery`
---
-ALTER TABLE `wp_bwg_album_gallery`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `wp_bwg_gallery`
---
-ALTER TABLE `wp_bwg_gallery`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `wp_bwg_image`
---
-ALTER TABLE `wp_bwg_image`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `wp_bwg_image_comment`
---
-ALTER TABLE `wp_bwg_image_comment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `wp_bwg_image_rate`
---
-ALTER TABLE `wp_bwg_image_rate`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `wp_bwg_image_tag`
---
-ALTER TABLE `wp_bwg_image_tag`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `wp_bwg_shortcode`
---
-ALTER TABLE `wp_bwg_shortcode`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `wp_bwg_theme`
---
-ALTER TABLE `wp_bwg_theme`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `wp_cntctfrm_field`
---
-ALTER TABLE `wp_cntctfrm_field`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_commentmeta`
---
-ALTER TABLE `wp_commentmeta`
-  ADD PRIMARY KEY (`meta_id`),
-  ADD KEY `comment_id` (`comment_id`),
-  ADD KEY `meta_key` (`meta_key`(191));
-
---
--- Indexes for table `wp_comments`
---
-ALTER TABLE `wp_comments`
-  ADD PRIMARY KEY (`comment_ID`),
-  ADD KEY `comment_post_ID` (`comment_post_ID`),
-  ADD KEY `comment_approved_date_gmt` (`comment_approved`,`comment_date_gmt`),
-  ADD KEY `comment_date_gmt` (`comment_date_gmt`),
-  ADD KEY `comment_parent` (`comment_parent`),
-  ADD KEY `comment_author_email` (`comment_author_email`(10));
-
---
--- Indexes for table `wp_links`
---
-ALTER TABLE `wp_links`
-  ADD PRIMARY KEY (`link_id`),
-  ADD KEY `link_visible` (`link_visible`);
-
---
--- Indexes for table `wp_nf3_actions`
---
-ALTER TABLE `wp_nf3_actions`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_nf3_action_meta`
---
-ALTER TABLE `wp_nf3_action_meta`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_nf3_fields`
---
-ALTER TABLE `wp_nf3_fields`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_nf3_field_meta`
---
-ALTER TABLE `wp_nf3_field_meta`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_nf3_forms`
---
-ALTER TABLE `wp_nf3_forms`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_nf3_form_meta`
---
-ALTER TABLE `wp_nf3_form_meta`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_nf3_objects`
---
-ALTER TABLE `wp_nf3_objects`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_nf3_object_meta`
---
-ALTER TABLE `wp_nf3_object_meta`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_nf3_relationships`
---
-ALTER TABLE `wp_nf3_relationships`
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `wp_options`
---
-ALTER TABLE `wp_options`
-  ADD PRIMARY KEY (`option_id`),
-  ADD UNIQUE KEY `option_name` (`option_name`);
-
---
--- Indexes for table `wp_postmeta`
---
-ALTER TABLE `wp_postmeta`
-  ADD PRIMARY KEY (`meta_id`),
-  ADD KEY `post_id` (`post_id`),
-  ADD KEY `meta_key` (`meta_key`(191));
-
---
--- Indexes for table `wp_posts`
---
-ALTER TABLE `wp_posts`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `post_name` (`post_name`(191)),
-  ADD KEY `type_status_date` (`post_type`,`post_status`,`post_date`,`ID`),
-  ADD KEY `post_parent` (`post_parent`),
-  ADD KEY `post_author` (`post_author`);
-
---
--- Indexes for table `wp_termmeta`
---
-ALTER TABLE `wp_termmeta`
-  ADD PRIMARY KEY (`meta_id`),
-  ADD KEY `term_id` (`term_id`),
-  ADD KEY `meta_key` (`meta_key`(191));
-
---
--- Indexes for table `wp_terms`
---
-ALTER TABLE `wp_terms`
-  ADD PRIMARY KEY (`term_id`),
-  ADD KEY `slug` (`slug`(191)),
-  ADD KEY `name` (`name`(191));
-
---
--- Indexes for table `wp_term_relationships`
---
-ALTER TABLE `wp_term_relationships`
-  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`),
-  ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
-
---
--- Indexes for table `wp_term_taxonomy`
---
-ALTER TABLE `wp_term_taxonomy`
-  ADD PRIMARY KEY (`term_taxonomy_id`),
-  ADD UNIQUE KEY `term_id_taxonomy` (`term_id`,`taxonomy`),
-  ADD KEY `taxonomy` (`taxonomy`);
-
---
--- Indexes for table `wp_usermeta`
---
-ALTER TABLE `wp_usermeta`
-  ADD PRIMARY KEY (`umeta_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `meta_key` (`meta_key`(191));
-
---
--- Indexes for table `wp_users`
---
-ALTER TABLE `wp_users`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `user_login_key` (`user_login`),
-  ADD KEY `user_nicename` (`user_nicename`),
-  ADD KEY `user_email` (`user_email`);
-
---
--- Indexes for table `wp_yoast_seo_links`
---
-ALTER TABLE `wp_yoast_seo_links`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `link_direction` (`post_id`,`type`);
-
---
--- Indexes for table `wp_yoast_seo_meta`
---
-ALTER TABLE `wp_yoast_seo_meta`
-  ADD UNIQUE KEY `object_id` (`object_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `wp_bwg_album`
---
-ALTER TABLE `wp_bwg_album`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_bwg_album_gallery`
---
-ALTER TABLE `wp_bwg_album_gallery`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_bwg_gallery`
---
-ALTER TABLE `wp_bwg_gallery`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_bwg_image`
---
-ALTER TABLE `wp_bwg_image`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_bwg_image_comment`
---
-ALTER TABLE `wp_bwg_image_comment`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_bwg_image_rate`
---
-ALTER TABLE `wp_bwg_image_rate`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_bwg_image_tag`
---
-ALTER TABLE `wp_bwg_image_tag`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_bwg_theme`
---
-ALTER TABLE `wp_bwg_theme`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_cntctfrm_field`
---
-ALTER TABLE `wp_cntctfrm_field`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_commentmeta`
---
-ALTER TABLE `wp_commentmeta`
-  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_comments`
---
-ALTER TABLE `wp_comments`
-  MODIFY `comment_ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_links`
---
-ALTER TABLE `wp_links`
-  MODIFY `link_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_nf3_actions`
---
-ALTER TABLE `wp_nf3_actions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_nf3_action_meta`
---
-ALTER TABLE `wp_nf3_action_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_nf3_fields`
---
-ALTER TABLE `wp_nf3_fields`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_nf3_field_meta`
---
-ALTER TABLE `wp_nf3_field_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_nf3_forms`
---
-ALTER TABLE `wp_nf3_forms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_nf3_form_meta`
---
-ALTER TABLE `wp_nf3_form_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_nf3_objects`
---
-ALTER TABLE `wp_nf3_objects`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_nf3_object_meta`
---
-ALTER TABLE `wp_nf3_object_meta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_nf3_relationships`
---
-ALTER TABLE `wp_nf3_relationships`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_options`
---
-ALTER TABLE `wp_options`
-  MODIFY `option_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_postmeta`
---
-ALTER TABLE `wp_postmeta`
-  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_posts`
---
-ALTER TABLE `wp_posts`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_termmeta`
---
-ALTER TABLE `wp_termmeta`
-  MODIFY `meta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_terms`
---
-ALTER TABLE `wp_terms`
-  MODIFY `term_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_term_taxonomy`
---
-ALTER TABLE `wp_term_taxonomy`
-  MODIFY `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_usermeta`
---
-ALTER TABLE `wp_usermeta`
-  MODIFY `umeta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_users`
---
-ALTER TABLE `wp_users`
-  MODIFY `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `wp_yoast_seo_links`
---
-ALTER TABLE `wp_yoast_seo_links`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
