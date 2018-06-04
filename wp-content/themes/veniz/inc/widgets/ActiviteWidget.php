@@ -49,18 +49,7 @@ class ActiviteWidget  extends WP_Widget {
     <div class="activityList">        
         <div class="rowList clr">
             <span class="sidebar-title">Nos activités</span>
-            <?php //if (count($activites) > 0) : ?>
-            <?php //foreach ($activites as $activite): ?>
-                <!-- <div class="item">
-                    <span class="photo">
-                        <img src="<?php //echo CCarte::getCarteImage($activite->thumbnail,'activity-small'); ?>" />
-                    </span>
-                    <span class="title">
-                        <a href="<?php //echo get_permalink($activite->id); ?>"> <?php //echo $activite->title; ?></a>
-                    </span>
-                </div> -->
-            <?php //endforeach; ?>
-            <?php //endif;?>
+            
             <div class="sidebar-temoignage">
                 <span class="title">Ce qu'en pensent les voyageurs</span>
                 <div class="temoignage-item">

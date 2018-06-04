@@ -367,7 +367,7 @@ function venise_post_type() {
 			'show_in_admin_bar'   => true,
 			'menu_position'       => 4,
 			'can_export'          => true,
-			'has_archive'         => true,
+			'has_archive'         => false,
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
@@ -428,12 +428,48 @@ function venise_post_type() {
 			'show_in_admin_bar'   => true,
 			'menu_position'       => 4,
 			'can_export'          => true,
-			'has_archive'         => true,
+			'has_archive'         => false,
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',
 	);
 	register_post_type( 'transfert', $args );
+	
+	$labels = array(
+		'name'                => _x( 'Temoignage', 'Post Type General Name', 'text_domain' ),
+		'singular_name'       => _x( 'Temoignage', 'Post Type Singular Name', 'text_domain' ),
+		'menu_name'           => __( 'Temoignage', 'text_domain' ),
+		'all_items'           => __( 'Tous les témoignages', 'text_domain' ),
+		'view_item'           => __( 'Voir', 'text_domain' ),
+		'add_new_item'        => __( 'Ajouter nouveau', 'text_domain' ),
+		'add_new'             => __( 'Ajouter nouveau', 'text_domain' ),
+		'edit_item'           => __( 'Modifier', 'text_domain' ),
+		'update_item'         => __( 'Mettre a jour', 'text_domain' ),
+		'search_items'        => __( 'Rechercher', 'text_domain' ),
+		'not_found'           => __( 'Aucun temoignage', 'text_domain' ),
+		'not_found_in_trash'  => __( 'Aucun temoignage', 'text_domain' ),
+	);
+
+	$args = array(
+		'label'               => __( 'Temoignage', 'text_domain' ),
+		'description'         => __( 'Temoignage', 'text_domain' ),
+		'labels'              => $labels,
+		'supports'            =>   array( 'title', 'editor', 'custom-fields','thumbnail' ),
+		'taxonomies'          => array(''),
+		'hierarchical'        => false,
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_nav_menus'   => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 4,
+		'can_export'          => true,
+		'has_archive'         => false,
+		'exclude_from_search' => false,
+		'publicly_queryable'  => true,
+		'capability_type'     => 'page',
+	);
+	register_post_type( 'temoignage', $args );
 
         $labels = array(
 			'name'                => _x( 'Auberge', 'Post Type General Name', 'text_domain' ),
@@ -463,7 +499,7 @@ function venise_post_type() {
 			'show_in_admin_bar'   => true,
 			'menu_position'       => 4,
 			'can_export'          => true,
-			'has_archive'         => true,
+			'has_archive'         => false,
 			'exclude_from_search' => false,
 			'publicly_queryable'  => true,
 			'capability_type'     => 'page',

@@ -534,10 +534,20 @@
 .temoignage-item {
     background: #fcfcfc;
     border: 1px solid #f0f0f0;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 10px 10px 10px 27px;
+    margin-top: 10px;
+    position: relative;
 }
 
+.temoignage-item::before {
+    content:"";
+    width: 16px;
+    height: 16px;
+    background: url(../../assets/images/bloquote_yellow.png) no-repeat center;
+    position: absolute;
+    top: 10px;
+    left: 6px;
+}
 .temoignage-item .author {
     display: block;
     text-align: right;
