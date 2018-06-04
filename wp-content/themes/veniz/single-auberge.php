@@ -60,15 +60,20 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                     <?php endif; ?>
                 </div>
                 <div class="right">
-                    <p>À seulement 300 mètres de la place Saint-Marc, l'hôtel de caractère Due Principi est situé dans un palais historique restauré. Il propose des chambres élégantes avec une décoration moderne ou classique et une télévision par satellite à écran LCD.</p>
+                    
+                <?php echo  $hotel->hotel_infos; ?>
                     <span>Ses points forts</span>
-                    <div class="option clearfix">
-                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/wifi.png" alt="" srcset=""></i>
-                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/parking.png" alt="" srcset=""></i>
-                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/bar.png" alt="" srcset=""></i>
-                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/service_chambre.png" alt="" srcset=""></i>
-                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/heater.svg" alt="" srcset=""></i>
+                     <div class="option clearfix">
+                        <?php
+                            $hotel_options = $hotel->option_hotel;
+                            $options = $hotel->option_hotel[value];
+                            if (count($options) > 0) : ?>
+                        <?php foreach($options as $option): ?>                          
+                                <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/<?php echo CHotel::getHotelOptionUrl($option)?>" alt="" srcset=""></i>                                                          
+                            <?php endforeach; ?>
+                        <?php endif;?>
                     </div>
+                    
                     <span>Les clients aiment...</span>
                     <ul class="temoignages">
                         <li><i class="fa fa-check-circle"></i>« très bonne situation géographique »</li>
