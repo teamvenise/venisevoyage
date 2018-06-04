@@ -639,7 +639,7 @@ function shapely_top_callout() {
                 ?>
        
 	<section
-		class=" <?php echo $header ? 'header-image-bg page-title-section bg-secondary' : 'bg-secondary"  style="padding: 15px;' ?>" <?php echo $header ? '  style="background-image:url(' . $header . ')"' : '' ?>>
+		class=" <?php echo $header ? 'header-image-bg page-title-section bg-secondary' : 'no-header-image' ?>" <?php echo $header ? '  style="background-image:url(' . $header . ')"' : '' ?>>
 		<div class="container">
 			<div class="row">
 				<?php

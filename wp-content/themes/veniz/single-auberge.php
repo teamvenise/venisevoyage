@@ -18,15 +18,17 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
     var address = '<?php echo $hotel->adresse?>';
 </script>
 <div class="row">
-<div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?> page-intern">
-        <div class="main-contents">
-           
+    <div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?> page-intern">
+        <div class="main-contents">           
             <div class="hotel-infos">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 <?php  echo  $hotel->adresse; ?><br>
 
                 <?php  echo  $hotel->hotel_infos; ?>
 =======
+=======
+>>>>>>> a5d9c5579af55d342e2ff527edf22ec41c23fbf0
                 <span class="hotel-name">L'Albergo Quattro Fontane</span>
                 <span class="stars">
                     <img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/full_star.png" alt="" srcset=""> 
@@ -34,25 +36,18 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                     <img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/full_star.png" alt="" srcset="">                                 
                 </span>
                 <div class="addresse-hotel"><?php echo  $hotel->adresse; ?></div>
+<<<<<<< HEAD
                
 >>>>>>> Stashed changes
+=======
+                <?php //echo  $hotel->hotel_infos; ?>
+>>>>>>> a5d9c5579af55d342e2ff527edf22ec41c23fbf0
             </div>
-
-            <!-- GALERIE PHOTO -->
-            <section class="hotel-slide">                  
-                <?php  if( count($gallery) ):?>
-                    <div id="slider-gallery" class="flexslider">
-                        <ul class="slides">
-                        <?php  foreach($gallery as $image): ?>
-                                <li>
-                                    <?php   $full_image_url= $image['full_image_url']; $full_image_url = acf_photo_gallery_resize_image($full_image_url, 262, 160);
-                                    $title = $image['title'];   ?>
-                                <img src="<?php echo $full_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
-                                    </li>
-                        <?php endforeach; ?>
-                        </ul>
-                     </div>
-                      <div id="carousel-gallery" class="flexslider">
+            <div id="hotel-review">
+                <!-- GALERIE PHOTO -->
+                <div class="hotel-slide">                  
+                    <?php  if( count($gallery) ):?>
+                        <div id="slider-gallery" class="flexslider">
                             <ul class="slides">
                             <?php  foreach($gallery as $image): ?>
                                     <li>
@@ -62,8 +57,20 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                                         </li>
                             <?php endforeach; ?>
                             </ul>
-                         </div>
+                        </div>
+                        <div id="carousel-gallery" class="flexslider">
+                            <ul class="slides">
+                            <?php  foreach($gallery as $image): ?>
+                                    <li>
+                                        <?php   $full_image_url= $image['full_image_url']; $full_image_url = acf_photo_gallery_resize_image($full_image_url, 262, 160);
+                                        $title = $image['title'];   ?>
+                                    <img src="<?php echo $full_image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+                                        </li>
+                            <?php endforeach; ?>
+                            </ul>
+                        </div>
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
                 <?php endif; ?>
             </section>
@@ -85,6 +92,20 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                     <?php endif;?>
                           </div>
                    
+=======
+                    <?php endif; ?>
+                </div>
+                <div class="right">
+                    <p>À seulement 300 mètres de la place Saint-Marc, l'hôtel de caractère Due Principi est situé dans un palais historique restauré. Il propose des chambres élégantes avec une décoration moderne ou classique et une télévision par satellite à écran LCD.</p>
+                    <span>Ses points forts</span>
+                    <div class="option clearfix">
+                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/wifi.png" alt="" srcset=""></i>
+                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/parking.png" alt="" srcset=""></i>
+                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/bar.png" alt="" srcset=""></i>
+                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/service_chambre.png" alt="" srcset=""></i>
+                        <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/heater.svg" alt="" srcset=""></i>
+                    </div>
+>>>>>>> a5d9c5579af55d342e2ff527edf22ec41c23fbf0
                     <span>Les clients aiment...</span>
                     <ul class="temoignages">
                         <li><i class="fa fa-check-circle"></i>« très bonne situation géographique »</li>
@@ -97,32 +118,46 @@ $paraphFooter = CParagraphe::getFooterBy($pageid);
                 </div>
                 <!-- FIN GALERIE PHOTO -->
             </div>
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> a5d9c5579af55d342e2ff527edf22ec41c23fbf0
             <div class="about-hotel">               
-                <p><?php  echo  $hotel->about_hotel; ?>
-                </p>
-                <div id="option-container">
-
-                    
-                    <?php
-                        $hotel_options = $hotel->option_hotel;
-                        $options = $hotel->option_hotel[value];
-                        if (count($options) > 0) : ?>
-                      <?php  foreach($options as $option): ?>
-                           <span class= "option " >
-                               <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/<?php echo CHotel::getHotelOptionUrl($option)?>" alt="" srcset=""></i>
-                                <p><?php echo $hotel_options[choices][$option] ?></p>
-                            </span>
-                        <?php endforeach; ?>
-
-                    <?php endif;?>
-
-                </div>
-
-                
+                <p><?php  echo  $hotel->about_hotel; ?></p>                
             </div>
-            <h3 class="subtitle yellow-text"><?php  echo $paraphFooter->title_footer;   ?></h3>           
-            <p><?php  echo $paraphFooter->content_footer; ?> </p>
+            <h2><?php  echo $paraphFooter->title_footer;?></h2>           
+            <p><?php  echo $paraphFooter->content_footer; ?></p>
+            <div class="similar-hotels">
+            <h2 class="title">Hotels similaires</h2>
+                <div class="hotel-list">
+                    <div class="rowList">
+                        <div class="item">
+                            <span class="photo">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/activity_photo.jpg" />
+                            </span>
+                            <span class="title">
+                                <a href="">Art à Venise</a>
+                            </span>
+                        </div>
+                        <div class="item">
+                            <span class="photo">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/activity_photo.jpg" />
+                            </span>
+                            <span class="title">
+                                <a href="">Déguisez-vous pour le carnaval de Venise</a>
+                            </span>
+                        </div>
+                        <div class="item">
+                            <span class="photo">
+                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/activity_photo.jpg" />
+                            </span>
+                            <span class="title">
+                                <a href="">Faites la tournée des bacari avec les Vénitiens</a>
+                            </span>
+                        </div>
+                    </div>
+            </div>
+        </div>
         </div>
     </div>
     <?php   

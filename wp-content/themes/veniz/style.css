@@ -1,53 +1,3 @@
-/*
-Theme Name: Shapely
-Theme URI: https://colorlib.com/wp/themes/shapely
-Author: colorlib
-Author URI: https://colorlib.com/
-Description: Shapely is a powerful and versatile one page WordPress theme with pixel perfect design and outstanding functionality. It is by far the most advanced free WordPress theme available today with loads of unmatched customization options. This theme comes with several homepage widgets that can be used to add portfolio, testimonials, parallax sections, your product or service information, call for action and much more. Shapely supports most free and premium WordPress plugins such as WooCommerce, Jetpack, Gravity Forms, Contact Form 7, Yoast SEO, Google Analytics by Yoast and much more. This theme is the best suited for business, landing page, portfolio, ecommerce, store, local business,  personal websites but can be tweaked to be used as blog, magazine or any other awesome website while highlighting its unique one page setup. This is going to be the last WordPress theme you will ever want to use because it is so much better than anything you have seen. Needless to say that this theme is SEO friendly thanks to its well optimized strucutre. Shapely theme is mobile friendly and fully responsive making it your best multipurpose partnert for any project and website.
-Version: 1.1.2
-License: GNU General Public License v3
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: shapely
-Tags: left-sidebar, right-sidebar, featured-images, post-formats, threaded-comments, theme-options, photography, portfolio, full-width-template, grid-layout
-
-This theme, like WordPress, is licensed under the GPL.
-Use it to make something cool, have fun, and share what you've learned with others.
-
-Shapely is based on Underscores http://underscores.me/, (C) 2012-2017 Automattic, Inc.
-Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
-*/
-
-/*--------------------------------------------------------------
->>> TABLE OF CONTENTS:
-----------------------------------------------------------------
-# Normalize
-# Typography
-# Elements
-# Forms
-# Navigation
-	## Links
-	## Menus
-# Accessibility
-# Alignments
-# Clearings
-# Widgets
-# Content
-	## Posts and pages
-	## Asides
-	## Comments
-# Infinite scroll
-# Media
-	## Captions
-	## Galleries
---------------------------------------------------------------*/
-
-/*--------------------------------------------------------------
-# Normalize
---------------------------------------------------------------*/
-
 @font-face {
     font-family: 'Amatic-Bold';
     src: url('assets/fonts/Amatic-Bold.eot?#iefix') format('embedded-opentype'), 
@@ -58,58 +8,33 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
     font-style: normal; }html {
     font-family: sans-serif;
     -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%; }body { margin: 0; }
-
+    -ms-text-size-adjust: 100%; }
+body { margin: 0; }
 article, aside, details, figcaption, figure, footer, header, main, menu, nav, section, summary { display: block; }
-
 audio, canvas, progress, video { display: inline-block; vertical-align: baseline; }
-
 audio:not([controls]) { display: none; height: 0; }
-
 [hidden], template { display: none; }
-
 a { background-color: transparent; }
-
 a:active, a:hover { outline: 0; }
-
 abbr[title] { border-bottom: 1px dotted; }
-
 b, strong { font-weight: bold; }
-
 dfn { font-style: italic; }
-
 h1 { font-size: 2em; margin: 0.67em 0; }
-
 mark { background: #ff0; color: #000; }
-
 small { font-size: 80%; }
-
 sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
-
 sup { top: -0.5em; }
-
 sub { bottom: -0.25em; }
-
 img { border: 0; }
-
 svg:not(:root) { overflow: hidden; }
-
 figure { padding: 1em; }
-
 hr { box-sizing: content-box; height: 0; }
-
 pre { overflow: auto; }
-
 code, kbd, pre, samp { font-family: monospace, monospace; font-size: 1em; }
-
 button, input, optgroup, select, textarea { color: inherit; font: inherit; margin: 0; }
-
 button { overflow: visible; }
-
 button, select { text-transform: none; }
-
 button, html input[type="button"], input[type="reset"], input[type="submit"] { -webkit-appearance: button; cursor: pointer; }
-
 button[disabled], html input[disabled] { cursor: default; }
 
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
@@ -1348,7 +1273,6 @@ blockquote:after { content: ''; height: 1px; width: 150px; display: block; posit
 .input-component { position: relative; }
 .input-component input,
 .input-component select { margin: 0; width: 100%; padding: 0 5px; border: 1px solid #d7d7d7; font-size: 18px; font-family: "dproCondR", Arial; -webkit-appearance: none; -moz-appearance: none; -ms-appearance: none; }
-.main-contents { padding-right: 24px; }
 .centered { text-align: center !important; }
 .contact-field { max-width: 830px; margin: 20px auto 0; }
 .contact-field label, .contact-field input{ margin:0; display: block; }

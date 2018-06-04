@@ -20,7 +20,7 @@ $paraph3 = CParagraphe::getBy($pageid, 3);
         
             <p><?php  echo $carte->content; ?> </p>
             <?php  if( $paraph1->title ) : ?>
-            <h2 class="page-title title">
+            <h2 class="subtitle">
                     <?php  echo  $paraph1->title; ?>
             </h2>
             <?php endif; ?>
@@ -33,7 +33,7 @@ $paraph3 = CParagraphe::getBy($pageid, 3);
             <?php endif; ?>
 
             <?php  if( $paraph2->title ) : ?>
-             <h2 class="page-title title">
+             <h2 class="subtitle">
                     <?php  echo  $paraph2->title; ?>
             </h2>
             <?php endif; ?>
@@ -46,8 +46,8 @@ $paraph3 = CParagraphe::getBy($pageid, 3);
             <?php endif; ?>
 
             <?php  if( $paraph3->title ) : ?>
-             <h2 class="page-title title">
-                    <?php  echo  $paraph3->title; ?>
+             <h2 class="subtitle">
+                <?php  echo  $paraph3->title; ?>
             </h2>
             <?php endif; ?>
             <?php  if( $paraph3->content ) : ?>
