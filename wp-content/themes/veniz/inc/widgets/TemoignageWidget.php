@@ -9,20 +9,23 @@
  *
  * @author ramino
  */
-class ActiviteWidget  extends WP_Widget {
+class TemoignageWidget    extends WP_Widget {
     /**
     * Constructeur de la classe
     */
     function  __construct() {
 
-            parent::__construct(
+           parent::__construct(
 
                     // ID du widget (on peut mettre "false")
                     'ActiviteWidget',
+                    'TemoignageWidget',
                     //  Nom du widget dans le backoffice
-                    'Liste Activite',
+
+                    'Liste temoignage',
                     //  Description dans le backoffice
-                    array( 'description' => 'Liste Post Activite' )
+                   
+                    array( 'description' => 'Liste Post temoignage' )
             );
     }
 
@@ -42,7 +45,7 @@ class ActiviteWidget  extends WP_Widget {
         // Récupération des paramètres
         $titre = $instance['titre'];
 
-       $temoignages = CCarte::getAllActivites();	   ?>
+     $temoignages = CTemoignage::getBy(5, 'date', 'desc',null);  	   ?>
     <div class="sidebar" style="margin-bottom: 20px;">
         <div class="activityList">        
             <div class="rowList clr">
@@ -103,5 +106,5 @@ class ActiviteWidget  extends WP_Widget {
     }
 }
 
-add_action( 'widgets_init', create_function( '', 'return register_widget( "ActiviteWidget" );' ) );
+add_action( 'widgets_init', create_function( '', 'return register_widget( "TemoignageWidget" );' ) );
 ?>
