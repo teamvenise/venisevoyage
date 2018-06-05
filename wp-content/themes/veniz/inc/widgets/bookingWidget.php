@@ -5,24 +5,22 @@
  */
 
 /**
- * Description of Activite
+ * Booking widget
  *
  * @author ramino
  */
-class ActiviteWidget  extends WP_Widget {
+class bookingWidget extends WP_Widget {
     /**
     * Constructeur de la classe
     */
     function  __construct() {
-
             parent::__construct(
-
                     // ID du widget (on peut mettre "false")
-                    'ActiviteWidget',
+                    'bookingWidget',
                     //  Nom du widget dans le backoffice
-                    'Liste Activite',
+                    'Booking sidebar',
                     //  Description dans le backoffice
-                    array( 'description' => 'Liste Post Activite' )
+                    array( 'description' => 'Booking dans sidebar' )
             );
     }
 
@@ -37,23 +35,17 @@ class ActiviteWidget  extends WP_Widget {
     public function widget( $args, $instance ) {
 
         // Extraction des paramètres du widget
-        extract( $args );
+        extract( $args );		
         ?>
 
 		<div class="sidebar" style="margin-bottom: 20px;">
 			<div class="activityList">        
-				<div class="rowList clr">
-					<?php //if (count($activites) > 0) : ?>
-					<?php //foreach ($activites as $activite): ?>
-					<!-- <div class="item">
-						<span class="photo">
-							<img src="<?php //echo CCarte::getCarteImage($activite->thumbnail,'activity-small'); ?>" />
+				<div class="rowList clr">					
+					<div class="booking-widget">
+						<span class="booking-title">
+							Hôtels à proximité
 						</span>
-						<span class="title">
-							<a href="<?php //echo get_permalink($activite->id); ?>"> <?php //echo $activite->title; ?></a>
-						</span>
-					</div> -->
-
+					</div>
 				</div>
 			</div>
 		</div>

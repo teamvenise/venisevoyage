@@ -135,7 +135,7 @@ class CCarte {
     }
 
 
-    public function getAllActivites($meta_value = 'page-activite.php'){
+    public static function getAllActivites($meta_value = 'page-activite.php'){
         $args = array(
             'meta_key'     => '_wp_page_template',
             'meta_value'   => $meta_value,

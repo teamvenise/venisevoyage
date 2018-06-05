@@ -1,3 +1,7 @@
+#hebergement #bos_searchbox_widget_class-8 {
+    display:none;
+}
+
 #hotels-list {
     display: flex;
     flex-direction: column;
@@ -22,6 +26,13 @@
 #hotels-list .item .left {
     display: table-cell;
     width: 100%;
+}
+#hotels-list .item .hotel_name {
+    max-width: 150px;
+    overflow: hidden;
+    word-break: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 #hotels-list .item .right {
@@ -92,6 +103,7 @@
     height: 100%;
     width: auto;
     object-fit: cover;
+    max-height: 222px;
 }
 
 .hotel_name {
@@ -154,7 +166,7 @@
     left: 0;
     right: 0;
     background: #e7bb0b;
-    padding-left: 33px;
+    padding-left: 15%;
     margin: 0 10px;
     text-transform: uppercase;
 }
@@ -210,7 +222,7 @@
     box-shadow:none !important;
     font-family: 'dproCondR';
     font-size: 30px !important;
-    padding: 5px 34px;
+    padding: 5px 34px !important;
 }
 .booking-component #flexi_searchbox #b_searchboxInc .b_submitButton_wrapper .b_submitButton:hover {
     font-size: 36px;
@@ -407,6 +419,7 @@
     width: 100%;
     min-height: 17px;
     background: url(../../assets/images/shadow.png) no-repeat left top;
+    background-size: 100%;
 }
 #hotel-review .right p {
     line-height: 21px;
@@ -525,6 +538,9 @@
     border: none;
     text-decoration: none;
 }
+.sidebar-temoignage {
+    background: white;
+}
 .sidebar-temoignage .title{
     border: 1px solid #dba027;
     padding: 4px 0 10px;
@@ -548,6 +564,11 @@
     top: 10px;
     left: 6px;
 }
+.temoignage-item p {
+    color: #6c6c6c;
+    line-height: 18px;
+    font-size: 16px;
+} 
 .temoignage-item .author {
     display: block;
     text-align: right;
@@ -555,23 +576,108 @@
     font-weight: bold;
 }
 
-@media screen and (max-width: 500px) {
-    #hotels-list .item {
-        min-width: 50%;
+@media (max-width:992px) {
+    .sidebar {
+        margin-bottom: 20px;
+        max-width: 100%;
+        float: none;
+        padding: 15px;
     }
-
-    #option-container .option {
-        min-width: 48%;
+    .sidebar #b_searchboxInc .search-box-title-1 {
+        padding: 15px 0 33px;
     }
-
-    #avis {
-        justify-content: space-between;
+    #hotel-review {
         flex-direction: column;
-        margin-bottom: 24px;
+    }
+}
+
+@media (max-width:768px) {
+    #hotels-list .onRow {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    #hotels-list .item {
+        display: flex;
+        flex-direction: column;
+        min-width: 45%;
+    }
+    #hotels-list .hotel-all-detail {
+        display: block;
+    }
+    #hotels-list .content-container {
+        padding: 20px;
+        text-align: center;
+    }
+    #hotels-list .item .right {
+        width: auto;
+        text-align: center;
+        display: block;
+        height: 100%;
+        border: none;
+        padding: 0;
+    }
+    #hotels-list .hotel-all-detail .hotel_name,
+    #hotels-list .hotel-all-detail .option,
+    #hotels-list .hotel-all-detail .evaluation {
+        float: none;
+        clear: both;
     }
 
-    #avis-table {
-        margin-right: 0;
+    #hotels-list .item .btn {
+        display:none;
+    }
+    #hotels-list .hotel-photo {
+        overflow: hidden;
+        max-width: inherit;
+        max-height: 222px;
+    }
+    #hotels-list .hotel-photo img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        max-height: inherit;        
+    }
+
+    #hotels-list .item .stars {
+        justify-content: center;
+    }
+    #hotels-list .hotel-all-detail .option i {
+        float: none;
+        display: inline-block;
+        max-width: 19px;
+        margin: 5px 10px;
+    }
+    #hotels-list .contenus p{
+        text-align: center;
+    }
+
+    #hotels-list .price-section .price {
+        margin-bottom: 20px;
+    }
+
+    #hotels-list .price-section .bouton {
+        font-size: 16px;
+        line-height: 36px;
+        position: relative;
+        padding-left: 24px;
+        margin: 0;
+    }  
+    .similar-hotels .hotel-list .item {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 500px) {
+    #hotels-list .onRow {
+        display: block;
+    }
+    #hotels-list .item {
+        display: block;
+        margin: 0 auto 10px;
+        width:300px;
+    }
+
+    .similar-hotels .hotel-list .item {
+        min-width: 100%;
     }
 }
 

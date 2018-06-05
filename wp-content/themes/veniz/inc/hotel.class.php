@@ -52,7 +52,8 @@ class CHotel {
 
             $element->gallery_images  = acf_photo_gallery('gallery_images',$pid);
             $element->avis = get_field('avis', $pid);
-             $element->extrait = $p->post_content; //get_field('extrait', $pid);
+			$element->extrait = $p->post_content; //get_field('extrait', $pid);
+			$element->prix = get_field('prix', $pid);
 
             //stocker dans le tableau statique
             self::$_elements[$pid] = $element;
@@ -141,6 +142,9 @@ class CHotel {
             case 3:
                 return "service_chambre.png";
                 break;
+            case 4:
+                return "climatisation.svg";
+                break;
 
             default: return " ";
                 break;
@@ -161,6 +165,10 @@ class CHotel {
                 break;
             case 3:
                 return "service_chambre.png";
+                break;
+
+            case 4:
+                return "climatisation.svg";
                 break;
 
             default: return " ";

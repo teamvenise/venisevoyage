@@ -14,9 +14,12 @@
  require_once( get_template_directory() . '/inc/paragraphe.class.php' );
  require_once( get_template_directory() . '/inc/transfert.class.php' );
  require_once( get_template_directory() . '/inc/hotel.class.php' );
+  require_once( get_template_directory() . '/inc/temoignage.class.php' );
  require_once( get_template_directory() . '/inc/rewrite.php' );
  require_once( get_template_directory() . '/inc/widgets/ActiviteWidget.php' );
+ require_once( get_template_directory() . '/inc/widgets/Temoignagewidget.php' );
  require_once( get_template_directory() . '/inc/widgets/ImageWidget.php' );
+ require_once( get_template_directory() . '/inc/widgets/bookingWidget.php');
 
 add_image_size('activity-small', 282, 163, true);
 add_image_size('page-bg', 1920, 110, true);
