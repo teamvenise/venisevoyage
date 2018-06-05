@@ -628,63 +628,63 @@ function shapely_top_callout() {
      global $post;
 	if ( get_theme_mod( 'top_callout', true ) ) {
 		//$header = get_header_image();             
-                $header = get_the_post_thumbnail_url($post->ID);
+		$header = get_the_post_thumbnail_url($post->ID);
 
-                $genre_associe = wp_get_post_terms($post->ID, 'genre', array('fields' => 'ids'));
-              
-                if(count($genre_associe)== 0 || $genre_associe)
-                    $header ='';
-               if(is_page_template( 'page-templates/page-hebergement.php' ) || is_page_template( 'page-templates/page-vols.php' ) )
-                 $header = get_the_post_thumbnail_url($post->ID);
-                ?>
+		$genre_associe = wp_get_post_terms($post->ID, 'genre', array('fields' => 'ids'));
+		
+		if(count($genre_associe)== 0 || $genre_associe)
+			$header ='';
+		if(is_page_template( 'page-templates/page-hebergement.php' ) || is_page_template( 'page-templates/page-vols.php' ) )
+			$header = get_the_post_thumbnail_url($post->ID);
+		?>
        
-	<section
-		class=" <?php echo $header ? 'header-image-bg page-title-section bg-secondary' : 'no-header-image' ?>" <?php echo $header ? '  style="background-image:url(' . $header . ')"' : '' ?>>
-		<div class="container">
-			<div class="row">
-				<?php
-				$breadcrumbs_enabled = false;
-				$title_in_post       = is_page_template( 'page-templates/template-home.php' );
-				if ( function_exists( 'yoast_breadcrumb' ) ) {
-					$options             = get_option( 'wpseo_internallinks' );
-					$breadcrumbs_enabled = ( $options['breadcrumbs-enable'] === true );
-					$title_in_post       = get_theme_mod( 'hide_post_title', false );
-				}
-				$header_color = get_theme_mod( 'header_textcolor', false );
-				?>
-				<?php if ( $title_in_post ): ?>
-					<div
-						class="<?php echo $breadcrumbs_enabled ? 'col-md-6 col-sm-6 col-xs-12' : 'col-xs-12'; ?>">
-						<h3 class="page-title" <?php echo $header_color ? 'style="color:#' . esc_attr( $header_color ) . '"' : '' ?>>
-							<?php
-							if ( is_home() ) {
-								echo esc_html( get_theme_mod( 'blog_name' ) ? get_theme_mod( 'blog_name' ) : __( 'Blog', 'shapely' ) );
-							} else if ( is_search() ) {
-								_e( 'Search', 'shapely' );
-							} else if ( is_archive() ) {
-								echo ( is_post_type_archive( 'jetpack-portfolio' ) ) ? esc_html__( 'Portfolio', 'shapely' ) : get_the_archive_title();
-							} else {
-								echo ( is_singular( 'jetpack-portfolio' ) ) ? esc_html__( 'Portfolio', 'shapely' ) : get_the_title();
-							}
-							?>
-						</h3>
-					</div>
-				<?php endif; ?>
-				<?php if ( function_exists( 'yoast_breadcrumb' ) ) { ?>
+		<section
+			class="<?php echo $header ? 'header-image-bg page-title-section bg-secondary' : 'no-header-image' ?>" <?php echo $header ? '  style="background-image:url(' . $header . ')"' : '' ?>>
+			<div class="container">
+				<div class="row">
 					<?php
-					if ( $breadcrumbs_enabled ) { ?>
-						<div class="<?php echo $title_in_post ? 'col-md-6 col-sm-6' : ''; ?> col-xs-12 text-right">
-							<?php yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' ); ?>
+					$breadcrumbs_enabled = false;
+					$title_in_post       = is_page_template( 'page-templates/template-home.php' );
+					if ( function_exists( 'yoast_breadcrumb' ) ) {
+						$options             = get_option( 'wpseo_internallinks' );
+						$breadcrumbs_enabled = ( $options['breadcrumbs-enable'] === true );
+						$title_in_post       = get_theme_mod( 'hide_post_title', false );
+					}
+					$header_color = get_theme_mod( 'header_textcolor', false );
+					?>
+					<?php if ( $title_in_post ): ?>
+						<div
+							class="<?php echo $breadcrumbs_enabled ? 'col-md-6 col-sm-6 col-xs-12' : 'col-xs-12'; ?>">
+							<h3 class="page-title" <?php echo $header_color ? 'style="color:#' . esc_attr( $header_color ) . '"' : '' ?>>
+								<?php
+								if ( is_home() ) {
+									echo esc_html( get_theme_mod( 'blog_name' ) ? get_theme_mod( 'blog_name' ) : __( 'Blog', 'shapely' ) );
+								} else if ( is_search() ) {
+									_e( 'Search', 'shapely' );
+								} else if ( is_archive() ) {
+									echo ( is_post_type_archive( 'jetpack-portfolio' ) ) ? esc_html__( 'Portfolio', 'shapely' ) : get_the_archive_title();
+								} else {
+									echo ( is_singular( 'jetpack-portfolio' ) ) ? esc_html__( 'Portfolio', 'shapely' ) : get_the_title();
+								}
+								?>
+							</h3>
 						</div>
+					<?php endif; ?>
+					<?php if ( function_exists( 'yoast_breadcrumb' ) ) { ?>
+						<?php
+						if ( $breadcrumbs_enabled ) { ?>
+							<div class="<?php echo $title_in_post ? 'col-md-6 col-sm-6' : ''; ?> col-xs-12 text-right">
+								<?php yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' ); ?>
+							</div>
+						<?php } ?>
 					<?php } ?>
-				<?php } ?>
 
+				</div>
+				<!--end of row-->
 			</div>
-			<!--end of row-->
-		</div>
-		<!--end of container-->
-		</section><?php
-	} else { ?>
+			<!--end of container-->
+			</section><?php
+		} else { ?>
 		<?php if ( function_exists( 'yoast_breadcrumb' ) ) { ?>
 			<div class="container mt20"><?php
 			yoast_breadcrumb( '<p id="breadcrumbs">', '</p>' ); ?>

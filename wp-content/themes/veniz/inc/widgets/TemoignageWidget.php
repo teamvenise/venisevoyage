@@ -9,7 +9,7 @@
  *
  * @author ramino
  */
-class TemoignageWidget    extends WP_Widget {
+class TemoignageWidget extends WP_Widget {
     /**
     * Constructeur de la classe
     */
@@ -18,7 +18,6 @@ class TemoignageWidget    extends WP_Widget {
            parent::__construct(
 
                     // ID du widget (on peut mettre "false")
-                    'ActiviteWidget',
                     'TemoignageWidget',
                     //  Nom du widget dans le backoffice
 
@@ -45,14 +44,14 @@ class TemoignageWidget    extends WP_Widget {
         // Récupération des paramètres
         $titre = $instance['titre'];
 
-     $temoignages = CTemoignage::getBy(5, 'date', 'desc',null);  	   ?>
+	$temoignages = CTemoignage::getBy(5, 'date', 'desc',null);?>
     <div class="sidebar" style="margin-bottom: 20px;">
         <div class="activityList">        
             <div class="rowList clr">
-                <span class="sidebar-title">Nos activités</span>                
+                <!--<span class="sidebar-title">Nos activités</span>-->
                 <div class="sidebar-temoignage"> 
                     <span class="title">Ce qu'en pensent les voyageurs</span>
-                    <?php if (count($activites) > 0) : ?>
+                    <?php if (count($temoignages) > 0) : ?>
                     <?php foreach ($temoignages as $temoignage): ?>
                         <div class="temoignage-item">
                             <p><?php echo $temoignage->content; ?></p>
@@ -61,6 +60,16 @@ class TemoignageWidget    extends WP_Widget {
                     <?php  endforeach; ?>
                     <?php endif; ?>
                 </div>
+            </div>
+        </div>
+        
+        <div class="encart-sidebar">
+            <div class="content">
+                <p>
+                    Passer un week-end à
+                    <span>Venise</span>
+                </p>
+                <a class="round-btn" href="https://www.booking.com" target="_blank">Reservez des maintenant</a>
             </div>
         </div>
     </div>

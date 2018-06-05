@@ -13,8 +13,7 @@ $hotel = CHotel::getById($pageid);
 $gallery = CHotel::getHotelGallery($pageid);
 $paraphFooter = CParagraphe::getFooterBy($pageid);
 $temoignages = CTemoignage::getBy(5, 'date', 'desc',null);
-
-
+$hotels = CHotel::getBy(3, 'date', 'desc', null);
 
 ?>
 <script>
@@ -22,9 +21,9 @@ $temoignages = CTemoignage::getBy(5, 'date', 'desc',null);
 </script>
 <div class="row">
     <div id="primary" class="col-md-8 mb-xs-24 <?php echo esc_attr( $layout_class ); ?> page-intern">
-        <div class="main-contents">           
+        <div class="main-contents">
             <div class="hotel-infos">
-                <span class="hotel-name">L'Albergo Quattro Fontane</span>
+                <span class="hotel-name"><?php echo $hotel->title; ?></span>
                 <span class="stars">
                     <img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/full_star.png" alt="" srcset=""> 
                     <img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/full_star.png" alt="" srcset="">                                 
@@ -62,77 +61,65 @@ $temoignages = CTemoignage::getBy(5, 'date', 'desc',null);
 
                     <?php endif; ?>
                 </div>
-                <div class="right">
-                    
-                <?php echo  $hotel->hotel_infos; ?>
-                    <span>Ses points forts</span>
-                     <div class="option clearfix">
-                        <?php
-                            $hotel_options = $hotel->option_hotel;
-                            $options = $hotel->option_hotel[value];
-                            if (count($options) > 0) : ?>
-                        <?php foreach($options as $option): ?>                          
-                                <i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/<?php echo CHotel::getHotelOptionUrl($option)?>" alt="" srcset=""></i>                                                          
-                            <?php endforeach; ?>
-                        <?php endif;?>
-                    </div>
-                    
-                    <span>Les clients aiment...</span>
-                    <?php
-                            $hotel_options = $hotel->option_hotel;
-                            $options = $hotel->option_hotel[value];
-                            if (count($options) > 0) : ?>
-                        <ul class="temoignages">
-                        <?php foreach($temoignages as $temoignage): ?>
-                            <li><i class="fa fa-check-circle"></i>« <?php echo $temoignage->title ?> »</li>
-                            <?php endforeach; ?>
-                                </ul>
-                        <?php endif;?>
-                   
-                    <span class="separator"></span>
-                    <a class="btn round-btn">Reservez</a>
-                </div>
+                
                 <!-- FIN GALERIE PHOTO -->
+				<div class="right">                    
+					<?php echo  $hotel->extrait; ?>
+					<span>Ses points forts</span>
+					<div class="option clearfix">
+						<?php
+							$hotel_options = $hotel->option_hotel;
+							$options = $hotel->option_hotel[value];
+							if (count($options) > 0) : ?>
+						<?php foreach($options as $option): ?>                          
+								<i><img src="<?php echo get_template_directory_uri()?>/assets/images/hebergement_icones/<?php echo CHotel::getHotelOptionUrl($option)?>" alt="" srcset=""></i>                                                          
+							<?php endforeach; ?>
+						<?php endif;?>
+					</div>
+						
+					<span>Les clients aiment...</span>
+					<?php 
+						$hotel_options = $hotel->option_hotel; 
+						$options = $hotel->option_hotel[value]; 
+						if (count($options) > 0) : ?> 
+						<ul class="temoignages"> 
+						<?php foreach($temoignages as $temoignage): ?> 
+							<li><i class="fa fa-check-circle"></i>« <?php echo $temoignage->title ?> »</li> 
+							<?php endforeach; ?> 
+						</ul> 
+						<?php endif;?>
+						<span class="separator"></span>
+						<a class="btn round-btn">Reservez</a>
+                </div>
             </div>
+			
             <div class="about-hotel">               
                 <p><?php  echo  $hotel->about_hotel; ?></p>                
             </div>
             <h2><?php  echo $paraphFooter->title_footer;?></h2>           
             <p><?php  echo $paraphFooter->content_footer; ?></p>
             <div class="similar-hotels">
-            <h2 class="title">Hotels similaires</h2>
-                <div class="hotel-list">
-                    <div class="rowList">
-                        <div class="item">
-                            <span class="photo">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/activity_photo.jpg" />
-                            </span>
-                            <span class="title">
-                                <a href="">Art à Venise</a>
-                            </span>
-                        </div>
-                        <div class="item">
-                            <span class="photo">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/activity_photo.jpg" />
-                            </span>
-                            <span class="title">
-                                <a href="">Déguisez-vous pour le carnaval de Venise</a>
-                            </span>
-                        </div>
-                        <div class="item">
-                            <span class="photo">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/activity_photo.jpg" />
-                            </span>
-                            <span class="title">
-                                <a href="">Faites la tournée des bacari avec les Vénitiens</a>
-                            </span>
-                        </div>
-                    </div>
+				<h2 class="title">Hotels similaires</h2>
+				<div class="hotel-list">
+					<div class="rowList">
+						<?php if (count($hotels) > 0) : ?>
+						<?php foreach ($hotels as $hotel): ?>
+						<div class="item">
+							<span class="photo">
+								<img src="<?php echo CHotel::getHotelImage($hotel->thumbnail);  ?>" alt=""/>
+							</span>
+							<span class="title">
+								<a href="<?php echo get_permalink($hotel->id); ?>"><?php echo $hotel->title; ?></a>
+							</span>
+						</div>                        
+						<?php endforeach; ?>
+						<?php endif;?>                        
+					</div>
+				</div>
             </div>
         </div>
-        </div>
-    </div>
-    <?php   
+	</div>
+	<?php   
         get_sidebar( );
     ?>
 </div>

@@ -13,11 +13,7 @@ if ( ! is_active_sidebar( 'sidebar-1' ) || ! shapely_show_sidebar() ) {
 	return;
 }
 ?>
-
-<!-- <?php //if($post->post_type == 'auberge') :    dynamic_sidebar( 'sidebar-map' );?>
-          <div id="map" style="width:305px;height:250px;margin:0 auto 20px"></div>
-<?php //endif; ?> -->
-<div><?php dynamic_sidebar( 'sidebar-1' ); ?></div>
-
+<div class="sidebar <?php if( is_page(14)) { echo 'no-booking-widget'; } ?>">
+    <?php dynamic_sidebar( 'sidebar-1' ); ?>
+</div>
 <!-- #secondary -->
-
